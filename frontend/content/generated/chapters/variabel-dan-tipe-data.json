@@ -1,0 +1,729 @@
+{
+  "slug": "variabel-dan-tipe-data",
+  "docVersion": "3.13",
+  "generatedAt": "2026-11-03T23:37:05+00:00",
+  "groups": [
+    {
+      "source": {
+        "doc": "tutorial/introduction",
+        "title": "An Informal Introduction to Python",
+        "label": "Tutorial Python · Pengantar Informal tentang Python",
+        "url": "https://docs.python.org/3.13/tutorial/introduction.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "numbers",
+          "html": "Bilangan (Numbers)",
+          "text": "Bilangan (Numbers)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Interpreter bertindak sebagai kalkulator sederhana: Anda dapat mengetikkan ekspresi kepadanya dan interpreter akan menampilkan nilainya. Sintaksis ekspresi sangat lugas: operator <code>+</code>, <code>-</code>, <code>*</code>, dan <code>/</code> dapat digunakan untuk melakukan aritmetika; tanda kurung (<code>()</code>) dapat digunakan untuk pengelompokan operasi. Sebagai contoh:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">2</span> <span class=\"o\">+</span> <span class=\"mi\">2</span>\n<span class=\"go\">4</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">50</span> <span class=\"o\">-</span> <span class=\"mi\">5</span><span class=\"o\">*</span><span class=\"mi\">6</span>\n<span class=\"go\">20</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">(</span><span class=\"mi\">50</span> <span class=\"o\">-</span> <span class=\"mi\">5</span><span class=\"o\">*</span><span class=\"mi\">6</span><span class=\"p\">)</span> <span class=\"o\">/</span> <span class=\"mi\">4</span>\n<span class=\"go\">5.0</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">8</span> <span class=\"o\">/</span> <span class=\"mi\">5</span>  <span class=\"c1\"># division always returns a floating-point number</span>\n<span class=\"go\">1.6</span>",
+          "text": ">>> 2 + 2\n4\n>>> 50 - 5*6\n20\n>>> (50 - 5*6) / 4\n5.0\n>>> 8 / 5  # division always returns a floating-point number\n1.6"
+        },
+        {
+          "type": "paragraph",
+          "html": "Bilangan bulat (contohnya <code>2</code>, <code>4</code>, <code>20</code>) memiliki tipe <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>, sedangkan bilangan dengan bagian pecahan (contohnya <code>5.0</code>, <code>1.6</code>) memiliki tipe <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>. Kita akan mempelajari lebih lanjut mengenai tipe numerik di bagian berikutnya."
+        },
+        {
+          "type": "paragraph",
+          "html": "Operasi pembagian (<code>/</code>) selalu mengembalikan bilangan float. Untuk melakukan <a href=\"https://docs.python.org/3.13/glossary.html#term-floor-division\" rel=\"noopener noreferrer\" target=\"_blank\">floor division</a> dan mendapatkan hasil bilangan bulat (dibulatkan ke bawah), Anda dapat menggunakan operator <code>//</code>; sedangkan untuk menghitung sisa bagi (modulus), gunakan operator <code>%</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">17</span> <span class=\"o\">/</span> <span class=\"mi\">3</span>  <span class=\"c1\"># classic division returns a float</span>\n<span class=\"go\">5.666666666666667</span>\n<span class=\"gp\">&gt;&gt;&gt;</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">17</span> <span class=\"o\">//</span> <span class=\"mi\">3</span>  <span class=\"c1\"># floor division discards the fractional part</span>\n<span class=\"go\">5</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">17</span> <span class=\"o\">%</span> <span class=\"mi\">3</span>  <span class=\"c1\"># the % operator returns the remainder of the division</span>\n<span class=\"go\">2</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">5</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"mi\">2</span>  <span class=\"c1\"># floored quotient * divisor + remainder</span>\n<span class=\"go\">17</span>",
+          "text": ">>> 17 / 3  # classic division returns a float\n5.666666666666667\n>>>\n>>> 17 // 3  # floor division discards the fractional part\n5\n>>> 17 % 3  # the % operator returns the remainder of the division\n2\n>>> 5 * 3 + 2  # floored quotient * divisor + remainder\n17"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dengan Python, Anda dapat menggunakan operator <code>**</code> untuk menghitung perpangkatan:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">5</span> <span class=\"o\">**</span> <span class=\"mi\">2</span>  <span class=\"c1\"># 5 squared</span>\n<span class=\"go\">25</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">2</span> <span class=\"o\">**</span> <span class=\"mi\">7</span>  <span class=\"c1\"># 2 to the power of 7</span>\n<span class=\"go\">128</span>",
+          "text": ">>> 5 ** 2  # 5 squared\n25\n>>> 2 ** 7  # 2 to the power of 7\n128"
+        },
+        {
+          "type": "paragraph",
+          "html": "Tanda sama dengan (<code>=</code>) digunakan untuk menetapkan nilai ke suatu variabel. Setelah penetapan nilai, tidak ada hasil yang ditampilkan sebelum prompt interaktif berikutnya:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">5</span> <span class=\"o\">*</span> <span class=\"mi\">9</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">width</span> <span class=\"o\">*</span> <span class=\"n\">height</span>\n<span class=\"go\">900</span>",
+          "text": ">>> width = 20\n>>> height = 5 * 9\n>>> width * height\n900"
+        },
+        {
+          "type": "paragraph",
+          "html": "Jika sebuah variabel belum didefinisikan (belum diberi nilai awal), mencoba menggunakannya akan memunculkan pesan kesalahan (error):"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">n</span>  <span class=\"c1\"># try to access an undefined variable</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'n' is not defined</span>",
+          "text": ">>> n  # try to access an undefined variable\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nNameError: name 'n' is not defined"
+        },
+        {
+          "type": "paragraph",
+          "html": "Terdapat dukungan penuh untuk bilangan pecahan (floating point); operator dengan operan campuran akan mengonversi operan integer ke floating point secara otomatis:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">4</span> <span class=\"o\">*</span> <span class=\"mf\">3.75</span> <span class=\"o\">-</span> <span class=\"mi\">1</span>\n<span class=\"go\">14.0</span>",
+          "text": ">>> 4 * 3.75 - 1\n14.0"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dalam mode interaktif, ekspresi terakhir yang dicetak secara otomatis dimasukkan ke dalam variabel <code>_</code>. Ini memudahkan saat Anda menggunakan Python sebagai kalkulator meja:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tax</span> <span class=\"o\">=</span> <span class=\"mf\">12.5</span> <span class=\"o\">/</span> <span class=\"mi\">100</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">price</span> <span class=\"o\">=</span> <span class=\"mf\">100.50</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">price</span> <span class=\"o\">*</span> <span class=\"n\">tax</span>\n<span class=\"go\">12.5625</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">price</span> <span class=\"o\">+</span> <span class=\"n\">_</span>\n<span class=\"go\">113.0625</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">round</span><span class=\"p\">(</span><span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"go\">113.06</span>",
+          "text": ">>> tax = 12.5 / 100\n>>> price = 100.50\n>>> price * tax\n12.5625\n>>> price + _\n113.0625\n>>> round(_, 2)\n113.06"
+        },
+        {
+          "type": "paragraph",
+          "html": "Variabel ini harus diperlakukan sebagai hanya-baca (read-only) oleh pengguna. Jangan secara eksplisit menetapkan nilai padanya — Anda akan membuat variabel lokal independen dengan nama sama yang menutupi perilaku bawaan."
+        },
+        {
+          "type": "paragraph",
+          "html": "Selain tipe <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> dan <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>, Python juga mendukung tipe angka lain seperti <a href=\"https://docs.python.org/3.13/library/decimal.html#decimal.Decimal\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"decimal.Decimal\"><code>Decimal</code></a> dan <a href=\"https://docs.python.org/3.13/library/fractions.html#fractions.Fraction\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"fractions.Fraction\"><code>Fraction</code></a>, serta bilangan kompleks."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "text",
+          "html": "Teks (Strings)",
+          "text": "Teks (Strings)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Python dapat memanipulasi teks (diwakili oleh tipe <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str\"><code>str</code></a>, yang disebut sebagai \"string\"). Ini mencakup karakter, simbol, dan kata yang diapit oleh tanda petik tunggal (<code>'...'</code>) atau tanda petik ganda (<code>\"...\"</code>) dengan hasil yang ekuivalen:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'spam eggs'</span>  <span class=\"c1\"># single quotes</span>\n<span class=\"go\">'spam eggs'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"Paris rabbit got your back :)! Yay!\"</span>  <span class=\"c1\"># double quotes</span>\n<span class=\"go\">'Paris rabbit got your back :)! Yay!'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'1975'</span>  <span class=\"c1\"># digits and numerals enclosed in quotes are also strings</span>\n<span class=\"go\">'1975'</span>",
+          "text": ">>> 'spam eggs'  # single quotes\n'spam eggs'\n>>> \"Paris rabbit got your back :)! Yay!\"  # double quotes\n'Paris rabbit got your back :)! Yay!'\n>>> '1975'  # digits and numerals enclosed in quotes are also strings\n'1975'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Untuk memasukkan tanda petik di dalam string yang berpetik sama, kita perlu melakukan \"escape\" dengan menambahkan garis miring terbalik (<code>\\</code>) sebelumnya. Atau alternatifnya, gunakan tanda petik jenis lainnya:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'doesn</span><span class=\"se\">\\'</span><span class=\"s1\">t'</span>  <span class=\"c1\"># use \\' to escape the single quote...</span>\n<span class=\"go\">\"doesn't\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"doesn't\"</span>  <span class=\"c1\"># ...or use double quotes instead</span>\n<span class=\"go\">\"doesn't\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'\"Yes,\" they said.'</span>\n<span class=\"go\">'\"Yes,\" they said.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"</span><span class=\"se\">\\\"</span><span class=\"s2\">Yes,</span><span class=\"se\">\\\"</span><span class=\"s2\"> they said.\"</span>\n<span class=\"go\">'\"Yes,\" they said.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'\"Isn</span><span class=\"se\">\\'</span><span class=\"s1\">t,\" they said.'</span>\n<span class=\"go\">'\"Isn\\'t,\" they said.'</span>",
+          "text": ">>> 'doesn\\'t'  # use \\' to escape the single quote...\n\"doesn't\"\n>>> \"doesn't\"  # ...or use double quotes instead\n\"doesn't\"\n>>> '\"Yes,\" they said.'\n'\"Yes,\" they said.'\n>>> \"\\\"Yes,\\\" they said.\"\n'\"Yes,\" they said.'\n>>> '\"Isn\\'t,\" they said.'\n'\"Isn\\'t,\" they said.'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pada terminal interaktif Python, tampilan definisi string dan luaran string dapat berbeda. Fungsi <a href=\"https://docs.python.org/3.13/library/functions.html#print\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"print\"><code>print()</code></a> menghasilkan tampilan luaran yang lebih rapi dan mudah dibaca, dengan menghilangkan tanda petik pembungkus dan mencetak karakter escape seperti baris baru:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s1\">'First line.</span><span class=\"se\">\\n</span><span class=\"s1\">Second line.'</span>  <span class=\"c1\"># \\n means newline</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span>  <span class=\"c1\"># without print(), special characters are included in the string</span>\n<span class=\"go\">'First line.\\nSecond line.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>  <span class=\"c1\"># with print(), special characters are interpreted, so \\n produces new line</span>\n<span class=\"go\">First line.</span>\n<span class=\"go\">Second line.</span>",
+          "text": ">>> s = 'First line.\\nSecond line.'  # \\n means newline\n>>> s  # without print(), special characters are included in the string\n'First line.\\nSecond line.'\n>>> print(s)  # with print(), special characters are interpreted, so \\n produces new line\nFirst line.\nSecond line."
+        },
+        {
+          "type": "paragraph",
+          "html": "Jika Anda tidak ingin karakter berawalan <code>\\</code> diinterpretasikan sebagai karakter khusus (seperti <code>\\n</code>), Anda dapat menggunakan <em>raw strings</em> dengan menambahkan huruf <code>r</code> sebelum tanda petik pembuka:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'C:\\some</span><span class=\"se\">\\n</span><span class=\"s1\">ame'</span><span class=\"p\">)</span>  <span class=\"c1\"># here \\n means newline!</span>\n<span class=\"go\">C:\\some</span>\n<span class=\"go\">ame</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s1\">'C:\\some\\name'</span><span class=\"p\">)</span>  <span class=\"c1\"># note the r before the quote</span>\n<span class=\"go\">C:\\some\\name</span>",
+          "text": ">>> print('C:\\some\\name')  # here \\n means newline!\nC:\\some\name\n>>> print(r'C:\\some\\name')  # note the r before the quote\nC:\\some\\name"
+        },
+        {
+          "type": "paragraph",
+          "html": "Ada satu aspek halus pada raw strings: raw string tidak boleh berakhiran dengan jumlah karakter ganjil dari garis miring terbalik <code>\\</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Literal string dapat membentang di beberapa baris. Salah satu caranya adalah menggunakan tanda petik tiga (<code>\"\"\"...\"\"\"</code> atau <code>'''...'''</code>). Akhir baris otomatis disertakan kecuali jika diakhiri dengan <code>\\</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"\"\"</span><span class=\"se\">\\</span>\n<span class=\"gp\">... </span><span class=\"s2\">Usage: thingy [OPTIONS]</span>\n<span class=\"gp\">... </span><span class=\"s2\">     -h                        Display this usage message</span>\n<span class=\"gp\">... </span><span class=\"s2\">     -H hostname               Hostname to connect to</span>\n<span class=\"gp\">... </span><span class=\"s2\">\"\"\"</span><span class=\"p\">)</span>\n<span class=\"go\">Usage: thingy [OPTIONS]</span>\n<span class=\"go\">     -h                        Display this usage message</span>\n<span class=\"go\">     -H hostname               Hostname to connect to</span>\n\n<span class=\"gp\">&gt;&gt;&gt;</span>",
+          "text": ">>> print(\"\"\"\\\n... Usage: thingy [OPTIONS]\n...      -h                        Display this usage message\n...      -H hostname               Hostname to connect to\n... \"\"\")\nUsage: thingy [OPTIONS]\n     -h                        Display this usage message\n     -H hostname               Hostname to connect to\n\n>>>"
+        },
+        {
+          "type": "paragraph",
+          "html": "String dapat digabungkan (dilekatkan bersama) dengan operator <code>+</code>, dan diulang dengan operator <code>*</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># 3 times 'un', followed by 'ium'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">3</span> <span class=\"o\">*</span> <span class=\"s1\">'un'</span> <span class=\"o\">+</span> <span class=\"s1\">'ium'</span>\n<span class=\"go\">'unununium'</span>",
+          "text": ">>> # 3 times 'un', followed by 'ium'\n>>> 3 * 'un' + 'ium'\n'unununium'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dua atau lebih <em>literal string</em> (yang diapit tanda petik) yang diletakkan berdampingan akan digabungkan secara otomatis oleh interpreter:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'Py'</span> <span class=\"s1\">'thon'</span>\n<span class=\"go\">'Python'</span>",
+          "text": ">>> 'Py' 'thon'\n'Python'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Fitur penggabungan otomatis ini sangat berguna saat Anda ingin memecah baris teks string yang panjang ke beberapa baris kode agar rapi:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"p\">(</span><span class=\"s1\">'Put several strings within parentheses '</span>\n<span class=\"gp\">... </span>        <span class=\"s1\">'to have them joined together.'</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">text</span>\n<span class=\"go\">'Put several strings within parentheses to have them joined together.'</span>",
+          "text": ">>> text = ('Put several strings within parentheses '\n...         'to have them joined together.')\n>>> text\n'Put several strings within parentheses to have them joined together.'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Namun perlu diingat, cara ini hanya berlaku pada dua literal string langsung, bukan pada variabel atau ekspresi:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">prefix</span> <span class=\"o\">=</span> <span class=\"s1\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">prefix</span> <span class=\"s1\">'thon'</span>  <span class=\"c1\"># can't concatenate a variable and a string literal</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>\n<span class=\"w\">    </span><span class=\"n\">prefix</span> <span class=\"s1\">'thon'</span>\n<span class=\"w\">           </span><span class=\"pm\">^^^^^^</span>\n<span class=\"gr\">SyntaxError</span>: <span class=\"n\">invalid syntax</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">(</span><span class=\"s1\">'un'</span> <span class=\"o\">*</span> <span class=\"mi\">3</span><span class=\"p\">)</span> <span class=\"s1\">'ium'</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>\n<span class=\"w\">    </span><span class=\"p\">(</span><span class=\"s1\">'un'</span> <span class=\"o\">*</span> <span class=\"mi\">3</span><span class=\"p\">)</span> <span class=\"s1\">'ium'</span>\n<span class=\"w\">               </span><span class=\"pm\">^^^^^</span>\n<span class=\"gr\">SyntaxError</span>: <span class=\"n\">invalid syntax</span>",
+          "text": ">>> prefix = 'Py'\n>>> prefix 'thon'  # can't concatenate a variable and a string literal\n  File \"<stdin>\", line 1\n    prefix 'thon'\n           ^^^^^^\nSyntaxError: invalid syntax\n>>> ('un' * 3) 'ium'\n  File \"<stdin>\", line 1\n    ('un' * 3) 'ium'\n               ^^^^^\nSyntaxError: invalid syntax"
+        },
+        {
+          "type": "paragraph",
+          "html": "Jika Anda ingin menggabungkan variabel dengan variabel lain atau variabel dengan literal, gunakan operator <code>+</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">prefix</span> <span class=\"o\">+</span> <span class=\"s1\">'thon'</span>\n<span class=\"go\">'Python'</span>",
+          "text": ">>> prefix + 'thon'\n'Python'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Karakter dalam string dapat diakses menggunakan indeks (subscript), dengan karakter pertama memiliki indeks <code>0</code>. Tidak ada tipe data karakter terpisah di Python; sebuah karakter hanyalah string berpanjang satu:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span> <span class=\"o\">=</span> <span class=\"s1\">'Python'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span>  <span class=\"c1\"># character in position 0</span>\n<span class=\"go\">'P'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">5</span><span class=\"p\">]</span>  <span class=\"c1\"># character in position 5</span>\n<span class=\"go\">'n'</span>",
+          "text": ">>> word = 'Python'\n>>> word[0]  # character in position 0\n'P'\n>>> word[5]  # character in position 5\n'n'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Indeks juga dapat berupa bilangan negatif, untuk memulai perhitungan dari sisi kanan string:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">]</span>  <span class=\"c1\"># last character</span>\n<span class=\"go\">'n'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">]</span>  <span class=\"c1\"># second-last character</span>\n<span class=\"go\">'o'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">6</span><span class=\"p\">]</span>\n<span class=\"go\">'P'</span>",
+          "text": ">>> word[-1]  # last character\n'n'\n>>> word[-2]  # second-last character\n'o'\n>>> word[-6]\n'P'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Perhatikan bahwa karena -0 bernilai sama dengan 0, indeks negatif dimulai dari -1 (karakter terakhir)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Selain pengindeksan tunggal, pemotongan (<em>slicing</em>) juga didukung. Jika pengindeksan digunakan untuk mengambil karakter tunggal, pemotongan memungkinkan Anda memperoleh substring (bagian string):"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">:</span><span class=\"mi\">2</span><span class=\"p\">]</span>  <span class=\"c1\"># characters from position 0 (included) to 2 (excluded)</span>\n<span class=\"go\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:</span><span class=\"mi\">5</span><span class=\"p\">]</span>  <span class=\"c1\"># characters from position 2 (included) to 5 (excluded)</span>\n<span class=\"go\">'tho'</span>",
+          "text": ">>> word[0:2]  # characters from position 0 (included) to 2 (excluded)\n'Py'\n>>> word[2:5]  # characters from position 2 (included) to 5 (excluded)\n'tho'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Indeks pemotongan memiliki nilai default yang praktis; jika indeks pertama diabaikan maka otomatis dianggap 0, dan jika indeks kedua diabaikan maka otomatis dianggap sepanjang string:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span>   <span class=\"c1\"># character from the beginning to position 2 (excluded)</span>\n<span class=\"go\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:]</span>   <span class=\"c1\"># characters from position 4 (included) to the end</span>\n<span class=\"go\">'on'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">:]</span>  <span class=\"c1\"># characters from the second-last (included) to the end</span>\n<span class=\"go\">'on'</span>",
+          "text": ">>> word[:2]   # character from the beginning to position 2 (excluded)\n'Py'\n>>> word[4:]   # characters from position 4 (included) to the end\n'on'\n>>> word[-2:]  # characters from the second-last (included) to the end\n'on'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Perhatikan bagaimana batas awal selalu disertakan, sedangkan batas akhir selalu dikecualikan. Hal ini memastikan bahwa <code>s[:i] + s[i:]</code> selalu bernilai sama dengan <code>s</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">+</span> <span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:]</span>\n<span class=\"go\">'Python'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">4</span><span class=\"p\">]</span> <span class=\"o\">+</span> <span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:]</span>\n<span class=\"go\">'Python'</span>",
+          "text": ">>> word[:2] + word[2:]\n'Python'\n>>> word[:4] + word[4:]\n'Python'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Cara mudah mengingat cara kerja pemotongan adalah dengan membayangkan indeks menunjuk ke batas *di antara* karakter, dengan batas kiri karakter pertama bernilai 0 dan batas kanan karakter terakhir bernilai n:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span> <span class=\"o\">+---+---+---+---+---+---+</span>\n <span class=\"o\">|</span> <span class=\"n\">P</span> <span class=\"o\">|</span> <span class=\"n\">y</span> <span class=\"o\">|</span> <span class=\"n\">t</span> <span class=\"o\">|</span> <span class=\"n\">h</span> <span class=\"o\">|</span> <span class=\"n\">o</span> <span class=\"o\">|</span> <span class=\"n\">n</span> <span class=\"o\">|</span>\n <span class=\"o\">+---+---+---+---+---+---+</span>\n <span class=\"mi\">0</span>   <span class=\"mi\">1</span>   <span class=\"mi\">2</span>   <span class=\"mi\">3</span>   <span class=\"mi\">4</span>   <span class=\"mi\">5</span>   <span class=\"mi\">6</span>\n<span class=\"o\">-</span><span class=\"mi\">6</span>  <span class=\"o\">-</span><span class=\"mi\">5</span>  <span class=\"o\">-</span><span class=\"mi\">4</span>  <span class=\"o\">-</span><span class=\"mi\">3</span>  <span class=\"o\">-</span><span class=\"mi\">2</span>  <span class=\"o\">-</span><span class=\"mi\">1</span>",
+          "text": " +---+---+---+---+---+---+\n | P | y | t | h | o | n |\n +---+---+---+---+---+---+\n 0   1   2   3   4   5   6\n-6  -5  -4  -3  -2  -1"
+        },
+        {
+          "type": "paragraph",
+          "html": "Baris angka pertama menunjukkan posisi indeks 0…6 pada string; baris kedua menunjukkan indeks negatif yang bersesuaian."
+        },
+        {
+          "type": "paragraph",
+          "html": "Untuk indeks non-negatif, panjang dari potongan string adalah selisih antara kedua indeks tersebut. Sebagai contoh, panjang dari <code>word[1:3]</code> adalah 2."
+        },
+        {
+          "type": "paragraph",
+          "html": "Mencoba mengakses indeks yang berada di luar rentang string (terlalu besar) akan menghasilkan pesan kesalahan <code>IndexError</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">42</span><span class=\"p\">]</span>  <span class=\"c1\"># the word only has 6 characters</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">IndexError</span>: <span class=\"n\">string index out of range</span>",
+          "text": ">>> word[42]  # the word only has 6 characters\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nIndexError: string index out of range"
+        },
+        {
+          "type": "paragraph",
+          "html": "Namun, indeks pemotongan (slice) yang berada di luar jangkauan ditangani dengan toleran dan anggun saat digunakan untuk slicing:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:</span><span class=\"mi\">42</span><span class=\"p\">]</span>\n<span class=\"go\">'on'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">42</span><span class=\"p\">:]</span>\n<span class=\"go\">''</span>",
+          "text": ">>> word[4:42]\n'on'\n>>> word[42:]\n''"
+        },
+        {
+          "type": "paragraph",
+          "html": "String pada Python tidak dapat diubah nilainya setelah dibuat — mereka bersifat <a href=\"https://docs.python.org/3.13/glossary.html#term-immutable\" rel=\"noopener noreferrer\" target=\"_blank\">immutable (tidak dapat diubah)</a>. Menetapkan nilai baru ke suatu posisi indeks string akan menghasilkan <code>TypeError</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"s1\">'J'</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">'str' object does not support item assignment</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:]</span> <span class=\"o\">=</span> <span class=\"s1\">'py'</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">'str' object does not support item assignment</span>",
+          "text": ">>> word[0] = 'J'\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: 'str' object does not support item assignment\n>>> word[2:] = 'py'\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: 'str' object does not support item assignment"
+        },
+        {
+          "type": "paragraph",
+          "html": "Jika Anda membutuhkan string dengan konten berbeda, Anda harus membuat objek string baru:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'J'</span> <span class=\"o\">+</span> <span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">:]</span>\n<span class=\"go\">'Jython'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">+</span> <span class=\"s1\">'py'</span>\n<span class=\"go\">'Pypy'</span>",
+          "text": ">>> 'J' + word[1:]\n'Jython'\n>>> word[:2] + 'py'\n'Pypy'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Fungsi bawaan <a href=\"https://docs.python.org/3.13/library/functions.html#len\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"len\"><code>len()</code></a> mengembalikan panjang (jumlah karakter) dari sebuah string:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s1\">'supercalifragilisticexpialidocious'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n<span class=\"go\">34</span>",
+          "text": ">>> s = 'supercalifragilisticexpialidocious'\n>>> len(s)\n34"
+        },
+        {
+          "type": "admonition",
+          "kind": "seealso",
+          "titleHtml": "See also",
+          "blocks": [
+            {
+              "type": "definition",
+              "items": [
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://docs.python.org/3.13/library/stdtypes.html#textseq\" rel=\"noopener noreferrer\" target=\"_blank\">Text Sequence Type — str</a>",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Strings are examples of <em>sequence types</em>, and support the common\noperations supported by such types."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://docs.python.org/3.13/library/stdtypes.html#string-methods\" rel=\"noopener noreferrer\" target=\"_blank\">String Methods</a>",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Strings support a large number of methods for\nbasic transformations and searching."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "f-strings",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "String literals that have embedded expressions."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "formatstrings",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Information about string formatting with <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str.format\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str.format\"><code>str.format()</code></a>."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://docs.python.org/3.13/library/stdtypes.html#old-string-formatting\" rel=\"noopener noreferrer\" target=\"_blank\">printf-style String Formatting</a>",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "The old formatting operations invoked when strings are\nthe left operand of the <code>%</code> operator are described in more detail here."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "library/stdtypes",
+        "title": "Built-in Types",
+        "label": "Pustaka Standar Python · Tipe Data Bawaan (Built-in Types)",
+        "url": "https://docs.python.org/3.13/library/stdtypes.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "truth-value-testing",
+          "html": "Pengujian Nilai Kebenaran (Truth Value Testing)",
+          "text": "Pengujian Nilai Kebenaran (Truth Value Testing)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Objek apa pun di Python dapat diuji nilai kebenarannya (truth value testing), untuk digunakan dalam kondisi pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a> atau <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#while\" rel=\"noopener noreferrer\" target=\"_blank\"><code>while</code></a>, atau sebagai operan dari operasi Boolean."
+        },
+        {
+          "type": "paragraph",
+          "html": "Secara default, suatu objek dianggap bernilai benar (True) kecuali jika kelasnya mengembalikan False saat diuji. Berikut adalah nilai-nilai bawaan yang dianggap salah (Falsy) oleh Python: konstanta <code>None</code> dan <code>False</code>, angka nol dalam berbagai tipe numerik (<code>0</code>, <code>0.0</code>), serta urutan dan koleksi kosong (<code>''</code>, <code>()</code>, <code>[]</code>, <code>{}</code>)."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "constants defined to be false: <code>None</code> and <code>False</code>"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "zero of any numeric type: <code>0</code>, <code>0.0</code>, <code>0j</code>, <code>Decimal(0)</code>,\n<code>Fraction(0, 1)</code>"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "empty sequences and collections: <code>''</code>, <code>()</code>, <code>[]</code>, <code>{}</code>, <code>set()</code>,\n<code>range(0)</code>"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Operasi dan fungsi bawaan yang menghasilkan nilai Boolean selalu mengembalikan <code>0</code> atau <code>False</code> untuk kondisi salah, serta <code>1</code> atau <code>True</code> untuk kondisi benar, kecuali dinyatakan lain."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "boolean-operations-and-or-not",
+          "html": "Operasi Boolean — and, or, not",
+          "text": "Operasi Boolean — and, or, not"
+        },
+        {
+          "type": "paragraph",
+          "html": "Berikut adalah operasi logika Boolean di Python, diurutkan berdasarkan prioritas pengerjaan terendah ke tertinggi:"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>x or y</code></td><td>if <em>x</em> is true, then <em>x</em>, else\n<em>y</em></td><td>(1)</td></tr><tr><td><code>x and y</code></td><td>if <em>x</em> is false, then <em>x</em>, else\n<em>y</em></td><td>(2)</td></tr><tr><td><code>not x</code></td><td>if <em>x</em> is false, then <code>True</code>,\nelse <code>False</code></td><td>(3)</td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Notes:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "This is a short-circuit operator, so it only evaluates the second\nargument if the first one is false."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "This is a short-circuit operator, so it only evaluates the second\nargument if the first one is true."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "<code>not</code> has a lower priority than non-Boolean operators, so <code>not a == b</code> is\ninterpreted as <code>not (a == b)</code>, and <code>a == not b</code> is a syntax error."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "comparisons",
+          "html": "Perbandingan (Comparisons)",
+          "text": "Perbandingan (Comparisons)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Terdapat delapan operasi perbandingan di Python. Semuanya memiliki prioritas yang sama (lebih tinggi dari operasi Boolean dan lebih rendah dari aritmetika):"
+        },
+        {
+          "type": "paragraph",
+          "html": "Tabel berikut merangkum operator perbandingan yang tersedia di Python:"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Meaning</th></tr><tr><td><code>&lt;</code></td><td>strictly less than</td></tr><tr><td><code>&lt;=</code></td><td>less than or equal</td></tr><tr><td><code>&gt;</code></td><td>strictly greater than</td></tr><tr><td><code>&gt;=</code></td><td>greater than or equal</td></tr><tr><td><code>==</code></td><td>equal</td></tr><tr><td><code>!=</code></td><td>not equal</td></tr><tr><td><code>is</code></td><td>object identity</td></tr><tr><td><code>is not</code></td><td>negated object identity</td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Objek dari tipe yang berbeda (kecuali tipe numerik berbeda seperti integer dan float yang setara) tidak pernah bernilai sama saat dibandingkan."
+        },
+        {
+          "type": "paragraph",
+          "html": "Instans yang berbeda dari suatu kelas biasanya dibandingkan sebagai tidak sama kecuali jika kelas tersebut mengimplementasikan metode perbandingan khusus."
+        },
+        {
+          "type": "paragraph",
+          "html": "Instans dari suatu kelas tidak dapat diurutkan terhadap instans lain dari kelas yang sama kecuali kelas tersebut mendefinisikan metode perbandingan terurut (seperti <code>__lt__</code>)."
+        },
+        {
+          "type": "paragraph",
+          "html": "The behavior of the <a href=\"https://docs.python.org/3.13/reference/expressions.html#is\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is</code></a> and <a href=\"https://docs.python.org/3.13/reference/expressions.html#is-not\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is not</code></a> operators cannot be\ncustomized; also they can be applied to any two objects and never raise an\nexception."
+        },
+        {
+          "type": "paragraph",
+          "html": "Dua operasi lainnya dengan prioritas sintaksis yang sama adalah <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> dan <a href=\"https://docs.python.org/3.13/reference/expressions.html#not-in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>not in</code></a>, yang didukung oleh tipe-tipe urutan (sequence) dan pemetaan (mapping)."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "numeric-types-int-float-complex",
+          "html": "Tipe Numerik — int, float, complex",
+          "text": "Tipe Numerik — int, float, complex"
+        },
+        {
+          "type": "paragraph",
+          "html": "Terdapat tiga tipe numerik yang berbeda di Python: <em>integers (bilangan bulat)</em>, <em>floating point numbers (bilangan pecahan)</em>, dan <em>complex numbers (bilangan kompleks)</em>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Bilangan dibuat melalui penulisan literal angka secara langsung atau sebagai hasil dari pemanggilan fungsi bawaan dan operator aritmetika."
+        },
+        {
+          "type": "paragraph",
+          "html": "Python sepenuhnya mendukung aritmetika campuran: saat operator biner melibatkan operan dengan tipe numerik berbeda, operan dengan tipe lebih sempit otomatis diperluas ke tipe yang lebih luas (misal int otomatis dikonversi ke float)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Konstruktor <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a> dan <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float()</code></a> dapat digunakan untuk membuat angka dari tipe data lain, seperti mengonversi teks string angka menjadi nilai numerik murni."
+        },
+        {
+          "type": "paragraph",
+          "html": "Semua tipe numerik (kecuali kompleks) mendukung operasi standar berikut (diurutkan berdasarkan prioritas pengerjaan menaik):"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th><th>Full documentation</th></tr><tr><td><code>x + y</code></td><td>sum of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x - y</code></td><td>difference of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x * y</code></td><td>product of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x / y</code></td><td>quotient of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x // y</code></td><td>floored quotient of <em>x</em> and\n<em>y</em></td><td>(1)(2)</td><td></td></tr><tr><td><code>x % y</code></td><td>remainder of <code>x / y</code></td><td>(2)</td><td></td></tr><tr><td><code>-x</code></td><td><em>x</em> negated</td><td></td><td></td></tr><tr><td><code>+x</code></td><td><em>x</em> unchanged</td><td></td><td></td></tr><tr><td><code>abs(x)</code></td><td>absolute value or magnitude of\n<em>x</em></td><td></td><td><a href=\"https://docs.python.org/3.13/library/functions.html#abs\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"abs\"><code>abs()</code></a></td></tr><tr><td><code>int(x)</code></td><td><em>x</em> converted to integer</td><td>(3)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a></td></tr><tr><td><code>float(x)</code></td><td><em>x</em> converted to floating point</td><td>(4)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float()</code></a></td></tr><tr><td><code>complex(re, im)</code></td><td>a complex number with real part\n<em>re</em>, imaginary part <em>im</em>.\n<em>im</em> defaults to zero.</td><td>(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#complex\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"complex\"><code>complex()</code></a></td></tr><tr><td><code>c.conjugate()</code></td><td>conjugate of the complex number\n<em>c</em></td><td></td><td></td></tr><tr><td><code>divmod(x, y)</code></td><td>the pair <code>(x // y, x % y)</code></td><td>(2)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#divmod\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"divmod\"><code>divmod()</code></a></td></tr><tr><td><code>pow(x, y)</code></td><td><em>x</em> to the power <em>y</em></td><td>(5)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#pow\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"pow\"><code>pow()</code></a></td></tr><tr><td><code>x ** y</code></td><td><em>x</em> to the power <em>y</em></td><td>(5)</td><td></td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Notes:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "Also referred to as integer division.  For operands of type <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>,\nthe result has type <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>.  For operands of type <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>,\nthe result has type <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>.  In general, the result is a whole\ninteger, though the result’s type is not necessarily <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>.  The result is\nalways rounded towards minus infinity: <code>1//2</code> is <code>0</code>, <code>(-1)//2</code> is\n<code>-1</code>, <code>1//(-2)</code> is <code>-1</code>, and <code>(-1)//(-2)</code> is <code>0</code>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Not for complex numbers.  Instead convert to floats using <a href=\"https://docs.python.org/3.13/library/functions.html#abs\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"abs\"><code>abs()</code></a> if\nappropriate."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Conversion from <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a> to <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> truncates, discarding the\nfractional part. See functions <code>math.floor()</code> and <code>math.ceil()</code> for\nalternative conversions."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "float also accepts the strings “nan” and “inf” with an optional prefix “+”\nor “-” for Not a Number (NaN) and positive or negative infinity."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Python defines <code>pow(0, 0)</code> and <code>0 ** 0</code> to be <code>1</code>, as is common for\nprogramming languages."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The numeric literals accepted include the digits <code>0</code> to <code>9</code> or any\nUnicode equivalent (code points with the <code>Nd</code> property)."
+              },
+              {
+                "type": "paragraph",
+                "html": "See <a href=\"https://unicode.org/Public/UNIDATA/extracted/DerivedNumericType.txt\" rel=\"noopener noreferrer\" target=\"_blank\">the Unicode Standard</a>\nfor a complete list of code points with the <code>Nd</code> property."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "All <code>numbers.Real</code> types (<a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> and <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>) also include\nthe following operations:"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th></tr><tr><td><code>math.trunc(x)</code></td><td><em>x</em> truncated to <code>Integral</code></td></tr><tr><td><a href=\"https://docs.python.org/3.13/library/functions.html#round\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"round\"><code>round(x[,\nn])</code></a></td><td><em>x</em> rounded to <em>n</em> digits,\nrounding half to even. If <em>n</em> is\nomitted, it defaults to 0.</td></tr><tr><td><code>math.floor(x)</code></td><td>the greatest <code>Integral</code>\n&lt;= <em>x</em></td></tr><tr><td><code>math.ceil(x)</code></td><td>the least <code>Integral</code> &gt;= <em>x</em></td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "For additional numeric operations see the <code>math</code> and <code>cmath</code>\nmodules."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "boolean-type-bool",
+          "html": "Tipe Boolean - bool",
+          "text": "Tipe Boolean - bool"
+        },
+        {
+          "type": "paragraph",
+          "html": "Tipe Boolean merepresentasikan nilai kebenaran. Tipe <a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a> adalah subkelas dari integer, dengan dua nilai instans konstan: <code>True</code> dan <code>False</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Fungsi bawaan <a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool()</code></a> mengonversi nilai apa pun menjadi nilai kebenaran Boolean menggunakan prosedur standar pengujian nilai kebenaran."
+        },
+        {
+          "type": "paragraph",
+          "html": "For logical operations, use the <a href=\"https://docs.python.org/3.13/library/stdtypes.html#boolean\" rel=\"noopener noreferrer\" target=\"_blank\">boolean operators</a> <code>and</code>,\n<code>or</code> and <code>not</code>.\nWhen applying the bitwise operators <code>&amp;</code>, <code>|</code>, <code>^</code> to two booleans, they\nreturn a bool equivalent to the logical operations “and”, “or”, “xor”. However,\nthe logical operators <code>and</code>, <code>or</code> and <code>!=</code> should be preferred\nover <code>&amp;</code>, <code>|</code> and <code>^</code>."
+        },
+        {
+          "type": "note",
+          "kind": "deprecated",
+          "html": "Deprecated since version 3.12: The use of the bitwise inversion operator <code>~</code> is deprecated and will\nraise an error in Python 3.16."
+        },
+        {
+          "type": "paragraph",
+          "html": "<a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a> is a subclass of <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> (see <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesnumeric\" rel=\"noopener noreferrer\" target=\"_blank\">Numeric Types — int, float, complex</a>). In\nmany numeric contexts, <code>False</code> and <code>True</code> behave like the integers 0 and 1, respectively.\nHowever, relying on this is discouraged; explicitly convert using <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a>\ninstead."
+        }
+      ]
+    }
+  ],
+  "blockCount": 103,
+  "wordCount": 3084,
+  "title": "Variabel & Tipe Data",
+  "order": 1,
+  "api": [
+    {
+      "name": "len",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#len",
+      "display": "len",
+      "doc": "library/functions"
+    },
+    {
+      "name": "int",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#int",
+      "display": "int",
+      "doc": "library/functions"
+    },
+    {
+      "name": "float",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#float",
+      "display": "float",
+      "doc": "library/functions"
+    },
+    {
+      "name": "str",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#str",
+      "display": "str",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "bool",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#bool",
+      "display": "bool",
+      "doc": "library/functions"
+    },
+    {
+      "name": "type",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#type",
+      "display": "type",
+      "doc": "library/functions"
+    },
+    {
+      "name": "isinstance",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#isinstance",
+      "display": "isinstance",
+      "doc": "library/functions"
+    },
+    {
+      "name": "abs",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#abs",
+      "display": "abs",
+      "doc": "library/functions"
+    },
+    {
+      "name": "round",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#round",
+      "display": "round",
+      "doc": "library/functions"
+    }
+  ]
+}

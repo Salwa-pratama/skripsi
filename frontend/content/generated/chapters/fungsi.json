@@ -1,0 +1,846 @@
+{
+  "slug": "fungsi",
+  "docVersion": "3.13",
+  "generatedAt": "2026-11-03T23:37:06+00:00",
+  "groups": [
+    {
+      "source": {
+        "doc": "tutorial/controlflow",
+        "title": "More Control Flow Tools",
+        "label": "The Python Tutorial · Defining Functions",
+        "url": "https://docs.python.org/3.13/tutorial/controlflow.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "defining-functions",
+          "html": "Mendefinisikan Fungsi (def)",
+          "text": "Mendefinisikan Fungsi (def)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Kita dapat membuat sebuah fungsi yang mencetak deret Fibonacci hingga batas tertentu:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">fib</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">):</span>    <span class=\"c1\"># write Fibonacci series less than n</span>\n<span class=\"gp\">... </span><span class=\"w\">    </span><span class=\"sd\">\"\"\"Print a Fibonacci series less than n.\"\"\"</span>\n<span class=\"gp\">... </span>    <span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span>\n<span class=\"gp\">... </span>    <span class=\"k\">while</span> <span class=\"n\">a</span> <span class=\"o\">&lt;</span> <span class=\"n\">n</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">end</span><span class=\"o\">=</span><span class=\"s1\">' '</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>        <span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"n\">b</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"o\">+</span><span class=\"n\">b</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">()</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># Now call the function we just defined:</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fib</span><span class=\"p\">(</span><span class=\"mi\">2000</span><span class=\"p\">)</span>\n<span class=\"go\">0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597</span>",
+          "text": ">>> def fib(n):    # write Fibonacci series less than n\n...     \"\"\"Print a Fibonacci series less than n.\"\"\"\n...     a, b = 0, 1\n...     while a < n:\n...         print(a, end=' ')\n...         a, b = b, a+b\n...     print()\n...\n>>> # Now call the function we just defined:\n>>> fib(2000)\n0 1 1 2 3 5 8 13 21 34 55 89 144 233 377 610 987 1597"
+        },
+        {
+          "type": "paragraph",
+          "html": "Kata kunci <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a> memperkenalkan sebuah pendefinisian fungsi baru. Kata kunci ini harus diikuti oleh nama fungsi dan daftar parameter formal di dalam tanda kurung. Baris pernyataan yang membentuk badan fungsi dimulai pada baris berikutnya, dan harus berindentasi."
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan pertama dari badan fungsi dapat berupa literal string opsional; string ini merupakan string dokumentasi fungsi, atau <a href=\"https://docs.python.org/3.13/glossary.html#term-docstring\" rel=\"noopener noreferrer\" target=\"_blank\">docstring</a>. Docstring digunakan oleh berbagai perkakas otomatis untuk menghasilkan dokumentasi daring interaktif."
+        },
+        {
+          "type": "paragraph",
+          "html": "<em>Eksekusi</em> suatu fungsi memperkenalkan tabel simbol baru yang digunakan untuk variabel-variabel lokal fungsi tersebut. Lebih tepatnya, semua penugasan variabel di dalam fungsi disimpan dalam tabel simbol lokal; sedangkan referensi variabel pertama-tama dicari di tabel simbol lokal, lalu di tabel simbol lokal fungsi penutup, kemudian di tabel simbol global, dan terakhir di tabel nama-nama bawaan (built-in)."
+        },
+        {
+          "type": "paragraph",
+          "html": "The actual parameters (arguments) to a function call are introduced in the local\nsymbol table of the called function when it is called; thus, arguments are\npassed using <em>call by value</em> (where the <em>value</em> is always an object <em>reference</em>,\nnot the value of the object). <a href=\"https://docs.python.org/3.13/tutorial/controlflow.html#id2\" rel=\"noopener noreferrer\" target=\"_blank\">[1]</a> When a function calls another function,\nor calls itself recursively, a new\nlocal symbol table is created for that call."
+        },
+        {
+          "type": "paragraph",
+          "html": "A function definition associates the function name with the function object in\nthe current symbol table.  The interpreter recognizes the object pointed to by\nthat name as a user-defined function.  Other names can also point to that same\nfunction object and can also be used to access the function:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fib</span>\n<span class=\"go\">&lt;function fib at 10042ed0&gt;</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span> <span class=\"o\">=</span> <span class=\"n\">fib</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">)</span>\n<span class=\"go\">0 1 1 2 3 5 8 13 21 34 55 89</span>",
+          "text": ">>> fib\n<function fib at 10042ed0>\n>>> f = fib\n>>> f(100)\n0 1 1 2 3 5 8 13 21 34 55 89"
+        },
+        {
+          "type": "paragraph",
+          "html": "Coming from other languages, you might object that <code>fib</code> is not a function but\na procedure since it doesn’t return a value.  In fact, even functions without a\n<code>return</code> statement do return a value, albeit a rather boring one.  This\nvalue is called <code>None</code> (it’s a built-in name).  Writing the value <code>None</code> is\nnormally suppressed by the interpreter if it would be the only value written.\nYou can see it if you really want to using <a href=\"https://docs.python.org/3.13/library/functions.html#print\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"print\"><code>print()</code></a>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fib</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">fib</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">))</span>\n<span class=\"go\">None</span>",
+          "text": ">>> fib(0)\n>>> print(fib(0))\nNone"
+        },
+        {
+          "type": "paragraph",
+          "html": "Sangat mudah menulis fungsi yang mengembalikan list angka deret Fibonacci, alih-alih langsung mencetaknya:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">fib2</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">):</span>  <span class=\"c1\"># return Fibonacci series up to n</span>\n<span class=\"gp\">... </span><span class=\"w\">    </span><span class=\"sd\">\"\"\"Return a list containing the Fibonacci series up to n.\"\"\"</span>\n<span class=\"gp\">... </span>    <span class=\"n\">result</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">... </span>    <span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span>\n<span class=\"gp\">... </span>    <span class=\"k\">while</span> <span class=\"n\">a</span> <span class=\"o\">&lt;</span> <span class=\"n\">n</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>        <span class=\"n\">result</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">)</span>    <span class=\"c1\"># see below</span>\n<span class=\"gp\">... </span>        <span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"n\">b</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"o\">+</span><span class=\"n\">b</span>\n<span class=\"gp\">... </span>    <span class=\"k\">return</span> <span class=\"n\">result</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f100</span> <span class=\"o\">=</span> <span class=\"n\">fib2</span><span class=\"p\">(</span><span class=\"mi\">100</span><span class=\"p\">)</span>    <span class=\"c1\"># call it</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f100</span>                <span class=\"c1\"># write the result</span>\n<span class=\"go\">[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]</span>",
+          "text": ">>> def fib2(n):  # return Fibonacci series up to n\n...     \"\"\"Return a list containing the Fibonacci series up to n.\"\"\"\n...     result = []\n...     a, b = 0, 1\n...     while a < n:\n...         result.append(a)    # see below\n...         a, b = b, a+b\n...     return result\n...\n>>> f100 = fib2(100)    # call it\n>>> f100                # write the result\n[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89]"
+        },
+        {
+          "type": "paragraph",
+          "html": "This example, as usual, demonstrates some new Python features:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "The <code>return</code> statement returns with a value from a function.\n<code>return</code> without an expression argument returns <code>None</code>. Falling off\nthe end of a function also returns <code>None</code>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The statement <code>result.append(a)</code> calls a <em>method</em> of the list object\n<code>result</code>.  A method is a function that ‘belongs’ to an object and is named\n<code>obj.methodname</code>, where <code>obj</code> is some object (this may be an expression),\nand <code>methodname</code> is the name of a method that is defined by the object’s type.\nDifferent types define different methods.  Methods of different types may have\nthe same name without causing ambiguity.  (It is possible to define your own\nobject types and methods, using <em>classes</em>, see <a href=\"https://docs.python.org/3.13/tutorial/classes.html#tut-classes\" rel=\"noopener noreferrer\" target=\"_blank\">Classes</a>)\nThe method <code>append()</code> shown in the example is defined for list objects; it\nadds a new element at the end of the list.  In this example it is equivalent to\n<code>result = result + [a]</code>, but more efficient."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "more-on-defining-functions",
+          "html": "Lebih Lanjut tentang Mendefinisikan Fungsi",
+          "text": "Lebih Lanjut tentang Mendefinisikan Fungsi"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dimungkinkan pula untuk mendefinisikan fungsi yang menerima sejumlah argumen yang fleksibel. Terdapat tiga bentuk umum yang dapat digabungkan: nilai argumen default, argumen kata kunci (keyword arguments), dan daftar argumen arbitrer."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "default-argument-values",
+          "html": "Nilai Argumen Default",
+          "text": "Nilai Argumen Default"
+        },
+        {
+          "type": "paragraph",
+          "html": "Bentuk yang paling bermanfaat adalah menentukan nilai default untuk satu atau beberapa parameter. Ini menciptakan fungsi yang dapat dipanggil dengan argumen yang lebih sedikit daripada yang didefinisikan:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">ask_ok</span><span class=\"p\">(</span><span class=\"n\">prompt</span><span class=\"p\">,</span> <span class=\"n\">retries</span><span class=\"o\">=</span><span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"n\">reminder</span><span class=\"o\">=</span><span class=\"s1\">'Please try again!'</span><span class=\"p\">):</span>\n    <span class=\"k\">while</span> <span class=\"kc\">True</span><span class=\"p\">:</span>\n        <span class=\"n\">reply</span> <span class=\"o\">=</span> <span class=\"nb\">input</span><span class=\"p\">(</span><span class=\"n\">prompt</span><span class=\"p\">)</span>\n        <span class=\"k\">if</span> <span class=\"n\">reply</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"s1\">'y'</span><span class=\"p\">,</span> <span class=\"s1\">'ye'</span><span class=\"p\">,</span> <span class=\"s1\">'yes'</span><span class=\"p\">}:</span>\n            <span class=\"k\">return</span> <span class=\"kc\">True</span>\n        <span class=\"k\">if</span> <span class=\"n\">reply</span> <span class=\"ow\">in</span> <span class=\"p\">{</span><span class=\"s1\">'n'</span><span class=\"p\">,</span> <span class=\"s1\">'no'</span><span class=\"p\">,</span> <span class=\"s1\">'nop'</span><span class=\"p\">,</span> <span class=\"s1\">'nope'</span><span class=\"p\">}:</span>\n            <span class=\"k\">return</span> <span class=\"kc\">False</span>\n        <span class=\"n\">retries</span> <span class=\"o\">=</span> <span class=\"n\">retries</span> <span class=\"o\">-</span> <span class=\"mi\">1</span>\n        <span class=\"k\">if</span> <span class=\"n\">retries</span> <span class=\"o\">&lt;</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n            <span class=\"k\">raise</span> <span class=\"ne\">ValueError</span><span class=\"p\">(</span><span class=\"s1\">'invalid user response'</span><span class=\"p\">)</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">reminder</span><span class=\"p\">)</span>",
+          "text": "def ask_ok(prompt, retries=4, reminder='Please try again!'):\n    while True:\n        reply = input(prompt)\n        if reply in {'y', 'ye', 'yes'}:\n            return True\n        if reply in {'n', 'no', 'nop', 'nope'}:\n            return False\n        retries = retries - 1\n        if retries < 0:\n            raise ValueError('invalid user response')\n        print(reminder)"
+        },
+        {
+          "type": "paragraph",
+          "html": "This function can be called in several ways:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "giving only the mandatory argument:\n<code>ask_ok('Do you really want to quit?')</code>"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "giving one of the optional arguments:\n<code>ask_ok('OK to overwrite the file?', 2)</code>"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "or even giving all arguments:\n<code>ask_ok('OK to overwrite the file?', 2, 'Come on, only yes or no!')</code>"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "This example also introduces the <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> keyword. This tests whether or\nnot a sequence contains a certain value."
+        },
+        {
+          "type": "paragraph",
+          "html": "The default values are evaluated at the point of function definition in the\n<em>defining</em> scope, so that"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>\n\n<span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">f</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"o\">=</span><span class=\"n\">i</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)</span>\n\n<span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">6</span>\n<span class=\"n\">f</span><span class=\"p\">()</span>",
+          "text": "i = 5\n\ndef f(arg=i):\n    print(arg)\n\ni = 6\nf()"
+        },
+        {
+          "type": "paragraph",
+          "html": "will print <code>5</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Important warning:</strong>  The default value is evaluated only once. This makes a\ndifference when the default is a mutable object such as a list, dictionary, or\ninstances of most classes.  For example, the following function accumulates the\narguments passed to it on subsequent calls:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">f</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">L</span><span class=\"o\">=</span><span class=\"p\">[]):</span>\n    <span class=\"n\">L</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">L</span>\n\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">))</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">))</span>\n<span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">))</span>",
+          "text": "def f(a, L=[]):\n    L.append(a)\n    return L\n\nprint(f(1))\nprint(f(2))\nprint(f(3))"
+        },
+        {
+          "type": "paragraph",
+          "html": "This will print"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span>\n<span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">]</span>\n<span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">]</span>",
+          "text": "[1]\n[1, 2]\n[1, 2, 3]"
+        },
+        {
+          "type": "paragraph",
+          "html": "If you don’t want the default to be shared between subsequent calls, you can\nwrite the function like this instead:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">f</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">L</span><span class=\"o\">=</span><span class=\"kc\">None</span><span class=\"p\">):</span>\n    <span class=\"k\">if</span> <span class=\"n\">L</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"n\">L</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n    <span class=\"n\">L</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">L</span>",
+          "text": "def f(a, L=None):\n    if L is None:\n        L = []\n    L.append(a)\n    return L"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "keyword-arguments",
+          "html": "Argumen Kata Kunci (Keyword Arguments)",
+          "text": "Argumen Kata Kunci (Keyword Arguments)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Functions can also be called using <a href=\"https://docs.python.org/3.13/glossary.html#term-keyword-argument\" rel=\"noopener noreferrer\" target=\"_blank\">keyword arguments</a>\nof the form <code>kwarg=value</code>.  For instance, the following function:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">parrot</span><span class=\"p\">(</span><span class=\"n\">voltage</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"o\">=</span><span class=\"s1\">'a stiff'</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"o\">=</span><span class=\"s1\">'voom'</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"o\">=</span><span class=\"s1\">'Norwegian Blue'</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-- This parrot wouldn't\"</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">,</span> <span class=\"n\">end</span><span class=\"o\">=</span><span class=\"s1\">' '</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"if you put\"</span><span class=\"p\">,</span> <span class=\"n\">voltage</span><span class=\"p\">,</span> <span class=\"s2\">\"volts through it.\"</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-- Lovely plumage, the\"</span><span class=\"p\">,</span> <span class=\"nb\">type</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-- It's\"</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"p\">,</span> <span class=\"s2\">\"!\"</span><span class=\"p\">)</span>",
+          "text": "def parrot(voltage, state='a stiff', action='voom', type='Norwegian Blue'):\n    print(\"-- This parrot wouldn't\", action, end=' ')\n    print(\"if you put\", voltage, \"volts through it.\")\n    print(\"-- Lovely plumage, the\", type)\n    print(\"-- It's\", state, \"!\")"
+        },
+        {
+          "type": "paragraph",
+          "html": "accepts one required argument (<code>voltage</code>) and three optional arguments\n(<code>state</code>, <code>action</code>, and <code>type</code>).  This function can be called in any\nof the following ways:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"mi\">1000</span><span class=\"p\">)</span>                                          <span class=\"c1\"># 1 positional argument</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"n\">voltage</span><span class=\"o\">=</span><span class=\"mi\">1000</span><span class=\"p\">)</span>                                  <span class=\"c1\"># 1 keyword argument</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"n\">voltage</span><span class=\"o\">=</span><span class=\"mi\">1000000</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"o\">=</span><span class=\"s1\">'VOOOOOM'</span><span class=\"p\">)</span>             <span class=\"c1\"># 2 keyword arguments</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"n\">action</span><span class=\"o\">=</span><span class=\"s1\">'VOOOOOM'</span><span class=\"p\">,</span> <span class=\"n\">voltage</span><span class=\"o\">=</span><span class=\"mi\">1000000</span><span class=\"p\">)</span>             <span class=\"c1\"># 2 keyword arguments</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"s1\">'a million'</span><span class=\"p\">,</span> <span class=\"s1\">'bereft of life'</span><span class=\"p\">,</span> <span class=\"s1\">'jump'</span><span class=\"p\">)</span>         <span class=\"c1\"># 3 positional arguments</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"s1\">'a thousand'</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"o\">=</span><span class=\"s1\">'pushing up the daisies'</span><span class=\"p\">)</span>  <span class=\"c1\"># 1 positional, 1 keyword</span>",
+          "text": "parrot(1000)                                          # 1 positional argument\nparrot(voltage=1000)                                  # 1 keyword argument\nparrot(voltage=1000000, action='VOOOOOM')             # 2 keyword arguments\nparrot(action='VOOOOOM', voltage=1000000)             # 2 keyword arguments\nparrot('a million', 'bereft of life', 'jump')         # 3 positional arguments\nparrot('a thousand', state='pushing up the daisies')  # 1 positional, 1 keyword"
+        },
+        {
+          "type": "paragraph",
+          "html": "but all the following calls would be invalid:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"n\">parrot</span><span class=\"p\">()</span>                     <span class=\"c1\"># required argument missing</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"n\">voltage</span><span class=\"o\">=</span><span class=\"mf\">5.0</span><span class=\"p\">,</span> <span class=\"s1\">'dead'</span><span class=\"p\">)</span>  <span class=\"c1\"># non-keyword argument after a keyword argument</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"mi\">110</span><span class=\"p\">,</span> <span class=\"n\">voltage</span><span class=\"o\">=</span><span class=\"mi\">220</span><span class=\"p\">)</span>     <span class=\"c1\"># duplicate value for the same argument</span>\n<span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"n\">actor</span><span class=\"o\">=</span><span class=\"s1\">'John Cleese'</span><span class=\"p\">)</span>  <span class=\"c1\"># unknown keyword argument</span>",
+          "text": "parrot()                     # required argument missing\nparrot(voltage=5.0, 'dead')  # non-keyword argument after a keyword argument\nparrot(110, voltage=220)     # duplicate value for the same argument\nparrot(actor='John Cleese')  # unknown keyword argument"
+        },
+        {
+          "type": "paragraph",
+          "html": "In a function call, keyword arguments must follow positional arguments.\nAll the keyword arguments passed must match one of the arguments\naccepted by the function (e.g. <code>actor</code> is not a valid argument for the\n<code>parrot</code> function), and their order is not important.  This also includes\nnon-optional arguments (e.g. <code>parrot(voltage=1000)</code> is valid too).\nNo argument may receive a value more than once.\nHere’s an example that fails due to this restriction:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">function</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">pass</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">function</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"o\">=</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">function() got multiple values for argument 'a'</span>",
+          "text": ">>> def function(a):\n...     pass\n...\n>>> function(0, a=0)\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: function() got multiple values for argument 'a'"
+        },
+        {
+          "type": "paragraph",
+          "html": "When a final formal parameter of the form <code>**name</code> is present, it receives a\ndictionary (see <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesmapping\" rel=\"noopener noreferrer\" target=\"_blank\">Mapping Types — dict</a>) containing all keyword arguments except for\nthose corresponding to a formal parameter.  This may be combined with a formal\nparameter of the form <code>*name</code> (described in the next subsection) which\nreceives a <a href=\"https://docs.python.org/3.13/tutorial/datastructures.html#tut-tuples\" rel=\"noopener noreferrer\" target=\"_blank\">tuple</a> containing the positional\narguments beyond the formal parameter list.  (<code>*name</code> must occur\nbefore <code>**name</code>.) For example, if we define a function like this:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">cheeseshop</span><span class=\"p\">(</span><span class=\"n\">kind</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">arguments</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">keywords</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-- Do you have any\"</span><span class=\"p\">,</span> <span class=\"n\">kind</span><span class=\"p\">,</span> <span class=\"s2\">\"?\"</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-- I'm sorry, we're all out of\"</span><span class=\"p\">,</span> <span class=\"n\">kind</span><span class=\"p\">)</span>\n    <span class=\"k\">for</span> <span class=\"n\">arg</span> <span class=\"ow\">in</span> <span class=\"n\">arguments</span><span class=\"p\">:</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-\"</span> <span class=\"o\">*</span> <span class=\"mi\">40</span><span class=\"p\">)</span>\n    <span class=\"k\">for</span> <span class=\"n\">kw</span> <span class=\"ow\">in</span> <span class=\"n\">keywords</span><span class=\"p\">:</span>\n        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">kw</span><span class=\"p\">,</span> <span class=\"s2\">\":\"</span><span class=\"p\">,</span> <span class=\"n\">keywords</span><span class=\"p\">[</span><span class=\"n\">kw</span><span class=\"p\">])</span>",
+          "text": "def cheeseshop(kind, *arguments, **keywords):\n    print(\"-- Do you have any\", kind, \"?\")\n    print(\"-- I'm sorry, we're all out of\", kind)\n    for arg in arguments:\n        print(arg)\n    print(\"-\" * 40)\n    for kw in keywords:\n        print(kw, \":\", keywords[kw])"
+        },
+        {
+          "type": "paragraph",
+          "html": "It could be called like this:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"n\">cheeseshop</span><span class=\"p\">(</span><span class=\"s2\">\"Limburger\"</span><span class=\"p\">,</span> <span class=\"s2\">\"It's very runny, sir.\"</span><span class=\"p\">,</span>\n           <span class=\"s2\">\"It's really very, VERY runny, sir.\"</span><span class=\"p\">,</span>\n           <span class=\"n\">shopkeeper</span><span class=\"o\">=</span><span class=\"s2\">\"Michael Palin\"</span><span class=\"p\">,</span>\n           <span class=\"n\">client</span><span class=\"o\">=</span><span class=\"s2\">\"John Cleese\"</span><span class=\"p\">,</span>\n           <span class=\"n\">sketch</span><span class=\"o\">=</span><span class=\"s2\">\"Cheese Shop Sketch\"</span><span class=\"p\">)</span>",
+          "text": "cheeseshop(\"Limburger\", \"It's very runny, sir.\",\n           \"It's really very, VERY runny, sir.\",\n           shopkeeper=\"Michael Palin\",\n           client=\"John Cleese\",\n           sketch=\"Cheese Shop Sketch\")"
+        },
+        {
+          "type": "paragraph",
+          "html": "and of course it would print:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span>-- Do you have any Limburger ?\n-- I'm sorry, we're all out of Limburger\nIt's very runny, sir.\nIt's really very, VERY runny, sir.\n----------------------------------------\nshopkeeper : Michael Palin\nclient : John Cleese\nsketch : Cheese Shop Sketch",
+          "text": "-- Do you have any Limburger ?\n-- I'm sorry, we're all out of Limburger\nIt's very runny, sir.\nIt's really very, VERY runny, sir.\n----------------------------------------\nshopkeeper : Michael Palin\nclient : John Cleese\nsketch : Cheese Shop Sketch"
+        },
+        {
+          "type": "paragraph",
+          "html": "Note that the order in which the keyword arguments are printed is guaranteed\nto match the order in which they were provided in the function call."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "special-parameters",
+          "html": "Parameter Khusus",
+          "text": "Parameter Khusus"
+        },
+        {
+          "type": "paragraph",
+          "html": "By default, arguments may be passed to a Python function either by position\nor explicitly by keyword. For readability and performance, it makes sense to\nrestrict the way arguments can be passed so that a developer need only look\nat the function definition to determine if items are passed by position, by\nposition or keyword, or by keyword."
+        },
+        {
+          "type": "paragraph",
+          "html": "A function definition may look like:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span>def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):\n      -----------    ----------     ----------\n        |             |                  |\n        |        Positional or keyword   |\n        |                                - Keyword only\n         -- Positional only",
+          "text": "def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):\n      -----------    ----------     ----------\n        |             |                  |\n        |        Positional or keyword   |\n        |                                - Keyword only\n         -- Positional only"
+        },
+        {
+          "type": "paragraph",
+          "html": "where <code>/</code> and <code>*</code> are optional. If used, these symbols indicate the kind of\nparameter by how the arguments may be passed to the function:\npositional-only, positional-or-keyword, and keyword-only. Keyword parameters\nare also referred to as named parameters."
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "id": "positional-or-keyword-arguments",
+          "html": "Argumen Posisi atau Kata Kunci",
+          "text": "Argumen Posisi atau Kata Kunci"
+        },
+        {
+          "type": "paragraph",
+          "html": "If <code>/</code> and <code>*</code> are not present in the function definition, arguments may\nbe passed to a function by position or by keyword."
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "id": "positional-only-parameters",
+          "html": "Parameter Hanya-Posisi",
+          "text": "Parameter Hanya-Posisi"
+        },
+        {
+          "type": "paragraph",
+          "html": "Looking at this in a bit more detail, it is possible to mark certain parameters\nas <em>positional-only</em>. If <em>positional-only</em>, the parameters’ order matters, and\nthe parameters cannot be passed by keyword. Positional-only parameters are\nplaced before a <code>/</code> (forward-slash). The <code>/</code> is used to logically\nseparate the positional-only parameters from the rest of the parameters.\nIf there is no <code>/</code> in the function definition, there are no positional-only\nparameters."
+        },
+        {
+          "type": "paragraph",
+          "html": "Parameters following the <code>/</code> may be <em>positional-or-keyword</em> or <em>keyword-only</em>."
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "id": "keyword-only-arguments",
+          "html": "Argumen Hanya-Kata-Kunci",
+          "text": "Argumen Hanya-Kata-Kunci"
+        },
+        {
+          "type": "paragraph",
+          "html": "To mark parameters as <em>keyword-only</em>, indicating the parameters must be passed\nby keyword argument, place an <code>*</code> in the arguments list just before the first\n<em>keyword-only</em> parameter."
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "id": "function-examples",
+          "html": "Contoh Penggunaan Fungsi",
+          "text": "Contoh Penggunaan Fungsi"
+        },
+        {
+          "type": "paragraph",
+          "html": "Consider the following example function definitions paying close attention to the\nmarkers <code>/</code> and <code>*</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">standard_arg</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">pos_only_arg</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">,</span> <span class=\"o\">/</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">kwd_only_arg</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"p\">,</span> <span class=\"n\">arg</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">combined_example</span><span class=\"p\">(</span><span class=\"n\">pos_only</span><span class=\"p\">,</span> <span class=\"o\">/</span><span class=\"p\">,</span> <span class=\"n\">standard</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"p\">,</span> <span class=\"n\">kwd_only</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">pos_only</span><span class=\"p\">,</span> <span class=\"n\">standard</span><span class=\"p\">,</span> <span class=\"n\">kwd_only</span><span class=\"p\">)</span>",
+          "text": ">>> def standard_arg(arg):\n...     print(arg)\n...\n>>> def pos_only_arg(arg, /):\n...     print(arg)\n...\n>>> def kwd_only_arg(*, arg):\n...     print(arg)\n...\n>>> def combined_example(pos_only, /, standard, *, kwd_only):\n...     print(pos_only, standard, kwd_only)"
+        },
+        {
+          "type": "paragraph",
+          "html": "The first function definition, <code>standard_arg</code>, the most familiar form,\nplaces no restrictions on the calling convention and arguments may be\npassed by position or keyword:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">standard_arg</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"go\">2</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">standard_arg</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"o\">=</span><span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"go\">2</span>",
+          "text": ">>> standard_arg(2)\n2\n\n>>> standard_arg(arg=2)\n2"
+        },
+        {
+          "type": "paragraph",
+          "html": "The second function <code>pos_only_arg</code> is restricted to only use positional\nparameters as there is a <code>/</code> in the function definition:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">pos_only_arg</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"go\">1</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">pos_only_arg</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">pos_only_arg() got some positional-only arguments passed as keyword arguments: 'arg'</span>",
+          "text": ">>> pos_only_arg(1)\n1\n\n>>> pos_only_arg(arg=1)\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: pos_only_arg() got some positional-only arguments passed as keyword arguments: 'arg'"
+        },
+        {
+          "type": "paragraph",
+          "html": "The third function <code>kwd_only_arg</code> only allows keyword arguments as indicated\nby a <code>*</code> in the function definition:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">kwd_only_arg</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">kwd_only_arg() takes 0 positional arguments but 1 was given</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">kwd_only_arg</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"go\">3</span>",
+          "text": ">>> kwd_only_arg(3)\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: kwd_only_arg() takes 0 positional arguments but 1 was given\n\n>>> kwd_only_arg(arg=3)\n3"
+        },
+        {
+          "type": "paragraph",
+          "html": "And the last uses all three calling conventions in the same function\ndefinition:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">combined_example</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">combined_example() takes 2 positional arguments but 3 were given</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">combined_example</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">kwd_only</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"go\">1 2 3</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">combined_example</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">standard</span><span class=\"o\">=</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">kwd_only</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"go\">1 2 3</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">combined_example</span><span class=\"p\">(</span><span class=\"n\">pos_only</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">standard</span><span class=\"o\">=</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">kwd_only</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">combined_example() got some positional-only arguments passed as keyword arguments: 'pos_only'</span>",
+          "text": ">>> combined_example(1, 2, 3)\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: combined_example() takes 2 positional arguments but 3 were given\n\n>>> combined_example(1, 2, kwd_only=3)\n1 2 3\n\n>>> combined_example(1, standard=2, kwd_only=3)\n1 2 3\n\n>>> combined_example(pos_only=1, standard=2, kwd_only=3)\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: combined_example() got some positional-only arguments passed as keyword arguments: 'pos_only'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Finally, consider this function definition which has a potential collision between the positional argument <code>name</code>  and <code>**kwds</code> which has <code>name</code> as a key:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">foo</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwds</span><span class=\"p\">):</span>\n    <span class=\"k\">return</span> <span class=\"s1\">'name'</span> <span class=\"ow\">in</span> <span class=\"n\">kwds</span>",
+          "text": "def foo(name, **kwds):\n    return 'name' in kwds"
+        },
+        {
+          "type": "paragraph",
+          "html": "There is no possible call that will make it return <code>True</code> as the keyword <code>'name'</code>\nwill always bind to the first parameter. For example:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">foo</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"p\">{</span><span class=\"s1\">'name'</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">})</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">foo() got multiple values for argument 'name'</span>\n<span class=\"gp\">&gt;&gt;&gt;</span>",
+          "text": ">>> foo(1, **{'name': 2})\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: foo() got multiple values for argument 'name'\n>>>"
+        },
+        {
+          "type": "paragraph",
+          "html": "But using <code>/</code> (positional only arguments), it is possible since it allows <code>name</code> as a positional argument and <code>'name'</code> as a key in the keyword arguments:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">foo</span><span class=\"p\">(</span><span class=\"n\">name</span><span class=\"p\">,</span> <span class=\"o\">/</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"n\">kwds</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">return</span> <span class=\"s1\">'name'</span> <span class=\"ow\">in</span> <span class=\"n\">kwds</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">foo</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"o\">**</span><span class=\"p\">{</span><span class=\"s1\">'name'</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">})</span>\n<span class=\"go\">True</span>",
+          "text": ">>> def foo(name, /, **kwds):\n...     return 'name' in kwds\n...\n>>> foo(1, **{'name': 2})\nTrue"
+        },
+        {
+          "type": "paragraph",
+          "html": "In other words, the names of positional-only parameters can be used in\n<code>**kwds</code> without ambiguity."
+        },
+        {
+          "type": "heading",
+          "level": 4,
+          "id": "recap",
+          "html": "Recap",
+          "text": "Recap"
+        },
+        {
+          "type": "paragraph",
+          "html": "The use case will determine which parameters to use in the function definition:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">f</span><span class=\"p\">(</span><span class=\"n\">pos1</span><span class=\"p\">,</span> <span class=\"n\">pos2</span><span class=\"p\">,</span> <span class=\"o\">/</span><span class=\"p\">,</span> <span class=\"n\">pos_or_kwd</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"p\">,</span> <span class=\"n\">kwd1</span><span class=\"p\">,</span> <span class=\"n\">kwd2</span><span class=\"p\">):</span>",
+          "text": "def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2):"
+        },
+        {
+          "type": "paragraph",
+          "html": "As guidance:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "Use positional-only if you want the name of the parameters to not be\navailable to the user. This is useful when parameter names have no real\nmeaning, if you want to enforce the order of the arguments when the function\nis called or if you need to take some positional parameters and arbitrary\nkeywords."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Use keyword-only when names have meaning and the function definition is\nmore understandable by being explicit with names or you want to prevent\nusers relying on the position of the argument being passed."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "For an API, use positional-only to prevent breaking API changes\nif the parameter’s name is modified in the future."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "arbitrary-argument-lists",
+          "html": "Daftar Argumen Arbitrer (*args, **kwargs)",
+          "text": "Daftar Argumen Arbitrer (*args, **kwargs)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Finally, the least frequently used option is to specify that a function can be\ncalled with an arbitrary number of arguments.  These arguments will be wrapped\nup in a tuple (see <a href=\"https://docs.python.org/3.13/tutorial/datastructures.html#tut-tuples\" rel=\"noopener noreferrer\" target=\"_blank\">Tuples and Sequences</a>).  Before the variable number of arguments,\nzero or more normal arguments may occur."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">write_multiple_items</span><span class=\"p\">(</span><span class=\"n\">file</span><span class=\"p\">,</span> <span class=\"n\">separator</span><span class=\"p\">,</span> <span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">):</span>\n    <span class=\"n\">file</span><span class=\"o\">.</span><span class=\"n\">write</span><span class=\"p\">(</span><span class=\"n\">separator</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">args</span><span class=\"p\">))</span>",
+          "text": "def write_multiple_items(file, separator, *args):\n    file.write(separator.join(args))"
+        },
+        {
+          "type": "paragraph",
+          "html": "Normally, these <em>variadic</em> arguments will be last in the list of formal\nparameters, because they scoop up all remaining input arguments that are\npassed to the function. Any formal parameters which occur after the <code>*args</code>\nparameter are ‘keyword-only’ arguments, meaning that they can only be used as\nkeywords rather than positional arguments."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">concat</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">,</span> <span class=\"n\">sep</span><span class=\"o\">=</span><span class=\"s2\">\"/\"</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">return</span> <span class=\"n\">sep</span><span class=\"o\">.</span><span class=\"n\">join</span><span class=\"p\">(</span><span class=\"n\">args</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">concat</span><span class=\"p\">(</span><span class=\"s2\">\"earth\"</span><span class=\"p\">,</span> <span class=\"s2\">\"mars\"</span><span class=\"p\">,</span> <span class=\"s2\">\"venus\"</span><span class=\"p\">)</span>\n<span class=\"go\">'earth/mars/venus'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">concat</span><span class=\"p\">(</span><span class=\"s2\">\"earth\"</span><span class=\"p\">,</span> <span class=\"s2\">\"mars\"</span><span class=\"p\">,</span> <span class=\"s2\">\"venus\"</span><span class=\"p\">,</span> <span class=\"n\">sep</span><span class=\"o\">=</span><span class=\"s2\">\".\"</span><span class=\"p\">)</span>\n<span class=\"go\">'earth.mars.venus'</span>",
+          "text": ">>> def concat(*args, sep=\"/\"):\n...     return sep.join(args)\n...\n>>> concat(\"earth\", \"mars\", \"venus\")\n'earth/mars/venus'\n>>> concat(\"earth\", \"mars\", \"venus\", sep=\".\")\n'earth.mars.venus'"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "unpacking-argument-lists",
+          "html": "Membongkar Daftar Argumen (Unpacking)",
+          "text": "Membongkar Daftar Argumen (Unpacking)"
+        },
+        {
+          "type": "paragraph",
+          "html": "The reverse situation occurs when the arguments are already in a list or tuple\nbut need to be unpacked for a function call requiring separate positional\narguments.  For instance, the built-in <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> function expects separate\n<em>start</em> and <em>stop</em> arguments.  If they are not available separately, write the\nfunction call with the  <code>*</code>-operator to unpack the arguments out of a list\nor tuple:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">6</span><span class=\"p\">))</span>            <span class=\"c1\"># normal call with separate arguments</span>\n<span class=\"go\">[3, 4, 5]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">args</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">6</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">))</span>            <span class=\"c1\"># call with arguments unpacked from a list</span>\n<span class=\"go\">[3, 4, 5]</span>",
+          "text": ">>> list(range(3, 6))            # normal call with separate arguments\n[3, 4, 5]\n>>> args = [3, 6]\n>>> list(range(*args))            # call with arguments unpacked from a list\n[3, 4, 5]"
+        },
+        {
+          "type": "paragraph",
+          "html": "In the same fashion, dictionaries can deliver keyword arguments with the\n<code>**</code>-operator:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">parrot</span><span class=\"p\">(</span><span class=\"n\">voltage</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"o\">=</span><span class=\"s1\">'a stiff'</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"o\">=</span><span class=\"s1\">'voom'</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"-- This parrot wouldn't\"</span><span class=\"p\">,</span> <span class=\"n\">action</span><span class=\"p\">,</span> <span class=\"n\">end</span><span class=\"o\">=</span><span class=\"s1\">' '</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"if you put\"</span><span class=\"p\">,</span> <span class=\"n\">voltage</span><span class=\"p\">,</span> <span class=\"s2\">\"volts through it.\"</span><span class=\"p\">,</span> <span class=\"n\">end</span><span class=\"o\">=</span><span class=\"s1\">' '</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"E's\"</span><span class=\"p\">,</span> <span class=\"n\">state</span><span class=\"p\">,</span> <span class=\"s2\">\"!\"</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">\"voltage\"</span><span class=\"p\">:</span> <span class=\"s2\">\"four million\"</span><span class=\"p\">,</span> <span class=\"s2\">\"state\"</span><span class=\"p\">:</span> <span class=\"s2\">\"bleedin' demised\"</span><span class=\"p\">,</span> <span class=\"s2\">\"action\"</span><span class=\"p\">:</span> <span class=\"s2\">\"VOOM\"</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">parrot</span><span class=\"p\">(</span><span class=\"o\">**</span><span class=\"n\">d</span><span class=\"p\">)</span>\n<span class=\"go\">-- This parrot wouldn't VOOM if you put four million volts through it. E's bleedin' demised !</span>",
+          "text": ">>> def parrot(voltage, state='a stiff', action='voom'):\n...     print(\"-- This parrot wouldn't\", action, end=' ')\n...     print(\"if you put\", voltage, \"volts through it.\", end=' ')\n...     print(\"E's\", state, \"!\")\n...\n>>> d = {\"voltage\": \"four million\", \"state\": \"bleedin' demised\", \"action\": \"VOOM\"}\n>>> parrot(**d)\n-- This parrot wouldn't VOOM if you put four million volts through it. E's bleedin' demised !"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "lambda-expressions",
+          "html": "Ekspresi Lambda",
+          "text": "Ekspresi Lambda"
+        },
+        {
+          "type": "paragraph",
+          "html": "Fungsi anonim berukuran ringkas dapat dibuat dengan kata kunci <a href=\"https://docs.python.org/3.13/reference/expressions.html#lambda\" rel=\"noopener noreferrer\" target=\"_blank\"><code>lambda</code></a>. Fungsi lambda secara sintaksis dibatasi pada satu ekspresi tunggal saja:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">make_incrementor</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">return</span> <span class=\"k\">lambda</span> <span class=\"n\">x</span><span class=\"p\">:</span> <span class=\"n\">x</span> <span class=\"o\">+</span> <span class=\"n\">n</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span> <span class=\"o\">=</span> <span class=\"n\">make_incrementor</span><span class=\"p\">(</span><span class=\"mi\">42</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">)</span>\n<span class=\"go\">42</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">)</span>\n<span class=\"go\">43</span>",
+          "text": ">>> def make_incrementor(n):\n...     return lambda x: x + n\n...\n>>> f = make_incrementor(42)\n>>> f(0)\n42\n>>> f(1)\n43"
+        },
+        {
+          "type": "paragraph",
+          "html": "The above example uses a lambda expression to return a function.  Another use\nis to pass a small function as an argument.  For instance, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#list.sort\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"list.sort\"><code>list.sort()</code></a>\ntakes a sorting key function <em>key</em> which can be a lambda function:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">pairs</span> <span class=\"o\">=</span> <span class=\"p\">[(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s1\">'one'</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"s1\">'two'</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"s1\">'three'</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"s1\">'four'</span><span class=\"p\">)]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">pairs</span><span class=\"o\">.</span><span class=\"n\">sort</span><span class=\"p\">(</span><span class=\"n\">key</span><span class=\"o\">=</span><span class=\"k\">lambda</span> <span class=\"n\">pair</span><span class=\"p\">:</span> <span class=\"n\">pair</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">])</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">pairs</span>\n<span class=\"go\">[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]</span>",
+          "text": ">>> pairs = [(1, 'one'), (2, 'two'), (3, 'three'), (4, 'four')]\n>>> pairs.sort(key=lambda pair: pair[1])\n>>> pairs\n[(4, 'four'), (1, 'one'), (3, 'three'), (2, 'two')]"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "documentation-strings",
+          "html": "String Dokumentasi (Docstrings)",
+          "text": "String Dokumentasi (Docstrings)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Here are some conventions about the content and formatting of documentation\nstrings."
+        },
+        {
+          "type": "paragraph",
+          "html": "The first line should always be a short, concise summary of the object’s\npurpose.  For brevity, it should not explicitly state the object’s name or type,\nsince these are available by other means (except if the name happens to be a\nverb describing a function’s operation).  This line should begin with a capital\nletter and end with a period."
+        },
+        {
+          "type": "paragraph",
+          "html": "If there are more lines in the documentation string, the second line should be\nblank, visually separating the summary from the rest of the description.  The\nfollowing lines should be one or more paragraphs describing the object’s calling\nconventions, its side effects, etc."
+        },
+        {
+          "type": "paragraph",
+          "html": "The Python parser does not strip indentation from multi-line string literals in\nPython, so tools that process documentation have to strip indentation if\ndesired.  This is done using the following convention. The first non-blank line\n<em>after</em> the first line of the string determines the amount of indentation for\nthe entire documentation string.  (We can’t use the first line since it is\ngenerally adjacent to the string’s opening quotes so its indentation is not\napparent in the string literal.)  Whitespace “equivalent” to this indentation is\nthen stripped from the start of all lines of the string.  Lines that are\nindented less should not occur, but if they occur all their leading whitespace\nshould be stripped.  Equivalence of whitespace should be tested after expansion\nof tabs (to 8 spaces, normally)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Here is an example of a multi-line docstring:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">my_function</span><span class=\"p\">():</span>\n<span class=\"gp\">... </span><span class=\"w\">    </span><span class=\"sd\">\"\"\"Do nothing, but document it.</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">... </span><span class=\"sd\">    No, really, it doesn't do anything.</span>\n<span class=\"gp\">... </span><span class=\"sd\">    \"\"\"</span>\n<span class=\"gp\">... </span>    <span class=\"k\">pass</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">my_function</span><span class=\"o\">.</span><span class=\"vm\">__doc__</span><span class=\"p\">)</span>\n<span class=\"go\">Do nothing, but document it.</span>\n\n<span class=\"go\">No, really, it doesn't do anything.</span>",
+          "text": ">>> def my_function():\n...     \"\"\"Do nothing, but document it.\n...\n...     No, really, it doesn't do anything.\n...     \"\"\"\n...     pass\n...\n>>> print(my_function.__doc__)\nDo nothing, but document it.\n\nNo, really, it doesn't do anything."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "function-annotations",
+          "html": "Anotasi Fungsi (Type Hints)",
+          "text": "Anotasi Fungsi (Type Hints)"
+        },
+        {
+          "type": "paragraph",
+          "html": "<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#function\" rel=\"noopener noreferrer\" target=\"_blank\">Function annotations</a> are completely optional metadata\ninformation about the types used by user-defined functions (see <a href=\"https://peps.python.org/pep-3107/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 3107</strong></a> and\n<a href=\"https://peps.python.org/pep-0484/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 484</strong></a> for more information)."
+        },
+        {
+          "type": "paragraph",
+          "html": "<a href=\"https://docs.python.org/3.13/glossary.html#term-function-annotation\" rel=\"noopener noreferrer\" target=\"_blank\">Annotations</a> are stored in the <code>__annotations__</code>\nattribute of the function as a dictionary and have no effect on any other part of the\nfunction.  Parameter annotations are defined by a colon after the parameter name, followed\nby an expression evaluating to the value of the annotation.  Return annotations are\ndefined by a literal <code>-&gt;</code>, followed by an expression, between the parameter\nlist and the colon denoting the end of the <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a> statement.  The\nfollowing example has a required argument, an optional argument, and the return\nvalue annotated:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">f</span><span class=\"p\">(</span><span class=\"n\">ham</span><span class=\"p\">:</span> <span class=\"nb\">str</span><span class=\"p\">,</span> <span class=\"n\">eggs</span><span class=\"p\">:</span> <span class=\"nb\">str</span> <span class=\"o\">=</span> <span class=\"s1\">'eggs'</span><span class=\"p\">)</span> <span class=\"o\">-&gt;</span> <span class=\"nb\">str</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"Annotations:\"</span><span class=\"p\">,</span> <span class=\"n\">f</span><span class=\"o\">.</span><span class=\"vm\">__annotations__</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"Arguments:\"</span><span class=\"p\">,</span> <span class=\"n\">ham</span><span class=\"p\">,</span> <span class=\"n\">eggs</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"k\">return</span> <span class=\"n\">ham</span> <span class=\"o\">+</span> <span class=\"s1\">' and '</span> <span class=\"o\">+</span> <span class=\"n\">eggs</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span><span class=\"p\">(</span><span class=\"s1\">'spam'</span><span class=\"p\">)</span>\n<span class=\"go\">Annotations: {'ham': &lt;class 'str'&gt;, 'return': &lt;class 'str'&gt;, 'eggs': &lt;class 'str'&gt;}</span>\n<span class=\"go\">Arguments: spam eggs</span>\n<span class=\"go\">'spam and eggs'</span>",
+          "text": ">>> def f(ham: str, eggs: str = 'eggs') -> str:\n...     print(\"Annotations:\", f.__annotations__)\n...     print(\"Arguments:\", ham, eggs)\n...     return ham + ' and ' + eggs\n...\n>>> f('spam')\nAnnotations: {'ham': <class 'str'>, 'return': <class 'str'>, 'eggs': <class 'str'>}\nArguments: spam eggs\n'spam and eggs'"
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "reference/compound_stmts",
+        "title": "Compound statements",
+        "label": "The Python Language Reference · Function definitions",
+        "url": "https://docs.python.org/3.13/reference/compound_stmts.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "function-definitions",
+          "html": "Definisi Fungsi",
+          "text": "Definisi Fungsi"
+        },
+        {
+          "type": "paragraph",
+          "html": "A function definition defines a user-defined function object (see section\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#types\" rel=\"noopener noreferrer\" target=\"_blank\">The standard type hierarchy</a>):"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-funcdef\">funcdef</strong>                   ::= [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-decorators\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">decorators</span></code></a>] \"def\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-funcname\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">funcname</span></code></a> [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-type_params\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">type_params</span></code></a>] \"(\" [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_list</span></code></a>] \")\"\n                              [\"-&gt;\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">expression</span></code></a>] \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>\n<strong id=\"grammar-token-python-grammar-decorators\">decorators</strong>                ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-decorator\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">decorator</span></code></a>+\n<strong id=\"grammar-token-python-grammar-decorator\">decorator</strong>                 ::= \"@\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-assignment_expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">assignment_expression</span></code></a> NEWLINE\n<strong id=\"grammar-token-python-grammar-parameter_list\">parameter_list</strong>            ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">defparameter</span></code></a> (\",\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">defparameter</span></code></a>)* \",\" \"/\" [\",\" [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list_no_posonly\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_list_no_posonly</span></code></a>]]\n                              | <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list_no_posonly\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_list_no_posonly</span></code></a>\n<strong id=\"grammar-token-python-grammar-parameter_list_no_posonly\">parameter_list_no_posonly</strong> ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">defparameter</span></code></a> (\",\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">defparameter</span></code></a>)* [\",\" [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list_starargs\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_list_starargs</span></code></a>]]\n                              | <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list_starargs\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_list_starargs</span></code></a>\n<strong id=\"grammar-token-python-grammar-parameter_list_starargs\">parameter_list_starargs</strong>   ::= \"*\" [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-star_parameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">star_parameter</span></code></a>] (\",\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">defparameter</span></code></a>)* [\",\" [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_star_kwargs\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_star_kwargs</span></code></a>]]\n                              | \"*\" (\",\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">defparameter</span></code></a>)+ [\",\" [<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_star_kwargs\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_star_kwargs</span></code></a>]]\n                              | <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_star_kwargs\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter_star_kwargs</span></code></a>\n<strong id=\"grammar-token-python-grammar-parameter_star_kwargs\">parameter_star_kwargs</strong>     ::= \"**\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter</span></code></a> [\",\"]\n<strong id=\"grammar-token-python-grammar-parameter\">parameter</strong>                 ::= <code class=\"xref docutils literal notranslate\"><span class=\"pre\">identifier</span></code> [\":\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">expression</span></code></a>]\n<strong id=\"grammar-token-python-grammar-star_parameter\">star_parameter</strong>            ::= <code class=\"xref docutils literal notranslate\"><span class=\"pre\">identifier</span></code> [\":\" [\"*\"] <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">expression</span></code></a>]\n<strong id=\"grammar-token-python-grammar-defparameter\">defparameter</strong>              ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">parameter</span></code></a> [\"=\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">expression</span></code></a>]\n<strong id=\"grammar-token-python-grammar-funcname\">funcname</strong>                  ::= <code class=\"xref docutils literal notranslate\"><span class=\"pre\">identifier</span></code>",
+          "text": "\nfuncdef                   ::= [decorators] \"def\" funcname [type_params] \"(\" [parameter_list] \")\"\n                              [\"->\" expression] \":\" suite\ndecorators                ::= decorator+\ndecorator                 ::= \"@\" assignment_expression NEWLINE\nparameter_list            ::= defparameter (\",\" defparameter)* \",\" \"/\" [\",\" [parameter_list_no_posonly]]\n                              | parameter_list_no_posonly\nparameter_list_no_posonly ::= defparameter (\",\" defparameter)* [\",\" [parameter_list_starargs]]\n                              | parameter_list_starargs\nparameter_list_starargs   ::= \"*\" [star_parameter] (\",\" defparameter)* [\",\" [parameter_star_kwargs]]\n                              | \"*\" (\",\" defparameter)+ [\",\" [parameter_star_kwargs]]\n                              | parameter_star_kwargs\nparameter_star_kwargs     ::= \"**\" parameter [\",\"]\nparameter                 ::= identifier [\":\" expression]\nstar_parameter            ::= identifier [\":\" [\"*\"] expression]\ndefparameter              ::= parameter [\"=\" expression]\nfuncname                  ::= identifier"
+        },
+        {
+          "type": "paragraph",
+          "html": "A function definition is an executable statement.  Its execution binds the\nfunction name in the current local namespace to a function object (a wrapper\naround the executable code for the function).  This function object contains a\nreference to the current global namespace as the global namespace to be used\nwhen the function is called."
+        },
+        {
+          "type": "paragraph",
+          "html": "The function definition does not execute the function body; this gets executed\nonly when the function is called. <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#id23\" rel=\"noopener noreferrer\" target=\"_blank\">[4]</a>"
+        },
+        {
+          "type": "paragraph",
+          "html": "A function definition may be wrapped by one or more <a href=\"https://docs.python.org/3.13/glossary.html#term-decorator\" rel=\"noopener noreferrer\" target=\"_blank\">decorator</a> expressions.\nDecorator expressions are evaluated when the function is defined, in the scope\nthat contains the function definition.  The result must be a callable, which is\ninvoked with the function object as the only argument. The returned value is\nbound to the function name instead of the function object.  Multiple decorators\nare applied in nested fashion. For example, the following code"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"nd\">@f1</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)</span>\n<span class=\"nd\">@f2</span>\n<span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">func</span><span class=\"p\">():</span> <span class=\"k\">pass</span>",
+          "text": "@f1(arg)\n@f2\ndef func(): pass"
+        },
+        {
+          "type": "paragraph",
+          "html": "is roughly equivalent to"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">func</span><span class=\"p\">():</span> <span class=\"k\">pass</span>\n<span class=\"n\">func</span> <span class=\"o\">=</span> <span class=\"n\">f1</span><span class=\"p\">(</span><span class=\"n\">arg</span><span class=\"p\">)(</span><span class=\"n\">f2</span><span class=\"p\">(</span><span class=\"n\">func</span><span class=\"p\">))</span>",
+          "text": "def func(): pass\nfunc = f1(arg)(f2(func))"
+        },
+        {
+          "type": "paragraph",
+          "html": "except that the original function is not temporarily bound to the name <code>func</code>."
+        },
+        {
+          "type": "note",
+          "kind": "versionchanged",
+          "html": "Changed in version 3.9: Functions may be decorated with any valid\n<a href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-assignment_expression\" rel=\"noopener noreferrer\" target=\"_blank\"><code>assignment_expression</code></a>. Previously, the grammar was\nmuch more restrictive; see <a href=\"https://peps.python.org/pep-0614/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 614</strong></a> for details."
+        },
+        {
+          "type": "paragraph",
+          "html": "A list of <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#type-params\" rel=\"noopener noreferrer\" target=\"_blank\">type parameters</a> may be given in square brackets\nbetween the function’s name and the opening parenthesis for its parameter list.\nThis indicates to static type checkers that the function is generic. At runtime,\nthe type parameters can be retrieved from the function’s\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#function.__type_params__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"function.__type_params__\"><code>__type_params__</code></a>\nattribute. See <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#generic-functions\" rel=\"noopener noreferrer\" target=\"_blank\">Generic functions</a> for more."
+        },
+        {
+          "type": "note",
+          "kind": "versionchanged",
+          "html": "Changed in version 3.12: Type parameter lists are new in Python 3.12."
+        },
+        {
+          "type": "paragraph",
+          "html": "When one or more <a href=\"https://docs.python.org/3.13/glossary.html#term-parameter\" rel=\"noopener noreferrer\" target=\"_blank\">parameters</a> have the form <em>parameter</em> <code>=</code>\n<em>expression</em>, the function is said to have “default parameter values.”  For a\nparameter with a default value, the corresponding <a href=\"https://docs.python.org/3.13/glossary.html#term-argument\" rel=\"noopener noreferrer\" target=\"_blank\">argument</a> may be\nomitted from a call, in which\ncase the parameter’s default value is substituted.  If a parameter has a default\nvalue, all following parameters up until the “<code>*</code>” must also have a default\nvalue — this is a syntactic restriction that is not expressed by the grammar."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Default parameter values are evaluated from left to right when the function\ndefinition is executed.</strong> This means that the expression is evaluated once, when\nthe function is defined, and that the same “pre-computed” value is used for each\ncall.  This is especially important to understand when a default parameter value is a\nmutable object, such as a list or a dictionary: if the function modifies the\nobject (e.g. by appending an item to a list), the default parameter value is in effect\nmodified.  This is generally not what was intended.  A way around this is to use\n<code>None</code> as the default, and explicitly test for it in the body of the function,\ne.g.:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">whats_on_the_telly</span><span class=\"p\">(</span><span class=\"n\">penguin</span><span class=\"o\">=</span><span class=\"kc\">None</span><span class=\"p\">):</span>\n    <span class=\"k\">if</span> <span class=\"n\">penguin</span> <span class=\"ow\">is</span> <span class=\"kc\">None</span><span class=\"p\">:</span>\n        <span class=\"n\">penguin</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n    <span class=\"n\">penguin</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"s2\">\"property of the zoo\"</span><span class=\"p\">)</span>\n    <span class=\"k\">return</span> <span class=\"n\">penguin</span>",
+          "text": "def whats_on_the_telly(penguin=None):\n    if penguin is None:\n        penguin = []\n    penguin.append(\"property of the zoo\")\n    return penguin"
+        },
+        {
+          "type": "paragraph",
+          "html": "Function call semantics are described in more detail in section <a href=\"https://docs.python.org/3.13/reference/expressions.html#calls\" rel=\"noopener noreferrer\" target=\"_blank\">Calls</a>. A\nfunction call always assigns values to all parameters mentioned in the parameter\nlist, either from positional arguments, from keyword arguments, or from default\nvalues.  If the form “<code>*identifier</code>” is present, it is initialized to a tuple\nreceiving any excess positional parameters, defaulting to the empty tuple.\nIf the form “<code>**identifier</code>” is present, it is initialized to a new\nordered mapping receiving any excess keyword arguments, defaulting to a\nnew empty mapping of the same type.  Parameters after “<code>*</code>” or\n“<code>*identifier</code>” are keyword-only parameters and may only be passed\nby keyword arguments.  Parameters before “<code>/</code>” are positional-only parameters\nand may only be passed by positional arguments."
+        },
+        {
+          "type": "note",
+          "kind": "versionchanged",
+          "html": "Changed in version 3.8: The <code>/</code> function parameter syntax may be used to indicate positional-only\nparameters. See <a href=\"https://peps.python.org/pep-0570/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 570</strong></a> for details."
+        },
+        {
+          "type": "paragraph",
+          "html": "Parameters may have an <a href=\"https://docs.python.org/3.13/glossary.html#term-function-annotation\" rel=\"noopener noreferrer\" target=\"_blank\">annotation</a> of the form “<code>: expression</code>”\nfollowing the parameter name.  Any parameter may have an annotation, even those of the form\n<code>*identifier</code> or <code>**identifier</code>. (As a special case, parameters of the form\n<code>*identifier</code> may have an annotation “<code>: *expression</code>”.) Functions may have “return” annotation of\nthe form “<code>-&gt; expression</code>” after the parameter list.  These annotations can be\nany valid Python expression.  The presence of annotations does not change the\nsemantics of a function.  The annotation values are available as values of\na dictionary keyed by the parameters’ names in the <code>__annotations__</code>\nattribute of the function object.  If the <code>annotations</code> import from\n<code>__future__</code> is used, annotations are preserved as strings at runtime which\nenables postponed evaluation.  Otherwise, they are evaluated when the function\ndefinition is executed.  In this case annotations may be evaluated in\na different order than they appear in the source code."
+        },
+        {
+          "type": "note",
+          "kind": "versionchanged",
+          "html": "Changed in version 3.11: Parameters of the form “<code>*identifier</code>” may have an annotation\n“<code>: *expression</code>”. See <a href=\"https://peps.python.org/pep-0646/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 646</strong></a>."
+        },
+        {
+          "type": "paragraph",
+          "html": "It is also possible to create anonymous functions (functions not bound to a\nname), for immediate use in expressions.  This uses lambda expressions, described in\nsection <a href=\"https://docs.python.org/3.13/reference/expressions.html#lambda\" rel=\"noopener noreferrer\" target=\"_blank\">Lambdas</a>.  Note that the lambda expression is merely a shorthand for a\nsimplified function definition; a function defined in a “<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a>”\nstatement can be passed around or assigned to another name just like a function\ndefined by a lambda expression.  The “<code>def</code>” form is actually more powerful\nsince it allows the execution of multiple statements and annotations."
+        },
+        {
+          "type": "paragraph",
+          "html": "<strong>Programmer’s note:</strong> Functions are first-class objects.  A “<code>def</code>” statement\nexecuted inside a function definition defines a local function that can be\nreturned or passed around.  Free variables used in the nested function can\naccess the local variables of the function containing the def.  See section\nnaming for details."
+        },
+        {
+          "type": "admonition",
+          "kind": "seealso",
+          "titleHtml": "See also",
+          "blocks": [
+            {
+              "type": "definition",
+              "items": [
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://peps.python.org/pep-3107/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 3107</strong></a> - Function Annotations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "The original specification for function annotations."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://peps.python.org/pep-0484/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 484</strong></a> - Type Hints",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Definition of a standard meaning for annotations: type hints."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://peps.python.org/pep-0526/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 526</strong></a> - Syntax for Variable Annotations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Ability to type hint variable declarations, including class\nvariables and instance variables."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://peps.python.org/pep-0563/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 563</strong></a> - Postponed Evaluation of Annotations",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Support for forward references within annotations by preserving\nannotations in a string form at runtime instead of eager evaluation."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://peps.python.org/pep-0318/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 318</strong></a> - Decorators for Functions and Methods",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Function and method decorators were introduced.\nClass decorators were introduced in <a href=\"https://peps.python.org/pep-3129/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 3129</strong></a>."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "blockCount": 132,
+  "wordCount": 4359,
+  "title": "Fungsi dengan def",
+  "order": 4,
+  "api": [
+    {
+      "name": "len",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#len",
+      "display": "len",
+      "doc": "library/functions"
+    },
+    {
+      "name": "print",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#print",
+      "display": "print",
+      "doc": "library/functions"
+    },
+    {
+      "name": "help",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#help",
+      "display": "help",
+      "doc": "library/functions"
+    },
+    {
+      "name": "dir",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#dir",
+      "display": "dir",
+      "doc": "library/functions"
+    },
+    {
+      "name": "callable",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#callable",
+      "display": "callable",
+      "doc": "library/functions"
+    },
+    {
+      "name": "sorted",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#sorted",
+      "display": "sorted",
+      "doc": "library/functions"
+    }
+  ]
+}

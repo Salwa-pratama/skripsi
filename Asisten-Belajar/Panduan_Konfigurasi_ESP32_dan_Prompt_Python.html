@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Panduan Konfigurasi Kamera ESP32-S3 OV5640 & Master Prompt Python Processing</title>
+<style>
+  @page {
+    size: A4;
+    margin: 15mm 15mm 15mm 15mm;
+  }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.55;
+    font-size: 10pt;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+  }
+  .title {
+    font-size: 18pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 6px 0;
+  }
+  .subtitle {
+    font-size: 10.5pt;
+    color: #475569;
+    margin: 0;
+  }
+  .meta-box {
+    background-color: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-top: 10px;
+    font-size: 9pt;
+    display: flex;
+    justify-content: space-between;
+  }
+  h2 {
+    font-size: 12.5pt;
+    color: #1e3a8a;
+    border-left: 4px solid #2563eb;
+    padding-left: 8px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+  }
+  h3 {
+    font-size: 10.5pt;
+    color: #0f172a;
+    margin-top: 12px;
+    margin-bottom: 4px;
+  }
+  p {
+    margin: 0 0 8px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0 14px 0;
+    font-size: 9pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 6px 8px;
+    text-align: left;
+    vertical-align: top;
+  }
+  th {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    font-weight: 600;
+  }
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 8pt;
+    font-weight: 600;
+    border-radius: 4px;
+  }
+  .badge-danger { background-color: #fee2e2; color: #991b1b; }
+  .badge-success { background-color: #dcfce7; color: #166534; }
+  .badge-info { background-color: #e0f2fe; color: #0369a1; }
+  .badge-warn { background-color: #fef3c7; color: #92400e; }
+  
+  pre, code {
+    font-family: 'Consolas', 'Fira Code', 'Courier New', Courier, monospace;
+    font-size: 8.5pt;
+  }
+  pre {
+    background-color: #0f172a;
+    color: #e2e8f0;
+    padding: 10px;
+    border-radius: 6px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin: 8px 0 12px 0;
+    border: 1px solid #334155;
+  }
+  .prompt-box {
+    background-color: #f0fdf4;
+    border: 2px dashed #16a34a;
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin: 14px 0;
+  }
+  .prompt-box pre {
+    background-color: #14532d;
+    color: #f0fdf4;
+    border: 1px solid #166534;
+  }
+  .highlight {
+    background-color: #fef9c3;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title">DOKUMEN TEKNIS & ANALISA SISTEM KAMERA ESP32-S3 (OV5640)</div>
+  <div class="subtitle">Optimalisasi High-FPS, Pemecahan Masalah Artefak Citra, dan Master Prompt Python Server Processing</div>
+  <div class="meta-box">
+    <span><b>Target Board:</b> Freenove ESP32-S3 WROOM N8R8 (8MB PSRAM)</span>
+    <span><b>Sensor Kamera:</b> OmniVision OV5640 5MP CMOS</span>
+    <span><b>Proyek:</b> Asisten Belajar (Deteksi Gestur Tangan)</span>
+  </div>
+</div>
+
+<h2>1. Ringkasan Eksekutif & Filosofi Arsitektur (Offloading)</h2>
+<p>
+Dalam proyek Computer Vision menggunakan mikrokontroler berbiaya murah, strategi terbaik adalah <b>Edge Streaming & Host Processing (Offloading)</b>:
+</p>
+<ul>
+  <li><b>Peran ESP32-S3:</b> Bertindak sebagai <i>Lightweight Streaming Device</i> murni. ESP32 hanya bertugas menginisialisasi kamera, membaca frame buffer, mengompres JPEG secara ringan, dan memancarkan data via Wi-Fi secepat mungkin tanpa dibebani komputasi visual yang membuat chip panas.</li>
+  <li><b>Peran Server Python (Host):</b> Bertindak sebagai <i>Visual Processing Engine</i>. Laptop/Server memiliki resource komputasi ratusan kali lebih kuat untuk melakukan denoising, koreksi backlight (CLAHE), penajaman kontur tangan (Sharpening), dan tracking 21 titik sendi jari tangan via MediaPipe/AI.</li>
+</ul>
+
+<h2>2. Analisa Masalah Citra Kamera OV5640 & Solusinya</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%;">Gejala Masalah</th>
+      <th style="width: 35%;">Akar Penyebab (Root Cause)</th>
+      <th style="width: 45%;">Solusi Rekayasa (Hardware & Firmware)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Video Patah-Patah (~2 FPS)</b></td>
+      <td>Terdapat fungsi <code>vTaskDelay(pdMS_TO_TICKS(500))</code> di file <code>app.httpd.cpp</code> yang menahan pengiriman frame selama 0.5 detik per frame.</td>
+      <td>Ubah menjadi <code>vTaskDelay(pdMS_TO_TICKS(1))</code>. Naikkan clock kamera ke <code>xclk = 20000000</code> (20 MHz) dan gunakan buffer ganda (<code>fb_count = 2</code>). FPS melonjak ke <b>25-30+ FPS</b>.</td>
+    </tr>
+    <tr>
+      <td><b>Semburat Merah / Magenta di Tepi Kanan (&gt;50°C)</b></td>
+      <td><b>Thermal Gradient & Dark Current:</b> Chip prosesor dan regulator daya di sisi kanan board memancarkan panas. Sensor silikon CMOS menangkap panas ini sebagai sinyal warna merah/ungu, diperparah ketiadaan fisik filter IR (Infrared).</td>
+      <td>
+        1. Renggangkan kabel pita kamera agar tidak menempel di plat besi ESP32.<br>
+        2. Turunkan clock CPU ke <b>160 MHz</b> (suhu chip turun ke 48-52°C).<br>
+        3. Batasi penguatan sensor dengan <code>s-&gt;set_gainceiling(s, GAINCEILING_2X)</code>.
+      </td>
+    </tr>
+    <tr>
+      <td><b>Wajah / Objek Gelap Gulita (Black Crush)</b></td>
+      <td><b>Backlight Overpower:</b> Lampu plafon atau jendela di belakang objek sangat silau. Fitur AEC (Auto Exposure Control) meredupkan kamera secara otomatis agar latar tidak overexposed, sehingga objek di depan menjadi siluet hitam.</td>
+      <td>
+        1. Naikkan <code>s-&gt;set_brightness(s, 1)</code> dan <code>s-&gt;set_ae_level(s, 1)</code>.<br>
+        2. Turunkan <code>s-&gt;set_contrast(s, -1)</code>.<br>
+        3. Terapkan algoritma <b>CLAHE</b> di server Python.
+      </td>
+    </tr>
+    <tr>
+      <td><b>Lengkungan Hitam di Tepi Kiri (Vignetting)</b></td>
+      <td>Ketika <code>s-&gt;set_lenc(s, 0)</code> dinonaktifkan pada resolusi CIF, penurunan cahaya alami pada sudut lensa cembung (optical vignetting) tidak lagi dikompensasi secara digital.</td>
+      <td>Aktifkan kembali koreksi lensa internal: <code>s-&gt;set_lenc(s, 1)</code>. Jika ingin bidang pandang terbebas dari artefak sudut lensa, gunakan resolusi <code>FRAMESIZE_QVGA (320x240)</code>.</td>
+    </tr>
+    <tr>
+      <td><b>Wajib Menekan Tombol EN/RST Setiap Selesai Flash</b></td>
+      <td>Driver USB-CDC pada ESP32-S3 tidak otomatis memicu hard reset pasca-unggah firmware oleh <code>esptool</code>.</td>
+      <td>Tambahkan konfigurasi <code>upload_flags = --after=hard_reset</code> di file <code>platformio.ini</code> dan sistem auto-restart via kode jika inisialisasi sensor gagal.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>3. Parameter Konfigurasi Final di Sisi ESP32-S3</h2>
+
+<h3>A. File: <code>platformio.ini</code></h3>
+<pre><code>[env:freenove_esp32_s3_wroom]
+platform = espressif32
+board = freenove_esp32_s3_wroom
+framework = arduino
+monitor_speed = 115200
+
+build_flags =
+    -DBOARD_HAS_PSRAM
+
+upload_flags =
+    --after=hard_reset
+
+board_build.arduino.memory_type = qio_opi
+lib_deps =
+    adafruit/Adafruit SSD1306@^2.5.9
+    adafruit/Adafruit GFX Library@^1.11.9</code></pre>
+
+<h3>B. File: <code>src/func/camera_config.cpp</code></h3>
+<pre><code>// 1. Inisialisasi Hardware
+config.xclk_freq_hz = 20000000;         // 20 MHz XCLK (Tinggi & Mulus)
+config.frame_size   = FRAMESIZE_CIF;     // 400x296 (atau FRAMESIZE_QVGA 320x240)
+config.pixel_format = PIXFORMAT_JPEG;
+config.grab_mode    = CAMERA_GRAB_LATEST; // Buang frame basi, selalu ambil frame baru
+config.fb_location  = CAMERA_FB_IN_PSRAM;
+config.jpeg_quality = 22;                // Kompresi optimal, file ringan via WiFi
+config.fb_count     = 2;                 // Double buffer
+
+// 2. Konfigurasi Sensor Kamera (Permanen setelah esp_camera_init)
+sensor_t *s = esp_camera_sensor_get();
+if (s != NULL) {
+  s->set_framesize(s, FRAMESIZE_CIF);
+  s->set_vflip(s, 1);                    // 1 = Balik vertikal
+  s->set_hmirror(s, 1);                  // 1 = Balik horizontal
+  s->set_denoise(s, 0);                  // 0 = Matikan filter denoise internal
+  s->set_special_effect(s, 0);
+  s->set_lenc(s, 1);                     // 1 = Aktifkan Lens Correction (Cegah hitam di tepi)
+  s->set_brightness(s, 1);               // 1 = Boost kecerahan objek gelap
+  s->set_contrast(s, -1);                // -1 = Redam kontras bayangan tajam
+  s->set_gainceiling(s, GAINCEILING_2X); // 2X = Batasi gain agar tidak muncul noise merah termal
+  s->set_bpc(s, 1);                      // 1 = Koreksi piksel rusak (hot pixels)
+  s->set_wpc(s, 1);
+}</code></pre>
+
+<div class="page-break"></div>
+
+<h2>4. Master Prompt untuk Implementasi Python Server</h2>
+<p>
+Gunakan teks di dalam kotak hijau di bawah ini sebagai <b>Prompt</b> untuk diberikan kepada AI asisten koding (Claude, ChatGPT, Antigravity) saat kamu ingin membuat server pemroses video di Python. Prompt ini telah memuat seluruh parameter teknis hasil analisa kita secara presisi:
+</p>
+
+<div class="prompt-box">
+  <div style="font-weight: 700; color: #166534; font-size: 11pt; margin-bottom: 8px;">
+    📋 MASTER PROMPT SIAP COPY (PYTHON STREAM PROCESSOR & AI GESTURE)
+  </div>
+<pre><code>Bertindaklah sebagai Senior Computer Vision & Python Engineer. Saya memiliki modul mikrokontroler ESP32-S3 dengan sensor kamera OV5640 yang memancarkan MJPEG video stream melalui URL:
+http://192.168.1.12:81/stream (Format: CIF 400x296 / QVGA 320x240, ~25-30 FPS).
+
+ESP32 ini sengaja diset sangat ringan (dumb streaming) tanpa filter internal untuk menjaga suhu chip tetap dingin (~50°C). Oleh karena itu, saya ingin membuat script Python berkinerja tinggi menggunakan OpenCV, NumPy, dan MediaPipe Hands untuk menangkap stream tersebut dan melakukan preprocessing citra di sisi laptop/host tanpa membebani ESP32.
+
+Tolong buatkan program Python lengkap, terstruktur, dan siap pakai dengan spesifikasi berikut:
+
+1. VIDEO INGESTION:
+   - Gunakan cv2.VideoCapture() untuk membaca MJPEG stream dari URL ESP32.
+   - Buat thread terpisah (Video Threading) agar pembacaan frame tidak blocking dan latency/delay tetap 0 (realtime).
+
+2. IMAGE ENHANCEMENT PIPELINE (Mengatasi Masalah Kamera Fisik):
+   a. Mengatasi Wajah/Tangan Gelap (Backlight Compensation):
+      Gunakan algoritma CLAHE (Contrast Limited Adaptive Histogram Equalization) pada kanal L (Luminance) dalam ruang warna LAB atau YCrCb untuk menerangkan tangan/wajah yang gelap secara dinamis tanpa membuat latar belakang putih/lampu menjadi silau.
+   b. Mengatasi Noise Bintik-bintik Kamera Panas (Denoising & Smoothing):
+      Terapkan cv2.bilateralFilter() agar noise bintik sensor OV5640 dihaluskan, tetapi garis kontur dan tepi jari tangan tetap terjaga tajam (edge-preserving).
+   c. Mengatasi Semburat Merah/Magenta Akibat Thermal Noise:
+      Lakukan auto white-balance digital ringan atau scaling channel merah (R) jika terdeteksi dominasi magenta di sudut frame.
+   d. Penajaman Kontur Jari (Unsharp Masking):
+      Terapkan filter konvolusi penajaman (sharpening kernel) agar batas jari tangan sangat tegas dan mudah dibaca AI.
+
+3. AI HAND TRACKING (Google MediaPipe Hands):
+   - Integrasikan MediaPipe Hands (mp.solutions.hands) pada frame yang sudah dipoles di atas.
+   - Gambar kerangka 21 landmark sendi jari tangan dan bounding box secara realtime.
+   - Tampilkan indikator status di pojok layar: FPS Realtime dari Python, status koneksi stream, dan jumlah tangan yang terdeteksi.
+
+4. UI & INTERACTIVE TOGGLES:
+   - Tampilkan jendela cv2.imshow dengan tampilan berdampingan (Side-by-Side): "Original Raw ESP32" vs "Enhanced AI Result".
+   - Sediakan shortcut keyboard:
+     * 'c': Toggle on/off filter CLAHE & Penjernih gambar.
+     * 'm': Toggle on/off visualisasi MediaPipe.
+     * 'q': Keluar dari program secara aman.
+
+Berikan kode lengkap dengan komentar bahasa Indonesia yang jelas, penanganan error jika stream terputus (auto-reconnect), dan panduan instalasi library pip yang diperlukan.</code></pre>
+</div>
+
+<h2>5. Panduan Instalasi & Eksekusi di Laptop / Server</h2>
+<p>Langkah-langkah untuk menjalankan server pemroses di laptop kamu:</p>
+<ol>
+  <li>Pastikan laptop kamu terhubung ke jaringan Wi-Fi yang sama dengan ESP32 (misal IP: <code>192.168.1.12</code>).</li>
+  <li>Install dependencies yang dibutuhkan:
+    <pre><code>pip install opencv-python mediapipe numpy</code></pre>
+  </li>
+  <li>Simpan kode hasil prompt di atas ke dalam file <code>stream_ai.py</code>.</li>
+  <li>Jalankan script dengan perintah:
+    <pre><code>python stream_ai.py</code></pre>
+  </li>
+</ol>
+
+<hr style="border: 0; border-top: 1px solid #cbd5e1; margin-top: 24px; margin-bottom: 12px;">
+<div style="text-align: center; font-size: 8.5pt; color: #64748b;">
+  Dokumen Panduan Teknis Asisten Belajar ESP32-S3 &copy; 2026. Dibuat secara otomatis untuk dokumentasi performa tinggi.
+</div>
+
+</body>
+</html>

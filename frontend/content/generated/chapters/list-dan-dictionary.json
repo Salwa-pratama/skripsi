@@ -1,0 +1,1664 @@
+{
+  "slug": "list-dan-dictionary",
+  "docVersion": "3.13",
+  "generatedAt": "2026-11-03T23:37:07+00:00",
+  "groups": [
+    {
+      "source": {
+        "doc": "tutorial/datastructures",
+        "title": "Data Structures",
+        "label": "Tutorial Python · Struktur Data",
+        "url": "https://docs.python.org/3.13/tutorial/datastructures.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "more-on-lists",
+          "html": "Lebih Lanjut tentang List",
+          "text": "Lebih Lanjut tentang List"
+        },
+        {
+          "type": "paragraph",
+          "html": "Tipe data list memiliki banyak metode bawaan yang sangat kaya. Berikut adalah metode-metode utama pada objek list:"
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.append(<em>x</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Add an item to the end of the list.  Similar to <code>a[len(a):] = [x]</code>."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.extend(<em>iterable</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Extend the list by appending all the items from the iterable.  Similar to\n<code>a[len(a):] = iterable</code>."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.insert(<em>i</em>, <em>x</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Insert an item at a given position.  The first argument is the index of the\nelement before which to insert, so <code>a.insert(0, x)</code> inserts at the front of\nthe list, and <code>a.insert(len(a), x)</code> is equivalent to <code>a.append(x)</code>."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.remove(<em>x</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Remove the first item from the list whose value is equal to <em>x</em>.  It raises a\n<a href=\"https://docs.python.org/3.13/library/exceptions.html#ValueError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"ValueError\"><code>ValueError</code></a> if there is no such item."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.pop([<em>i</em>])",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Remove the item at the given position in the list, and return it.  If no index\nis specified, <code>a.pop()</code> removes and returns the last item in the list.\nIt raises an <a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a> if the list is empty or the index is\noutside the list range."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.clear()",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Remove all items from the list.  Similar to <code>del a[:]</code>."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.index(<em>x</em>[, <em>start</em>[, <em>end</em>]])",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return zero-based index in the list of the first item whose value is equal to <em>x</em>.\nRaises a <a href=\"https://docs.python.org/3.13/library/exceptions.html#ValueError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"ValueError\"><code>ValueError</code></a> if there is no such item."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "The optional arguments <em>start</em> and <em>end</em> are interpreted as in the slice\nnotation and are used to limit the search to a particular subsequence of\nthe list.  The returned index is computed relative to the beginning of the full\nsequence rather than the <em>start</em> argument."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.count(<em>x</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return the number of times <em>x</em> appears in the list."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.sort(<em><abbr>*</abbr></em>, <em>key=None</em>, <em>reverse=False</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Sort the items of the list in place (the arguments can be used for sort\ncustomization, see <a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a> for their explanation)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.reverse()",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Reverse the elements of the list in place."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "list.copy()",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return a shallow copy of the list.  Similar to <code>a[:]</code>."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Berikut adalah contoh komprehensif yang mendemonstrasikan sebagian besar metode manipulasi list:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'orange'</span><span class=\"p\">,</span> <span class=\"s1\">'apple'</span><span class=\"p\">,</span> <span class=\"s1\">'pear'</span><span class=\"p\">,</span> <span class=\"s1\">'banana'</span><span class=\"p\">,</span> <span class=\"s1\">'kiwi'</span><span class=\"p\">,</span> <span class=\"s1\">'apple'</span><span class=\"p\">,</span> <span class=\"s1\">'banana'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">count</span><span class=\"p\">(</span><span class=\"s1\">'apple'</span><span class=\"p\">)</span>\n<span class=\"go\">2</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">count</span><span class=\"p\">(</span><span class=\"s1\">'tangerine'</span><span class=\"p\">)</span>\n<span class=\"go\">0</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">index</span><span class=\"p\">(</span><span class=\"s1\">'banana'</span><span class=\"p\">)</span>\n<span class=\"go\">3</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">index</span><span class=\"p\">(</span><span class=\"s1\">'banana'</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">)</span>  <span class=\"c1\"># Find next banana starting at position 4</span>\n<span class=\"go\">6</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">reverse</span><span class=\"p\">()</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span>\n<span class=\"go\">['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"s1\">'grape'</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span>\n<span class=\"go\">['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange', 'grape']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">sort</span><span class=\"p\">()</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span>\n<span class=\"go\">['apple', 'apple', 'banana', 'banana', 'grape', 'kiwi', 'orange', 'pear']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">fruits</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">()</span>\n<span class=\"go\">'pear'</span>",
+          "text": ">>> fruits = ['orange', 'apple', 'pear', 'banana', 'kiwi', 'apple', 'banana']\n>>> fruits.count('apple')\n2\n>>> fruits.count('tangerine')\n0\n>>> fruits.index('banana')\n3\n>>> fruits.index('banana', 4)  # Find next banana starting at position 4\n6\n>>> fruits.reverse()\n>>> fruits\n['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange']\n>>> fruits.append('grape')\n>>> fruits\n['banana', 'apple', 'kiwi', 'banana', 'pear', 'apple', 'orange', 'grape']\n>>> fruits.sort()\n>>> fruits\n['apple', 'apple', 'banana', 'banana', 'grape', 'kiwi', 'orange', 'pear']\n>>> fruits.pop()\n'pear'"
+        },
+        {
+          "type": "paragraph",
+          "html": "You might have noticed that methods like <code>insert</code>, <code>remove</code> or <code>sort</code> that\nonly modify the list have no return value printed – they return the default\n<code>None</code>. <a href=\"https://docs.python.org/3.13/tutorial/datastructures.html#id2\" rel=\"noopener noreferrer\" target=\"_blank\">[1]</a>  This is a design principle for all mutable data structures in\nPython."
+        },
+        {
+          "type": "paragraph",
+          "html": "Another thing you might notice is that not all data can be sorted or\ncompared.  For instance, <code>[None, 'hello', 10]</code> doesn’t sort because\nintegers can’t be compared to strings and <code>None</code> can’t be compared to\nother types.  Also, there are some types that don’t have a defined\nordering relation.  For example, <code>3+4j &lt; 5+7j</code> isn’t a valid\ncomparison."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "using-lists-as-stacks",
+          "html": "Menggunakan List sebagai Stack (Tumpukan)",
+          "text": "Menggunakan List sebagai Stack (Tumpukan)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Metode pada list membuatnya sangat mudah digunakan sebagai struktur data tumpukan (stack), di mana elemen terakhir yang ditambahkan adalah elemen pertama yang diambil (LIFO - \"last-in, first-out\"). Gunakan <code>append()</code> untuk menambah elemen ke puncak tumpukan, dan <code>pop()</code> tanpa argumen untuk mengambil elemen teratas:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"mi\">5</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"mi\">6</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"mi\">7</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span>\n<span class=\"go\">[3, 4, 5, 6, 7]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">()</span>\n<span class=\"go\">7</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span>\n<span class=\"go\">[3, 4, 5, 6]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">()</span>\n<span class=\"go\">6</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span><span class=\"o\">.</span><span class=\"n\">pop</span><span class=\"p\">()</span>\n<span class=\"go\">5</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">stack</span>\n<span class=\"go\">[3, 4]</span>",
+          "text": ">>> stack = [3, 4, 5]\n>>> stack.append(6)\n>>> stack.append(7)\n>>> stack\n[3, 4, 5, 6, 7]\n>>> stack.pop()\n7\n>>> stack\n[3, 4, 5, 6]\n>>> stack.pop()\n6\n>>> stack.pop()\n5\n>>> stack\n[3, 4]"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "using-lists-as-queues",
+          "html": "Menggunakan List sebagai Queue (Antrean)",
+          "text": "Menggunakan List sebagai Queue (Antrean)"
+        },
+        {
+          "type": "paragraph",
+          "html": "List juga dapat digunakan sebagai antrean (queue), di mana elemen pertama yang masuk adalah yang pertama keluar (FIFO). Namun, penyisipan atau penghapusan dari awal list berjalan lambat karena semua elemen harus digeser. Untuk antrean cepat, gunakan <code>collections.deque</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "To implement a queue, use <code>collections.deque</code> which was designed to\nhave fast appends and pops from both ends.  For example:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">collections</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">deque</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">queue</span> <span class=\"o\">=</span> <span class=\"n\">deque</span><span class=\"p\">([</span><span class=\"s2\">\"Eric\"</span><span class=\"p\">,</span> <span class=\"s2\">\"John\"</span><span class=\"p\">,</span> <span class=\"s2\">\"Michael\"</span><span class=\"p\">])</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">queue</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"s2\">\"Terry\"</span><span class=\"p\">)</span>           <span class=\"c1\"># Terry arrives</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">queue</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"s2\">\"Graham\"</span><span class=\"p\">)</span>          <span class=\"c1\"># Graham arrives</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">queue</span><span class=\"o\">.</span><span class=\"n\">popleft</span><span class=\"p\">()</span>                 <span class=\"c1\"># The first to arrive now leaves</span>\n<span class=\"go\">'Eric'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">queue</span><span class=\"o\">.</span><span class=\"n\">popleft</span><span class=\"p\">()</span>                 <span class=\"c1\"># The second to arrive now leaves</span>\n<span class=\"go\">'John'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">queue</span>                           <span class=\"c1\"># Remaining queue in order of arrival</span>\n<span class=\"go\">deque(['Michael', 'Terry', 'Graham'])</span>",
+          "text": ">>> from collections import deque\n>>> queue = deque([\"Eric\", \"John\", \"Michael\"])\n>>> queue.append(\"Terry\")           # Terry arrives\n>>> queue.append(\"Graham\")          # Graham arrives\n>>> queue.popleft()                 # The first to arrive now leaves\n'Eric'\n>>> queue.popleft()                 # The second to arrive now leaves\n'John'\n>>> queue                           # Remaining queue in order of arrival\ndeque(['Michael', 'Terry', 'Graham'])"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "list-comprehensions",
+          "html": "List Comprehension",
+          "text": "List Comprehension"
+        },
+        {
+          "type": "paragraph",
+          "html": "List comprehension menyediakan cara ringkas dan elegan untuk membuat list baru berdasarkan operasi dari list atau urutan yang sudah ada. Penggunaan umumnya adalah membuat list baru di mana setiap elemen merupakan hasil penerapan operasi tertentu pada setiap anggota sequence lain:"
+        },
+        {
+          "type": "paragraph",
+          "html": "For example, assume we want to create a list of squares, like:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">squares</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"n\">squares</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">squares</span>\n<span class=\"go\">[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</span>",
+          "text": ">>> squares = []\n>>> for x in range(10):\n...     squares.append(x**2)\n...\n>>> squares\n[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Note that this creates (or overwrites) a variable named <code>x</code> that still exists\nafter the loop completes.  We can calculate the list of squares without any\nside effects using:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"n\">squares</span> <span class=\"o\">=</span> <span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">map</span><span class=\"p\">(</span><span class=\"k\">lambda</span> <span class=\"n\">x</span><span class=\"p\">:</span> <span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">)))</span>",
+          "text": "squares = list(map(lambda x: x**2, range(10)))"
+        },
+        {
+          "type": "paragraph",
+          "html": "or, equivalently:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"n\">squares</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">)]</span>",
+          "text": "squares = [x**2 for x in range(10)]"
+        },
+        {
+          "type": "paragraph",
+          "html": "which is more concise and readable."
+        },
+        {
+          "type": "paragraph",
+          "html": "A list comprehension consists of brackets containing an expression followed\nby a <code>for</code> clause, then zero or more <code>for</code> or <code>if</code>\nclauses.  The result will be a new list resulting from evaluating the expression\nin the context of the <code>for</code> and <code>if</code> clauses which follow it.\nFor example, this listcomp combines the elements of two lists if they are not\nequal:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">3</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">y</span> <span class=\"ow\">in</span> <span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">4</span><span class=\"p\">]</span> <span class=\"k\">if</span> <span class=\"n\">x</span> <span class=\"o\">!=</span> <span class=\"n\">y</span><span class=\"p\">]</span>\n<span class=\"go\">[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]</span>",
+          "text": ">>> [(x, y) for x in [1,2,3] for y in [3,1,4] if x != y]\n[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]"
+        },
+        {
+          "type": "paragraph",
+          "html": "and it’s equivalent to:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">combs</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">3</span><span class=\"p\">]:</span>\n<span class=\"gp\">... </span>    <span class=\"k\">for</span> <span class=\"n\">y</span> <span class=\"ow\">in</span> <span class=\"p\">[</span><span class=\"mi\">3</span><span class=\"p\">,</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">4</span><span class=\"p\">]:</span>\n<span class=\"gp\">... </span>        <span class=\"k\">if</span> <span class=\"n\">x</span> <span class=\"o\">!=</span> <span class=\"n\">y</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>            <span class=\"n\">combs</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">((</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">y</span><span class=\"p\">))</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">combs</span>\n<span class=\"go\">[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]</span>",
+          "text": ">>> combs = []\n>>> for x in [1,2,3]:\n...     for y in [3,1,4]:\n...         if x != y:\n...             combs.append((x, y))\n...\n>>> combs\n[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Note how the order of the <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> and <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a> statements is the\nsame in both these snippets."
+        },
+        {
+          "type": "paragraph",
+          "html": "If the expression is a tuple (e.g. the <code>(x, y)</code> in the previous example),\nit must be parenthesized."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># create a new list with the values doubled</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">x</span><span class=\"o\">*</span><span class=\"mi\">2</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"n\">vec</span><span class=\"p\">]</span>\n<span class=\"go\">[-8, -4, 0, 4, 8]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># filter the list to exclude negative numbers</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">x</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"n\">vec</span> <span class=\"k\">if</span> <span class=\"n\">x</span> <span class=\"o\">&gt;=</span> <span class=\"mi\">0</span><span class=\"p\">]</span>\n<span class=\"go\">[0, 2, 4]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># apply a function to all the elements</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"nb\">abs</span><span class=\"p\">(</span><span class=\"n\">x</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"n\">vec</span><span class=\"p\">]</span>\n<span class=\"go\">[4, 2, 0, 2, 4]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># call a method on each element</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">freshfruit</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'  banana'</span><span class=\"p\">,</span> <span class=\"s1\">'  loganberry '</span><span class=\"p\">,</span> <span class=\"s1\">'passion fruit  '</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">weapon</span><span class=\"o\">.</span><span class=\"n\">strip</span><span class=\"p\">()</span> <span class=\"k\">for</span> <span class=\"n\">weapon</span> <span class=\"ow\">in</span> <span class=\"n\">freshfruit</span><span class=\"p\">]</span>\n<span class=\"go\">['banana', 'loganberry', 'passion fruit']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># create a list of 2-tuples like (number, square)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[(</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span><span class=\"p\">)</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">6</span><span class=\"p\">)]</span>\n<span class=\"go\">[(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># the tuple must be parenthesized, otherwise an error is raised</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">6</span><span class=\"p\">)]</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>\n<span class=\"w\">    </span><span class=\"p\">[</span><span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">6</span><span class=\"p\">)]</span>\n<span class=\"w\">     </span><span class=\"pm\">^^^^^^^</span>\n<span class=\"gr\">SyntaxError</span>: <span class=\"n\">did you forget parentheses around the comprehension target?</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># flatten a list using a listcomp with two 'for'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">vec</span> <span class=\"o\">=</span> <span class=\"p\">[[</span><span class=\"mi\">1</span><span class=\"p\">,</span><span class=\"mi\">2</span><span class=\"p\">,</span><span class=\"mi\">3</span><span class=\"p\">],</span> <span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">,</span><span class=\"mi\">5</span><span class=\"p\">,</span><span class=\"mi\">6</span><span class=\"p\">],</span> <span class=\"p\">[</span><span class=\"mi\">7</span><span class=\"p\">,</span><span class=\"mi\">8</span><span class=\"p\">,</span><span class=\"mi\">9</span><span class=\"p\">]]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"n\">num</span> <span class=\"k\">for</span> <span class=\"n\">elem</span> <span class=\"ow\">in</span> <span class=\"n\">vec</span> <span class=\"k\">for</span> <span class=\"n\">num</span> <span class=\"ow\">in</span> <span class=\"n\">elem</span><span class=\"p\">]</span>\n<span class=\"go\">[1, 2, 3, 4, 5, 6, 7, 8, 9]</span>",
+          "text": ">>> vec = [-4, -2, 0, 2, 4]\n>>> # create a new list with the values doubled\n>>> [x*2 for x in vec]\n[-8, -4, 0, 4, 8]\n>>> # filter the list to exclude negative numbers\n>>> [x for x in vec if x >= 0]\n[0, 2, 4]\n>>> # apply a function to all the elements\n>>> [abs(x) for x in vec]\n[4, 2, 0, 2, 4]\n>>> # call a method on each element\n>>> freshfruit = ['  banana', '  loganberry ', 'passion fruit  ']\n>>> [weapon.strip() for weapon in freshfruit]\n['banana', 'loganberry', 'passion fruit']\n>>> # create a list of 2-tuples like (number, square)\n>>> [(x, x**2) for x in range(6)]\n[(0, 0), (1, 1), (2, 4), (3, 9), (4, 16), (5, 25)]\n>>> # the tuple must be parenthesized, otherwise an error is raised\n>>> [x, x**2 for x in range(6)]\n  File \"<stdin>\", line 1\n    [x, x**2 for x in range(6)]\n     ^^^^^^^\nSyntaxError: did you forget parentheses around the comprehension target?\n>>> # flatten a list using a listcomp with two 'for'\n>>> vec = [[1,2,3], [4,5,6], [7,8,9]]\n>>> [num for elem in vec for num in elem]\n[1, 2, 3, 4, 5, 6, 7, 8, 9]"
+        },
+        {
+          "type": "paragraph",
+          "html": "List comprehensions can contain complex expressions and nested functions:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">from</span><span class=\"w\"> </span><span class=\"nn\">math</span><span class=\"w\"> </span><span class=\"kn\">import</span> <span class=\"n\">pi</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[</span><span class=\"nb\">str</span><span class=\"p\">(</span><span class=\"nb\">round</span><span class=\"p\">(</span><span class=\"n\">pi</span><span class=\"p\">,</span> <span class=\"n\">i</span><span class=\"p\">))</span> <span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">6</span><span class=\"p\">)]</span>\n<span class=\"go\">['3.1', '3.14', '3.142', '3.1416', '3.14159']</span>",
+          "text": ">>> from math import pi\n>>> [str(round(pi, i)) for i in range(1, 6)]\n['3.1', '3.14', '3.142', '3.1416', '3.14159']"
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "nested-list-comprehensions",
+          "html": "List Comprehension Bersarang",
+          "text": "List Comprehension Bersarang"
+        },
+        {
+          "type": "paragraph",
+          "html": "The initial expression in a list comprehension can be any arbitrary expression,\nincluding another list comprehension."
+        },
+        {
+          "type": "paragraph",
+          "html": "Consider the following example of a 3x4 matrix implemented as a list of\n3 lists of length 4:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">matrix</span> <span class=\"o\">=</span> <span class=\"p\">[</span>\n<span class=\"gp\">... </span>    <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">],</span>\n<span class=\"gp\">... </span>    <span class=\"p\">[</span><span class=\"mi\">5</span><span class=\"p\">,</span> <span class=\"mi\">6</span><span class=\"p\">,</span> <span class=\"mi\">7</span><span class=\"p\">,</span> <span class=\"mi\">8</span><span class=\"p\">],</span>\n<span class=\"gp\">... </span>    <span class=\"p\">[</span><span class=\"mi\">9</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">11</span><span class=\"p\">,</span> <span class=\"mi\">12</span><span class=\"p\">],</span>\n<span class=\"gp\">... </span><span class=\"p\">]</span>",
+          "text": ">>> matrix = [\n...     [1, 2, 3, 4],\n...     [5, 6, 7, 8],\n...     [9, 10, 11, 12],\n... ]"
+        },
+        {
+          "type": "paragraph",
+          "html": "The following list comprehension will transpose rows and columns:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">[[</span><span class=\"n\">row</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">row</span> <span class=\"ow\">in</span> <span class=\"n\">matrix</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">)]</span>\n<span class=\"go\">[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</span>",
+          "text": ">>> [[row[i] for row in matrix] for i in range(4)]\n[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]"
+        },
+        {
+          "type": "paragraph",
+          "html": "As we saw in the previous section, the inner list comprehension is evaluated in\nthe context of the <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> that follows it, so this example is\nequivalent to:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">transposed</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"n\">transposed</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">([</span><span class=\"n\">row</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">]</span> <span class=\"k\">for</span> <span class=\"n\">row</span> <span class=\"ow\">in</span> <span class=\"n\">matrix</span><span class=\"p\">])</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">transposed</span>\n<span class=\"go\">[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</span>",
+          "text": ">>> transposed = []\n>>> for i in range(4):\n...     transposed.append([row[i] for row in matrix])\n...\n>>> transposed\n[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]"
+        },
+        {
+          "type": "paragraph",
+          "html": "which, in turn, is the same as:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">transposed</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"c1\"># the following 3 lines implement the nested listcomp</span>\n<span class=\"gp\">... </span>    <span class=\"n\">transposed_row</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">... </span>    <span class=\"k\">for</span> <span class=\"n\">row</span> <span class=\"ow\">in</span> <span class=\"n\">matrix</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>        <span class=\"n\">transposed_row</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">row</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">])</span>\n<span class=\"gp\">... </span>    <span class=\"n\">transposed</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">transposed_row</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">transposed</span>\n<span class=\"go\">[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]</span>",
+          "text": ">>> transposed = []\n>>> for i in range(4):\n...     # the following 3 lines implement the nested listcomp\n...     transposed_row = []\n...     for row in matrix:\n...         transposed_row.append(row[i])\n...     transposed.append(transposed_row)\n...\n>>> transposed\n[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]"
+        },
+        {
+          "type": "paragraph",
+          "html": "In the real world, you should prefer built-in functions to complex flow statements.\nThe <a href=\"https://docs.python.org/3.13/library/functions.html#zip\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"zip\"><code>zip()</code></a> function would do a great job for this use case:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">zip</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">matrix</span><span class=\"p\">))</span>\n<span class=\"go\">[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]</span>",
+          "text": ">>> list(zip(*matrix))\n[(1, 5, 9), (2, 6, 10), (3, 7, 11), (4, 8, 12)]"
+        },
+        {
+          "type": "paragraph",
+          "html": "See <a href=\"https://docs.python.org/3.13/tutorial/controlflow.html#tut-unpacking-arguments\" rel=\"noopener noreferrer\" target=\"_blank\">Unpacking Argument Lists</a> for details on the asterisk in this line."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "the-del-statement",
+          "html": "Pernyataan del",
+          "text": "Pernyataan del"
+        },
+        {
+          "type": "paragraph",
+          "html": "Terdapat cara untuk menghapus elemen dari list berdasarkan indeksnya, bukan berdasarkan nilainya: yaitu menggunakan pernyataan <a href=\"https://docs.python.org/3.13/reference/simple_stmts.html#del\" rel=\"noopener noreferrer\" target=\"_blank\"><code>del</code></a>. Pernyataan ini berbeda dari metode <code>pop()</code> karena tidak mengembalikan nilai:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mf\">66.25</span><span class=\"p\">,</span> <span class=\"mi\">333</span><span class=\"p\">,</span> <span class=\"mi\">333</span><span class=\"p\">,</span> <span class=\"mf\">1234.5</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">a</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span>\n<span class=\"go\">[1, 66.25, 333, 333, 1234.5]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">a</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:</span><span class=\"mi\">4</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span>\n<span class=\"go\">[1, 66.25, 1234.5]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">a</span><span class=\"p\">[:]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span>\n<span class=\"go\">[]</span>",
+          "text": ">>> a = [-1, 1, 66.25, 333, 333, 1234.5]\n>>> del a[0]\n>>> a\n[1, 66.25, 333, 333, 1234.5]\n>>> del a[2:4]\n>>> a\n[1, 66.25, 1234.5]\n>>> del a[:]\n>>> a\n[]"
+        },
+        {
+          "type": "paragraph",
+          "html": "<code>del</code> can also be used to delete entire variables:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">a</span>",
+          "text": ">>> del a"
+        },
+        {
+          "type": "paragraph",
+          "html": "Referencing the name <code>a</code> hereafter is an error (at least until another value\nis assigned to it).  We’ll find other uses for <code>del</code> later."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "dictionaries",
+          "html": "Dictionary (Kamus Data)",
+          "text": "Dictionary (Kamus Data)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Tipe data bawaan Python lainnya yang sangat berguna adalah <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesmapping\" rel=\"noopener noreferrer\" target=\"_blank\">dictionary (kamus)</a>. Tidak seperti urutan yang diindeks oleh rentang angka, dictionary diindeks menggunakan <em>kunci (keys)</em>, yang dapat berupa tipe data apa pun yang tidak dapat diubah (immutable), seperti string atau angka."
+        },
+        {
+          "type": "paragraph",
+          "html": "Cara terbaik memahami dictionary adalah sebagai kumpulan pasangan <em>kunci: nilai (key: value)</em>, dengan syarat bahwa kunci harus bersifat unik dalam satu dictionary. Sepasang kurung kurawal kosong <code>{}</code> membuat dictionary kosong:"
+        },
+        {
+          "type": "paragraph",
+          "html": "The main operations on a dictionary are storing a value with some key and\nextracting the value given the key.  It is also possible to delete a key:value\npair with <code>del</code>. If you store using a key that is already in use, the old\nvalue associated with that key is forgotten.  It is an error to extract a value\nusing a non-existent key."
+        },
+        {
+          "type": "paragraph",
+          "html": "Performing <code>list(d)</code> on a dictionary returns a list of all the keys\nused in the dictionary, in insertion order (if you want it sorted, just use\n<code>sorted(d)</code> instead). To check whether a single key is in the\ndictionary, use the <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> keyword."
+        },
+        {
+          "type": "paragraph",
+          "html": "Here is a small example using a dictionary:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tel</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s1\">'jack'</span><span class=\"p\">:</span> <span class=\"mi\">4098</span><span class=\"p\">,</span> <span class=\"s1\">'sape'</span><span class=\"p\">:</span> <span class=\"mi\">4139</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tel</span><span class=\"p\">[</span><span class=\"s1\">'guido'</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">4127</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tel</span>\n<span class=\"go\">{'jack': 4098, 'sape': 4139, 'guido': 4127}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tel</span><span class=\"p\">[</span><span class=\"s1\">'jack'</span><span class=\"p\">]</span>\n<span class=\"go\">4098</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">tel</span><span class=\"p\">[</span><span class=\"s1\">'sape'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tel</span><span class=\"p\">[</span><span class=\"s1\">'irv'</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">4127</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tel</span>\n<span class=\"go\">{'jack': 4098, 'guido': 4127, 'irv': 4127}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">tel</span><span class=\"p\">)</span>\n<span class=\"go\">['jack', 'guido', 'irv']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">sorted</span><span class=\"p\">(</span><span class=\"n\">tel</span><span class=\"p\">)</span>\n<span class=\"go\">['guido', 'irv', 'jack']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'guido'</span> <span class=\"ow\">in</span> <span class=\"n\">tel</span>\n<span class=\"go\">True</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'jack'</span> <span class=\"ow\">not</span> <span class=\"ow\">in</span> <span class=\"n\">tel</span>\n<span class=\"go\">False</span>",
+          "text": ">>> tel = {'jack': 4098, 'sape': 4139}\n>>> tel['guido'] = 4127\n>>> tel\n{'jack': 4098, 'sape': 4139, 'guido': 4127}\n>>> tel['jack']\n4098\n>>> del tel['sape']\n>>> tel['irv'] = 4127\n>>> tel\n{'jack': 4098, 'guido': 4127, 'irv': 4127}\n>>> list(tel)\n['jack', 'guido', 'irv']\n>>> sorted(tel)\n['guido', 'irv', 'jack']\n>>> 'guido' in tel\nTrue\n>>> 'jack' not in tel\nFalse"
+        },
+        {
+          "type": "paragraph",
+          "html": "The <a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"dict\"><code>dict()</code></a> constructor builds dictionaries directly from sequences of\nkey-value pairs:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">dict</span><span class=\"p\">([(</span><span class=\"s1\">'sape'</span><span class=\"p\">,</span> <span class=\"mi\">4139</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">'guido'</span><span class=\"p\">,</span> <span class=\"mi\">4127</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">'jack'</span><span class=\"p\">,</span> <span class=\"mi\">4098</span><span class=\"p\">)])</span>\n<span class=\"go\">{'sape': 4139, 'guido': 4127, 'jack': 4098}</span>",
+          "text": ">>> dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])\n{'sape': 4139, 'guido': 4127, 'jack': 4098}"
+        },
+        {
+          "type": "paragraph",
+          "html": "In addition, dict comprehensions can be used to create dictionaries from\narbitrary key and value expressions:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">{</span><span class=\"n\">x</span><span class=\"p\">:</span> <span class=\"n\">x</span><span class=\"o\">**</span><span class=\"mi\">2</span> <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">4</span><span class=\"p\">,</span> <span class=\"mi\">6</span><span class=\"p\">)}</span>\n<span class=\"go\">{2: 4, 4: 16, 6: 36}</span>",
+          "text": ">>> {x: x**2 for x in (2, 4, 6)}\n{2: 4, 4: 16, 6: 36}"
+        },
+        {
+          "type": "paragraph",
+          "html": "When the keys are simple strings, it is sometimes easier to specify pairs using\nkeyword arguments:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">dict</span><span class=\"p\">(</span><span class=\"n\">sape</span><span class=\"o\">=</span><span class=\"mi\">4139</span><span class=\"p\">,</span> <span class=\"n\">guido</span><span class=\"o\">=</span><span class=\"mi\">4127</span><span class=\"p\">,</span> <span class=\"n\">jack</span><span class=\"o\">=</span><span class=\"mi\">4098</span><span class=\"p\">)</span>\n<span class=\"go\">{'sape': 4139, 'guido': 4127, 'jack': 4098}</span>",
+          "text": ">>> dict(sape=4139, guido=4127, jack=4098)\n{'sape': 4139, 'guido': 4127, 'jack': 4098}"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "looping-techniques",
+          "html": "Teknik Perulangan Koleksi Data",
+          "text": "Teknik Perulangan Koleksi Data"
+        },
+        {
+          "type": "paragraph",
+          "html": "Saat melakukan perulangan pada dictionary, kunci dan nilai pasangannya dapat diambil secara bersamaan menggunakan metode <code>items()</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">knights</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s1\">'gallahad'</span><span class=\"p\">:</span> <span class=\"s1\">'the pure'</span><span class=\"p\">,</span> <span class=\"s1\">'robin'</span><span class=\"p\">:</span> <span class=\"s1\">'the brave'</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"n\">knights</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">k</span><span class=\"p\">,</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">gallahad the pure</span>\n<span class=\"go\">robin the brave</span>",
+          "text": ">>> knights = {'gallahad': 'the pure', 'robin': 'the brave'}\n>>> for k, v in knights.items():\n...     print(k, v)\n...\ngallahad the pure\nrobin the brave"
+        },
+        {
+          "type": "paragraph",
+          "html": "Saat melakukan perulangan pada suatu urutan, indeks posisi dan nilainya dapat diambil secara bersamaan menggunakan fungsi <a href=\"https://docs.python.org/3.13/library/functions.html#enumerate\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"enumerate\"><code>enumerate()</code></a>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"n\">v</span> <span class=\"ow\">in</span> <span class=\"nb\">enumerate</span><span class=\"p\">([</span><span class=\"s1\">'tic'</span><span class=\"p\">,</span> <span class=\"s1\">'tac'</span><span class=\"p\">,</span> <span class=\"s1\">'toe'</span><span class=\"p\">]):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"n\">v</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">0 tic</span>\n<span class=\"go\">1 tac</span>\n<span class=\"go\">2 toe</span>",
+          "text": ">>> for i, v in enumerate(['tic', 'tac', 'toe']):\n...     print(i, v)\n...\n0 tic\n1 tac\n2 toe"
+        },
+        {
+          "type": "paragraph",
+          "html": "Untuk mengiterasi dua atau lebih urutan secara bersamaan dalam satu loop, pasangan elemennya dapat disatukan menggunakan fungsi <a href=\"https://docs.python.org/3.13/library/functions.html#zip\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"zip\"><code>zip()</code></a>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">questions</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'name'</span><span class=\"p\">,</span> <span class=\"s1\">'quest'</span><span class=\"p\">,</span> <span class=\"s1\">'favorite color'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">answers</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'lancelot'</span><span class=\"p\">,</span> <span class=\"s1\">'the holy grail'</span><span class=\"p\">,</span> <span class=\"s1\">'blue'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">q</span><span class=\"p\">,</span> <span class=\"n\">a</span> <span class=\"ow\">in</span> <span class=\"nb\">zip</span><span class=\"p\">(</span><span class=\"n\">questions</span><span class=\"p\">,</span> <span class=\"n\">answers</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'What is your </span><span class=\"si\">{0}</span><span class=\"s1\">?  It is </span><span class=\"si\">{1}</span><span class=\"s1\">.'</span><span class=\"o\">.</span><span class=\"n\">format</span><span class=\"p\">(</span><span class=\"n\">q</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"p\">))</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">What is your name?  It is lancelot.</span>\n<span class=\"go\">What is your quest?  It is the holy grail.</span>\n<span class=\"go\">What is your favorite color?  It is blue.</span>",
+          "text": ">>> questions = ['name', 'quest', 'favorite color']\n>>> answers = ['lancelot', 'the holy grail', 'blue']\n>>> for q, a in zip(questions, answers):\n...     print('What is your {0}?  It is {1}.'.format(q, a))\n...\nWhat is your name?  It is lancelot.\nWhat is your quest?  It is the holy grail.\nWhat is your favorite color?  It is blue."
+        },
+        {
+          "type": "paragraph",
+          "html": "To loop over a sequence in reverse, first specify the sequence in a forward\ndirection and then call the <a href=\"https://docs.python.org/3.13/library/functions.html#reversed\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"reversed\"><code>reversed()</code></a> function."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">reversed</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">9</span>\n<span class=\"go\">7</span>\n<span class=\"go\">5</span>\n<span class=\"go\">3</span>\n<span class=\"go\">1</span>",
+          "text": ">>> for i in reversed(range(1, 10, 2)):\n...     print(i)\n...\n9\n7\n5\n3\n1"
+        },
+        {
+          "type": "paragraph",
+          "html": "To loop over a sequence in sorted order, use the <a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a> function which\nreturns a new sorted list while leaving the source unaltered."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">basket</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'apple'</span><span class=\"p\">,</span> <span class=\"s1\">'orange'</span><span class=\"p\">,</span> <span class=\"s1\">'apple'</span><span class=\"p\">,</span> <span class=\"s1\">'pear'</span><span class=\"p\">,</span> <span class=\"s1\">'orange'</span><span class=\"p\">,</span> <span class=\"s1\">'banana'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">sorted</span><span class=\"p\">(</span><span class=\"n\">basket</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">apple</span>\n<span class=\"go\">apple</span>\n<span class=\"go\">banana</span>\n<span class=\"go\">orange</span>\n<span class=\"go\">orange</span>\n<span class=\"go\">pear</span>",
+          "text": ">>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']\n>>> for i in sorted(basket):\n...     print(i)\n...\napple\napple\nbanana\norange\norange\npear"
+        },
+        {
+          "type": "paragraph",
+          "html": "Using <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set()</code></a> on a sequence eliminates duplicate elements. The use of\n<a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a> in combination with <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set()</code></a> over a sequence is an idiomatic\nway to loop over unique elements of the sequence in sorted order."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">basket</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'apple'</span><span class=\"p\">,</span> <span class=\"s1\">'orange'</span><span class=\"p\">,</span> <span class=\"s1\">'apple'</span><span class=\"p\">,</span> <span class=\"s1\">'pear'</span><span class=\"p\">,</span> <span class=\"s1\">'orange'</span><span class=\"p\">,</span> <span class=\"s1\">'banana'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">f</span> <span class=\"ow\">in</span> <span class=\"nb\">sorted</span><span class=\"p\">(</span><span class=\"nb\">set</span><span class=\"p\">(</span><span class=\"n\">basket</span><span class=\"p\">)):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">f</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">apple</span>\n<span class=\"go\">banana</span>\n<span class=\"go\">orange</span>\n<span class=\"go\">pear</span>",
+          "text": ">>> basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']\n>>> for f in sorted(set(basket)):\n...     print(f)\n...\napple\nbanana\norange\npear"
+        },
+        {
+          "type": "paragraph",
+          "html": "It is sometimes tempting to change a list while you are looping over it;\nhowever, it is often simpler and safer to create a new list instead."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"kn\">import</span><span class=\"w\"> </span><span class=\"nn\">math</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">raw_data</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"mf\">56.2</span><span class=\"p\">,</span> <span class=\"nb\">float</span><span class=\"p\">(</span><span class=\"s1\">'NaN'</span><span class=\"p\">),</span> <span class=\"mf\">51.7</span><span class=\"p\">,</span> <span class=\"mf\">55.3</span><span class=\"p\">,</span> <span class=\"mf\">52.5</span><span class=\"p\">,</span> <span class=\"nb\">float</span><span class=\"p\">(</span><span class=\"s1\">'NaN'</span><span class=\"p\">),</span> <span class=\"mf\">47.8</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">filtered_data</span> <span class=\"o\">=</span> <span class=\"p\">[]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">value</span> <span class=\"ow\">in</span> <span class=\"n\">raw_data</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"k\">if</span> <span class=\"ow\">not</span> <span class=\"n\">math</span><span class=\"o\">.</span><span class=\"n\">isnan</span><span class=\"p\">(</span><span class=\"n\">value</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>        <span class=\"n\">filtered_data</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"n\">value</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">filtered_data</span>\n<span class=\"go\">[56.2, 51.7, 55.3, 52.5, 47.8]</span>",
+          "text": ">>> import math\n>>> raw_data = [56.2, float('NaN'), 51.7, 55.3, 52.5, float('NaN'), 47.8]\n>>> filtered_data = []\n>>> for value in raw_data:\n...     if not math.isnan(value):\n...         filtered_data.append(value)\n...\n>>> filtered_data\n[56.2, 51.7, 55.3, 52.5, 47.8]"
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "library/stdtypes",
+        "title": "Built-in Types",
+        "label": "The Python Standard Library · Sequence & mapping types",
+        "url": "https://docs.python.org/3.13/library/stdtypes.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "common-sequence-operations",
+          "html": "Common Sequence Operations",
+          "text": "Common Sequence Operations"
+        },
+        {
+          "type": "paragraph",
+          "html": "The operations in the following table are supported by most sequence types,\nboth mutable and immutable. The <code>collections.abc.Sequence</code> ABC is\nprovided to make it easier to correctly implement these operations on\ncustom sequence types."
+        },
+        {
+          "type": "paragraph",
+          "html": "This table lists the sequence operations sorted in ascending priority.  In the\ntable, <em>s</em> and <em>t</em> are sequences of the same type, <em>n</em>, <em>i</em>, <em>j</em> and <em>k</em> are\nintegers and <em>x</em> is an arbitrary object that meets any type and value\nrestrictions imposed by <em>s</em>."
+        },
+        {
+          "type": "paragraph",
+          "html": "The <code>in</code> and <code>not in</code> operations have the same priorities as the\ncomparison operations. The <code>+</code> (concatenation) and <code>*</code> (repetition)\noperations have the same priority as the corresponding numeric operations. <a href=\"https://docs.python.org/3.13/library/stdtypes.html#id14\" rel=\"noopener noreferrer\" target=\"_blank\">[3]</a>"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>x in s</code></td><td><code>True</code> if an item of <em>s</em> is\nequal to <em>x</em>, else <code>False</code></td><td>(1)</td></tr><tr><td><code>x not in s</code></td><td><code>False</code> if an item of <em>s</em> is\nequal to <em>x</em>, else <code>True</code></td><td>(1)</td></tr><tr><td><code>s + t</code></td><td>the concatenation of <em>s</em> and\n<em>t</em></td><td>(6)(7)</td></tr><tr><td><code>s * n</code> or\n<code>n * s</code></td><td>equivalent to adding <em>s</em> to\nitself <em>n</em> times</td><td>(2)(7)</td></tr><tr><td><code>s[i]</code></td><td><em>i</em>th item of <em>s</em>, origin 0</td><td>(3)(9)</td></tr><tr><td><code>s[i:j]</code></td><td>slice of <em>s</em> from <em>i</em> to <em>j</em></td><td>(3)(4)</td></tr><tr><td><code>s[i:j:k]</code></td><td>slice of <em>s</em> from <em>i</em> to <em>j</em>\nwith step <em>k</em></td><td>(3)(5)</td></tr><tr><td><code>len(s)</code></td><td>length of <em>s</em></td><td></td></tr><tr><td><code>min(s)</code></td><td>smallest item of <em>s</em></td><td></td></tr><tr><td><code>max(s)</code></td><td>largest item of <em>s</em></td><td></td></tr><tr><td><code>s.index(x[, i[, j]])</code></td><td>index of the first occurrence\nof <em>x</em> in <em>s</em> (at or after\nindex <em>i</em> and before index <em>j</em>)</td><td>(8)</td></tr><tr><td><code>s.count(x)</code></td><td>total number of occurrences of\n<em>x</em> in <em>s</em></td><td></td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Sequences of the same type also support comparisons.  In particular, tuples\nand lists are compared lexicographically by comparing corresponding elements.\nThis means that to compare equal, every element must compare equal and the\ntwo sequences must be of the same type and have the same length.  (For full\ndetails see <a href=\"https://docs.python.org/3.13/reference/expressions.html#comparisons\" rel=\"noopener noreferrer\" target=\"_blank\">Comparisons</a> in the language reference.)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Forward and reversed iterators over mutable sequences access values using an\nindex.  That index will continue to march forward (or backward) even if the\nunderlying sequence is mutated.  The iterator terminates only when an\n<a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a> or a <a href=\"https://docs.python.org/3.13/library/exceptions.html#StopIteration\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"StopIteration\"><code>StopIteration</code></a> is encountered (or when the index\ndrops below zero)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Notes:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "While the <code>in</code> and <code>not in</code> operations are used only for simple\ncontainment testing in the general case, some specialised sequences\n(such as <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str\"><code>str</code></a>, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytes\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytes\"><code>bytes</code></a> and <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a>) also use\nthem for subsequence testing:"
+              },
+              {
+                "type": "code",
+                "language": "text",
+                "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"gg\"</span> <span class=\"ow\">in</span> <span class=\"s2\">\"eggs\"</span>\n<span class=\"go\">True</span>",
+                "text": ">>> \"gg\" in \"eggs\"\nTrue"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Values of <em>n</em> less than <code>0</code> are treated as <code>0</code> (which yields an empty\nsequence of the same type as <em>s</em>).  Note that items in the sequence <em>s</em>\nare not copied; they are referenced multiple times.  This often haunts\nnew Python programmers; consider:"
+              },
+              {
+                "type": "code",
+                "language": "text",
+                "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span> <span class=\"o\">=</span> <span class=\"p\">[[]]</span> <span class=\"o\">*</span> <span class=\"mi\">3</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span>\n<span class=\"go\">[[], [], []]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span>\n<span class=\"go\">[[3], [3], [3]]</span>",
+                "text": ">>> lists = [[]] * 3\n>>> lists\n[[], [], []]\n>>> lists[0].append(3)\n>>> lists\n[[3], [3], [3]]"
+              },
+              {
+                "type": "paragraph",
+                "html": "What has happened is that <code>[[]]</code> is a one-element list containing an empty\nlist, so all three elements of <code>[[]] * 3</code> are references to this single empty\nlist.  Modifying any of the elements of <code>lists</code> modifies this single list.\nYou can create a list of different lists this way:"
+              },
+              {
+                "type": "code",
+                "language": "text",
+                "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span> <span class=\"o\">=</span> <span class=\"p\">[[]</span> <span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">)]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"mi\">5</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">]</span><span class=\"o\">.</span><span class=\"n\">append</span><span class=\"p\">(</span><span class=\"mi\">7</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">lists</span>\n<span class=\"go\">[[3], [5], [7]]</span>",
+                "text": ">>> lists = [[] for i in range(3)]\n>>> lists[0].append(3)\n>>> lists[1].append(5)\n>>> lists[2].append(7)\n>>> lists\n[[3], [5], [7]]"
+              },
+              {
+                "type": "paragraph",
+                "html": "Further explanation is available in the FAQ entry\nfaq-multidimensional-list."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "If <em>i</em> or <em>j</em> is negative, the index is relative to the end of sequence <em>s</em>:\n<code>len(s) + i</code> or <code>len(s) + j</code> is substituted.  But note that <code>-0</code> is\nstill <code>0</code>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The slice of <em>s</em> from <em>i</em> to <em>j</em> is defined as the sequence of items with index\n<em>k</em> such that <code>i &lt;= k &lt; j</code>.  If <em>i</em> or <em>j</em> is greater than <code>len(s)</code>, use\n<code>len(s)</code>.  If <em>i</em> is omitted or <code>None</code>, use <code>0</code>.  If <em>j</em> is omitted or\n<code>None</code>, use <code>len(s)</code>.  If <em>i</em> is greater than or equal to <em>j</em>, the slice is\nempty."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The slice of <em>s</em> from <em>i</em> to <em>j</em> with step <em>k</em> is defined as the sequence of\nitems with index  <code>x = i + n*k</code> such that <code>0 &lt;= n &lt; (j-i)/k</code>.  In other words,\nthe indices are <code>i</code>, <code>i+k</code>, <code>i+2*k</code>, <code>i+3*k</code> and so on, stopping when\n<em>j</em> is reached (but never including <em>j</em>).  When <em>k</em> is positive,\n<em>i</em> and <em>j</em> are reduced to <code>len(s)</code> if they are greater.\nWhen <em>k</em> is negative, <em>i</em> and <em>j</em> are reduced to <code>len(s) - 1</code> if\nthey are greater.  If <em>i</em> or <em>j</em> are omitted or <code>None</code>, they become\n“end” values (which end depends on the sign of <em>k</em>).  Note, <em>k</em> cannot be zero.\nIf <em>k</em> is <code>None</code>, it is treated like <code>1</code>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Concatenating immutable sequences always results in a new object.  This\nmeans that building up a sequence by repeated concatenation will have a\nquadratic runtime cost in the total sequence length.  To get a linear\nruntime cost, you must switch to one of the alternatives below:"
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "items": [
+                  [
+                    {
+                      "type": "paragraph",
+                      "html": "if concatenating <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str\"><code>str</code></a> objects, you can build a list and use\n<a href=\"https://docs.python.org/3.13/library/stdtypes.html#str.join\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str.join\"><code>str.join()</code></a> at the end or else write to an <code>io.StringIO</code>\ninstance and retrieve its value when complete"
+                    }
+                  ],
+                  [
+                    {
+                      "type": "paragraph",
+                      "html": "if concatenating <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytes\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytes\"><code>bytes</code></a> objects, you can similarly use\n<a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytes.join\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytes.join\"><code>bytes.join()</code></a> or <code>io.BytesIO</code>, or you can do in-place\nconcatenation with a <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a> object.  <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a>\nobjects are mutable and have an efficient overallocation mechanism"
+                    }
+                  ],
+                  [
+                    {
+                      "type": "paragraph",
+                      "html": "if concatenating <a href=\"https://docs.python.org/3.13/library/stdtypes.html#tuple\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"tuple\"><code>tuple</code></a> objects, extend a <a href=\"#list\" title=\"list\"><code>list</code></a> instead"
+                    }
+                  ],
+                  [
+                    {
+                      "type": "paragraph",
+                      "html": "for other types, investigate the relevant class documentation"
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Some sequence types (such as <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range</code></a>) only support item sequences\nthat follow specific patterns, and hence don’t support sequence\nconcatenation or repetition."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "<code>index</code> raises <a href=\"https://docs.python.org/3.13/library/exceptions.html#ValueError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"ValueError\"><code>ValueError</code></a> when <em>x</em> is not found in <em>s</em>.\nNot all implementations support passing the additional arguments <em>i</em> and <em>j</em>.\nThese arguments allow efficient searching of subsections of the sequence. Passing\nthe extra arguments is roughly equivalent to using <code>s[i:j].index(x)</code>, only\nwithout copying any data and with the returned index being relative to\nthe start of the sequence rather than the start of the slice."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "An <a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a> is raised if <em>i</em> is outside the sequence range."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "mutable-sequence-types",
+          "html": "Mutable Sequence Types",
+          "text": "Mutable Sequence Types"
+        },
+        {
+          "type": "paragraph",
+          "html": "The operations in the following table are defined on mutable sequence types.\nThe <code>collections.abc.MutableSequence</code> ABC is provided to make it\neasier to correctly implement these operations on custom sequence types."
+        },
+        {
+          "type": "paragraph",
+          "html": "In the table <em>s</em> is an instance of a mutable sequence type, <em>t</em> is any\niterable object and <em>x</em> is an arbitrary object that meets any type\nand value restrictions imposed by <em>s</em> (for example, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a> only\naccepts integers that meet the value restriction <code>0 &lt;= x &lt;= 255</code>)."
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>s[i] = x</code></td><td>item <em>i</em> of <em>s</em> is replaced by\n<em>x</em></td><td></td></tr><tr><td><code>del s[i]</code></td><td>removes item <em>i</em> of <em>s</em></td><td></td></tr><tr><td><code>s[i:j] = t</code></td><td>slice of <em>s</em> from <em>i</em> to <em>j</em>\nis replaced by the contents of\nthe iterable <em>t</em></td><td></td></tr><tr><td><code>del s[i:j]</code></td><td>removes the elements of\n<code>s[i:j]</code> from the list\n(same as <code>s[i:j] = []</code>)</td><td></td></tr><tr><td><code>s[i:j:k] = t</code></td><td>the elements of <code>s[i:j:k]</code>\nare replaced by those of <em>t</em></td><td>(1)</td></tr><tr><td><code>del s[i:j:k]</code></td><td>removes the elements of\n<code>s[i:j:k]</code> from the list</td><td></td></tr><tr><td><code>s.append(x)</code></td><td>appends <em>x</em> to the end of the\nsequence (same as\n<code>s[len(s):len(s)] = [x]</code>)</td><td></td></tr><tr><td><code>s.clear()</code></td><td>removes all items from <em>s</em>\n(same as <code>del s[:]</code>)</td><td>(5)</td></tr><tr><td><code>s.copy()</code></td><td>creates a shallow copy of <em>s</em>\n(same as <code>s[:]</code>)</td><td>(5)</td></tr><tr><td><code>s.extend(t)</code> or\n<code>s += t</code></td><td>extends <em>s</em> with the\ncontents of <em>t</em> (for the\nmost part the same as\n<code>s[len(s):len(s)] = t</code>)</td><td></td></tr><tr><td><code>s *= n</code></td><td>updates <em>s</em> with its contents\nrepeated <em>n</em> times</td><td>(6)</td></tr><tr><td><code>s.insert(i, x)</code></td><td>inserts <em>x</em> into <em>s</em> at the\nindex given by <em>i</em>\n(same as <code>s[i:i] = [x]</code>)</td><td></td></tr><tr><td><code>s.pop()</code> or <code>s.pop(i)</code></td><td>retrieves the item at <em>i</em> and\nalso removes it from <em>s</em></td><td>(2)</td></tr><tr><td><code>s.remove(x)</code></td><td>removes the first item from\n<em>s</em> where <code>s[i]</code> is equal to\n<em>x</em></td><td>(3)</td></tr><tr><td><code>s.reverse()</code></td><td>reverses the items of <em>s</em> in\nplace</td><td>(4)</td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Notes:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "If <em>k</em> is not equal to <code>1</code>, <em>t</em> must have the same length as the slice it is replacing."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The optional argument <em>i</em> defaults to <code>-1</code>, so that by default the last\nitem is removed and returned."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "<code>remove()</code> raises <a href=\"https://docs.python.org/3.13/library/exceptions.html#ValueError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"ValueError\"><code>ValueError</code></a> when <em>x</em> is not found in <em>s</em>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The <code>reverse()</code> method modifies the sequence in place for economy of\nspace when reversing a large sequence.  To remind users that it operates by\nside effect, it does not return the reversed sequence."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "<code>clear()</code> and <code>copy()</code> are included for consistency with the\ninterfaces of mutable containers that don’t support slicing operations\n(such as <a href=\"#dict\" title=\"dict\"><code>dict</code></a> and <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set</code></a>). <code>copy()</code> is not part of the\n<code>collections.abc.MutableSequence</code> ABC, but most concrete\nmutable sequence classes provide it."
+              },
+              {
+                "type": "note",
+                "kind": "versionadded",
+                "html": "Added in version 3.3: <code>clear()</code> and <code>copy()</code> methods."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The value <em>n</em> is an integer, or an object implementing\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__index__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__index__\"><code>__index__()</code></a>.  Zero and negative values of <em>n</em> clear\nthe sequence.  Items in the sequence are not copied; they are referenced\nmultiple times, as explained for <code>s * n</code> under <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesseq-common\" rel=\"noopener noreferrer\" target=\"_blank\">Common Sequence Operations</a>."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "lists",
+          "html": "Lists",
+          "text": "Lists"
+        },
+        {
+          "type": "paragraph",
+          "html": "Lists are mutable sequences, typically used to store collections of\nhomogeneous items (where the precise degree of similarity will vary by\napplication)."
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": "list",
+              "termHtml": "<em>class </em>list([<em>iterable</em>])",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Lists may be constructed in several ways:"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "start": null,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Using a pair of square brackets to denote the empty list: <code>[]</code>"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Using square brackets, separating items with commas: <code>[a]</code>, <code>[a, b, c]</code>"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Using a list comprehension: <code>[x for x in iterable]</code>"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Using the type constructor: <code>list()</code> or <code>list(iterable)</code>"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "html": "The constructor builds a list whose items are the same and in the same\norder as <em>iterable</em>’s items.  <em>iterable</em> may be either a sequence, a\ncontainer that supports iteration, or an iterator object.  If <em>iterable</em>\nis already a list, a copy is made and returned, similar to <code>iterable[:]</code>.\nFor example, <code>list('abc')</code> returns <code>['a', 'b', 'c']</code> and\n<code>list( (1, 2, 3) )</code> returns <code>[1, 2, 3]</code>.\nIf no argument is given, the constructor creates a new empty list, <code>[]</code>."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Many other operations also produce lists, including the <a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a>\nbuilt-in."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Lists implement all of the <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesseq-common\" rel=\"noopener noreferrer\" target=\"_blank\">common</a> and\n<a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesseq-mutable\" rel=\"noopener noreferrer\" target=\"_blank\">mutable</a> sequence operations. Lists also provide the\nfollowing additional method:"
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "list.sort",
+                      "termHtml": "sort(<em><abbr>*</abbr></em>, <em>key=None</em>, <em>reverse=False</em>)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "This method sorts the list in place, using only <code>&lt;</code> comparisons\nbetween items. Exceptions are not suppressed - if any comparison operations\nfail, the entire sort operation will fail (and the list will likely be left\nin a partially modified state)."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<a href=\"#list.sort\" title=\"list.sort\"><code>sort()</code></a> accepts two arguments that can only be passed by keyword\n(<a href=\"https://docs.python.org/3.13/glossary.html#keyword-only-parameter\" rel=\"noopener noreferrer\" target=\"_blank\">keyword-only arguments</a>):"
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<em>key</em> specifies a function of one argument that is used to extract a\ncomparison key from each list element (for example, <code>key=str.lower</code>).\nThe key corresponding to each item in the list is calculated once and\nthen used for the entire sorting process. The default value of <code>None</code>\nmeans that list items are sorted directly without calculating a separate\nkey value."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "The <code>functools.cmp_to_key()</code> utility is available to convert a 2.x\nstyle <em>cmp</em> function to a <em>key</em> function."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<em>reverse</em> is a boolean value.  If set to <code>True</code>, then the list elements\nare sorted as if each comparison were reversed."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "This method modifies the sequence in place for economy of space when\nsorting a large sequence.  To remind users that it operates by side\neffect, it does not return the sorted sequence (use <a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a> to\nexplicitly request a new sorted list instance)."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "The <a href=\"#list.sort\" title=\"list.sort\"><code>sort()</code></a> method is guaranteed to be stable.  A sort is stable if it\nguarantees not to change the relative order of elements that compare equal\n— this is helpful for sorting in multiple passes (for example, sort by\ndepartment, then by salary grade)."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "For sorting examples and a brief sorting tutorial, see sortinghowto."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<strong>CPython implementation detail:</strong> While a list is being sorted, the effect of attempting to mutate, or even\ninspect, the list is undefined.  The C implementation of Python makes the\nlist appear empty for the duration, and raises <a href=\"https://docs.python.org/3.13/library/exceptions.html#ValueError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"ValueError\"><code>ValueError</code></a> if it can\ndetect that the list has been mutated during a sort."
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "mapping-types-dict",
+          "html": "Tipe Pemetaan — dict",
+          "text": "Tipe Pemetaan — dict"
+        },
+        {
+          "type": "paragraph",
+          "html": "A <a href=\"https://docs.python.org/3.13/glossary.html#term-mapping\" rel=\"noopener noreferrer\" target=\"_blank\">mapping</a> object maps <a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a> values to arbitrary objects.\nMappings are mutable objects.  There is currently only one standard mapping\ntype, the <em>dictionary</em>.  (For other containers see the built-in\n<a href=\"#list\" title=\"list\"><code>list</code></a>, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set</code></a>, and <a href=\"https://docs.python.org/3.13/library/stdtypes.html#tuple\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"tuple\"><code>tuple</code></a> classes, and the\n<code>collections</code> module.)"
+        },
+        {
+          "type": "paragraph",
+          "html": "A dictionary’s keys are <em>almost</em> arbitrary values.  Values that are not\n<a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a>, that is, values containing lists, dictionaries or other\nmutable types (that are compared by value rather than by object identity) may\nnot be used as keys.\nValues that compare equal (such as <code>1</code>, <code>1.0</code>, and <code>True</code>)\ncan be used interchangeably to index the same dictionary entry."
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": "dict",
+              "termHtml": "<em>class </em>dict(<em>**kwargs</em>)",
+              "blocks": []
+            },
+            {
+              "id": null,
+              "termHtml": "<em>class </em>dict(<em>mapping</em>, <em>**kwargs</em>)",
+              "blocks": []
+            },
+            {
+              "id": null,
+              "termHtml": "<em>class </em>dict(<em>iterable</em>, <em>**kwargs</em>)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return a new dictionary initialized from an optional positional argument\nand a possibly empty set of keyword arguments."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Dictionaries can be created by several means:"
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "start": null,
+                  "items": [
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Use a comma-separated list of <code>key: value</code> pairs within braces:\n<code>{'jack': 4098, 'sjoerd': 4127}</code> or <code>{4098: 'jack', 4127: 'sjoerd'}</code>"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Use a dict comprehension: <code>{}</code>, <code>{x: x ** 2 for x in range(10)}</code>"
+                      }
+                    ],
+                    [
+                      {
+                        "type": "paragraph",
+                        "html": "Use the type constructor: <code>dict()</code>,\n<code>dict([('foo', 100), ('bar', 200)])</code>, <code>dict(foo=100, bar=200)</code>"
+                      }
+                    ]
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "html": "If no positional argument is given, an empty dictionary is created.\nIf a positional argument is given and it defines a <code>keys()</code> method, a\ndictionary is created by calling <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__getitem__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__getitem__\"><code>__getitem__()</code></a> on the argument with\neach returned key from the method.  Otherwise, the positional argument must be an\n<a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a> object.  Each item in the iterable must itself be an iterable\nwith exactly two elements.  The first element of each item becomes a key in the\nnew dictionary, and the second element the corresponding value.  If a key occurs\nmore than once, the last value for that key becomes the corresponding value in\nthe new dictionary."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "If keyword arguments are given, the keyword arguments and their values are\nadded to the dictionary created from the positional argument.  If a key\nbeing added is already present, the value from the keyword argument\nreplaces the value from the positional argument."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Providing keyword arguments as in the first example only works for keys that\nare valid Python identifiers.  Otherwise, any valid keys can be used."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Dictionaries compare equal if and only if they have the same <code>(key,\nvalue)</code> pairs (regardless of ordering). Order comparisons (‘&lt;’, ‘&lt;=’, ‘&gt;=’, ‘&gt;’) raise\n<a href=\"https://docs.python.org/3.13/library/exceptions.html#TypeError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"TypeError\"><code>TypeError</code></a>.  To illustrate dictionary creation and equality,\nthe following examples all return a dictionary equal to\n<code>{\"one\": 1, \"two\": 2, \"three\": 3}</code>:"
+                },
+                {
+                  "type": "code",
+                  "language": "text",
+                  "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span> <span class=\"o\">=</span> <span class=\"nb\">dict</span><span class=\"p\">(</span><span class=\"n\">one</span><span class=\"o\">=</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"n\">two</span><span class=\"o\">=</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">three</span><span class=\"o\">=</span><span class=\"mi\">3</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s1\">'one'</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s1\">'two'</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"s1\">'three'</span><span class=\"p\">:</span> <span class=\"mi\">3</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">c</span> <span class=\"o\">=</span> <span class=\"nb\">dict</span><span class=\"p\">(</span><span class=\"nb\">zip</span><span class=\"p\">([</span><span class=\"s1\">'one'</span><span class=\"p\">,</span> <span class=\"s1\">'two'</span><span class=\"p\">,</span> <span class=\"s1\">'three'</span><span class=\"p\">],</span> <span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">]))</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"nb\">dict</span><span class=\"p\">([(</span><span class=\"s1\">'two'</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">'one'</span><span class=\"p\">,</span> <span class=\"mi\">1</span><span class=\"p\">),</span> <span class=\"p\">(</span><span class=\"s1\">'three'</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">)])</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">e</span> <span class=\"o\">=</span> <span class=\"nb\">dict</span><span class=\"p\">({</span><span class=\"s1\">'three'</span><span class=\"p\">:</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"s1\">'one'</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s1\">'two'</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">})</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">f</span> <span class=\"o\">=</span> <span class=\"nb\">dict</span><span class=\"p\">({</span><span class=\"s1\">'one'</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s1\">'three'</span><span class=\"p\">:</span> <span class=\"mi\">3</span><span class=\"p\">},</span> <span class=\"n\">two</span><span class=\"o\">=</span><span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span> <span class=\"o\">==</span> <span class=\"n\">b</span> <span class=\"o\">==</span> <span class=\"n\">c</span> <span class=\"o\">==</span> <span class=\"n\">d</span> <span class=\"o\">==</span> <span class=\"n\">e</span> <span class=\"o\">==</span> <span class=\"n\">f</span>\n<span class=\"go\">True</span>",
+                  "text": ">>> a = dict(one=1, two=2, three=3)\n>>> b = {'one': 1, 'two': 2, 'three': 3}\n>>> c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))\n>>> d = dict([('two', 2), ('one', 1), ('three', 3)])\n>>> e = dict({'three': 3, 'one': 1, 'two': 2})\n>>> f = dict({'one': 1, 'three': 3}, two=2)\n>>> a == b == c == d == e == f\nTrue"
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Providing keyword arguments as in the first example only works for keys that\nare valid Python identifiers.  Otherwise, any valid keys can be used."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Dictionaries preserve insertion order.  Note that updating a key does not\naffect the order.  Keys added after deletion are inserted at the end."
+                },
+                {
+                  "type": "code",
+                  "language": "text",
+                  "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">\"one\"</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s2\">\"two\"</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"s2\">\"three\"</span><span class=\"p\">:</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"s2\">\"four\"</span><span class=\"p\">:</span> <span class=\"mi\">4</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span>\n<span class=\"go\">{'one': 1, 'two': 2, 'three': 3, 'four': 4}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">d</span><span class=\"p\">)</span>\n<span class=\"go\">['one', 'two', 'three', 'four']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">())</span>\n<span class=\"go\">[1, 2, 3, 4]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span><span class=\"p\">[</span><span class=\"s2\">\"one\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"mi\">42</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span>\n<span class=\"go\">{'one': 42, 'two': 2, 'three': 3, 'four': 4}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">d</span><span class=\"p\">[</span><span class=\"s2\">\"two\"</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span><span class=\"p\">[</span><span class=\"s2\">\"two\"</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"kc\">None</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span>\n<span class=\"go\">{'one': 42, 'three': 3, 'four': 4, 'two': None}</span>",
+                  "text": ">>> d = {\"one\": 1, \"two\": 2, \"three\": 3, \"four\": 4}\n>>> d\n{'one': 1, 'two': 2, 'three': 3, 'four': 4}\n>>> list(d)\n['one', 'two', 'three', 'four']\n>>> list(d.values())\n[1, 2, 3, 4]\n>>> d[\"one\"] = 42\n>>> d\n{'one': 42, 'two': 2, 'three': 3, 'four': 4}\n>>> del d[\"two\"]\n>>> d[\"two\"] = None\n>>> d\n{'one': 42, 'three': 3, 'four': 4, 'two': None}"
+                },
+                {
+                  "type": "note",
+                  "kind": "versionchanged",
+                  "html": "Changed in version 3.7: Dictionary order is guaranteed to be insertion order.  This behavior was\nan implementation detail of CPython from 3.6."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "These are the operations that dictionaries support (and therefore, custom\nmapping types should support too):"
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "list(d)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return a list of all the keys used in the dictionary <em>d</em>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "len(d)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return the number of items in the dictionary <em>d</em>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "d[key]",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return the item of <em>d</em> with key <em>key</em>.  Raises a <a href=\"https://docs.python.org/3.13/library/exceptions.html#KeyError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"KeyError\"><code>KeyError</code></a> if <em>key</em> is\nnot in the map."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "If a subclass of dict defines a method <code>__missing__()</code> and <em>key</em>\nis not present, the <code>d[key]</code> operation calls that method with the key <em>key</em>\nas argument.  The <code>d[key]</code> operation then returns or raises whatever is\nreturned or raised by the <code>__missing__(key)</code> call.\nNo other operations or methods invoke <code>__missing__()</code>. If\n<code>__missing__()</code> is not defined, <a href=\"https://docs.python.org/3.13/library/exceptions.html#KeyError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"KeyError\"><code>KeyError</code></a> is raised.\n<code>__missing__()</code> must be a method; it cannot be an instance variable:"
+                        },
+                        {
+                          "type": "code",
+                          "language": "text",
+                          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">class</span><span class=\"w\"> </span><span class=\"nc\">Counter</span><span class=\"p\">(</span><span class=\"nb\">dict</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">def</span><span class=\"w\"> </span><span class=\"fm\">__missing__</span><span class=\"p\">(</span><span class=\"bp\">self</span><span class=\"p\">,</span> <span class=\"n\">key</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>        <span class=\"k\">return</span> <span class=\"mi\">0</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">c</span> <span class=\"o\">=</span> <span class=\"n\">Counter</span><span class=\"p\">()</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">c</span><span class=\"p\">[</span><span class=\"s1\">'red'</span><span class=\"p\">]</span>\n<span class=\"go\">0</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">c</span><span class=\"p\">[</span><span class=\"s1\">'red'</span><span class=\"p\">]</span> <span class=\"o\">+=</span> <span class=\"mi\">1</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">c</span><span class=\"p\">[</span><span class=\"s1\">'red'</span><span class=\"p\">]</span>\n<span class=\"go\">1</span>",
+                          "text": ">>> class Counter(dict):\n...     def __missing__(self, key):\n...         return 0\n...\n>>> c = Counter()\n>>> c['red']\n0\n>>> c['red'] += 1\n>>> c['red']\n1"
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "The example above shows part of the implementation of\n<code>collections.Counter</code>.  A different <code>__missing__</code> method is used\nby <code>collections.defaultdict</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "d[key] = value",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Set <code>d[key]</code> to <em>value</em>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "del d[key]",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Remove <code>d[key]</code> from <em>d</em>.  Raises a <a href=\"https://docs.python.org/3.13/library/exceptions.html#KeyError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"KeyError\"><code>KeyError</code></a> if <em>key</em> is not in the\nmap."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "key in d",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return <code>True</code> if <em>d</em> has a key <em>key</em>, else <code>False</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "key not in d",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Equivalent to <code>not key in d</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "iter(d)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return an iterator over the keys of the dictionary.  This is a shortcut\nfor <code>iter(d.keys())</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.clear",
+                      "termHtml": "clear()",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Remove all items from the dictionary."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.copy",
+                      "termHtml": "copy()",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return a shallow copy of the dictionary."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.fromkeys",
+                      "termHtml": "<em>classmethod </em>fromkeys(<em>iterable</em>, <em>value=None</em>, <em><abbr>/</abbr></em>)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Create a new dictionary with keys from <em>iterable</em> and values set to <em>value</em>."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<a href=\"#dict.fromkeys\" title=\"dict.fromkeys\"><code>fromkeys()</code></a> is a class method that returns a new dictionary. <em>value</em>\ndefaults to <code>None</code>.  All of the values refer to just a single instance,\nso it generally doesn’t make sense for <em>value</em> to be a mutable object\nsuch as an empty list.  To get distinct values, use a <a href=\"https://docs.python.org/3.13/reference/expressions.html#dict\" rel=\"noopener noreferrer\" target=\"_blank\">dict\ncomprehension</a> instead."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.get",
+                      "termHtml": "get(<em>key</em>, <em>default=None</em>, <em><abbr>/</abbr></em>)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return the value for <em>key</em> if <em>key</em> is in the dictionary, else <em>default</em>.\nIf <em>default</em> is not given, it defaults to <code>None</code>, so that this method\nnever raises a <a href=\"https://docs.python.org/3.13/library/exceptions.html#KeyError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"KeyError\"><code>KeyError</code></a>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.items",
+                      "termHtml": "items()",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return a new view of the dictionary’s items (<code>(key, value)</code> pairs).\nSee the <a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict-views\" rel=\"noopener noreferrer\" target=\"_blank\">documentation of view objects</a>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.keys",
+                      "termHtml": "keys()",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return a new view of the dictionary’s keys.  See the <a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict-views\" rel=\"noopener noreferrer\" target=\"_blank\">documentation\nof view objects</a>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.pop",
+                      "termHtml": "pop(<em>key</em>[, <em>default</em>])",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "If <em>key</em> is in the dictionary, remove it and return its value, else return\n<em>default</em>.  If <em>default</em> is not given and <em>key</em> is not in the dictionary,\na <a href=\"https://docs.python.org/3.13/library/exceptions.html#KeyError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"KeyError\"><code>KeyError</code></a> is raised."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.popitem",
+                      "termHtml": "popitem()",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Remove and return a <code>(key, value)</code> pair from the dictionary.\nPairs are returned in <abbr>LIFO</abbr> order."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<a href=\"#dict.popitem\" title=\"dict.popitem\"><code>popitem()</code></a> is useful to destructively iterate over a dictionary, as\noften used in set algorithms.  If the dictionary is empty, calling\n<a href=\"#dict.popitem\" title=\"dict.popitem\"><code>popitem()</code></a> raises a <a href=\"https://docs.python.org/3.13/library/exceptions.html#KeyError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"KeyError\"><code>KeyError</code></a>."
+                        },
+                        {
+                          "type": "note",
+                          "kind": "versionchanged",
+                          "html": "Changed in version 3.7: LIFO order is now guaranteed. In prior versions, <a href=\"#dict.popitem\" title=\"dict.popitem\"><code>popitem()</code></a> would\nreturn an arbitrary key/value pair."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "reversed(d)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return a reverse iterator over the keys of the dictionary. This is a\nshortcut for <code>reversed(d.keys())</code>."
+                        },
+                        {
+                          "type": "note",
+                          "kind": "versionadded",
+                          "html": "Added in version 3.8."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.setdefault",
+                      "termHtml": "setdefault(<em>key</em>, <em>default=None</em>, <em><abbr>/</abbr></em>)",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "If <em>key</em> is in the dictionary, return its value.  If not, insert <em>key</em>\nwith a value of <em>default</em> and return <em>default</em>.  <em>default</em> defaults to\n<code>None</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.update",
+                      "termHtml": "update([<em>other</em>])",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Update the dictionary with the key/value pairs from <em>other</em>, overwriting\nexisting keys.  Return <code>None</code>."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "<a href=\"#dict.update\" title=\"dict.update\"><code>update()</code></a> accepts either another object with a <code>keys()</code> method (in\nwhich case <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__getitem__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__getitem__\"><code>__getitem__()</code></a> is called with every key returned from\nthe method) or an iterable of key/value pairs (as tuples or other iterables\nof length two). If keyword arguments are specified, the dictionary is then\nupdated with those key/value pairs: <code>d.update(red=1, blue=2)</code>."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": "dict.values",
+                      "termHtml": "values()",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Return a new view of the dictionary’s values.  See the\n<a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict-views\" rel=\"noopener noreferrer\" target=\"_blank\">documentation of view objects</a>."
+                        },
+                        {
+                          "type": "paragraph",
+                          "html": "An equality comparison between one <code>dict.values()</code> view and another\nwill always return <code>False</code>. This also applies when comparing\n<code>dict.values()</code> to itself:"
+                        },
+                        {
+                          "type": "code",
+                          "language": "text",
+                          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s1\">'a'</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">()</span> <span class=\"o\">==</span> <span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">()</span>\n<span class=\"go\">False</span>",
+                          "text": ">>> d = {'a': 1}\n>>> d.values() == d.values()\nFalse"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "d | other",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Create a new dictionary with the merged keys and values of <em>d</em> and\n<em>other</em>, which must both be dictionaries. The values of <em>other</em> take\npriority when <em>d</em> and <em>other</em> share keys."
+                        },
+                        {
+                          "type": "note",
+                          "kind": "versionadded",
+                          "html": "Added in version 3.9."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "definition",
+                  "items": [
+                    {
+                      "id": null,
+                      "termHtml": "d |= other",
+                      "blocks": [
+                        {
+                          "type": "paragraph",
+                          "html": "Update the dictionary <em>d</em> with keys and values from <em>other</em>, which may be\neither a <a href=\"https://docs.python.org/3.13/glossary.html#term-mapping\" rel=\"noopener noreferrer\" target=\"_blank\">mapping</a> or an <a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a> of key/value pairs. The\nvalues of <em>other</em> take priority when <em>d</em> and <em>other</em> share keys."
+                        },
+                        {
+                          "type": "note",
+                          "kind": "versionadded",
+                          "html": "Added in version 3.9."
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Dictionaries and dictionary views are reversible."
+                },
+                {
+                  "type": "code",
+                  "language": "text",
+                  "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s2\">\"one\"</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s2\">\"two\"</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"s2\">\"three\"</span><span class=\"p\">:</span> <span class=\"mi\">3</span><span class=\"p\">,</span> <span class=\"s2\">\"four\"</span><span class=\"p\">:</span> <span class=\"mi\">4</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">d</span>\n<span class=\"go\">{'one': 1, 'two': 2, 'three': 3, 'four': 4}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">reversed</span><span class=\"p\">(</span><span class=\"n\">d</span><span class=\"p\">))</span>\n<span class=\"go\">['four', 'three', 'two', 'one']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">reversed</span><span class=\"p\">(</span><span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">()))</span>\n<span class=\"go\">[4, 3, 2, 1]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">reversed</span><span class=\"p\">(</span><span class=\"n\">d</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">()))</span>\n<span class=\"go\">[('four', 4), ('three', 3), ('two', 2), ('one', 1)]</span>",
+                  "text": ">>> d = {\"one\": 1, \"two\": 2, \"three\": 3, \"four\": 4}\n>>> d\n{'one': 1, 'two': 2, 'three': 3, 'four': 4}\n>>> list(reversed(d))\n['four', 'three', 'two', 'one']\n>>> list(reversed(d.values()))\n[4, 3, 2, 1]\n>>> list(reversed(d.items()))\n[('four', 4), ('three', 3), ('two', 2), ('one', 1)]"
+                },
+                {
+                  "type": "note",
+                  "kind": "versionchanged",
+                  "html": "Changed in version 3.8: Dictionaries are now reversible."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "admonition",
+          "kind": "seealso",
+          "titleHtml": "See also",
+          "blocks": [
+            {
+              "type": "paragraph",
+              "html": "<code>types.MappingProxyType</code> can be used to create a read-only view\nof a <a href=\"#dict\" title=\"dict\"><code>dict</code></a>."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "dictionary-view-objects",
+          "html": "Dictionary view objects",
+          "text": "Dictionary view objects"
+        },
+        {
+          "type": "paragraph",
+          "html": "The objects returned by <a href=\"#dict.keys\" title=\"dict.keys\"><code>dict.keys()</code></a>, <a href=\"#dict.values\" title=\"dict.values\"><code>dict.values()</code></a> and\n<a href=\"#dict.items\" title=\"dict.items\"><code>dict.items()</code></a> are <em>view objects</em>.  They provide a dynamic view on the\ndictionary’s entries, which means that when the dictionary changes, the view\nreflects these changes."
+        },
+        {
+          "type": "paragraph",
+          "html": "Dictionary views can be iterated over to yield their respective data, and\nsupport membership tests:"
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "len(dictview)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return the number of entries in the dictionary."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "iter(dictview)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return an iterator over the keys, values or items (represented as tuples of\n<code>(key, value)</code>) in the dictionary."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Keys and values are iterated over in insertion order.\nThis allows the creation of <code>(value, key)</code> pairs\nusing <a href=\"https://docs.python.org/3.13/library/functions.html#zip\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"zip\"><code>zip()</code></a>: <code>pairs = zip(d.values(), d.keys())</code>.  Another way to\ncreate the same list is <code>pairs = [(v, k) for (k, v) in d.items()]</code>."
+                },
+                {
+                  "type": "paragraph",
+                  "html": "Iterating views while adding or deleting entries in the dictionary may raise\na <a href=\"https://docs.python.org/3.13/library/exceptions.html#RuntimeError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"RuntimeError\"><code>RuntimeError</code></a> or fail to iterate over all entries."
+                },
+                {
+                  "type": "note",
+                  "kind": "versionchanged",
+                  "html": "Changed in version 3.7: Dictionary order is guaranteed to be insertion order."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "x in dictview",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return <code>True</code> if <em>x</em> is in the underlying dictionary’s keys, values or\nitems (in the latter case, <em>x</em> should be a <code>(key, value)</code> tuple)."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "reversed(dictview)",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return a reverse iterator over the keys, values or items of the dictionary.\nThe view will be iterated in reverse order of the insertion."
+                },
+                {
+                  "type": "note",
+                  "kind": "versionchanged",
+                  "html": "Changed in version 3.8: Dictionary views are now reversible."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "definition",
+          "items": [
+            {
+              "id": null,
+              "termHtml": "dictview.mapping",
+              "blocks": [
+                {
+                  "type": "paragraph",
+                  "html": "Return a <code>types.MappingProxyType</code> that wraps the original\ndictionary to which the view refers."
+                },
+                {
+                  "type": "note",
+                  "kind": "versionadded",
+                  "html": "Added in version 3.10."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Keys views are set-like since their entries are unique and <a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a>.\nItems views also have set-like operations since the (key, value) pairs\nare unique and the keys are hashable.\nIf all values in an items view are hashable as well,\nthen the items view can interoperate with other sets.\n(Values views are not treated as set-like\nsince the entries are generally not unique.)  For set-like views, all of the\noperations defined for the abstract base class <code>collections.abc.Set</code> are\navailable (for example, <code>==</code>, <code>&lt;</code>, or <code>^</code>).  While using set operators,\nset-like views accept any iterable as the other operand,\nunlike sets which only accept sets as the input."
+        },
+        {
+          "type": "paragraph",
+          "html": "An example of dictionary view usage:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">dishes</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s1\">'eggs'</span><span class=\"p\">:</span> <span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"s1\">'sausage'</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s1\">'bacon'</span><span class=\"p\">:</span> <span class=\"mi\">1</span><span class=\"p\">,</span> <span class=\"s1\">'spam'</span><span class=\"p\">:</span> <span class=\"mi\">500</span><span class=\"p\">}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">keys</span> <span class=\"o\">=</span> <span class=\"n\">dishes</span><span class=\"o\">.</span><span class=\"n\">keys</span><span class=\"p\">()</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">values</span> <span class=\"o\">=</span> <span class=\"n\">dishes</span><span class=\"o\">.</span><span class=\"n\">values</span><span class=\"p\">()</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># iteration</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">n</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">val</span> <span class=\"ow\">in</span> <span class=\"n\">values</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"n\">n</span> <span class=\"o\">+=</span> <span class=\"n\">val</span>\n<span class=\"gp\">...</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">)</span>\n<span class=\"go\">504</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># keys and values are iterated over in the same order (insertion order)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">keys</span><span class=\"p\">)</span>\n<span class=\"go\">['eggs', 'sausage', 'bacon', 'spam']</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">values</span><span class=\"p\">)</span>\n<span class=\"go\">[2, 1, 1, 500]</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># view objects are dynamic and reflect dict changes</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">dishes</span><span class=\"p\">[</span><span class=\"s1\">'eggs'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">del</span> <span class=\"n\">dishes</span><span class=\"p\">[</span><span class=\"s1\">'sausage'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"n\">keys</span><span class=\"p\">)</span>\n<span class=\"go\">['bacon', 'spam']</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># set operations</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">keys</span> <span class=\"o\">&amp;</span> <span class=\"p\">{</span><span class=\"s1\">'eggs'</span><span class=\"p\">,</span> <span class=\"s1\">'bacon'</span><span class=\"p\">,</span> <span class=\"s1\">'salad'</span><span class=\"p\">}</span>\n<span class=\"go\">{'bacon'}</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">keys</span> <span class=\"o\">^</span> <span class=\"p\">{</span><span class=\"s1\">'sausage'</span><span class=\"p\">,</span> <span class=\"s1\">'juice'</span><span class=\"p\">}</span> <span class=\"o\">==</span> <span class=\"p\">{</span><span class=\"s1\">'juice'</span><span class=\"p\">,</span> <span class=\"s1\">'sausage'</span><span class=\"p\">,</span> <span class=\"s1\">'bacon'</span><span class=\"p\">,</span> <span class=\"s1\">'spam'</span><span class=\"p\">}</span>\n<span class=\"go\">True</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">keys</span> <span class=\"o\">|</span> <span class=\"p\">[</span><span class=\"s1\">'juice'</span><span class=\"p\">,</span> <span class=\"s1\">'juice'</span><span class=\"p\">,</span> <span class=\"s1\">'juice'</span><span class=\"p\">]</span> <span class=\"o\">==</span> <span class=\"p\">{</span><span class=\"s1\">'bacon'</span><span class=\"p\">,</span> <span class=\"s1\">'spam'</span><span class=\"p\">,</span> <span class=\"s1\">'juice'</span><span class=\"p\">}</span>\n<span class=\"go\">True</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># get back a read-only proxy for the original dictionary</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">values</span><span class=\"o\">.</span><span class=\"n\">mapping</span>\n<span class=\"go\">mappingproxy({'bacon': 1, 'spam': 500})</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">values</span><span class=\"o\">.</span><span class=\"n\">mapping</span><span class=\"p\">[</span><span class=\"s1\">'spam'</span><span class=\"p\">]</span>\n<span class=\"go\">500</span>",
+          "text": ">>> dishes = {'eggs': 2, 'sausage': 1, 'bacon': 1, 'spam': 500}\n>>> keys = dishes.keys()\n>>> values = dishes.values()\n\n>>> # iteration\n>>> n = 0\n>>> for val in values:\n...     n += val\n...\n>>> print(n)\n504\n\n>>> # keys and values are iterated over in the same order (insertion order)\n>>> list(keys)\n['eggs', 'sausage', 'bacon', 'spam']\n>>> list(values)\n[2, 1, 1, 500]\n\n>>> # view objects are dynamic and reflect dict changes\n>>> del dishes['eggs']\n>>> del dishes['sausage']\n>>> list(keys)\n['bacon', 'spam']\n\n>>> # set operations\n>>> keys & {'eggs', 'bacon', 'salad'}\n{'bacon'}\n>>> keys ^ {'sausage', 'juice'} == {'juice', 'sausage', 'bacon', 'spam'}\nTrue\n>>> keys | ['juice', 'juice', 'juice'] == {'bacon', 'spam', 'juice'}\nTrue\n\n>>> # get back a read-only proxy for the original dictionary\n>>> values.mapping\nmappingproxy({'bacon': 1, 'spam': 500})\n>>> values.mapping['spam']\n500"
+        }
+      ]
+    }
+  ],
+  "blockCount": 123,
+  "wordCount": 6357,
+  "title": "List & Dictionary",
+  "order": 5,
+  "api": [
+    {
+      "name": "list",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#list",
+      "display": "list",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "dict",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#dict",
+      "display": "dict",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "list.sort",
+      "role": "py:method",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#list.sort",
+      "display": "list.sort",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "dict.get",
+      "role": "py:method",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#dict.get",
+      "display": "dict.get",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "dict.items",
+      "role": "py:method",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#dict.items",
+      "display": "dict.items",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "dict.keys",
+      "role": "py:method",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#dict.keys",
+      "display": "dict.keys",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "dict.values",
+      "role": "py:method",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#dict.values",
+      "display": "dict.values",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "dict.update",
+      "role": "py:method",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#dict.update",
+      "display": "dict.update",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "sorted",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#sorted",
+      "display": "sorted",
+      "doc": "library/functions"
+    },
+    {
+      "name": "enumerate",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#enumerate",
+      "display": "enumerate",
+      "doc": "library/functions"
+    },
+    {
+      "name": "zip",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#zip",
+      "display": "zip",
+      "doc": "library/functions"
+    }
+  ]
+}

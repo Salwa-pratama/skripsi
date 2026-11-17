@@ -1,0 +1,433 @@
+{
+  "slug": "perulangan",
+  "docVersion": "3.13",
+  "generatedAt": "2026-11-03T23:37:06+00:00",
+  "groups": [
+    {
+      "source": {
+        "doc": "tutorial/introduction",
+        "title": "An Informal Introduction to Python",
+        "label": "The Python Tutorial · First Steps Towards Programming",
+        "url": "https://docs.python.org/3.13/tutorial/introduction.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "first-steps-towards-programming",
+          "html": "Langkah Awal Menuju Pemrograman",
+          "text": "Langkah Awal Menuju Pemrograman"
+        },
+        {
+          "type": "paragraph",
+          "html": "Tentu saja, kita dapat menggunakan Python untuk tugas yang lebih kompleks daripada sekadar penjumlahan aritmetika. Sebagai contoh, kita dapat menulis deret awal dari deret Fibonacci menggunakan perulangan <code>while</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># Fibonacci series:</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># the sum of two elements defines the next</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">while</span> <span class=\"n\">a</span> <span class=\"o\">&lt;</span> <span class=\"mi\">10</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"n\">b</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"o\">+</span><span class=\"n\">b</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">0</span>\n<span class=\"go\">1</span>\n<span class=\"go\">1</span>\n<span class=\"go\">2</span>\n<span class=\"go\">3</span>\n<span class=\"go\">5</span>\n<span class=\"go\">8</span>",
+          "text": ">>> # Fibonacci series:\n>>> # the sum of two elements defines the next\n>>> a, b = 0, 1\n>>> while a < 10:\n...     print(a)\n...     a, b = b, a+b\n...\n0\n1\n1\n2\n3\n5\n8"
+        },
+        {
+          "type": "paragraph",
+          "html": "Contoh ini memperkenalkan beberapa fitur penting: penugasan ganda pada satu baris (<code>a, b = 0, 1</code>), perulangan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#while\" rel=\"noopener noreferrer\" target=\"_blank\"><code>while</code></a> yang terus berjalan selama kondisi bernilai benar, serta indentasi sebagai penentu blok instruksi program."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "The first line contains a <em>multiple assignment</em>: the variables <code>a</code> and <code>b</code>\nsimultaneously get the new values 0 and 1.  On the last line this is used again,\ndemonstrating that the expressions on the right-hand side are all evaluated\nfirst before any of the assignments take place.  The right-hand side expressions\nare evaluated  from the left to the right."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#while\" rel=\"noopener noreferrer\" target=\"_blank\"><code>while</code></a> loop executes as long as the condition (here: <code>a &lt; 10</code>)\nremains true.  In Python, like in C, any non-zero integer value is true; zero is\nfalse.  The condition may also be a string or list value, in fact any sequence;\nanything with a non-zero length is true, empty sequences are false.  The test\nused in the example is a simple comparison.  The standard comparison operators\nare written the same as in C: <code>&lt;</code> (less than), <code>&gt;</code> (greater than), <code>==</code>\n(equal to), <code>&lt;=</code> (less than or equal to), <code>&gt;=</code> (greater than or equal to)\nand <code>!=</code> (not equal to)."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The <em>body</em> of the loop is <em>indented</em>: indentation is Python’s way of grouping\nstatements.  At the interactive prompt, you have to type a tab or space(s) for\neach indented line.  In practice you will prepare more complicated input\nfor Python with a text editor; all decent text editors have an auto-indent\nfacility.  When a compound statement is entered interactively, it must be\nfollowed by a blank line to indicate completion (since the parser cannot\nguess when you have typed the last line).  Note that each line within a basic\nblock must be indented by the same amount."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The <a href=\"https://docs.python.org/3.13/library/functions.html#print\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"print\"><code>print()</code></a> function writes the value of the argument(s) it is given.\nIt differs from just writing the expression you want to write (as we did\nearlier in the calculator examples) in the way it handles multiple arguments,\nfloating-point quantities, and strings.  Strings are printed without quotes,\nand a space is inserted between items, so you can format things nicely, like\nthis:"
+              },
+              {
+                "type": "code",
+                "language": "text",
+                "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">256</span><span class=\"o\">*</span><span class=\"mi\">256</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'The value of i is'</span><span class=\"p\">,</span> <span class=\"n\">i</span><span class=\"p\">)</span>\n<span class=\"go\">The value of i is 65536</span>",
+                "text": ">>> i = 256*256\n>>> print('The value of i is', i)\nThe value of i is 65536"
+              },
+              {
+                "type": "paragraph",
+                "html": "The keyword argument <em>end</em> can be used to avoid the newline after the output,\nor end the output with a different string:"
+              },
+              {
+                "type": "code",
+                "language": "text",
+                "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">1</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">while</span> <span class=\"n\">a</span> <span class=\"o\">&lt;</span> <span class=\"mi\">1000</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">end</span><span class=\"o\">=</span><span class=\"s1\">','</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>    <span class=\"n\">a</span><span class=\"p\">,</span> <span class=\"n\">b</span> <span class=\"o\">=</span> <span class=\"n\">b</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"o\">+</span><span class=\"n\">b</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,</span>",
+                "text": ">>> a, b = 0, 1\n>>> while a < 1000:\n...     print(a, end=',')\n...     a, b = b, a+b\n...\n0,1,1,2,3,5,8,13,21,34,55,89,144,233,377,610,987,"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Footnotes"
+        },
+        {
+          "type": "paragraph",
+          "html": "["
+        },
+        {
+          "type": "paragraph",
+          "html": "1"
+        },
+        {
+          "type": "paragraph",
+          "html": "]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Since <code>**</code> has higher precedence than <code>-</code>, <code>-3**2</code> will be\ninterpreted as <code>-(3**2)</code> and thus result in <code>-9</code>.  To avoid this\nand get <code>9</code>, you can use <code>(-3)**2</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "["
+        },
+        {
+          "type": "paragraph",
+          "html": "2"
+        },
+        {
+          "type": "paragraph",
+          "html": "]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Unlike other languages, special characters such as <code>\\n</code> have the\nsame meaning with both single (<code>'...'</code>) and double (<code>\"...\"</code>) quotes.\nThe only difference between the two is that within single quotes you don’t\nneed to escape <code>\"</code> (but you have to escape <code>\\'</code>) and vice versa."
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "tutorial/controlflow",
+        "title": "More Control Flow Tools",
+        "label": "Tutorial Python · Pengatur Aliran Program (Control Flow)",
+        "url": "https://docs.python.org/3.13/tutorial/controlflow.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "for-statements",
+          "html": "Pernyataan for",
+          "text": "Pernyataan for"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> pada Python sedikit berbeda dari apa yang biasa Anda gunakan di C atau Pascal. Alih-alih mengulang deret angka secara kaku, pernyataan <code>for</code> di Python mengiterasi setiap elemen dari urutan apa pun (seperti list atau string), sesuai urutan kemunculannya dalam urutan tersebut:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># Measure some strings:</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">words</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'cat'</span><span class=\"p\">,</span> <span class=\"s1\">'window'</span><span class=\"p\">,</span> <span class=\"s1\">'defenestrate'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">w</span> <span class=\"ow\">in</span> <span class=\"n\">words</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">,</span> <span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">w</span><span class=\"p\">))</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">cat 3</span>\n<span class=\"go\">window 6</span>\n<span class=\"go\">defenestrate 12</span>",
+          "text": ">>> # Measure some strings:\n>>> words = ['cat', 'window', 'defenestrate']\n>>> for w in words:\n...     print(w, len(w))\n...\ncat 3\nwindow 6\ndefenestrate 12"
+        },
+        {
+          "type": "paragraph",
+          "html": "Kode yang memodifikasi koleksi saat sedang diiterasi dapat menimbulkan perilaku yang sulit diprediksi. Sebaiknya, lakukan iterasi pada salinan koleksi tersebut atau buatlah koleksi baru:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"c1\"># Create a sample collection</span>\n<span class=\"n\">users</span> <span class=\"o\">=</span> <span class=\"p\">{</span><span class=\"s1\">'Hans'</span><span class=\"p\">:</span> <span class=\"s1\">'active'</span><span class=\"p\">,</span> <span class=\"s1\">'Éléonore'</span><span class=\"p\">:</span> <span class=\"s1\">'inactive'</span><span class=\"p\">,</span> <span class=\"s1\">'景太郎'</span><span class=\"p\">:</span> <span class=\"s1\">'active'</span><span class=\"p\">}</span>\n\n<span class=\"c1\"># Strategy:  Iterate over a copy</span>\n<span class=\"k\">for</span> <span class=\"n\">user</span><span class=\"p\">,</span> <span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"n\">users</span><span class=\"o\">.</span><span class=\"n\">copy</span><span class=\"p\">()</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n    <span class=\"k\">if</span> <span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"s1\">'inactive'</span><span class=\"p\">:</span>\n        <span class=\"k\">del</span> <span class=\"n\">users</span><span class=\"p\">[</span><span class=\"n\">user</span><span class=\"p\">]</span>\n\n<span class=\"c1\"># Strategy:  Create a new collection</span>\n<span class=\"n\">active_users</span> <span class=\"o\">=</span> <span class=\"p\">{}</span>\n<span class=\"k\">for</span> <span class=\"n\">user</span><span class=\"p\">,</span> <span class=\"n\">status</span> <span class=\"ow\">in</span> <span class=\"n\">users</span><span class=\"o\">.</span><span class=\"n\">items</span><span class=\"p\">():</span>\n    <span class=\"k\">if</span> <span class=\"n\">status</span> <span class=\"o\">==</span> <span class=\"s1\">'active'</span><span class=\"p\">:</span>\n        <span class=\"n\">active_users</span><span class=\"p\">[</span><span class=\"n\">user</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"n\">status</span>",
+          "text": "# Create a sample collection\nusers = {'Hans': 'active', 'Éléonore': 'inactive', '景太郎': 'active'}\n\n# Strategy:  Iterate over a copy\nfor user, status in users.copy().items():\n    if status == 'inactive':\n        del users[user]\n\n# Strategy:  Create a new collection\nactive_users = {}\nfor user, status in users.items():\n    if status == 'active':\n        active_users[user] = status"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "the-range-function",
+          "html": "Fungsi range()",
+          "text": "Fungsi range()"
+        },
+        {
+          "type": "paragraph",
+          "html": "Jika Anda memang perlu mengiterasi serangkaian angka terurut, fungsi bawaan <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> sangat praktis digunakan. Fungsi ini menghasilkan deret aritmetika:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">5</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">0</span>\n<span class=\"go\">1</span>\n<span class=\"go\">2</span>\n<span class=\"go\">3</span>\n<span class=\"go\">4</span>",
+          "text": ">>> for i in range(5):\n...     print(i)\n...\n0\n1\n2\n3\n4"
+        },
+        {
+          "type": "paragraph",
+          "html": "Titik akhir yang diberikan tidak pernah menjadi bagian dari urutan yang dihasilkan; <code>range(10)</code> menghasilkan 10 nilai, yaitu indeks 0 sampai 9. Anda juga dapat menentukan nilai awal dan interval langkahnya (step):"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">5</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">))</span>\n<span class=\"go\">[5, 6, 7, 8, 9]</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">0</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"mi\">3</span><span class=\"p\">))</span>\n<span class=\"go\">[0, 3, 6, 9]</span>\n\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">list</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"o\">-</span><span class=\"mi\">10</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">100</span><span class=\"p\">,</span> <span class=\"o\">-</span><span class=\"mi\">30</span><span class=\"p\">))</span>\n<span class=\"go\">[-10, -40, -70]</span>",
+          "text": ">>> list(range(5, 10))\n[5, 6, 7, 8, 9]\n\n>>> list(range(0, 10, 3))\n[0, 3, 6, 9]\n\n>>> list(range(-10, -100, -30))\n[-10, -40, -70]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Untuk mengiterasi indeks dari suatu urutan, Anda dapat memadukan <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> dan <a href=\"https://docs.python.org/3.13/library/functions.html#len\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"len\"><code>len()</code></a>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">a</span> <span class=\"o\">=</span> <span class=\"p\">[</span><span class=\"s1\">'Mary'</span><span class=\"p\">,</span> <span class=\"s1\">'had'</span><span class=\"p\">,</span> <span class=\"s1\">'a'</span><span class=\"p\">,</span> <span class=\"s1\">'little'</span><span class=\"p\">,</span> <span class=\"s1\">'lamb'</span><span class=\"p\">]</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">a</span><span class=\"p\">)):</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">,</span> <span class=\"n\">a</span><span class=\"p\">[</span><span class=\"n\">i</span><span class=\"p\">])</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">0 Mary</span>\n<span class=\"go\">1 had</span>\n<span class=\"go\">2 a</span>\n<span class=\"go\">3 little</span>\n<span class=\"go\">4 lamb</span>",
+          "text": ">>> a = ['Mary', 'had', 'a', 'little', 'lamb']\n>>> for i in range(len(a)):\n...     print(i, a[i])\n...\n0 Mary\n1 had\n2 a\n3 little\n4 lamb"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dalam banyak kasus serupa, sangat praktis menggunakan fungsi <a href=\"https://docs.python.org/3.13/library/functions.html#enumerate\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"enumerate\"><code>enumerate()</code></a> untuk mendapatkan indeks dan elemennya sekaligus."
+        },
+        {
+          "type": "paragraph",
+          "html": "Hal menarik terjadi jika Anda mencetak objek range secara langsung: objek tersebut mencetak dirinya sendiri, bukan list isinya."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">)</span>\n<span class=\"go\">range(0, 10)</span>",
+          "text": ">>> range(10)\nrange(0, 10)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dalam banyak hal, objek yang dikembalikan oleh <code>range()</code> bertindak seolah-olah seperti list, tetapi sebenarnya bukan. Objek ini mengembalikan elemen berurutan saat diiterasi tanpa membuat seluruh list di memori, sehingga sangat hemat memori."
+        },
+        {
+          "type": "paragraph",
+          "html": "Kita menyebut objek tersebut sebagai <a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a>, yaitu objek yang dapat dijadikan sumber pengambilan elemen secara bertahap hingga elemennya habis."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">sum</span><span class=\"p\">(</span><span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">4</span><span class=\"p\">))</span>  <span class=\"c1\"># 0 + 1 + 2 + 3</span>\n<span class=\"go\">6</span>",
+          "text": ">>> sum(range(4))  # 0 + 1 + 2 + 3\n6"
+        },
+        {
+          "type": "paragraph",
+          "html": "Nantinya kita akan melihat lebih banyak fungsi yang mengembalikan objek iterable maupun menerima iterable sebagai argumen."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "break-and-continue-statements",
+          "html": "Pernyataan break dan continue",
+          "text": "Pernyataan break dan continue"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan <code>break</code> langsung menghentikan dan keluar dari perulangan terdalam (baik loop <code>for</code> maupun <code>while</code>):"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">n</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">n</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>        <span class=\"k\">if</span> <span class=\"n\">n</span> <span class=\"o\">%</span> <span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>            <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"</span><span class=\"si\">{</span><span class=\"n\">n</span><span class=\"si\">}</span><span class=\"s2\"> equals </span><span class=\"si\">{</span><span class=\"n\">x</span><span class=\"si\">}</span><span class=\"s2\"> * </span><span class=\"si\">{</span><span class=\"n\">n</span><span class=\"o\">//</span><span class=\"n\">x</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>            <span class=\"k\">break</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">4 equals 2 * 2</span>\n<span class=\"go\">6 equals 2 * 3</span>\n<span class=\"go\">8 equals 2 * 4</span>\n<span class=\"go\">9 equals 3 * 3</span>",
+          "text": ">>> for n in range(2, 10):\n...     for x in range(2, n):\n...         if n % x == 0:\n...             print(f\"{n} equals {x} * {n//x}\")\n...             break\n...\n4 equals 2 * 2\n6 equals 2 * 3\n8 equals 2 * 4\n9 equals 3 * 3"
+        },
+        {
+          "type": "paragraph",
+          "html": "The <code>continue</code> statement continues with the next\niteration of the loop:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">num</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">if</span> <span class=\"n\">num</span> <span class=\"o\">%</span> <span class=\"mi\">2</span> <span class=\"o\">==</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Found an even number </span><span class=\"si\">{</span><span class=\"n\">num</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>        <span class=\"k\">continue</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">f</span><span class=\"s2\">\"Found an odd number </span><span class=\"si\">{</span><span class=\"n\">num</span><span class=\"si\">}</span><span class=\"s2\">\"</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">Found an even number 2</span>\n<span class=\"go\">Found an odd number 3</span>\n<span class=\"go\">Found an even number 4</span>\n<span class=\"go\">Found an odd number 5</span>\n<span class=\"go\">Found an even number 6</span>\n<span class=\"go\">Found an odd number 7</span>\n<span class=\"go\">Found an even number 8</span>\n<span class=\"go\">Found an odd number 9</span>",
+          "text": ">>> for num in range(2, 10):\n...     if num % 2 == 0:\n...         print(f\"Found an even number {num}\")\n...         continue\n...     print(f\"Found an odd number {num}\")\n...\nFound an even number 2\nFound an odd number 3\nFound an even number 4\nFound an odd number 5\nFound an even number 6\nFound an odd number 7\nFound an even number 8\nFound an odd number 9"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "else-clauses-on-loops",
+          "html": "Klausa else pada Perulangan",
+          "text": "Klausa else pada Perulangan"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pada loop <code>for</code> atau <code>while</code>, klausa <code>else</code> dapat ditambahkan setelah blok loop. Klausa <code>else</code> ini akan dieksekusi jika perulangan selesai secara alami tanpa diinterupsi oleh pernyataan <code>break</code>:"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pada loop <code>for</code>, klausa <code>else</code> dieksekusi setelah loop menyelesaikan iterasi terakhirnya, yaitu jika tidak ada <code>break</code> yang terjadi."
+        },
+        {
+          "type": "paragraph",
+          "html": "Pada loop <code>while</code>, klausa <code>else</code> dieksekusi setelah kondisi perulangan berubah menjadi salah (False)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Pada kedua jenis loop tersebut, klausa <code>else</code> <strong>tidak</strong> akan dieksekusi jika perulangan dihentikan oleh pernyataan <code>break</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Hal ini dicontohkan pada perulangan <code>for</code> berikut yang mencari bilangan prima:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">for</span> <span class=\"n\">n</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"mi\">10</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">for</span> <span class=\"n\">x</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">2</span><span class=\"p\">,</span> <span class=\"n\">n</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>        <span class=\"k\">if</span> <span class=\"n\">n</span> <span class=\"o\">%</span> <span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>            <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"s1\">'equals'</span><span class=\"p\">,</span> <span class=\"n\">x</span><span class=\"p\">,</span> <span class=\"s1\">'*'</span><span class=\"p\">,</span> <span class=\"n\">n</span><span class=\"o\">//</span><span class=\"n\">x</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span>            <span class=\"k\">break</span>\n<span class=\"gp\">... </span>    <span class=\"k\">else</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>        <span class=\"c1\"># loop fell through without finding a factor</span>\n<span class=\"gp\">... </span>        <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">n</span><span class=\"p\">,</span> <span class=\"s1\">'is a prime number'</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">2 is a prime number</span>\n<span class=\"go\">3 is a prime number</span>\n<span class=\"go\">4 equals 2 * 2</span>\n<span class=\"go\">5 is a prime number</span>\n<span class=\"go\">6 equals 2 * 3</span>\n<span class=\"go\">7 is a prime number</span>\n<span class=\"go\">8 equals 2 * 4</span>\n<span class=\"go\">9 equals 3 * 3</span>",
+          "text": ">>> for n in range(2, 10):\n...     for x in range(2, n):\n...         if n % x == 0:\n...             print(n, 'equals', x, '*', n//x)\n...             break\n...     else:\n...         # loop fell through without finding a factor\n...         print(n, 'is a prime number')\n...\n2 is a prime number\n3 is a prime number\n4 equals 2 * 2\n5 is a prime number\n6 equals 2 * 3\n7 is a prime number\n8 equals 2 * 4\n9 equals 3 * 3"
+        },
+        {
+          "type": "paragraph",
+          "html": "(Yes, this is the correct code.  Look closely: the <code>else</code> clause belongs to\nthe <code>for</code> loop, <strong>not</strong> the <code>if</code> statement.)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Cara mudah memahami klausa else pada loop adalah dengan membayangkannya berpasangan dengan pernyataan if di dalam loop. Jika kondisi pencarian tidak pernah terpenuhi dan loop tuntas tanpa break, klausa else di luar loop akan dijalankan."
+        },
+        {
+          "type": "paragraph",
+          "html": "When used with a loop, the <code>else</code> clause has more in common with the <code>else</code>\nclause of a <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#try\" rel=\"noopener noreferrer\" target=\"_blank\"><code>try</code></a> statement than it does with that of <code>if</code>\nstatements: a <code>try</code> statement’s <code>else</code> clause runs when no exception\noccurs, and a loop’s <code>else</code> clause runs when no <code>break</code> occurs. For more on\nthe <code>try</code> statement and exceptions, see tut-handling."
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "reference/compound_stmts",
+        "title": "Compound statements",
+        "label": "Referensi Bahasa Python · Pernyataan Majemuk (Compound Statements)",
+        "url": "https://docs.python.org/3.13/reference/compound_stmts.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "the-while-statement",
+          "html": "Pernyataan while",
+          "text": "Pernyataan while"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#while\" rel=\"noopener noreferrer\" target=\"_blank\"><code>while</code></a> digunakan untuk mengeksekusi blok kode berulang kali selama ekspresi kondisi bernilai benar (True):"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-while_stmt\">while_stmt</strong> ::= \"while\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-assignment_expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">assignment_expression</span></code></a> \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>\n               [\"else\" \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>]",
+          "text": "\nwhile_stmt ::= \"while\" assignment_expression \":\" suite\n               [\"else\" \":\" suite]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan ini berulang kali menguji ekspresi kondisi, dan jika benar, menjalankan blok instruksinya; jika ekspresi bernilai salah, blok klausa else (jika ada) dijalankan dan perulangan berakhir."
+        },
+        {
+          "type": "paragraph",
+          "html": "A <code>break</code> statement executed in the first suite terminates the loop\nwithout executing the <code>else</code> clause’s suite.  A <code>continue</code>\nstatement executed in the first suite skips the rest of the suite and goes back\nto testing the expression."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "the-for-statement",
+          "html": "Pernyataan for",
+          "text": "Pernyataan for"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> digunakan untuk mengiterasi elemen-elemen dari suatu urutan (seperti string, tuple, atau list) atau objek iterable lainnya:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-for_stmt\">for_stmt</strong> ::= \"for\" <code class=\"xref docutils literal notranslate\"><span class=\"pre\">target_list</span></code> \"in\" <code class=\"xref docutils literal notranslate\"><span class=\"pre\">starred_list</span></code> \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>\n             [\"else\" \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>]",
+          "text": "\nfor_stmt ::= \"for\" target_list \"in\" starred_list \":\" suite\n             [\"else\" \":\" suite]"
+        },
+        {
+          "type": "paragraph",
+          "html": "The <code>starred_list</code> expression is evaluated once; it should yield an\n<a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a> object.  An <a href=\"https://docs.python.org/3.13/glossary.html#term-iterator\" rel=\"noopener noreferrer\" target=\"_blank\">iterator</a> is created for that iterable.\nThe first item provided\nby the iterator is then assigned to the target list using the standard\nrules for assignments (see assignment), and the suite is executed.  This\nrepeats for each item provided by the iterator.  When the iterator is exhausted,\nthe suite in the <code>else</code> clause,\nif present, is executed, and the loop terminates."
+        },
+        {
+          "type": "paragraph",
+          "html": "A <code>break</code> statement executed in the first suite terminates the loop\nwithout executing the <code>else</code> clause’s suite.  A <code>continue</code>\nstatement executed in the first suite skips the rest of the suite and continues\nwith the next item, or with the <code>else</code> clause if there is no next\nitem."
+        },
+        {
+          "type": "paragraph",
+          "html": "Loop for melakukan penugasan nilai ke variabel penampung iterasi pada setiap langkah putaran loop:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">)</span>\n    <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>             <span class=\"c1\"># this will not affect the for-loop</span>\n                      <span class=\"c1\"># because i will be overwritten with the next</span>\n                      <span class=\"c1\"># index in the range</span>",
+          "text": "for i in range(10):\n    print(i)\n    i = 5             # this will not affect the for-loop\n                      # because i will be overwritten with the next\n                      # index in the range"
+        },
+        {
+          "type": "paragraph",
+          "html": "Names in the target list are not deleted when the loop is finished, but if the\nsequence is empty, they will not have been assigned to at all by the loop.  Hint:\nthe built-in type <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> represents immutable arithmetic sequences of integers.\nFor instance, iterating <code>range(3)</code> successively yields 0, 1, and then 2."
+        },
+        {
+          "type": "note",
+          "kind": "versionchanged",
+          "html": "Changed in version 3.11: Starred elements are now allowed in the expression list."
+        }
+      ]
+    }
+  ],
+  "blockCount": 62,
+  "wordCount": 1965,
+  "title": "Perulangan for & while",
+  "order": 3,
+  "api": [
+    {
+      "name": "range",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#range",
+      "display": "range",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "enumerate",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#enumerate",
+      "display": "enumerate",
+      "doc": "library/functions"
+    },
+    {
+      "name": "zip",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#zip",
+      "display": "zip",
+      "doc": "library/functions"
+    },
+    {
+      "name": "reversed",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#reversed",
+      "display": "reversed",
+      "doc": "library/functions"
+    },
+    {
+      "name": "len",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#len",
+      "display": "len",
+      "doc": "library/functions"
+    },
+    {
+      "name": "iter",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#iter",
+      "display": "iter",
+      "doc": "library/functions"
+    },
+    {
+      "name": "next",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#next",
+      "display": "next",
+      "doc": "library/functions"
+    }
+  ]
+}

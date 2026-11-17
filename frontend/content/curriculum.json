@@ -1,0 +1,403 @@
+{
+  "pythonVersion": "3.13.7",
+  "docVersion": "3.13",
+  "docUrl": "https://docs.python.org/3.13/",
+  "cpythonRepo": "https://github.com/python/cpython/tree/v3.13.7/Doc",
+  "title": "PyJourney",
+  "description": "Jalur belajar Python 3 dari dokumentasi resmi CPython: variabel, percabangan, perulangan, fungsi, list & dictionary, sampai OOP.",
+  "chapters": [
+    {
+      "order": 1,
+      "slug": "variabel-dan-tipe-data",
+      "phase": "Fondasi",
+      "title": "Variabel & Tipe Data",
+      "subtitle": "Menyimpan nilai, mengenali tipe, dan melakukan operasi dasar",
+      "level": "Pemula",
+      "minutes": 25,
+      "description": "Mulai dari cara Python mengevaluasi ekspresi, memberi nama pada nilai, lalu berkenalan dengan angka, teks, boolean, dan perbandingan.",
+      "objectives": [
+        "Membuat variabel dan memahami bahwa Python tidak memerlukan deklarasi tipe.",
+        "Mengenali tipe data dasar: int, float, str, dan bool.",
+        "Melakukan operasi aritmetika, perbandingan, dan operasi boolean.",
+        "Memahami konsep truth value serta konversi tipe dasar."
+      ],
+      "keyPoints": [
+        "Variabel adalah nama yang merujuk ke sebuah objek; tipe mengikuti nilainya.",
+        "Gunakan type() untuk memeriksa tipe dan int(), float(), str() untuk konversi.",
+        "Operator // adalah floor division, % menghasilkan sisa bagi, dan ** adalah perpangkatan.",
+        "Nilai seperti 0, 0.0, '', [], {}, dan None dianggap falsy."
+      ],
+      "apiHighlights": [
+        "len",
+        "int",
+        "float",
+        "str",
+        "bool",
+        "type",
+        "isinstance",
+        "abs",
+        "round"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/introduction",
+          "label": "The Python Tutorial · An Informal Introduction to Python",
+          "sections": [
+            "numbers",
+            "text"
+          ]
+        },
+        {
+          "doc": "library/stdtypes",
+          "label": "The Python Standard Library · Built-in Types",
+          "sections": [
+            "truth-value-testing",
+            "boolean-operations-and-or-not",
+            "comparisons",
+            "numeric-types-int-float-complex",
+            "boolean-type-bool"
+          ],
+          "exclude": [
+            "bitwise-operations-on-integer-types",
+            "additional-methods-on-integer-types",
+            "additional-methods-on-float",
+            "hashing-of-numeric-types"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "slug": "percabangan",
+      "phase": "Fondasi",
+      "title": "Percabangan if / elif / else",
+      "subtitle": "Membuat program mengambil keputusan",
+      "level": "Pemula",
+      "minutes": 25,
+      "description": "Pelajari cara menjalankan blok kode hanya ketika kondisi terpenuhi, menangani beberapa kemungkinan, menggabungkan perbandingan dengan operator boolean, dan membaca sintaks resminya.",
+      "objectives": [
+        "Menulis percabangan dengan if, elif, dan else.",
+        "Memahami peran indentasi sebagai penanda blok kode.",
+        "Menggabungkan kondisi dengan operator perbandingan dan boolean.",
+        "Membaca ekspresi kondisional (x if kondisi else y) serta urutan evaluasinya.",
+        "Mengenali sintaks formal pernyataan if di Python."
+      ],
+      "keyPoints": [
+        "Kondisi if dievaluasi berdasarkan truth value, bukan hanya True/False literal.",
+        "elif memeriksa kondisi berikutnya hanya jika kondisi sebelumnya gagal.",
+        "Blok kode ditentukan oleh indentasi, bukan kurung kurawal.",
+        "Operator perbandingan bisa dirangkai: 0 < x < 10 sama dengan 0 < x and x < 10.",
+        "Ekspresi x if kondisi else y memilih satu nilai tanpa menulis blok if.",
+        "pass berguna saat sebuah cabang belum ingin diisi implementasinya."
+      ],
+      "apiHighlights": [
+        "bool",
+        "all",
+        "any",
+        "print"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/controlflow",
+          "label": "The Python Tutorial · More Control Flow Tools",
+          "sections": [
+            "if-statements",
+            "pass-statements"
+          ]
+        },
+        {
+          "doc": "reference/compound_stmts",
+          "label": "The Python Language Reference · Compound statements",
+          "sections": [
+            "the-if-statement"
+          ]
+        },
+        {
+          "doc": "reference/expressions",
+          "label": "The Python Language Reference · Comparisons & boolean operations",
+          "sections": [
+            "comparisons",
+            "boolean-operations",
+            "conditional-expressions"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "slug": "perulangan",
+      "phase": "Kontrol & Fungsi",
+      "title": "Perulangan for & while",
+      "subtitle": "Mengulang pekerjaan dan mengontrol alur iterasi",
+      "level": "Pemula",
+      "minutes": 30,
+      "description": "Dari while untuk mengulang selama kondisi benar, for untuk menelusuri urutan, range() untuk membangkitkan angka, sampai break, continue, dan else pada loop.",
+      "objectives": [
+        "Membedakan kapan memakai for dan kapan memakai while.",
+        "Menggunakan range() untuk membuat urutan angka.",
+        "Menghentikan atau melewati iterasi dengan break dan continue.",
+        "Memahami else pada loop dan sintaks resmi while/for."
+      ],
+      "keyPoints": [
+        "for menelusuri item dari sebuah iterable; while mengulang selama kondisi truthy.",
+        "range(start, stop, step) tidak memasukkan nilai stop.",
+        "break keluar dari loop terdekat; continue langsung ke iterasi berikutnya.",
+        "else pada loop berjalan jika loop selesai tanpa break."
+      ],
+      "apiHighlights": [
+        "range",
+        "enumerate",
+        "zip",
+        "reversed",
+        "len",
+        "iter",
+        "next"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/introduction",
+          "label": "The Python Tutorial · First Steps Towards Programming",
+          "sections": [
+            "first-steps-towards-programming"
+          ]
+        },
+        {
+          "doc": "tutorial/controlflow",
+          "label": "The Python Tutorial · More Control Flow Tools",
+          "sections": [
+            "for-statements",
+            "the-range-function",
+            "break-and-continue-statements",
+            "else-clauses-on-loops"
+          ]
+        },
+        {
+          "doc": "reference/compound_stmts",
+          "label": "The Python Language Reference · Compound statements",
+          "sections": [
+            "the-while-statement",
+            "the-for-statement"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "slug": "fungsi",
+      "phase": "Kontrol & Fungsi",
+      "title": "Fungsi dengan def",
+      "subtitle": "Membungkus logika agar bisa dipakai ulang",
+      "level": "Menengah",
+      "minutes": 35,
+      "description": "Belajar mendefinisikan fungsi, memberi parameter, mengembalikan nilai, memakai argumen default dan keyword, serta menulis docstring yang baik.",
+      "objectives": [
+        "Mendefinisikan dan memanggil fungsi dengan def.",
+        "Menggunakan parameter posisional, keyword, default, dan variadic.",
+        "Memahami return, scope lokal, dan docstring.",
+        "Membaca sintaks formal function definitions di language reference."
+      ],
+      "keyPoints": [
+        "Fungsi tanpa return mengembalikan None.",
+        "Argumen default dievaluasi sekali saat fungsi didefinisikan, bukan setiap pemanggilan.",
+        "Keyword argument membuat pemanggilan lebih terbaca; *args dan **kwargs menampung argumen tak terbatas.",
+        "Docstring adalah string pertama di dalam fungsi dan bisa diakses lewat __doc__."
+      ],
+      "apiHighlights": [
+        "len",
+        "print",
+        "help",
+        "dir",
+        "callable",
+        "sorted"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/controlflow",
+          "label": "The Python Tutorial · Defining Functions",
+          "sections": [
+            "defining-functions",
+            "more-on-defining-functions"
+          ]
+        },
+        {
+          "doc": "reference/compound_stmts",
+          "label": "The Python Language Reference · Function definitions",
+          "sections": [
+            "function-definitions"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "slug": "list-dan-dictionary",
+      "phase": "Data & OOP",
+      "title": "List & Dictionary",
+      "subtitle": "Menyimpan banyak data dan mengaksesnya dengan cepat",
+      "level": "Menengah",
+      "minutes": 35,
+      "description": "Kuasai dua struktur data paling sering dipakai: list yang berurutan dan dictionary yang berbasis key-value, lengkap dengan operasi dan teknik iterasi.",
+      "objectives": [
+        "Membuat, mengubah, dan mengiris list.",
+        "Memakai method list seperti append, extend, pop, dan sort.",
+        "Menyimpan dan mengambil nilai dari dictionary berdasarkan key.",
+        "Menelusuri list dan dictionary dengan pola yang idiomatis."
+      ],
+      "keyPoints": [
+        "List bersifat mutable dan berurutan; indeks dimulai dari 0.",
+        "Dictionary menyimpan pasangan key-value dan diakses dengan data[key].",
+        "Method seperti append() mengubah list di tempat, sedangkan sorted() menghasilkan list baru.",
+        "Gunakan items() untuk menelusuri key dan value sekaligus."
+      ],
+      "apiHighlights": [
+        "list",
+        "dict",
+        "list.sort",
+        "dict.get",
+        "dict.items",
+        "dict.keys",
+        "dict.values",
+        "dict.update",
+        "sorted",
+        "enumerate",
+        "zip"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/datastructures",
+          "label": "The Python Tutorial · Data Structures",
+          "sections": [
+            "more-on-lists",
+            "the-del-statement",
+            "dictionaries",
+            "looping-techniques"
+          ]
+        },
+        {
+          "doc": "library/stdtypes",
+          "label": "The Python Standard Library · Sequence & mapping types",
+          "sections": [
+            "common-sequence-operations",
+            "mutable-sequence-types",
+            "lists",
+            "mapping-types-dict"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "slug": "oop-dasar",
+      "phase": "Data & OOP",
+      "title": "OOP Dasar: Class & Object",
+      "subtitle": "Modelkan data dan perilaku dalam satu struktur",
+      "level": "Menengah",
+      "minutes": 35,
+      "description": "Masuk ke pemrograman berorientasi objek: membuat class, menciptakan instance, mendefinisikan method, dan memahami namespace serta atribut class versus instance.",
+      "objectives": [
+        "Mendefinisikan class dan membuat object dari class tersebut.",
+        "Menulis method dengan parameter self dan konstruktor __init__.",
+        "Membedakan class variable dan instance variable.",
+        "Memahami namespace, scope, dan sintaks formal class definition."
+      ],
+      "keyPoints": [
+        "Class adalah cetak biru; object adalah instance yang dibuat dari class.",
+        "self merujuk ke instance yang sedang memanggil method.",
+        "__init__ dijalankan saat object dibuat dan biasanya dipakai untuk mengisi atribut.",
+        "Atribut yang di-set lewat self adalah milik instance; atribut di body class adalah milik class."
+      ],
+      "apiHighlights": [
+        "object",
+        "type",
+        "isinstance",
+        "dir",
+        "vars",
+        "hasattr",
+        "getattr",
+        "setattr",
+        "property",
+        "classmethod",
+        "staticmethod",
+        "super"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/classes",
+          "label": "The Python Tutorial · Classes",
+          "sections": [
+            "a-word-about-names-and-objects",
+            "python-scopes-and-namespaces",
+            "a-first-look-at-classes",
+            "random-remarks"
+          ]
+        },
+        {
+          "doc": "reference/compound_stmts",
+          "label": "The Python Language Reference · Class definitions",
+          "sections": [
+            "class-definitions"
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "slug": "oop-lanjutan",
+      "phase": "Data & OOP",
+      "title": "OOP Lanjutan: Inheritance & Pythonic Objects",
+      "subtitle": "Mewarisi class, enkapsulasi, iterator, dan generator",
+      "level": "Lanjutan",
+      "minutes": 40,
+      "description": "Perluas desain OOP dengan inheritance, multiple inheritance, private attribute, lalu kenali protokol iterator dan generator yang membuat object Python terasa natural.",
+      "objectives": [
+        "Membuat subclass dan memanggil parent class dengan super().",
+        "Memahami multiple inheritance dan method resolution order secara praktis.",
+        "Menggunakan name mangling dan mengenali batas enkapsulasi di Python.",
+        "Membuat iterator dan generator untuk urutan data yang efisien."
+      ],
+      "keyPoints": [
+        "Inheritance memungkinkan subclass memakai ulang perilaku parent class.",
+        "super() memanggil implementasi berikutnya dalam method resolution order.",
+        "Awalan __ memicu name mangling; ini konvensi, bukan private yang absolut.",
+        "Generator memakai yield untuk menghasilkan nilai secara lazy, satu per satu."
+      ],
+      "apiHighlights": [
+        "super",
+        "property",
+        "classmethod",
+        "staticmethod",
+        "iter",
+        "next",
+        "StopIteration",
+        "object.__init__",
+        "object.__str__",
+        "object.__repr__",
+        "object.__eq__",
+        "object.__iter__",
+        "iterator.__next__",
+        "generator.__next__"
+      ],
+      "sources": [
+        {
+          "doc": "tutorial/classes",
+          "label": "The Python Tutorial · Classes",
+          "sections": [
+            "inheritance",
+            "private-variables",
+            "odds-and-ends",
+            "iterators",
+            "generators",
+            "generator-expressions"
+          ]
+        },
+        {
+          "doc": "library/stdtypes",
+          "label": "The Python Standard Library · Iterator Types",
+          "sections": [
+            "iterator-types"
+          ]
+        }
+      ]
+    }
+  ]
+}

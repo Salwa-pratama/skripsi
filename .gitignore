@@ -1,0 +1,178 @@
+# ==============================================================================
+# Git Ignore - Monorepo Projek 2 (SKRIPSI)
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. Environment & Secret Credentials (JANGAN SAMPAI TER-PUSH KE GITHUB)
+# ------------------------------------------------------------------------------
+.env
+.env.*
+*.env
+*.env.*
+!.env.example
+!.env.template
+
+# Credentials & Certificates
+credentials.json
+*.pem
+*.key
+*.cert
+*.crt
+
+# ------------------------------------------------------------------------------
+# 2. Large Datasets & Media (>100MB / Ribuan File)
+# ------------------------------------------------------------------------------
+# Dataset Computer Vision (SIBI, BISINDO, Gambar & Video)
+dataset/
+datasets/
+**/dataset/
+**/datasets/
+
+# Large Compressed Archives
+*.zip
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+*.tar.xz
+*.iso
+
+# Raw Video Files (jika di luar dataset)
+*.mp4
+*.avi
+*.mov
+*.mkv
+
+# ------------------------------------------------------------------------------
+# 3. Machine Learning Models & Weights (File Binary Bobot Model)
+# GitHub menolak file > 100MB & membatasi file binary besar
+# ------------------------------------------------------------------------------
+# Model binary formats
+*.caffemodel
+*.pkl
+*.pickle
+*.joblib
+*.task
+*.pb
+*.pbtxt.bin
+*.h5
+*.hdf5
+*.pt
+*.pth
+*.onnx
+*.tflite
+*.ckpt*
+checkpoint
+
+# Folder model besar TensorFlow / MediaPipe
+computer-vision/model/ssd_mobilenet_v2_coco_2018_03_29/
+**/saved_model/
+
+# Pengecualian: File konfigurasi & label teks ringan tetap di-track
+!computer-vision/model/sibi_labels.json
+!computer-vision/model/MobileNetSSD_deploy.prototxt
+!computer-vision/model/ssd_mobilenet_v2_coco_2018_03_29.pbtxt
+
+# ------------------------------------------------------------------------------
+# 4. Python & Virtual Environments
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribution & Build
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Testing & Caches
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# ------------------------------------------------------------------------------
+# 5. Frontend (Node.js / Next.js / React)
+# ------------------------------------------------------------------------------
+node_modules/
+.next/
+out/
+.turbo/
+.cache/
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts.bak
+
+# Package manager logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------------------------------------------
+# 6. Embedded / IoT (ESP32 - PlatformIO)
+# ------------------------------------------------------------------------------
+.pio/
+.pioenvs/
+.piolibdeps/
+.clang_complete
+
+# ------------------------------------------------------------------------------
+# 7. OS & IDE Artifacts
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# VS Code (kecuali setting rekomendasi extension)
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.vscode/.browse.c_cpp.db*
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/ipch/
+
+# JetBrains / PyCharm / IntelliJ
+.idea/
+*.iml
+
+# General logs & temp files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~

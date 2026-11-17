@@ -1,0 +1,533 @@
+{
+  "slug": "percabangan",
+  "docVersion": "3.13",
+  "generatedAt": "2026-11-03T23:37:06+00:00",
+  "groups": [
+    {
+      "source": {
+        "doc": "tutorial/controlflow",
+        "title": "More Control Flow Tools",
+        "label": "Tutorial Python · Pengatur Aliran Program (Control Flow)",
+        "url": "https://docs.python.org/3.13/tutorial/controlflow.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "if-statements",
+          "html": "Pernyataan if",
+          "text": "Pernyataan if"
+        },
+        {
+          "type": "paragraph",
+          "html": "Mungkin jenis pernyataan yang paling dikenal luas adalah pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a>. Sebagai contoh:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"nb\">int</span><span class=\"p\">(</span><span class=\"nb\">input</span><span class=\"p\">(</span><span class=\"s2\">\"Please enter an integer: \"</span><span class=\"p\">))</span>\n<span class=\"go\">Please enter an integer: 42</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">if</span> <span class=\"n\">x</span> <span class=\"o\">&lt;</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"n\">x</span> <span class=\"o\">=</span> <span class=\"mi\">0</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'Negative changed to zero'</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span><span class=\"k\">elif</span> <span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"mi\">0</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'Zero'</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span><span class=\"k\">elif</span> <span class=\"n\">x</span> <span class=\"o\">==</span> <span class=\"mi\">1</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'Single'</span><span class=\"p\">)</span>\n<span class=\"gp\">... </span><span class=\"k\">else</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'More'</span><span class=\"p\">)</span>\n<span class=\"gp\">...</span>\n<span class=\"go\">More</span>",
+          "text": ">>> x = int(input(\"Please enter an integer: \"))\nPlease enter an integer: 42\n>>> if x < 0:\n...     x = 0\n...     print('Negative changed to zero')\n... elif x == 0:\n...     print('Zero')\n... elif x == 1:\n...     print('Single')\n... else:\n...     print('More')\n...\nMore"
+        },
+        {
+          "type": "paragraph",
+          "html": "Dapat terdapat nol atau lebih bagian <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#elif\" rel=\"noopener noreferrer\" target=\"_blank\"><code>elif</code></a>, dan bagian <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#else\" rel=\"noopener noreferrer\" target=\"_blank\"><code>else</code></a> bersifat opsional. Kata kunci '<code>elif</code>' merupakan singkatan dari 'else if', dan berguna untuk menghindari indentasi berlebih. Rangkaian <code>if</code> … <code>elif</code> … <code>elif</code> … bertindak sebagai pengganti pernyataan <code>switch</code> atau <code>case</code> yang ada di bahasa lain."
+        },
+        {
+          "type": "paragraph",
+          "html": "Jika Anda membandingkan nilai yang sama dengan beberapa konstanta atau memeriksa tipe data tertentu, pernyataan <code>match</code> juga dapat digunakan. Rincian selengkapnya dapat dilihat pada dokumentasi match statements."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "pass-statements",
+          "html": "Pernyataan pass",
+          "text": "Pernyataan pass"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan <code>pass</code> tidak melakukan tindakan apa pun. Pernyataan ini digunakan saat suatu pernyataan dibutuhkan secara sintaksis tetapi program tidak memerlukan aksi apa pun. Sebagai contoh:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">while</span> <span class=\"kc\">True</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"k\">pass</span>  <span class=\"c1\"># Busy-wait for keyboard interrupt (Ctrl+C)</span>\n<span class=\"gp\">...</span>",
+          "text": ">>> while True:\n...     pass  # Busy-wait for keyboard interrupt (Ctrl+C)\n..."
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan ini umumnya digunakan untuk membuat kerangka kelas minimal:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">class</span><span class=\"w\"> </span><span class=\"nc\">MyEmptyClass</span><span class=\"p\">:</span>\n<span class=\"gp\">... </span>    <span class=\"k\">pass</span>\n<span class=\"gp\">...</span>",
+          "text": ">>> class MyEmptyClass:\n...     pass\n..."
+        },
+        {
+          "type": "paragraph",
+          "html": "Tempat lain penggunaan <code>pass</code> adalah sebagai penampung sementara (place-holder) untuk badan fungsi atau blok percabangan saat Anda merancang kode baru, memungkinkan Anda berpikir pada level abstraksi yang lebih tinggi tanpa memicu SyntaxError:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"k\">def</span><span class=\"w\"> </span><span class=\"nf\">initlog</span><span class=\"p\">(</span><span class=\"o\">*</span><span class=\"n\">args</span><span class=\"p\">):</span>\n<span class=\"gp\">... </span>    <span class=\"k\">pass</span>   <span class=\"c1\"># Remember to implement this!</span>\n<span class=\"gp\">...</span>",
+          "text": ">>> def initlog(*args):\n...     pass   # Remember to implement this!\n..."
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "reference/compound_stmts",
+        "title": "Compound statements",
+        "label": "Referensi Bahasa Python · Pernyataan Majemuk (Compound Statements)",
+        "url": "https://docs.python.org/3.13/reference/compound_stmts.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "the-if-statement",
+          "html": "Pernyataan if",
+          "text": "Pernyataan if"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a> digunakan untuk eksekusi kode kondisional berdasarkan pemenuhan syarat tertentu:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-if_stmt\">if_stmt</strong> ::= \"if\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-assignment_expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">assignment_expression</span></code></a> \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>\n            (\"elif\" <a class=\"reference internal\" href=\"../expressions/#grammar-token-python-grammar-assignment_expression\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">assignment_expression</span></code></a> \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>)*\n            [\"else\" \":\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">suite</span></code></a>]",
+          "text": "\nif_stmt ::= \"if\" assignment_expression \":\" suite\n            (\"elif\" assignment_expression \":\" suite)*\n            [\"else\" \":\" suite]"
+        },
+        {
+          "type": "paragraph",
+          "html": "Pernyataan ini memilih tepat satu blok kode (suite) dengan mengevaluasi ekspresi kondisi satu per satu hingga ditemukan kondisi yang bernilai benar (True). Blok kode tersebut kemudian dieksekusi. Jika seluruh ekspresi bernilai salah (False), blok klausa <code>else</code> (jika ada) yang akan dijalankan."
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "reference/expressions",
+        "title": "Expressions",
+        "label": "Referensi Bahasa Python · Perbandingan & Operasi Boolean",
+        "url": "https://docs.python.org/3.13/reference/expressions.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "comparisons",
+          "html": "Perbandingan (Comparisons)",
+          "text": "Perbandingan (Comparisons)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Berbeda dengan bahasa C, semua operasi perbandingan di Python memiliki prioritas yang sama, yaitu lebih rendah daripada operasi aritmetika dan pergeseran bit. Selain itu, ekspresi seperti <code>a &lt; b &lt; c</code> memiliki interpretasi berantai seperti dalam matematika formal:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-comparison\">comparison</strong>    ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_expr\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">or_expr</span></code></a> (<a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-comp_operator\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">comp_operator</span></code></a> <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_expr\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">or_expr</span></code></a>)*\n<strong id=\"grammar-token-python-grammar-comp_operator\">comp_operator</strong> ::= \"&lt;\" | \"&gt;\" | \"==\" | \"&gt;=\" | \"&lt;=\" | \"!=\"\n                  | \"is\" [\"not\"] | [\"not\"] \"in\"",
+          "text": "\ncomparison    ::= or_expr (comp_operator or_expr)*\ncomp_operator ::= \"<\" | \">\" | \"==\" | \">=\" | \"<=\" | \"!=\"\n                  | \"is\" [\"not\"] | [\"not\"] \"in\""
+        },
+        {
+          "type": "paragraph",
+          "html": "Operasi perbandingan menghasilkan nilai boolean: <code>True</code> atau <code>False</code>. Ekspresi dapat dirangkai secara berantai: contohnya <code>x &lt; y &lt;= z</code> ekuivalen dengan <code>x &lt; y and y &lt;= z</code>, di mana <code>y</code> hanya dievaluasi satu kali."
+        },
+        {
+          "type": "paragraph",
+          "html": "Perbandingan dapat dirangkai secara berantai: contohnya <code>x &lt; y &lt;= z</code> ekuivalen dengan <code>x &lt; y and y &lt;= z</code>, di mana <code>y</code> hanya dievaluasi satu kali saja."
+        },
+        {
+          "type": "paragraph",
+          "html": "Secara formal, jika <em>a</em>, <em>b</em>, <em>c</em> adalah ekspresi dan <em>op1</em>, <em>op2</em> adalah operator perbandingan, maka <code>a op1 b op2 c</code> ekuivalen dengan <code>a op1 b and b op2 c</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Perhatikan bahwa <code>a op1 b op2 c</code> tidak menyiratkan perbandingan langsung antara <em>a</em> dan <em>c</em>; sehingga ekspresi seperti <code>x &lt; y &gt; z</code> secara sintaksis valid di Python."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "value-comparisons",
+          "html": "Perbandingan Nilai",
+          "text": "Perbandingan Nilai"
+        },
+        {
+          "type": "paragraph",
+          "html": "Operator <code>&lt;</code>, <code>&gt;</code>, <code>==</code>, <code>&gt;=</code>, <code>&lt;=</code>, dan <code>!=</code> membandingkan nilai dari dua buah objek. Objek-objek tersebut tidak harus memiliki tipe data yang sama."
+        },
+        {
+          "type": "paragraph",
+          "html": "Bab Objek, nilai, dan tipe menyatakan bahwa setiap objek di Python memiliki nilai, tipe, dan identitas unik di memori."
+        },
+        {
+          "type": "paragraph",
+          "html": "Karena semua tipe adalah subtipe dari <code>object</code>, mereka mewarisi perilaku perbandingan default dari <code>object</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Perilaku default perbandingan kesetaraan (<code>==</code> dan <code>!=</code>) didasarkan pada identitas objek di memori."
+        },
+        {
+          "type": "paragraph",
+          "html": "Perbandingan urutan default (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, <code>&gt;=</code>) tidak disediakan secara bawaan; mencobanya pada objek acak akan memicu <code>TypeError</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "The behavior of the default equality comparison, that instances with different\nidentities are always unequal, may be in contrast to what types will need that\nhave a sensible definition of object value and value-based equality.  Such\ntypes will need to customize their comparison behavior, and in fact, a number\nof built-in types have done that."
+        },
+        {
+          "type": "paragraph",
+          "html": "The following list describes the comparison behavior of the most important\nbuilt-in types."
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "Numbers of built-in numeric types (<a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesnumeric\" rel=\"noopener noreferrer\" target=\"_blank\">Numeric Types — int, float, complex</a>) and of the standard\nlibrary types <code>fractions.Fraction</code> and <code>decimal.Decimal</code> can be\ncompared within and across their types, with the restriction that complex\nnumbers do not support order comparison.  Within the limits of the types\ninvolved, they compare mathematically (algorithmically) correct without loss\nof precision."
+              },
+              {
+                "type": "paragraph",
+                "html": "The not-a-number values <code>float('NaN')</code> and <code>decimal.Decimal('NaN')</code> are\nspecial.  Any ordered comparison of a number to a not-a-number value is false.\nA counter-intuitive implication is that not-a-number values are not equal to\nthemselves.  For example, if <code>x = float('NaN')</code>, <code>3 &lt; x</code>, <code>x &lt; 3</code> and\n<code>x == x</code> are all false, while <code>x != x</code> is true.  This behavior is\ncompliant with IEEE 754."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "<code>None</code> and <code>NotImplemented</code> are singletons.  <a href=\"https://peps.python.org/pep-0008/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 8</strong></a> advises that\ncomparisons for singletons should always be done with <code>is</code> or <code>is not</code>,\nnever the equality operators."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Binary sequences (instances of <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytes\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytes\"><code>bytes</code></a> or <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a>) can be\ncompared within and across their types.  They compare lexicographically using\nthe numeric values of their elements."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Strings (instances of <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str\"><code>str</code></a>) compare lexicographically using the\nnumerical Unicode code points (the result of the built-in function\n<a href=\"https://docs.python.org/3.13/library/functions.html#ord\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"ord\"><code>ord()</code></a>) of their characters. <a href=\"https://docs.python.org/3.13/reference/expressions.html#id21\" rel=\"noopener noreferrer\" target=\"_blank\">[3]</a>"
+              },
+              {
+                "type": "paragraph",
+                "html": "Strings and binary sequences cannot be directly compared."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Sequences (instances of <a href=\"https://docs.python.org/3.13/library/stdtypes.html#tuple\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"tuple\"><code>tuple</code></a>, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#list\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"list\"><code>list</code></a>, or <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range</code></a>) can\nbe compared only within each of their types, with the restriction that ranges\ndo not support order comparison.  Equality comparison across these types\nresults in inequality, and ordering comparison across these types raises\n<a href=\"https://docs.python.org/3.13/library/exceptions.html#TypeError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"TypeError\"><code>TypeError</code></a>."
+              },
+              {
+                "type": "paragraph",
+                "html": "Sequences compare lexicographically using comparison of corresponding\nelements.  The built-in containers typically assume identical objects are\nequal to themselves.  That lets them bypass equality tests for identical\nobjects to improve performance and to maintain their internal invariants."
+              },
+              {
+                "type": "paragraph",
+                "html": "Lexicographical comparison between built-in collections works as follows:"
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "items": [
+                  [
+                    {
+                      "type": "paragraph",
+                      "html": "For two collections to compare equal, they must be of the same type, have\nthe same length, and each pair of corresponding elements must compare\nequal (for example, <code>[1,2] == (1,2)</code> is false because the type is not the\nsame)."
+                    }
+                  ],
+                  [
+                    {
+                      "type": "paragraph",
+                      "html": "Collections that support order comparison are ordered the same as their\nfirst unequal elements (for example, <code>[1,2,x] &lt;= [1,2,y]</code> has the same\nvalue as <code>x &lt;= y</code>).  If a corresponding element does not exist, the\nshorter collection is ordered first (for example, <code>[1,2] &lt; [1,2,3]</code> is\ntrue)."
+                    }
+                  ]
+                ]
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Mappings (instances of <a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"dict\"><code>dict</code></a>) compare equal if and only if they have\nequal <code>(key, value)</code> pairs. Equality comparison of the keys and values\nenforces reflexivity."
+              },
+              {
+                "type": "paragraph",
+                "html": "Order comparisons (<code>&lt;</code>, <code>&gt;</code>, <code>&lt;=</code>, and <code>&gt;=</code>) raise <a href=\"https://docs.python.org/3.13/library/exceptions.html#TypeError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"TypeError\"><code>TypeError</code></a>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Sets (instances of <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set</code></a> or <a href=\"https://docs.python.org/3.13/library/stdtypes.html#frozenset\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"frozenset\"><code>frozenset</code></a>) can be compared within\nand across their types."
+              },
+              {
+                "type": "paragraph",
+                "html": "They define order\ncomparison operators to mean subset and superset tests.  Those relations do\nnot define total orderings (for example, the two sets <code>{1,2}</code> and <code>{2,3}</code>\nare not equal, nor subsets of one another, nor supersets of one\nanother).  Accordingly, sets are not appropriate arguments for functions\nwhich depend on total ordering (for example, <a href=\"https://docs.python.org/3.13/library/functions.html#min\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"min\"><code>min()</code></a>, <a href=\"https://docs.python.org/3.13/library/functions.html#max\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"max\"><code>max()</code></a>, and\n<a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a> produce undefined results given a list of sets as inputs)."
+              },
+              {
+                "type": "paragraph",
+                "html": "Comparison of sets enforces reflexivity of its elements."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Most other built-in types have no comparison methods implemented, so they\ninherit the default comparison behavior."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "User-defined classes that customize their comparison behavior should follow\nsome consistency rules, if possible:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "Equality comparison should be reflexive.\nIn other words, identical objects should compare equal:"
+              },
+              {
+                "type": "quote",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x is y</code> implies <code>x == y</code>"
+                  }
+                ]
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Comparison should be symmetric.\nIn other words, the following expressions should have the same result:"
+              },
+              {
+                "type": "quote",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x == y</code> and <code>y == x</code>"
+                  },
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x != y</code> and <code>y != x</code>"
+                  },
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x &lt; y</code> and <code>y &gt; x</code>"
+                  },
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x &lt;= y</code> and <code>y &gt;= x</code>"
+                  }
+                ]
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Comparison should be transitive.\nThe following (non-exhaustive) examples illustrate that:"
+              },
+              {
+                "type": "quote",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x &gt; y and y &gt; z</code> implies <code>x &gt; z</code>"
+                  },
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x &lt; y and y &lt;= z</code> implies <code>x &lt; z</code>"
+                  }
+                ]
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Inverse comparison should result in the boolean negation.\nIn other words, the following expressions should have the same result:"
+              },
+              {
+                "type": "quote",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x == y</code> and <code>not x != y</code>"
+                  },
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x &lt; y</code> and <code>not x &gt;= y</code> (for total ordering)"
+                  },
+                  {
+                    "type": "paragraph",
+                    "html": "<code>x &gt; y</code> and <code>not x &lt;= y</code> (for total ordering)"
+                  }
+                ]
+              },
+              {
+                "type": "paragraph",
+                "html": "The last two expressions apply to totally ordered collections (e.g. to\nsequences, but not to sets or mappings). See also the\n<code>total_ordering()</code> decorator."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The <a href=\"https://docs.python.org/3.13/library/functions.html#hash\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"hash\"><code>hash()</code></a> result should be consistent with equality.\nObjects that are equal should either have the same hash value,\nor be marked as unhashable."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Python does not enforce these consistency rules. In fact, the not-a-number\nvalues are an example for not following these rules."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "membership-test-operations",
+          "html": "Operasi Uji Keanggotaan (in, not in)",
+          "text": "Operasi Uji Keanggotaan (in, not in)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Operator <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> dan <a href=\"https://docs.python.org/3.13/reference/expressions.html#not-in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>not in</code></a> menguji keanggotaan suatu elemen di dalam sebuah koleksi (koleksi urutan seperti string, list, tuple, atau dictionary)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Untuk tipe string dan bytes, <code>x in y</code> bernilai <code>True</code> jika dan hanya jika <em>x</em> merupakan substring dari <em>y</em>. String kosong <code>\"\"</code> selalu dianggap sebagai substring dari string apa pun."
+        },
+        {
+          "type": "paragraph",
+          "html": "Untuk kelas kustom yang mendefinisikan metode <code>__contains__()</code>, ekspresi <code>x in y</code> bernilai <code>True</code> jika <code>y.__contains__(x)</code> mengembalikan nilai benar."
+        },
+        {
+          "type": "paragraph",
+          "html": "For user-defined classes which do not define <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__contains__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__contains__\"><code>__contains__()</code></a> but do define\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__iter__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__iter__\"><code>__iter__()</code></a>, <code>x in y</code> is <code>True</code> if some value <code>z</code>, for which the\nexpression <code>x is z or x == z</code> is true, is produced while iterating over <code>y</code>.\nIf an exception is raised during the iteration, it is as if <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> raised\nthat exception."
+        },
+        {
+          "type": "paragraph",
+          "html": "Lastly, the old-style iteration protocol is tried: if a class defines\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__getitem__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__getitem__\"><code>__getitem__()</code></a>, <code>x in y</code> is <code>True</code> if and only if there is a non-negative\ninteger index <em>i</em> such that <code>x is y[i] or x == y[i]</code>, and no lower integer index\nraises the <a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a> exception.  (If any other exception is raised, it is as\nif <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> raised that exception)."
+        },
+        {
+          "type": "paragraph",
+          "html": "Operator <a href=\"https://docs.python.org/3.13/reference/expressions.html#not-in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>not in</code></a> didefinisikan memiliki nilai kebenaran terbalik dari operator <code>in</code>."
+        },
+        {
+          "type": "heading",
+          "level": 3,
+          "id": "is-not",
+          "html": "Perbandingan Identitas (is, is not)",
+          "text": "Perbandingan Identitas (is, is not)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Operator <a href=\"https://docs.python.org/3.13/reference/expressions.html#is\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is</code></a> dan <code>is not</code> menguji identitas objek: <code>x is y</code> bernilai benar jika dan hanya jika <code>x</code> dan <code>y</code> merupakan objek fisik yang sama persis di memori (memiliki nilai <a href=\"https://docs.python.org/3.13/library/functions.html#id\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"id\"><code>id()</code></a> identik)."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "boolean-operations",
+          "html": "Operasi Boolean",
+          "text": "Operasi Boolean"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-or_test\">or_test</strong>  ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-and_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">and_test</span></code></a> | <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">or_test</span></code></a> \"or\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-and_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">and_test</span></code></a>\n<strong id=\"grammar-token-python-grammar-and_test\">and_test</strong> ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-not_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">not_test</span></code></a> | <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-and_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">and_test</span></code></a> \"and\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-not_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">not_test</span></code></a>\n<strong id=\"grammar-token-python-grammar-not_test\">not_test</strong> ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-comparison\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">comparison</span></code></a> | \"not\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-not_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">not_test</span></code></a>",
+          "text": "\nor_test  ::= and_test | or_test \"or\" and_test\nand_test ::= not_test | and_test \"and\" not_test\nnot_test ::= comparison | \"not\" not_test"
+        },
+        {
+          "type": "paragraph",
+          "html": "In the context of Boolean operations, and also when expressions are used by\ncontrol flow statements, the following values are interpreted as false:\n<code>False</code>, <code>None</code>, numeric zero of all types, and empty strings and containers\n(including strings, tuples, lists, dictionaries, sets and frozensets).  All\nother values are interpreted as true.  User-defined objects can customize their\ntruth value by providing a <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__bool__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__bool__\"><code>__bool__()</code></a> method."
+        },
+        {
+          "type": "paragraph",
+          "html": "Operator <a href=\"https://docs.python.org/3.13/reference/expressions.html#not\" rel=\"noopener noreferrer\" target=\"_blank\"><code>not</code></a> menghasilkan <code>True</code> jika argumennya bernilai salah, dan sebaliknya menghasilkan <code>False</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "Ekspresi <code>x and y</code> pertama-tama mengevaluasi <em>x</em>; jika <em>x</em> bernilai salah, maka nilainya langsung dikembalikan; jika tidak, <em>y</em> dievaluasi dan hasilnya dikembalikan."
+        },
+        {
+          "type": "paragraph",
+          "html": "Ekspresi <code>x or y</code> pertama-tama mengevaluasi <em>x</em>; jika <em>x</em> bernilai benar, nilainya langsung dikembalikan; jika salah, maka <em>y</em> dievaluasi dan hasilnya dikembalikan."
+        },
+        {
+          "type": "paragraph",
+          "html": "Perhatikan bahwa baik <code>and</code> maupun <code>or</code> tidak membatasi nilai kembali pada <code>True</code> dan <code>False</code> literal, melainkan mengembalikan argumen terakhir yang dievaluasi."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "conditional-expressions",
+          "html": "Ekspresi Kondisional (Ternary)",
+          "text": "Ekspresi Kondisional (Ternary)"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<strong id=\"grammar-token-python-grammar-conditional_expression\">conditional_expression</strong> ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">or_test</span></code></a> [\"if\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_test\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">or_test</span></code></a> \"else\" <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-expression\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">expression</span></code></a>]\n<strong id=\"grammar-token-python-grammar-expression\">expression</strong>             ::= <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-conditional_expression\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">conditional_expression</span></code></a> | <a class=\"reference internal\" href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-lambda_expr\" rel=\"noopener noreferrer\" target=\"_blank\"><code class=\"xref docutils literal notranslate\"><span class=\"pre\">lambda_expr</span></code></a>",
+          "text": "\nconditional_expression ::= or_test [\"if\" or_test \"else\" expression]\nexpression             ::= conditional_expression | lambda_expr"
+        },
+        {
+          "type": "paragraph",
+          "html": "Ekspresi kondisional (sering disebut sebagai \"operator ternary\") memiliki bentuk <code>x if C else y</code>. Pertama-tama kondisi <em>C</em> dievaluasi; jika benar, nilai <em>x</em> dikembalikan; jika salah, nilai <em>y</em> yang dikembalikan."
+        },
+        {
+          "type": "paragraph",
+          "html": "Ekspresi <code>x if C else y</code> pertama-tama mengevaluasi kondisi <em>C</em>. Jika <em>C</em> bernilai benar, <em>x</em> dievaluasi dan nilainya dikembalikan; jika tidak, <em>y</em> dievaluasi dan nilainya dikembalikan."
+        },
+        {
+          "type": "paragraph",
+          "html": "See <a href=\"https://peps.python.org/pep-0308/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 308</strong></a> for more details about conditional expressions."
+        }
+      ]
+    }
+  ],
+  "blockCount": 56,
+  "wordCount": 2337,
+  "title": "Percabangan if / elif / else",
+  "order": 2,
+  "api": [
+    {
+      "name": "bool",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#bool",
+      "display": "bool",
+      "doc": "library/functions"
+    },
+    {
+      "name": "all",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#all",
+      "display": "all",
+      "doc": "library/functions"
+    },
+    {
+      "name": "any",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#any",
+      "display": "any",
+      "doc": "library/functions"
+    },
+    {
+      "name": "print",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#print",
+      "display": "print",
+      "doc": "library/functions"
+    }
+  ]
+}

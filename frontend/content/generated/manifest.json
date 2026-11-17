@@ -1,0 +1,78 @@
+{
+  "pythonVersion": "3.13.7",
+  "docVersion": "3.13",
+  "docUrl": "https://docs.python.org/3.13",
+  "cpythonRepo": "https://github.com/python/cpython/tree/v3.13.7/Doc",
+  "tarballUrl": "https://www.python.org/ftp/python/3.13.7/Python-3.13.7.tar.xz",
+  "tarballSha256": "5462f9099dfd30e238def83c71d91897d8caa5ff6ebc7a50f14d4802cdaaa79a",
+  "sphinxVersion": "8.2.3",
+  "builder": "sphinx-build -b json",
+  "generatedAt": "2026-11-03T23:37:08+00:00",
+  "sourceDocs": [
+    "glossary",
+    "library/exceptions",
+    "library/functions",
+    "library/stdtypes",
+    "reference/compound_stmts",
+    "reference/datamodel",
+    "reference/expressions",
+    "tutorial/classes",
+    "tutorial/controlflow",
+    "tutorial/datastructures",
+    "tutorial/introduction"
+  ],
+  "inventoryCount": 964,
+  "apiIndexCount": 585,
+  "searchEntryCount": 72,
+  "chapters": [
+    {
+      "slug": "variabel-dan-tipe-data",
+      "title": "Variabel & Tipe Data",
+      "order": 1,
+      "blockCount": 103,
+      "wordCount": 3084
+    },
+    {
+      "slug": "percabangan",
+      "title": "Percabangan if / elif / else",
+      "order": 2,
+      "blockCount": 56,
+      "wordCount": 2337
+    },
+    {
+      "slug": "perulangan",
+      "title": "Perulangan for & while",
+      "order": 3,
+      "blockCount": 62,
+      "wordCount": 1965
+    },
+    {
+      "slug": "fungsi",
+      "title": "Fungsi dengan def",
+      "order": 4,
+      "blockCount": 132,
+      "wordCount": 4359
+    },
+    {
+      "slug": "list-dan-dictionary",
+      "title": "List & Dictionary",
+      "order": 5,
+      "blockCount": 123,
+      "wordCount": 6357
+    },
+    {
+      "slug": "oop-dasar",
+      "title": "OOP Dasar: Class & Object",
+      "order": 6,
+      "blockCount": 104,
+      "wordCount": 3589
+    },
+    {
+      "slug": "oop-lanjutan",
+      "title": "OOP Lanjutan: Inheritance & Pythonic Objects",
+      "order": 7,
+      "blockCount": 67,
+      "wordCount": 2222
+    }
+  ]
+}

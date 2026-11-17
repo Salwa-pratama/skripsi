@@ -1,0 +1,16 @@
+Breakdown error, 
+1. deteksi user menggunakan fash mesh sedangkan kamera sangat burik harusnya menggunakan
+   cocossd
+2. menunduk sebagai distraksi itu salah bisa aja user tidak tegak ketika belajar atau
+   mengerjakan sesuaitu, mungkin di buku gitu jadi sebelum start kasih validasi dulu
+   task usernya apa 
+   - TENTUKAN 'TASK' YANG AKAN DIKERJAKAN   
+   - SET POMODORO TIMER   KERJAKAN 'TASK' YANG SUDAH DITENTUKAN   
+   - CATAT 'DISTRACTION' DI KERTAS   SETELAH 25 MENIT, ISTIRAHAT 5 MENIT   SETELAH 4 X 25   MENIT, ISTIRAHAT 15 - 30 MENIT   
+   - SELESAI ATAU ULANGI SIKLUS   
+
+3. wajah malah terdeteksi sebagai titik tangan 21 titik kan aneh
+
+4. sebelum start mengatur beberapa point yang ada di point kedua itu jadi divalidasi kalau 
+   pengguna belajar menggunakan buku atau apa menulis itu menunduk tidak dicatat sebagai 
+   distraksi 

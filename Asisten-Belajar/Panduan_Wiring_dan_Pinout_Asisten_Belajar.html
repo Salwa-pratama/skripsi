@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Panduan Resmi Wiring & Alokasi Pin ESP32-S3 Asisten Belajar</title>
+<style>
+  @page {
+    size: A4;
+    margin: 12mm 12mm 12mm 12mm;
+  }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #0f172a;
+    line-height: 1.45;
+    font-size: 9pt;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+  }
+  .header {
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .title-group {
+    flex: 1;
+  }
+  .title {
+    font-size: 15pt;
+    font-weight: 800;
+    color: #1e3a8a;
+    margin: 0 0 3px 0;
+    letter-spacing: -0.3px;
+  }
+  .subtitle {
+    font-size: 9.5pt;
+    color: #475569;
+    margin: 0;
+    font-weight: 500;
+  }
+  .meta-tag {
+    font-size: 8pt;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #bfdbfe;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  
+  .badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    border-radius: 4px;
+    margin: 1px;
+    text-transform: uppercase;
+  }
+  .badge-oled { background-color: #dbeafe; color: #1e40af; }
+  .badge-spk { background-color: #dcfce7; color: #166534; }
+  .badge-mic { background-color: #fef3c7; color: #92400e; }
+  .badge-cam { background-color: #f1f5f9; color: #475569; }
+  .badge-danger { background-color: #fee2e2; color: #991b1b; }
+  .badge-pwr { background-color: #fae8ff; color: #86198f; }
+  .badge-free { background-color: #ecfdf5; color: #047857; }
+
+  h2 {
+    font-size: 11pt;
+    color: #1e3a8a;
+    border-left: 4px solid #2563eb;
+    padding-left: 8px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 8.5pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 4.5px 6.5px;
+    text-align: left;
+  }
+  th {
+    background-color: #f8fafc;
+    font-weight: 700;
+    color: #334155;
+    font-size: 8pt;
+  }
+  tr:nth-child(even) {
+    background-color: #fcfcfd;
+  }
+  .row-pwr { background-color: #faf5ff !important; font-weight: 600; }
+  .row-oled { background-color: #eff6ff !important; font-weight: 600; }
+  .row-spk { background-color: #f0fdf4 !important; font-weight: 600; }
+  .row-mic { background-color: #fefce8 !important; font-weight: 600; }
+  .row-danger { background-color: #fef2f2 !important; color: #991b1b; }
+
+  .callout-box {
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-size: 8.5pt;
+    line-height: 1.4;
+  }
+  .callout-alert {
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 4px solid #ef4444;
+  }
+  .callout-success {
+    background-color: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-left: 4px solid #22c55e;
+  }
+  .callout-title {
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  
+  .diagram-box {
+    background: #0f172a;
+    color: #38bdf8;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 7.8pt;
+    line-height: 1.3;
+    margin: 8px 0;
+    overflow-x: auto;
+  }
+  .diagram-accent { color: #facc15; font-weight: bold; }
+  .diagram-green { color: #4ade80; font-weight: bold; }
+  .diagram-red { color: #f87171; }
+
+  .card-grid {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .card {
+    flex: 1;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 8px;
+    background: #ffffff;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+  .card-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: #1e3a8a;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+    margin-bottom: 6px;
+  }
+
+  .footer {
+    margin-top: 14px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 6px;
+    font-size: 7.5pt;
+    color: #64748b;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title-group">
+    <div class="title">PANDUAN WIRING & PINOUT ESP32-S3 ASISTEN BELAJAR</div>
+    <div class="subtitle">Sistem Komunikasi Voice Trigger Murni: Kamera OV5640, Layar OLED, Speaker I2S & Mic I2S</div>
+  </div>
+  <div class="meta-tag">FIRMWARE V2.1 &bull; VOICE TRIGGER ONLY</div>
+</div>
+
+<div class="callout-box callout-success">
+  <div class="callout-title" style="color: #166534;">SISTEM 100% VOICE TRIGGER (MURNI SUARA):</div>
+  Sistem berjalan 100% voice trigger: tidak ada tombol atau modul tambahan. Pengguna cukup berbicara langsung di depan mikrofon INMP441, dan sistem akan langsung merespons secara otomatis!
+</div>
+
+<div class="callout-box callout-alert">
+  <div class="callout-title" style="color: #b91c1c;">ORIENTASI FISIK BOARD (JANGAN TERBALIK!):</div>
+  Letakkan board ESP32-S3 WROOM CAM menghadap Anda dengan: <b>Kamera & Antena PCB di SISI ATAS</b>, dan <b>Port USB-C di SISI BAWAH</b>.<br>
+  &bull; <b>Deret KIRI (J1 Pin 1-20):</b> Pin 1 paling atas adalah <b>3V3</b>, sedangkan Pin 20 paling bawah adalah <b>5V</b>.<br>
+  &bull; <b>Deret KANAN (J2 Pin 1-20):</b> Pin 1 paling atas adalah <b>TX (GPIO 43)</b>, sedangkan Pin 20 paling bawah adalah <b>GND</b>.<br>
+  &bull; <b>Pin Bebas:</b> <b>GPIO 0</b> dibiarkan <b>KOSONG</b>. <b>GPIO 1</b> dipakai untuk <b>DIN MAX98357A</b>.
+</div>
+
+<h2>1. Tabel Wiring Komponen Breadboard (Hanya 3 Modul Eksternal)</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 24%;">Modul / Komponen</th>
+      <th style="width: 14%;">Pin Modul</th>
+      <th style="width: 20%;">Pin ESP32-S3</th>
+      <th style="width: 24%;">Posisi Fisik Header Board</th>
+      <th style="width: 18%;">Keterangan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!-- OLED -->
+    <tr class="row-oled">
+      <td rowspan="4"><b>1. Layar OLED 0.96"<br>SSD1306 (I2C)</b><br><span class="badge badge-oled">Mata Robot XiaoZhi</span></td>
+      <td><b>GND</b></td>
+      <td><b>GND</b></td>
+      <td>Deret KANAN &bull; Pin 20 (Paling Bawah)</td>
+      <td>Rel Ground (-) breadboard</td>
+    </tr>
+    <tr class="row-oled">
+      <td><b>VCC</b></td>
+      <td><b>3V3</b></td>
+      <td>Deret KIRI &bull; Pin 1 (Paling Atas)</td>
+      <td>Tegangan logika 3.3V stabil</td>
+    </tr>
+    <tr class="row-oled">
+      <td><b>SCL</b></td>
+      <td><b>GPIO 21</b></td>
+      <td>Deret KANAN &bull; Pin 17 (Pin ke-4 dr Bawah)</td>
+      <td>Hardware I2C Clock (SCL)</td>
+    </tr>
+    <tr class="row-oled">
+      <td><b>SDA</b></td>
+      <td><b>GPIO 47</b></td>
+      <td>Deret KANAN &bull; Pin 16 (Pin ke-5 dr Bawah)</td>
+      <td>Hardware I2C Data (SDA)</td>
+    </tr>
+
+    <!-- SPEAKER -->
+    <tr class="row-spk">
+      <td rowspan="6"><b>2. Speaker Amplifier<br>MAX98357A (I2S DAC)</b><br><span class="badge badge-spk">Output Suara AI & Alarm</span></td>
+      <td><b>VIN</b></td>
+      <td><b>5V</b></td>
+      <td>Deret KIRI &bull; Pin 20 (Paling Bawah)</td>
+      <td>Daya 5V dari USB (suara lantang 3W)</td>
+    </tr>
+    <tr class="row-spk">
+      <td><b>GND</b></td>
+      <td><b>GND</b></td>
+      <td>Deret KANAN &bull; Pin 20 (Paling Bawah)</td>
+      <td>Rel Ground (-) breadboard</td>
+    </tr>
+    <tr class="row-spk">
+      <td><b>BCLK</b></td>
+      <td><b>GPIO 42</b></td>
+      <td>Deret KANAN &bull; Pin 5 (Pin ke-5 dr Atas)</td>
+      <td>Bit Clock I2S (Shared dg Mic)</td>
+    </tr>
+    <tr class="row-spk">
+      <td><b>LRC / WS</b></td>
+      <td><b>GPIO 41</b></td>
+      <td>Deret KANAN &bull; Pin 6 (Pin ke-6 dr Atas)</td>
+      <td>Word Select I2S (Shared dg Mic)</td>
+    </tr>
+    <tr class="row-spk">
+      <td><b>DIN</b></td>
+      <td><b>GPIO 1</b></td>
+      <td>Deret KANAN &bull; Pin 3 (Pin ke-3 dr Atas)</td>
+      <td><b>Data In Digital Audio DAC</b> &mdash; JANGAN pakai GPIO 2 (pin LED onboard!)</td>
+    </tr>
+    <tr class="row-spk">
+      <td><b>SD</b></td>
+      <td><b>GPIO 40</b></td>
+      <td>Deret KANAN &bull; Pin 7 (Pin ke-7 dr Atas)</td>
+      <td><b>Shutdown / Enable (Anti-Kemresek)</b> &mdash; Firmware auto HIGH (3.3V)</td>
+    </tr>
+
+    <!-- MIC -->
+    <tr class="row-mic">
+      <td rowspan="6"><b>3. Mikrofon Digital<br>INMP441 (I2S ADC)</b><br><span class="badge badge-mic">Voice Trigger Input</span></td>
+      <td><b>VDD</b></td>
+      <td><b>3V3</b></td>
+      <td>Deret KIRI &bull; Pin 1 (Paling Atas)</td>
+      <td>Tegangan 3.3V (JANGAN KE 5V!)</td>
+    </tr>
+    <tr class="row-mic">
+      <td><b>GND</b></td>
+      <td><b>GND</b></td>
+      <td>Deret KANAN &bull; Pin 20 (Paling Bawah)</td>
+      <td>Rel Ground (-) breadboard</td>
+    </tr>
+    <tr class="row-mic">
+      <td><b>SCK</b></td>
+      <td><b>GPIO 42</b></td>
+      <td>Deret KANAN &bull; Pin 5 (Pin ke-5 dr Atas)</td>
+      <td>Clock I2S (Dicabang dari BCLK Speaker)</td>
+    </tr>
+    <tr class="row-mic">
+      <td><b>WS</b></td>
+      <td><b>GPIO 41</b></td>
+      <td>Deret KANAN &bull; Pin 6 (Pin ke-6 dr Atas)</td>
+      <td>Word Select (Dicabang dari LRC Speaker)</td>
+    </tr>
+    <tr class="row-mic">
+      <td><b>SD</b></td>
+      <td><b>GPIO 14</b></td>
+      <td>Deret KIRI &bull; Pin 19 (Pin ke-2 dr Bawah)</td>
+      <td>Data Out Mikrofon ke ESP32</td>
+    </tr>
+    <tr class="row-mic">
+      <td><b>L/R</b></td>
+      <td><b>GND</b></td>
+      <td>Rel Ground (-) breadboard</td>
+      <td>Jumper ke GND untuk Left Channel Mono</td>
+    </tr>
+
+    <!-- KAMERA -->
+    <tr class="row-pwr">
+      <td><b>4. Kamera OV5640 DVP</b><br><span class="badge badge-cam">Visual AI & Distraksi</span></td>
+      <td>Pita Ribbon DVP</td>
+      <td>Slot FPC Kamera</td>
+      <td>Soket FPC Bawaan Board (Atas)</td>
+      <td>Jalur data D0-D7, XCLK 15, PCLK 13 (Core 0)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>2. Diagram Visual Posisi Pin Fisik Board ESP32-S3 (Tampak Atas)</h2>
+<div class="diagram-box">
+                      ╔════════════════════════════════════╗
+                      ║     [ ANTENA PCB & KAMERA OV5640 ] ║
+                      ║           (Posisi Sisi ATAS)       ║
+                      ╚════════════════════════════════════╝
+     DERET KIRI (J1)                                           DERET KANAN (J2)
+  ┌───────────────────────┐                                 ┌───────────────────────┐
+  │ <span class="diagram-accent">Pin  1: 3V3</span> ──────────┼─── [ VCC OLED & VDD MIC ] ──────│ Pin  1: TX (GPIO 43)  │
+  │ Pin  2: RST           │                                 │ Pin  2: RX (GPIO 44)  │
+  │ Pin  3: GPIO 4 (SIOD) │ (Kamera SCCB Data)              │ <span class="diagram-green">Pin  3: GPIO 1</span> ───────┼─── [ DIN MAX98357A ]
+  │ Pin  4: GPIO 5 (SIOC) │ (Kamera SCCB Clock)             │ <span class="diagram-red">Pin  4: GPIO 2</span> [LED onboard] │ ◀── JANGAN utk audio!
+  │ Pin  5: GPIO 6 (VSYNC)│ (Kamera Vert Sync)              │ <span class="diagram-accent">Pin  5: GPIO 42</span> ──────┼─── [ BCLK SPK & SCK MIC ]
+  │ Pin  6: GPIO 7 (HREF) │ (Kamera Horiz Ref)              │ <span class="diagram-accent">Pin  6: GPIO 41</span> ──────┼─── [ LRC SPK & WS MIC ]
+  │ Pin  7: GPIO 15(XCLK) │ (Kamera Clock 20MHz)            │ <span class="diagram-green">Pin  7: GPIO 40</span> ───────┼─── [ SD MAX98357A (Enable) ]
+  │ Pin  8: GPIO 16 (D7)  │                                 │ Pin  8: GPIO 39       │
+  │ Pin  9: GPIO 17 (D6)  │                                 │ Pin  9: GPIO 38       │
+  │ Pin 10: GPIO 18 (D5)  │                                 │ <span class="diagram-red">Pin 10: GPIO 37</span> [PSRAM]│ (Dilarang dipakai!)
+  │ Pin 11: GPIO 8  (D2)  │                                 │ <span class="diagram-red">Pin 11: GPIO 36</span> [PSRAM]│ (Dilarang dipakai!)
+  │ Pin 12: GPIO 3        │ (JTAG Strapping)                │ <span class="diagram-red">Pin 12: GPIO 35</span> [PSRAM]│ (Dilarang dipakai!)
+  │ Pin 13: GPIO 46       │ (Boot Strapping)                │ <span class="diagram-green">Pin 13: GPIO 0</span> (BEBAS)│ ◀── BEBAS / KOSONG
+  │ Pin 14: GPIO 9  (D1)  │                                 │ Pin 14: GPIO 45       │
+  │ Pin 15: GPIO 10 (D3)  │                                 │ Pin 15: GPIO 48 (RGB) │
+  │ Pin 16: GPIO 11 (D0)  │                                 │ <span class="diagram-green">Pin 16: GPIO 47</span> ──────┼─── [ SDA OLED ] (Pin 5 dr bawah)
+  │ Pin 17: GPIO 12 (D4)  │                                 │ <span class="diagram-green">Pin 17: GPIO 21</span> ──────┼─── [ SCL OLED ] (Pin 4 dr bawah)
+  │ Pin 18: GPIO 13 (PCLK)│ (Kamera Pixel Clock)            │ Pin 18: GPIO 20 (USB+)│
+  │ <span class="diagram-green">Pin 19: GPIO 14</span> ──────┼─── [ SD INMP441 MIC ]           │ Pin 19: GPIO 19 (USB-)│
+  │ <span class="diagram-accent">Pin 20: 5V</span> ───────────┼─── [ VIN MAX98357A SPK ]        │ <span class="diagram-accent">Pin 20: GND</span> ──────────┼─── [ GND BERSAMA ]
+  └───────────────────────┘                                 └───────────────────────┘
+                      ╔════════════════════════════════════╗
+                      ║           [ PORT USB-C ]           ║
+                      ║          (Posisi Sisi BAWAH)       ║
+                      ╚════════════════════════════════════╝
+</div>
+
+<h2>3. Peta Lengkap Seluruh 40 Pin ESP32-S3 WROOM & Status Penggunaan</h2>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 5%;">No</th>
+      <th style="width: 15%;">Pin KIRI (J1)</th>
+      <th style="width: 28%;">Fungsi Firmware & Alokasi</th>
+      <th style="width: 5%;">No</th>
+      <th style="width: 15%;">Pin KANAN (J2)</th>
+      <th style="width: 32%;">Fungsi Firmware & Alokasi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-pwr"><td>1</td><td><b>3V3</b></td><td><span class="badge badge-pwr">POWER 3.3V</span> VCC OLED & VDD MIC</td><td>1</td><td>TX (GPIO 43)</td><td>Serial Console Debugger TX (115200)</td></tr>
+    <tr><td>2</td><td>RST</td><td>Reset Hardware MCU</td><td>2</td><td>RX (GPIO 44)</td><td>Serial Console Debugger RX</td></tr>
+    <tr><td>3</td><td>GPIO 4</td><td><span class="badge badge-cam">OV5640</span> SIOD (SCCB SDA)</td><td class="row-spk">3</td><td class="row-spk"><b>GPIO 1</b></td><td class="row-spk"><span class="badge badge-spk">I2S SPK</span> <b>DIN MAX98357A</b></td></tr>
+    <tr><td>4</td><td>GPIO 5</td><td><span class="badge badge-cam">OV5640</span> SIOC (SCCB SCL)</td><td class="row-danger">4</td><td class="row-danger"><b>GPIO 2</b></td><td class="row-danger"><span class="badge badge-danger">LED ONBOARD</span> JANGAN dipakai audio!</td></tr>
+    <tr><td>5</td><td>GPIO 6</td><td><span class="badge badge-cam">OV5640</span> VSYNC (Vert Sync)</td><td class="row-spk">5</td><td class="row-spk"><b>GPIO 42</b></td><td class="row-spk"><span class="badge badge-spk">I2S CLK</span> <b>BCLK Speaker & SCK Mic</b></td></tr>
+    <tr><td>6</td><td>GPIO 7</td><td><span class="badge badge-cam">OV5640</span> HREF (Horiz Ref)</td><td class="row-spk">6</td><td class="row-spk"><b>GPIO 41</b></td><td class="row-spk"><span class="badge badge-spk">I2S WS</span> <b>LRC Speaker & WS Mic</b></td></tr>
+    <tr><td>7</td><td>GPIO 15</td><td><span class="badge badge-cam">OV5640</span> XCLK (20 MHz Master)</td><td class="row-spk">7</td><td class="row-spk"><b>GPIO 40</b></td><td class="row-spk"><span class="badge badge-spk">I2S SPK</span> <b>SD MAX98357A (Enable/Anti-Kemresek)</b></td></tr>
+    <tr><td>8</td><td>GPIO 16</td><td><span class="badge badge-cam">OV5640</span> D7 (Y9) Data</td><td>8</td><td>GPIO 39</td><td>MicroSD CLK (Tersedia / Bebas)</td></tr>
+    <tr><td>9</td><td>GPIO 17</td><td><span class="badge badge-cam">OV5640</span> D6 (Y8) Data</td><td>9</td><td>GPIO 38</td><td>MicroSD CMD (Tersedia / Bebas)</td></tr>
+    <tr><td>10</td><td>GPIO 18</td><td><span class="badge badge-cam">OV5640</span> D5 (Y7) Data</td><td class="row-danger">10</td><td class="row-danger">GPIO 37</td><td class="row-danger"><span class="badge badge-danger">DILARANG</span> INTERNAL Octal PSRAM</td></tr>
+    <tr><td>11</td><td>GPIO 8</td><td><span class="badge badge-cam">OV5640</span> D2 (Y4) Data</td><td class="row-danger">11</td><td class="row-danger">GPIO 36</td><td class="row-danger"><span class="badge badge-danger">DILARANG</span> INTERNAL Octal PSRAM</td></tr>
+    <tr><td>12</td><td>GPIO 3</td><td>Strapping Pin (JTAG)</td><td class="row-danger">12</td><td class="row-danger">GPIO 35</td><td class="row-danger"><span class="badge badge-danger">DILARANG</span> INTERNAL Octal PSRAM</td></tr>
+    <tr><td>13</td><td>GPIO 46</td><td>Strapping Pin (Boot Log)</td><td>13</td><td><b>GPIO 0</b></td><td><span class="badge badge-free">KOSONG / BEBAS</span> (Tidak Dipakai)</td></tr>
+    <tr><td>14</td><td>GPIO 9</td><td><span class="badge badge-cam">OV5640</span> D1 (Y3) Data</td><td>14</td><td>GPIO 45</td><td>Strapping Pin VDD_SPI</td></tr>
+    <tr><td>15</td><td>GPIO 10</td><td><span class="badge badge-cam">OV5640</span> D3 (Y5) Data</td><td>15</td><td>GPIO 48</td><td>On-board WS2812 Status LED</td></tr>
+    <tr class="row-oled"><td>16</td><td>GPIO 11</td><td><span class="badge badge-cam">OV5640</span> D0 (Y2) Data</td><td class="row-oled">16</td><td class="row-oled"><b>GPIO 47</b></td><td class="row-oled"><span class="badge badge-oled">I2C SDA</span> <b>OLED SDA (Pin 5 dr Bawah)</b></td></tr>
+    <tr class="row-oled"><td>17</td><td>GPIO 12</td><td><span class="badge badge-cam">OV5640</span> D4 (Y6) Data</td><td class="row-oled">17</td><td class="row-oled"><b>GPIO 21</b></td><td class="row-oled"><span class="badge badge-oled">I2C SCL</span> <b>OLED SCL (Pin 4 dr Bawah)</b></td></tr>
+    <tr><td>18</td><td>GPIO 13</td><td><span class="badge badge-cam">OV5640</span> PCLK (Pixel Clock)</td><td>18</td><td>GPIO 20</td><td>USB Native D+</td></tr>
+    <tr class="row-mic"><td>19</td><td><b>GPIO 14</b></td><td><span class="badge badge-mic">I2S MIC</span> <b>SD INMP441 Data</b></td><td>19</td><td>GPIO 19</td><td>USB Native D-</td></tr>
+    <tr class="row-pwr"><td>20</td><td><b>5V</b></td><td><span class="badge badge-pwr">POWER 5V</span> VIN Speaker MAX98357A</td><td class="row-pwr">20</td><td class="row-pwr"><b>GND</b></td><td class="row-pwr"><span class="badge badge-pwr">GROUND</span> <b>GND Utama Bersama</b></td></tr>
+  </tbody>
+</table>
+
+<h2>4. Petunjuk Praktis Wiring di Breadboard</h2>
+<div class="card-grid">
+  <div class="card">
+    <div class="card-title">1. Rel Daya Breadboard (Power Rails)</div>
+    Hubungkan <b>Pin 20 Kanan (GND)</b> ke Rel Biru (-) Breadboard.<br>
+    Hubungkan <b>Pin 1 Kiri (3V3)</b> ke Rel Merah (+) Atas untuk VCC OLED & VDD Mic.<br>
+    Hubungkan <b>Pin 20 Kiri (5V)</b> langsung ke pin <b>VIN MAX98357A</b> untuk tenaga speaker optimal.
+  </div>
+  <div class="card">
+    <div class="card-title">2. Bus Clock I2S Bersama (Shared Bus)</div>
+    Speaker MAX98357A dan Mic INMP441 berbagi clock yang sama:<br>
+    &bull; <b>GPIO 42</b> dicabang ke <b>BCLK Speaker</b> & <b>SCK Mic</b>.<br>
+    &bull; <b>GPIO 41</b> dicabang ke <b>LRC Speaker</b> & <b>WS Mic</b>.<br>
+    Jalur data terpisah: <b>DIN Speaker di GPIO 1</b>, dan <b>SD Mic di GPIO 14</b>.<br>
+    <b>Catatan penting:</b> GPIO 2 di board Freenove ESP32-S3 WROOM terhubung ke LED onboard.
+    Memakai GPIO 2 sebagai I2S DIN membuat LED menyala mengikuti audio dan level sinyalnya
+    dijepit LED (~2V) sehingga suara menjadi <b>kemresek</b>.
+  </div>
+  <div class="card">
+    <div class="card-title">3. Setting Pin GAIN & L/R Modul Audio</div>
+    &bull; <b>INMP441 Pin L/R:</b> Wajib dihubungkan ke <b>GND</b> (Left Channel).<br>
+    &bull; <b>MAX98357A Pin GAIN:</b> Biarkan tidak terhubung (floating) untuk gain 12dB yang jernih.<br>
+    &bull; <b>MAX98357A Pin SD:</b> Biarkan floating (On terus).
+  </div>
+</div>
+
+<div class="footer">
+  <span>Dokumen Resmi Projek Skripsi "Asisten Belajar" | ESP32-S3 WROOM &bull; OV5640 &bull; PlatformIO</span>
+  <span>Versi Terbaru: 100% Voice Trigger &bull; Tanpa Tombol &bull; Modul: OLED + MAX98357A + INMP441 + OV5640</span>
+</div>
+
+</body>
+</html>

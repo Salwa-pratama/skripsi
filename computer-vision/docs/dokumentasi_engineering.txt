@@ -1,0 +1,17 @@
+Jadi disini adalah server sebagai pemroses algoritmanya , karena jika ditelaah dan dipikir lagi esp 32 tidak cukup kuat
+untuk menjalankan model yang berat , maka dari itu saya memutuskan untuk memroses algoritma tersebut ke dalam web server
+menggunakan library flask python, untuk membagi tugas antara esp_32 dan server dibawah merupakan gambaran alur kerja
+sistemnya
+
+
+ESP-32 --> kirim data stream kamera ov5640 ke web server
+
+Web server --> memproses data citra berupa stream video dari ESP
+
+Web server --> mendeteksi gesture gerakan tangan menggunakan media-pipe
+
+Tapi sebelumnya ada beberapa masalah yaitu pemrosesan video yang kurang bagus, maka dari itu saya mengakalinya
+untuk memaksimalkan fps pada ESP dan menurunkan kualitas fitur lainnya seperti efek dll, dengan tujuan agar
+mediapipe dapat mendeteksi gesture tangan dengan baik, dan saya menambahkan enchancer agar kualitas stream yang ditangkap
+dari esp jadi lebih mulus dan bagus .
+

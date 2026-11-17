@@ -1,0 +1,729 @@
+{
+  "slug": "variabel-dan-tipe-data",
+  "docVersion": "3.13",
+  "generatedAt": "2026-11-03T23:37:05+00:00",
+  "groups": [
+    {
+      "source": {
+        "doc": "tutorial/introduction",
+        "title": "An Informal Introduction to Python",
+        "label": "The Python Tutorial · An Informal Introduction to Python",
+        "url": "https://docs.python.org/3.13/tutorial/introduction.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "numbers",
+          "html": "Numbers",
+          "text": "Numbers"
+        },
+        {
+          "type": "paragraph",
+          "html": "The interpreter acts as a simple calculator: you can type an expression at it\nand it will write the value.  Expression syntax is straightforward: the\noperators <code>+</code>, <code>-</code>, <code>*</code> and <code>/</code> can be used to perform\narithmetic; parentheses (<code>()</code>) can be used for grouping.\nFor example:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">2</span> <span class=\"o\">+</span> <span class=\"mi\">2</span>\n<span class=\"go\">4</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">50</span> <span class=\"o\">-</span> <span class=\"mi\">5</span><span class=\"o\">*</span><span class=\"mi\">6</span>\n<span class=\"go\">20</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">(</span><span class=\"mi\">50</span> <span class=\"o\">-</span> <span class=\"mi\">5</span><span class=\"o\">*</span><span class=\"mi\">6</span><span class=\"p\">)</span> <span class=\"o\">/</span> <span class=\"mi\">4</span>\n<span class=\"go\">5.0</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">8</span> <span class=\"o\">/</span> <span class=\"mi\">5</span>  <span class=\"c1\"># division always returns a floating-point number</span>\n<span class=\"go\">1.6</span>",
+          "text": ">>> 2 + 2\n4\n>>> 50 - 5*6\n20\n>>> (50 - 5*6) / 4\n5.0\n>>> 8 / 5  # division always returns a floating-point number\n1.6"
+        },
+        {
+          "type": "paragraph",
+          "html": "The integer numbers (e.g. <code>2</code>, <code>4</code>, <code>20</code>) have type <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>,\nthe ones with a fractional part (e.g. <code>5.0</code>, <code>1.6</code>) have type\n<a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>.  We will see more about numeric types later in the tutorial."
+        },
+        {
+          "type": "paragraph",
+          "html": "Division (<code>/</code>) always returns a float.  To do <a href=\"https://docs.python.org/3.13/glossary.html#term-floor-division\" rel=\"noopener noreferrer\" target=\"_blank\">floor division</a> and\nget an integer result you can use the <code>//</code> operator; to calculate\nthe remainder you can use <code>%</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">17</span> <span class=\"o\">/</span> <span class=\"mi\">3</span>  <span class=\"c1\"># classic division returns a float</span>\n<span class=\"go\">5.666666666666667</span>\n<span class=\"gp\">&gt;&gt;&gt;</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">17</span> <span class=\"o\">//</span> <span class=\"mi\">3</span>  <span class=\"c1\"># floor division discards the fractional part</span>\n<span class=\"go\">5</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">17</span> <span class=\"o\">%</span> <span class=\"mi\">3</span>  <span class=\"c1\"># the % operator returns the remainder of the division</span>\n<span class=\"go\">2</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">5</span> <span class=\"o\">*</span> <span class=\"mi\">3</span> <span class=\"o\">+</span> <span class=\"mi\">2</span>  <span class=\"c1\"># floored quotient * divisor + remainder</span>\n<span class=\"go\">17</span>",
+          "text": ">>> 17 / 3  # classic division returns a float\n5.666666666666667\n>>>\n>>> 17 // 3  # floor division discards the fractional part\n5\n>>> 17 % 3  # the % operator returns the remainder of the division\n2\n>>> 5 * 3 + 2  # floored quotient * divisor + remainder\n17"
+        },
+        {
+          "type": "paragraph",
+          "html": "With Python, it is possible to use the <code>**</code> operator to calculate powers <a href=\"https://docs.python.org/3.13/tutorial/introduction.html#id3\" rel=\"noopener noreferrer\" target=\"_blank\">[1]</a>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">5</span> <span class=\"o\">**</span> <span class=\"mi\">2</span>  <span class=\"c1\"># 5 squared</span>\n<span class=\"go\">25</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">2</span> <span class=\"o\">**</span> <span class=\"mi\">7</span>  <span class=\"c1\"># 2 to the power of 7</span>\n<span class=\"go\">128</span>",
+          "text": ">>> 5 ** 2  # 5 squared\n25\n>>> 2 ** 7  # 2 to the power of 7\n128"
+        },
+        {
+          "type": "paragraph",
+          "html": "The equal sign (<code>=</code>) is used to assign a value to a variable. Afterwards, no\nresult is displayed before the next interactive prompt:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">width</span> <span class=\"o\">=</span> <span class=\"mi\">20</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">height</span> <span class=\"o\">=</span> <span class=\"mi\">5</span> <span class=\"o\">*</span> <span class=\"mi\">9</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">width</span> <span class=\"o\">*</span> <span class=\"n\">height</span>\n<span class=\"go\">900</span>",
+          "text": ">>> width = 20\n>>> height = 5 * 9\n>>> width * height\n900"
+        },
+        {
+          "type": "paragraph",
+          "html": "If a variable is not “defined” (assigned a value), trying to use it will\ngive you an error:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">n</span>  <span class=\"c1\"># try to access an undefined variable</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">NameError</span>: <span class=\"n\">name 'n' is not defined</span>",
+          "text": ">>> n  # try to access an undefined variable\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nNameError: name 'n' is not defined"
+        },
+        {
+          "type": "paragraph",
+          "html": "There is full support for floating point; operators with mixed type operands\nconvert the integer operand to floating point:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">4</span> <span class=\"o\">*</span> <span class=\"mf\">3.75</span> <span class=\"o\">-</span> <span class=\"mi\">1</span>\n<span class=\"go\">14.0</span>",
+          "text": ">>> 4 * 3.75 - 1\n14.0"
+        },
+        {
+          "type": "paragraph",
+          "html": "In interactive mode, the last printed expression is assigned to the variable\n<code>_</code>.  This means that when you are using Python as a desk calculator, it is\nsomewhat easier to continue calculations, for example:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">tax</span> <span class=\"o\">=</span> <span class=\"mf\">12.5</span> <span class=\"o\">/</span> <span class=\"mi\">100</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">price</span> <span class=\"o\">=</span> <span class=\"mf\">100.50</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">price</span> <span class=\"o\">*</span> <span class=\"n\">tax</span>\n<span class=\"go\">12.5625</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">price</span> <span class=\"o\">+</span> <span class=\"n\">_</span>\n<span class=\"go\">113.0625</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">round</span><span class=\"p\">(</span><span class=\"n\">_</span><span class=\"p\">,</span> <span class=\"mi\">2</span><span class=\"p\">)</span>\n<span class=\"go\">113.06</span>",
+          "text": ">>> tax = 12.5 / 100\n>>> price = 100.50\n>>> price * tax\n12.5625\n>>> price + _\n113.0625\n>>> round(_, 2)\n113.06"
+        },
+        {
+          "type": "paragraph",
+          "html": "This variable should be treated as read-only by the user.  Don’t explicitly\nassign a value to it — you would create an independent local variable with the\nsame name masking the built-in variable with its magic behavior."
+        },
+        {
+          "type": "paragraph",
+          "html": "In addition to <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> and <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>, Python supports other types of\nnumbers, such as <code>Decimal</code> and <code>Fraction</code>.\nPython also has built-in support for <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesnumeric\" rel=\"noopener noreferrer\" target=\"_blank\">complex numbers</a>,\nand uses the <code>j</code> or <code>J</code> suffix to indicate the imaginary part\n(e.g. <code>3+5j</code>)."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "text",
+          "html": "Text",
+          "text": "Text"
+        },
+        {
+          "type": "paragraph",
+          "html": "Python can manipulate text (represented by type <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str\"><code>str</code></a>, so-called\n“strings”) as well as numbers.  This includes characters “<code>!</code>”, words\n“<code>rabbit</code>”, names “<code>Paris</code>”, sentences “<code>Got your back.</code>”, etc.\n“<code>Yay! :)</code>”. They can be enclosed in single quotes (<code>'...'</code>) or double\nquotes (<code>\"...\"</code>) with the same result <a href=\"https://docs.python.org/3.13/tutorial/introduction.html#id4\" rel=\"noopener noreferrer\" target=\"_blank\">[2]</a>."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'spam eggs'</span>  <span class=\"c1\"># single quotes</span>\n<span class=\"go\">'spam eggs'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"Paris rabbit got your back :)! Yay!\"</span>  <span class=\"c1\"># double quotes</span>\n<span class=\"go\">'Paris rabbit got your back :)! Yay!'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'1975'</span>  <span class=\"c1\"># digits and numerals enclosed in quotes are also strings</span>\n<span class=\"go\">'1975'</span>",
+          "text": ">>> 'spam eggs'  # single quotes\n'spam eggs'\n>>> \"Paris rabbit got your back :)! Yay!\"  # double quotes\n'Paris rabbit got your back :)! Yay!'\n>>> '1975'  # digits and numerals enclosed in quotes are also strings\n'1975'"
+        },
+        {
+          "type": "paragraph",
+          "html": "To quote a quote, we need to “escape” it, by preceding it with <code>\\</code>.\nAlternatively, we can use the other type of quotation marks:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'doesn</span><span class=\"se\">\\'</span><span class=\"s1\">t'</span>  <span class=\"c1\"># use \\' to escape the single quote...</span>\n<span class=\"go\">\"doesn't\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"doesn't\"</span>  <span class=\"c1\"># ...or use double quotes instead</span>\n<span class=\"go\">\"doesn't\"</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'\"Yes,\" they said.'</span>\n<span class=\"go\">'\"Yes,\" they said.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s2\">\"</span><span class=\"se\">\\\"</span><span class=\"s2\">Yes,</span><span class=\"se\">\\\"</span><span class=\"s2\"> they said.\"</span>\n<span class=\"go\">'\"Yes,\" they said.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'\"Isn</span><span class=\"se\">\\'</span><span class=\"s1\">t,\" they said.'</span>\n<span class=\"go\">'\"Isn\\'t,\" they said.'</span>",
+          "text": ">>> 'doesn\\'t'  # use \\' to escape the single quote...\n\"doesn't\"\n>>> \"doesn't\"  # ...or use double quotes instead\n\"doesn't\"\n>>> '\"Yes,\" they said.'\n'\"Yes,\" they said.'\n>>> \"\\\"Yes,\\\" they said.\"\n'\"Yes,\" they said.'\n>>> '\"Isn\\'t,\" they said.'\n'\"Isn\\'t,\" they said.'"
+        },
+        {
+          "type": "paragraph",
+          "html": "In the Python shell, the string definition and output string can look\ndifferent.  The <a href=\"https://docs.python.org/3.13/library/functions.html#print\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"print\"><code>print()</code></a> function produces a more readable output, by\nomitting the enclosing quotes and by printing escaped and special characters:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s1\">'First line.</span><span class=\"se\">\\n</span><span class=\"s1\">Second line.'</span>  <span class=\"c1\"># \\n means newline</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span>  <span class=\"c1\"># without print(), special characters are included in the string</span>\n<span class=\"go\">'First line.\\nSecond line.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>  <span class=\"c1\"># with print(), special characters are interpreted, so \\n produces new line</span>\n<span class=\"go\">First line.</span>\n<span class=\"go\">Second line.</span>",
+          "text": ">>> s = 'First line.\\nSecond line.'  # \\n means newline\n>>> s  # without print(), special characters are included in the string\n'First line.\\nSecond line.'\n>>> print(s)  # with print(), special characters are interpreted, so \\n produces new line\nFirst line.\nSecond line."
+        },
+        {
+          "type": "paragraph",
+          "html": "If you don’t want characters prefaced by <code>\\</code> to be interpreted as\nspecial characters, you can use <em>raw strings</em> by adding an <code>r</code> before\nthe first quote:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s1\">'C:\\some</span><span class=\"se\">\\n</span><span class=\"s1\">ame'</span><span class=\"p\">)</span>  <span class=\"c1\"># here \\n means newline!</span>\n<span class=\"go\">C:\\some</span>\n<span class=\"go\">ame</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"sa\">r</span><span class=\"s1\">'C:\\some\\name'</span><span class=\"p\">)</span>  <span class=\"c1\"># note the r before the quote</span>\n<span class=\"go\">C:\\some\\name</span>",
+          "text": ">>> print('C:\\some\\name')  # here \\n means newline!\nC:\\some\name\n>>> print(r'C:\\some\\name')  # note the r before the quote\nC:\\some\\name"
+        },
+        {
+          "type": "paragraph",
+          "html": "There is one subtle aspect to raw strings: a raw string may not end in\nan odd number of <code>\\</code> characters; see\nthe FAQ entry for more information\nand workarounds."
+        },
+        {
+          "type": "paragraph",
+          "html": "String literals can span multiple lines.  One way is using triple-quotes:\n<code>\"\"\"...\"\"\"</code> or <code>'''...'''</code>.  End-of-line characters are automatically\nincluded in the string, but it’s possible to prevent this by adding a <code>\\</code> at\nthe end of the line.  In the following example, the initial newline is not\nincluded:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"s2\">\"\"\"</span><span class=\"se\">\\</span>\n<span class=\"gp\">... </span><span class=\"s2\">Usage: thingy [OPTIONS]</span>\n<span class=\"gp\">... </span><span class=\"s2\">     -h                        Display this usage message</span>\n<span class=\"gp\">... </span><span class=\"s2\">     -H hostname               Hostname to connect to</span>\n<span class=\"gp\">... </span><span class=\"s2\">\"\"\"</span><span class=\"p\">)</span>\n<span class=\"go\">Usage: thingy [OPTIONS]</span>\n<span class=\"go\">     -h                        Display this usage message</span>\n<span class=\"go\">     -H hostname               Hostname to connect to</span>\n\n<span class=\"gp\">&gt;&gt;&gt;</span>",
+          "text": ">>> print(\"\"\"\\\n... Usage: thingy [OPTIONS]\n...      -h                        Display this usage message\n...      -H hostname               Hostname to connect to\n... \"\"\")\nUsage: thingy [OPTIONS]\n     -h                        Display this usage message\n     -H hostname               Hostname to connect to\n\n>>>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Strings can be concatenated (glued together) with the <code>+</code> operator, and\nrepeated with <code>*</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"c1\"># 3 times 'un', followed by 'ium'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">3</span> <span class=\"o\">*</span> <span class=\"s1\">'un'</span> <span class=\"o\">+</span> <span class=\"s1\">'ium'</span>\n<span class=\"go\">'unununium'</span>",
+          "text": ">>> # 3 times 'un', followed by 'ium'\n>>> 3 * 'un' + 'ium'\n'unununium'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Two or more <em>string literals</em> (i.e. the ones enclosed between quotes) next\nto each other are automatically concatenated."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'Py'</span> <span class=\"s1\">'thon'</span>\n<span class=\"go\">'Python'</span>",
+          "text": ">>> 'Py' 'thon'\n'Python'"
+        },
+        {
+          "type": "paragraph",
+          "html": "This feature is particularly useful when you want to break long strings:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">text</span> <span class=\"o\">=</span> <span class=\"p\">(</span><span class=\"s1\">'Put several strings within parentheses '</span>\n<span class=\"gp\">... </span>        <span class=\"s1\">'to have them joined together.'</span><span class=\"p\">)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">text</span>\n<span class=\"go\">'Put several strings within parentheses to have them joined together.'</span>",
+          "text": ">>> text = ('Put several strings within parentheses '\n...         'to have them joined together.')\n>>> text\n'Put several strings within parentheses to have them joined together.'"
+        },
+        {
+          "type": "paragraph",
+          "html": "This only works with two literals though, not with variables or expressions:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">prefix</span> <span class=\"o\">=</span> <span class=\"s1\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">prefix</span> <span class=\"s1\">'thon'</span>  <span class=\"c1\"># can't concatenate a variable and a string literal</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>\n<span class=\"w\">    </span><span class=\"n\">prefix</span> <span class=\"s1\">'thon'</span>\n<span class=\"w\">           </span><span class=\"pm\">^^^^^^</span>\n<span class=\"gr\">SyntaxError</span>: <span class=\"n\">invalid syntax</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"p\">(</span><span class=\"s1\">'un'</span> <span class=\"o\">*</span> <span class=\"mi\">3</span><span class=\"p\">)</span> <span class=\"s1\">'ium'</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>\n<span class=\"w\">    </span><span class=\"p\">(</span><span class=\"s1\">'un'</span> <span class=\"o\">*</span> <span class=\"mi\">3</span><span class=\"p\">)</span> <span class=\"s1\">'ium'</span>\n<span class=\"w\">               </span><span class=\"pm\">^^^^^</span>\n<span class=\"gr\">SyntaxError</span>: <span class=\"n\">invalid syntax</span>",
+          "text": ">>> prefix = 'Py'\n>>> prefix 'thon'  # can't concatenate a variable and a string literal\n  File \"<stdin>\", line 1\n    prefix 'thon'\n           ^^^^^^\nSyntaxError: invalid syntax\n>>> ('un' * 3) 'ium'\n  File \"<stdin>\", line 1\n    ('un' * 3) 'ium'\n               ^^^^^\nSyntaxError: invalid syntax"
+        },
+        {
+          "type": "paragraph",
+          "html": "If you want to concatenate variables or a variable and a literal, use <code>+</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">prefix</span> <span class=\"o\">+</span> <span class=\"s1\">'thon'</span>\n<span class=\"go\">'Python'</span>",
+          "text": ">>> prefix + 'thon'\n'Python'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Strings can be <em>indexed</em> (subscripted), with the first character having index 0.\nThere is no separate character type; a character is simply a string of size\none:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span> <span class=\"o\">=</span> <span class=\"s1\">'Python'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span>  <span class=\"c1\"># character in position 0</span>\n<span class=\"go\">'P'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">5</span><span class=\"p\">]</span>  <span class=\"c1\"># character in position 5</span>\n<span class=\"go\">'n'</span>",
+          "text": ">>> word = 'Python'\n>>> word[0]  # character in position 0\n'P'\n>>> word[5]  # character in position 5\n'n'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Indices may also be negative numbers, to start counting from the right:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">1</span><span class=\"p\">]</span>  <span class=\"c1\"># last character</span>\n<span class=\"go\">'n'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">]</span>  <span class=\"c1\"># second-last character</span>\n<span class=\"go\">'o'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">6</span><span class=\"p\">]</span>\n<span class=\"go\">'P'</span>",
+          "text": ">>> word[-1]  # last character\n'n'\n>>> word[-2]  # second-last character\n'o'\n>>> word[-6]\n'P'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Note that since -0 is the same as 0, negative indices start from -1."
+        },
+        {
+          "type": "paragraph",
+          "html": "In addition to indexing, <em>slicing</em> is also supported.  While indexing is used\nto obtain individual characters, <em>slicing</em> allows you to obtain a substring:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">:</span><span class=\"mi\">2</span><span class=\"p\">]</span>  <span class=\"c1\"># characters from position 0 (included) to 2 (excluded)</span>\n<span class=\"go\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:</span><span class=\"mi\">5</span><span class=\"p\">]</span>  <span class=\"c1\"># characters from position 2 (included) to 5 (excluded)</span>\n<span class=\"go\">'tho'</span>",
+          "text": ">>> word[0:2]  # characters from position 0 (included) to 2 (excluded)\n'Py'\n>>> word[2:5]  # characters from position 2 (included) to 5 (excluded)\n'tho'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Slice indices have useful defaults; an omitted first index defaults to zero, an\nomitted second index defaults to the size of the string being sliced."
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span>   <span class=\"c1\"># character from the beginning to position 2 (excluded)</span>\n<span class=\"go\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:]</span>   <span class=\"c1\"># characters from position 4 (included) to the end</span>\n<span class=\"go\">'on'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">:]</span>  <span class=\"c1\"># characters from the second-last (included) to the end</span>\n<span class=\"go\">'on'</span>",
+          "text": ">>> word[:2]   # character from the beginning to position 2 (excluded)\n'Py'\n>>> word[4:]   # characters from position 4 (included) to the end\n'on'\n>>> word[-2:]  # characters from the second-last (included) to the end\n'on'"
+        },
+        {
+          "type": "paragraph",
+          "html": "Note how the start is always included, and the end always excluded.  This\nmakes sure that <code>s[:i] + s[i:]</code> is always equal to <code>s</code>:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">+</span> <span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:]</span>\n<span class=\"go\">'Python'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">4</span><span class=\"p\">]</span> <span class=\"o\">+</span> <span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:]</span>\n<span class=\"go\">'Python'</span>",
+          "text": ">>> word[:2] + word[2:]\n'Python'\n>>> word[:4] + word[4:]\n'Python'"
+        },
+        {
+          "type": "paragraph",
+          "html": "One way to remember how slices work is to think of the indices as pointing\n<em>between</em> characters, with the left edge of the first character numbered 0.\nThen the right edge of the last character of a string of <em>n</em> characters has\nindex <em>n</em>, for example:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span> <span class=\"o\">+---+---+---+---+---+---+</span>\n <span class=\"o\">|</span> <span class=\"n\">P</span> <span class=\"o\">|</span> <span class=\"n\">y</span> <span class=\"o\">|</span> <span class=\"n\">t</span> <span class=\"o\">|</span> <span class=\"n\">h</span> <span class=\"o\">|</span> <span class=\"n\">o</span> <span class=\"o\">|</span> <span class=\"n\">n</span> <span class=\"o\">|</span>\n <span class=\"o\">+---+---+---+---+---+---+</span>\n <span class=\"mi\">0</span>   <span class=\"mi\">1</span>   <span class=\"mi\">2</span>   <span class=\"mi\">3</span>   <span class=\"mi\">4</span>   <span class=\"mi\">5</span>   <span class=\"mi\">6</span>\n<span class=\"o\">-</span><span class=\"mi\">6</span>  <span class=\"o\">-</span><span class=\"mi\">5</span>  <span class=\"o\">-</span><span class=\"mi\">4</span>  <span class=\"o\">-</span><span class=\"mi\">3</span>  <span class=\"o\">-</span><span class=\"mi\">2</span>  <span class=\"o\">-</span><span class=\"mi\">1</span>",
+          "text": " +---+---+---+---+---+---+\n | P | y | t | h | o | n |\n +---+---+---+---+---+---+\n 0   1   2   3   4   5   6\n-6  -5  -4  -3  -2  -1"
+        },
+        {
+          "type": "paragraph",
+          "html": "The first row of numbers gives the position of the indices 0…6 in the string;\nthe second row gives the corresponding negative indices. The slice from <em>i</em> to\n<em>j</em> consists of all characters between the edges labeled <em>i</em> and <em>j</em>,\nrespectively."
+        },
+        {
+          "type": "paragraph",
+          "html": "For non-negative indices, the length of a slice is the difference of the\nindices, if both are within bounds.  For example, the length of <code>word[1:3]</code> is\n2."
+        },
+        {
+          "type": "paragraph",
+          "html": "Attempting to use an index that is too large will result in an error:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">42</span><span class=\"p\">]</span>  <span class=\"c1\"># the word only has 6 characters</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">IndexError</span>: <span class=\"n\">string index out of range</span>",
+          "text": ">>> word[42]  # the word only has 6 characters\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nIndexError: string index out of range"
+        },
+        {
+          "type": "paragraph",
+          "html": "However, out of range slice indexes are handled gracefully when used for\nslicing:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:</span><span class=\"mi\">42</span><span class=\"p\">]</span>\n<span class=\"go\">'on'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">42</span><span class=\"p\">:]</span>\n<span class=\"go\">''</span>",
+          "text": ">>> word[4:42]\n'on'\n>>> word[42:]\n''"
+        },
+        {
+          "type": "paragraph",
+          "html": "Python strings cannot be changed — they are <a href=\"https://docs.python.org/3.13/glossary.html#term-immutable\" rel=\"noopener noreferrer\" target=\"_blank\">immutable</a>.\nTherefore, assigning to an indexed position in the string results in an error:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">0</span><span class=\"p\">]</span> <span class=\"o\">=</span> <span class=\"s1\">'J'</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">'str' object does not support item assignment</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">2</span><span class=\"p\">:]</span> <span class=\"o\">=</span> <span class=\"s1\">'py'</span>\n<span class=\"gt\">Traceback (most recent call last):</span>\n  File <span class=\"nb\">\"&lt;stdin&gt;\"</span>, line <span class=\"m\">1</span>, in <span class=\"n\">&lt;module&gt;</span>\n<span class=\"gr\">TypeError</span>: <span class=\"n\">'str' object does not support item assignment</span>",
+          "text": ">>> word[0] = 'J'\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: 'str' object does not support item assignment\n>>> word[2:] = 'py'\nTraceback (most recent call last):\n  File \"<stdin>\", line 1, in <module>\nTypeError: 'str' object does not support item assignment"
+        },
+        {
+          "type": "paragraph",
+          "html": "If you need a different string, you should create a new one:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"s1\">'J'</span> <span class=\"o\">+</span> <span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">1</span><span class=\"p\">:]</span>\n<span class=\"go\">'Jython'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span> <span class=\"o\">+</span> <span class=\"s1\">'py'</span>\n<span class=\"go\">'Pypy'</span>",
+          "text": ">>> 'J' + word[1:]\n'Jython'\n>>> word[:2] + 'py'\n'Pypy'"
+        },
+        {
+          "type": "paragraph",
+          "html": "The built-in function <a href=\"https://docs.python.org/3.13/library/functions.html#len\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"len\"><code>len()</code></a> returns the length of a string:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s1\">'supercalifragilisticexpialidocious'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">len</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>\n<span class=\"go\">34</span>",
+          "text": ">>> s = 'supercalifragilisticexpialidocious'\n>>> len(s)\n34"
+        },
+        {
+          "type": "admonition",
+          "kind": "seealso",
+          "titleHtml": "See also",
+          "blocks": [
+            {
+              "type": "definition",
+              "items": [
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://docs.python.org/3.13/library/stdtypes.html#textseq\" rel=\"noopener noreferrer\" target=\"_blank\">Text Sequence Type — str</a>",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Strings are examples of <em>sequence types</em>, and support the common\noperations supported by such types."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://docs.python.org/3.13/library/stdtypes.html#string-methods\" rel=\"noopener noreferrer\" target=\"_blank\">String Methods</a>",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Strings support a large number of methods for\nbasic transformations and searching."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "f-strings",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "String literals that have embedded expressions."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "formatstrings",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "Information about string formatting with <a href=\"https://docs.python.org/3.13/library/stdtypes.html#str.format\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"str.format\"><code>str.format()</code></a>."
+                    }
+                  ]
+                },
+                {
+                  "id": null,
+                  "termHtml": "<a href=\"https://docs.python.org/3.13/library/stdtypes.html#old-string-formatting\" rel=\"noopener noreferrer\" target=\"_blank\">printf-style String Formatting</a>",
+                  "blocks": [
+                    {
+                      "type": "paragraph",
+                      "html": "The old formatting operations invoked when strings are\nthe left operand of the <code>%</code> operator are described in more detail here."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "source": {
+        "doc": "library/stdtypes",
+        "title": "Built-in Types",
+        "label": "The Python Standard Library · Built-in Types",
+        "url": "https://docs.python.org/3.13/library/stdtypes.html"
+      },
+      "blocks": [
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "truth-value-testing",
+          "html": "Truth Value Testing",
+          "text": "Truth Value Testing"
+        },
+        {
+          "type": "paragraph",
+          "html": "Any object can be tested for truth value, for use in an <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a> or\n<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#while\" rel=\"noopener noreferrer\" target=\"_blank\"><code>while</code></a> condition or as operand of the Boolean operations below."
+        },
+        {
+          "type": "paragraph",
+          "html": "By default, an object is considered true unless its class defines either a\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__bool__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__bool__\"><code>__bool__()</code></a> method that returns <code>False</code> or a\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__len__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__len__\"><code>__len__()</code></a> method that\nreturns zero, when called with the object. <a href=\"https://docs.python.org/3.13/library/stdtypes.html#id12\" rel=\"noopener noreferrer\" target=\"_blank\">[1]</a>  Here are most of the built-in\nobjects considered false:"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "constants defined to be false: <code>None</code> and <code>False</code>"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "zero of any numeric type: <code>0</code>, <code>0.0</code>, <code>0j</code>, <code>Decimal(0)</code>,\n<code>Fraction(0, 1)</code>"
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "empty sequences and collections: <code>''</code>, <code>()</code>, <code>[]</code>, <code>{}</code>, <code>set()</code>,\n<code>range(0)</code>"
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "Operations and built-in functions that have a Boolean result always return <code>0</code>\nor <code>False</code> for false and <code>1</code> or <code>True</code> for true, unless otherwise stated.\n(Important exception: the Boolean operations <code>or</code> and <code>and</code> always return\none of their operands.)"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "boolean-operations-and-or-not",
+          "html": "Boolean Operations — <code>and</code>, <code>or</code>, <code>not</code>",
+          "text": "Boolean Operations — and , or , not"
+        },
+        {
+          "type": "paragraph",
+          "html": "These are the Boolean operations, ordered by ascending priority:"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>x or y</code></td><td>if <em>x</em> is true, then <em>x</em>, else\n<em>y</em></td><td>(1)</td></tr><tr><td><code>x and y</code></td><td>if <em>x</em> is false, then <em>x</em>, else\n<em>y</em></td><td>(2)</td></tr><tr><td><code>not x</code></td><td>if <em>x</em> is false, then <code>True</code>,\nelse <code>False</code></td><td>(3)</td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Notes:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "This is a short-circuit operator, so it only evaluates the second\nargument if the first one is false."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "This is a short-circuit operator, so it only evaluates the second\nargument if the first one is true."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "<code>not</code> has a lower priority than non-Boolean operators, so <code>not a == b</code> is\ninterpreted as <code>not (a == b)</code>, and <code>a == not b</code> is a syntax error."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "comparisons",
+          "html": "Comparisons",
+          "text": "Comparisons"
+        },
+        {
+          "type": "paragraph",
+          "html": "There are eight comparison operations in Python.  They all have the same\npriority (which is higher than that of the Boolean operations).  Comparisons can\nbe chained arbitrarily; for example, <code>x &lt; y &lt;= z</code> is equivalent to <code>x &lt; y and\ny &lt;= z</code>, except that <em>y</em> is evaluated only once (but in both cases <em>z</em> is not\nevaluated at all when <code>x &lt; y</code> is found to be false)."
+        },
+        {
+          "type": "paragraph",
+          "html": "This table summarizes the comparison operations:"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Meaning</th></tr><tr><td><code>&lt;</code></td><td>strictly less than</td></tr><tr><td><code>&lt;=</code></td><td>less than or equal</td></tr><tr><td><code>&gt;</code></td><td>strictly greater than</td></tr><tr><td><code>&gt;=</code></td><td>greater than or equal</td></tr><tr><td><code>==</code></td><td>equal</td></tr><tr><td><code>!=</code></td><td>not equal</td></tr><tr><td><code>is</code></td><td>object identity</td></tr><tr><td><code>is not</code></td><td>negated object identity</td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Objects of different types, except different numeric types, never compare equal.\nThe <code>==</code> operator is always defined but for some object types (for example,\nclass objects) is equivalent to <a href=\"https://docs.python.org/3.13/reference/expressions.html#is\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is</code></a>. The <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;</code> and <code>&gt;=</code>\noperators are only defined where they make sense; for example, they raise a\n<a href=\"https://docs.python.org/3.13/library/exceptions.html#TypeError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"TypeError\"><code>TypeError</code></a> exception when one of the arguments is a complex number."
+        },
+        {
+          "type": "paragraph",
+          "html": "Non-identical instances of a class normally compare as non-equal unless the\nclass defines the <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__eq__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__eq__\"><code>__eq__()</code></a> method."
+        },
+        {
+          "type": "paragraph",
+          "html": "Instances of a class cannot be ordered with respect to other instances of the\nsame class, or other types of object, unless the class defines enough of the\nmethods <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__lt__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__lt__\"><code>__lt__()</code></a>, <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__le__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__le__\"><code>__le__()</code></a>, <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__gt__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__gt__\"><code>__gt__()</code></a>, and\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__ge__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__ge__\"><code>__ge__()</code></a> (in general, <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__lt__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__lt__\"><code>__lt__()</code></a> and\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__eq__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__eq__\"><code>__eq__()</code></a> are sufficient, if you want the conventional meanings of the\ncomparison operators)."
+        },
+        {
+          "type": "paragraph",
+          "html": "The behavior of the <a href=\"https://docs.python.org/3.13/reference/expressions.html#is\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is</code></a> and <a href=\"https://docs.python.org/3.13/reference/expressions.html#is-not\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is not</code></a> operators cannot be\ncustomized; also they can be applied to any two objects and never raise an\nexception."
+        },
+        {
+          "type": "paragraph",
+          "html": "Two more operations with the same syntactic priority, <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> and\n<a href=\"https://docs.python.org/3.13/reference/expressions.html#not-in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>not in</code></a>, are supported by types that are <a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a> or\nimplement the <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__contains__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__contains__\"><code>__contains__()</code></a> method."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "numeric-types-int-float-complex",
+          "html": "Numeric Types — <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>, <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>, <a href=\"https://docs.python.org/3.13/library/functions.html#complex\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"complex\"><code>complex</code></a>",
+          "text": "Numeric Types — int , float , complex"
+        },
+        {
+          "type": "paragraph",
+          "html": "There are three distinct numeric types: <em>integers</em>, <em>floating-point\nnumbers</em>, and <em>complex numbers</em>.  In addition, Booleans are a\nsubtype of integers.  Integers have unlimited precision.  Floating-point\nnumbers are usually implemented using double in C; information\nabout the precision and internal representation of floating-point\nnumbers for the machine on which your program is running is available\nin <code>sys.float_info</code>.  Complex numbers have a real and imaginary\npart, which are each a floating-point number.  To extract these parts\nfrom a complex number <em>z</em>, use <code>z.real</code> and <code>z.imag</code>. (The standard\nlibrary includes the additional numeric types <code>fractions.Fraction</code>, for\nrationals, and <code>decimal.Decimal</code>, for floating-point numbers with\nuser-definable precision.)"
+        },
+        {
+          "type": "paragraph",
+          "html": "Numbers are created by numeric literals or as the result of built-in functions\nand operators.  Unadorned integer literals (including hex, octal and binary\nnumbers) yield integers.  Numeric literals containing a decimal point or an\nexponent sign yield floating-point numbers.  Appending <code>'j'</code> or <code>'J'</code> to a\nnumeric literal yields an imaginary number (a complex number with a zero real\npart) which you can add to an integer or float to get a complex number with real\nand imaginary parts."
+        },
+        {
+          "type": "paragraph",
+          "html": "Python fully supports mixed arithmetic: when a binary arithmetic operator has\noperands of different numeric types, the operand with the “narrower” type is\nwidened to that of the other, where integer is narrower than floating point,\nwhich is narrower than complex. A comparison between numbers of different types\nbehaves as though the exact values of those numbers were being compared. <a href=\"https://docs.python.org/3.13/library/stdtypes.html#id13\" rel=\"noopener noreferrer\" target=\"_blank\">[2]</a>"
+        },
+        {
+          "type": "paragraph",
+          "html": "The constructors <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a>, <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float()</code></a>, and\n<a href=\"https://docs.python.org/3.13/library/functions.html#complex\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"complex\"><code>complex()</code></a> can be used to produce numbers of a specific type."
+        },
+        {
+          "type": "paragraph",
+          "html": "All numeric types (except complex) support the following operations (for priorities of\nthe operations, see <a href=\"https://docs.python.org/3.13/reference/expressions.html#operator-summary\" rel=\"noopener noreferrer\" target=\"_blank\">Operator precedence</a>):"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th><th>Full documentation</th></tr><tr><td><code>x + y</code></td><td>sum of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x - y</code></td><td>difference of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x * y</code></td><td>product of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x / y</code></td><td>quotient of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x // y</code></td><td>floored quotient of <em>x</em> and\n<em>y</em></td><td>(1)(2)</td><td></td></tr><tr><td><code>x % y</code></td><td>remainder of <code>x / y</code></td><td>(2)</td><td></td></tr><tr><td><code>-x</code></td><td><em>x</em> negated</td><td></td><td></td></tr><tr><td><code>+x</code></td><td><em>x</em> unchanged</td><td></td><td></td></tr><tr><td><code>abs(x)</code></td><td>absolute value or magnitude of\n<em>x</em></td><td></td><td><a href=\"https://docs.python.org/3.13/library/functions.html#abs\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"abs\"><code>abs()</code></a></td></tr><tr><td><code>int(x)</code></td><td><em>x</em> converted to integer</td><td>(3)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a></td></tr><tr><td><code>float(x)</code></td><td><em>x</em> converted to floating point</td><td>(4)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float()</code></a></td></tr><tr><td><code>complex(re, im)</code></td><td>a complex number with real part\n<em>re</em>, imaginary part <em>im</em>.\n<em>im</em> defaults to zero.</td><td>(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#complex\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"complex\"><code>complex()</code></a></td></tr><tr><td><code>c.conjugate()</code></td><td>conjugate of the complex number\n<em>c</em></td><td></td><td></td></tr><tr><td><code>divmod(x, y)</code></td><td>the pair <code>(x // y, x % y)</code></td><td>(2)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#divmod\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"divmod\"><code>divmod()</code></a></td></tr><tr><td><code>pow(x, y)</code></td><td><em>x</em> to the power <em>y</em></td><td>(5)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#pow\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"pow\"><code>pow()</code></a></td></tr><tr><td><code>x ** y</code></td><td><em>x</em> to the power <em>y</em></td><td>(5)</td><td></td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "Notes:"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": null,
+          "items": [
+            [
+              {
+                "type": "paragraph",
+                "html": "Also referred to as integer division.  For operands of type <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>,\nthe result has type <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>.  For operands of type <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>,\nthe result has type <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>.  In general, the result is a whole\ninteger, though the result’s type is not necessarily <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a>.  The result is\nalways rounded towards minus infinity: <code>1//2</code> is <code>0</code>, <code>(-1)//2</code> is\n<code>-1</code>, <code>1//(-2)</code> is <code>-1</code>, and <code>(-1)//(-2)</code> is <code>0</code>."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Not for complex numbers.  Instead convert to floats using <a href=\"https://docs.python.org/3.13/library/functions.html#abs\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"abs\"><code>abs()</code></a> if\nappropriate."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Conversion from <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a> to <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> truncates, discarding the\nfractional part. See functions <code>math.floor()</code> and <code>math.ceil()</code> for\nalternative conversions."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "float also accepts the strings “nan” and “inf” with an optional prefix “+”\nor “-” for Not a Number (NaN) and positive or negative infinity."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "Python defines <code>pow(0, 0)</code> and <code>0 ** 0</code> to be <code>1</code>, as is common for\nprogramming languages."
+              }
+            ],
+            [
+              {
+                "type": "paragraph",
+                "html": "The numeric literals accepted include the digits <code>0</code> to <code>9</code> or any\nUnicode equivalent (code points with the <code>Nd</code> property)."
+              },
+              {
+                "type": "paragraph",
+                "html": "See <a href=\"https://unicode.org/Public/UNIDATA/extracted/DerivedNumericType.txt\" rel=\"noopener noreferrer\" target=\"_blank\">the Unicode Standard</a>\nfor a complete list of code points with the <code>Nd</code> property."
+              }
+            ]
+          ]
+        },
+        {
+          "type": "paragraph",
+          "html": "All <code>numbers.Real</code> types (<a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> and <a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float</code></a>) also include\nthe following operations:"
+        },
+        {
+          "type": "table",
+          "html": "<table><tr><th>Operation</th><th>Result</th></tr><tr><td><code>math.trunc(x)</code></td><td><em>x</em> truncated to <code>Integral</code></td></tr><tr><td><a href=\"https://docs.python.org/3.13/library/functions.html#round\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"round\"><code>round(x[,\nn])</code></a></td><td><em>x</em> rounded to <em>n</em> digits,\nrounding half to even. If <em>n</em> is\nomitted, it defaults to 0.</td></tr><tr><td><code>math.floor(x)</code></td><td>the greatest <code>Integral</code>\n&lt;= <em>x</em></td></tr><tr><td><code>math.ceil(x)</code></td><td>the least <code>Integral</code> &gt;= <em>x</em></td></tr></table>"
+        },
+        {
+          "type": "paragraph",
+          "html": "For additional numeric operations see the <code>math</code> and <code>cmath</code>\nmodules."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "id": "boolean-type-bool",
+          "html": "Boolean Type - <a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a>",
+          "text": "Boolean Type - bool"
+        },
+        {
+          "type": "paragraph",
+          "html": "Booleans represent truth values. The <a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a> type has exactly two\nconstant instances: <code>True</code> and <code>False</code>."
+        },
+        {
+          "type": "paragraph",
+          "html": "The built-in function <a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool()</code></a>  converts any value to a boolean, if the\nvalue can be interpreted as a truth value (see section <a href=\"https://docs.python.org/3.13/library/stdtypes.html#truth\" rel=\"noopener noreferrer\" target=\"_blank\">Truth Value Testing</a> above)."
+        },
+        {
+          "type": "paragraph",
+          "html": "For logical operations, use the <a href=\"https://docs.python.org/3.13/library/stdtypes.html#boolean\" rel=\"noopener noreferrer\" target=\"_blank\">boolean operators</a> <code>and</code>,\n<code>or</code> and <code>not</code>.\nWhen applying the bitwise operators <code>&amp;</code>, <code>|</code>, <code>^</code> to two booleans, they\nreturn a bool equivalent to the logical operations “and”, “or”, “xor”. However,\nthe logical operators <code>and</code>, <code>or</code> and <code>!=</code> should be preferred\nover <code>&amp;</code>, <code>|</code> and <code>^</code>."
+        },
+        {
+          "type": "note",
+          "kind": "deprecated",
+          "html": "Deprecated since version 3.12: The use of the bitwise inversion operator <code>~</code> is deprecated and will\nraise an error in Python 3.16."
+        },
+        {
+          "type": "paragraph",
+          "html": "<a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a> is a subclass of <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> (see <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesnumeric\" rel=\"noopener noreferrer\" target=\"_blank\">Numeric Types — int, float, complex</a>). In\nmany numeric contexts, <code>False</code> and <code>True</code> behave like the integers 0 and 1, respectively.\nHowever, relying on this is discouraged; explicitly convert using <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a>\ninstead."
+        }
+      ]
+    }
+  ],
+  "blockCount": 103,
+  "wordCount": 3084,
+  "title": "Variabel & Tipe Data",
+  "order": 1,
+  "api": [
+    {
+      "name": "len",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#len",
+      "display": "len",
+      "doc": "library/functions"
+    },
+    {
+      "name": "int",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#int",
+      "display": "int",
+      "doc": "library/functions"
+    },
+    {
+      "name": "float",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#float",
+      "display": "float",
+      "doc": "library/functions"
+    },
+    {
+      "name": "str",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/stdtypes/#str",
+      "display": "str",
+      "doc": "library/stdtypes"
+    },
+    {
+      "name": "bool",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#bool",
+      "display": "bool",
+      "doc": "library/functions"
+    },
+    {
+      "name": "type",
+      "role": "py:class",
+      "url": "https://docs.python.org/3.13/library/functions/#type",
+      "display": "type",
+      "doc": "library/functions"
+    },
+    {
+      "name": "isinstance",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#isinstance",
+      "display": "isinstance",
+      "doc": "library/functions"
+    },
+    {
+      "name": "abs",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#abs",
+      "display": "abs",
+      "doc": "library/functions"
+    },
+    {
+      "name": "round",
+      "role": "py:function",
+      "url": "https://docs.python.org/3.13/library/functions/#round",
+      "display": "round",
+      "doc": "library/functions"
+    }
+  ]
+}
