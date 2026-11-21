@@ -40,7 +40,13 @@ export function AsistenCompanionWidget() {
   const [status, setStatus] = useState<SystemStatus | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
   const [showCameraModal, setShowCameraModal] = useState<boolean>(false);
+  const [streamKey, setStreamKey] = useState<number>(Date.now());
   const [isActionLoading, setIsActionLoading] = useState<boolean>(false);
+
+  const openCameraModal = () => {
+    setStreamKey(Date.now());
+    setShowCameraModal(true);
+  };
 
   useEffect(() => {
     let isMounted = true;
@@ -182,7 +188,7 @@ export function AsistenCompanionWidget() {
             <button
               type="button"
               className="btn-pomo-icon camera-btn"
-              onClick={() => setShowCameraModal(true)}
+              onClick={openCameraModal}
               title="Pratinjau Sudut Pandang Kamera Robot ESP32-S3"
             >
               📷
@@ -222,13 +228,19 @@ export function AsistenCompanionWidget() {
             <div className="modal-body">
               <p className="modal-desc">
                 Stream real-time dari kamera ESP32-S3 dengan deteksi objek (HP &amp; Keberadaan
-                Pengguna).
+                Pengguna). • <strong>Status:</strong>{" "}
+                <span style={{ color: status?.camera?.connected ? "#10b981" : "#ef4444" }}>
+                  {status?.camera?.connected
+                    ? `Terhubung (${status.camera.fps ?? 0} FPS)`
+                    : "Menghubungkan..."}
+                </span>
               </p>
               <div className="camera-stream-wrapper">
                 {/* Direct High-Performance MJPEG Feed dari FastAPI */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`${FASTAPI_URL}/video_feed`}
+                  key={streamKey}
+                  src={`${FASTAPI_URL}/video_feed?t=${streamKey}`}
                   alt="Live Camera Feed dari ESP32"
                   className="camera-stream-img"
                   onError={(e) => {

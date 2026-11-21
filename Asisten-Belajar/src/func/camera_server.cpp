@@ -1,5 +1,6 @@
 #include "camera_server.h"
 #include <WiFi.h>
+#include <esp_wifi.h>
 
 // Fungsi utama untuk setup WiFi dan Server
 void setupWiFiAndServer(const char* ssid, const char* password) {
@@ -8,18 +9,10 @@ void setupWiFiAndServer(const char* ssid, const char* password) {
 
   WiFi.mode(WIFI_STA);
 
-  // Static IP agar alamat ESP32 selalu sama (192.168.1.50) sesuai subnet router 192.168.1.x
-  IPAddress local_IP(192, 168, 1, 50);
-  IPAddress gateway(192, 168, 1, 1);
-  IPAddress subnet(255, 255, 255, 0);
-  IPAddress primaryDNS(192, 168, 1, 1);
-  IPAddress secondaryDNS(8, 8, 8, 8);
-
-  if (!WiFi.config(local_IP, gateway, subnet, primaryDNS, secondaryDNS)) {
-    Serial.println("Gagal set static IP, lanjut pakai DHCP...");
-  } else {
-    Serial.println("Static IP ESP32: 192.168.1.50");
-  }
+  // DHCP: IP mengikuti subnet hotspot apa pun (tidak di-hardcode).
+  // IP hasil DHCP dilaporkan otomatis ke backend lewat query ?ip=... pada
+  // polling /api/esp/pomodoro, sehingga URL stream di backend ikut diperbarui.
+  Serial.println("Mode IP: DHCP (otomatis dari hotspot)");
 
   WiFi.begin(ssid, password);
 
@@ -34,8 +27,15 @@ void setupWiFiAndServer(const char* ssid, const char* password) {
     Serial.println("\nWiFi Terhubung!");
     Serial.print("Buka browser di laptop dan ketik IP ini -> http://");
     Serial.println(WiFi.localIP());
-    // Menjalankan HTTP Web Server lengkap dengan UI Setting bawaan Espressif
-    startCameraServer();
+
+    // Maksimalkan daya pancar & matikan modem sleep secara permanen setelah koneksi berhasil
+    // Menghilangkan latency ping 500-3000ms -> turun ke ~2ms (anti-drop stream kamera)
+    WiFi.setTxPower(WIFI_POWER_19_5dBm);
+    WiFi.setSleep(false);
+    esp_wifi_set_ps(WIFI_PS_NONE);
+    Serial.printf("[WIFI] TxPower: 19.5 dBm | Modem Sleep: OFF | RSSI: %d dBm\n", WiFi.RSSI());
+    // Catatan: Web server kamera (startCameraServer) dijalankan terpisah di Core 0
+    // melalui task cameraCore0Task setelah kamera selesai diinisialisasi.
   } else {
     Serial.println("\n[WIFI TIMEOUT] Hotspot tidak terdeteksi. Berjalan di Mode Offline!");
     Serial.println("[INFO] Layar Wajah Robot Mochi tetap beranimasi normal di loop utama.");

@@ -176,7 +176,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The behavior of the default equality comparison, that instances with different\nidentities are always unequal, may be in contrast to what types will need that\nhave a sensible definition of object value and value-based equality.  Such\ntypes will need to customize their comparison behavior, and in fact, a number\nof built-in types have done that."
+          "html": "Perilaku perbandingan kesetaraan bawaan, di mana instans dengan identitas berbeda selalu dianggap tidak sama, mungkin berbeda dengan kebutuhan tipe data yang memerlukan definisi nilai objek dan kesetaraan berbasis nilai yang wajar. Tipe data tersebut perlu menyesuaikan perilaku perbandingannya, dan sejumlah tipe bawaan Python telah melakukan hal tersebut."
         },
         {
           "type": "paragraph",
@@ -391,7 +391,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Python does not enforce these consistency rules. In fact, the not-a-number\nvalues are an example for not following these rules."
+          "html": "Python tidak memaksakan aturan konsistensi ini secara kaku. Faktanya, nilai bukan-angka (not-a-number / NaN) merupakan contoh nilai yang tidak mengikuti aturan perbandingan tersebut."
         },
         {
           "type": "heading",
@@ -414,11 +414,11 @@
         },
         {
           "type": "paragraph",
-          "html": "For user-defined classes which do not define <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__contains__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__contains__\"><code>__contains__()</code></a> but do define\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__iter__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__iter__\"><code>__iter__()</code></a>, <code>x in y</code> is <code>True</code> if some value <code>z</code>, for which the\nexpression <code>x is z or x == z</code> is true, is produced while iterating over <code>y</code>.\nIf an exception is raised during the iteration, it is as if <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> raised\nthat exception."
+          "html": "Untuk kelas buatan pengguna yang tidak mendefinisikan <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__contains__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__contains__\"><code>__contains__()</code></a> tetapi mendefinisikan <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__iter__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__iter__\"><code>__iter__()</code></a>, <code>x in y</code> bernilai <code>True</code> jika suatu nilai <code>z</code> yang memenuhi ekspresi <code>x is z or x == z</code> dihasilkan saat melakukan iterasi pada <code>y</code>. Jika sebuah exception muncul selama iterasi, hal itu diperlakukan seolah-olah operator <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> yang memunculkan exception tersebut."
         },
         {
           "type": "paragraph",
-          "html": "Lastly, the old-style iteration protocol is tried: if a class defines\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__getitem__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__getitem__\"><code>__getitem__()</code></a>, <code>x in y</code> is <code>True</code> if and only if there is a non-negative\ninteger index <em>i</em> such that <code>x is y[i] or x == y[i]</code>, and no lower integer index\nraises the <a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a> exception.  (If any other exception is raised, it is as\nif <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> raised that exception)."
+          "html": "Terakhir, protokol iterasi gaya lama dicoba: jika sebuah kelas mendefinisikan <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__getitem__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__getitem__\"><code>__getitem__()</code></a>, <code>x in y</code> bernilai <code>True</code> jika dan hanya jika terdapat indeks bilangan bulat non-negatif <em>i</em> sedemikian rupa sehingga <code>x is y[i] or x == y[i]</code>, dan tidak ada indeks bilangan bulat yang lebih rendah yang memicu exception <a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a>."
         },
         {
           "type": "paragraph",
@@ -450,7 +450,7 @@
         },
         {
           "type": "paragraph",
-          "html": "In the context of Boolean operations, and also when expressions are used by\ncontrol flow statements, the following values are interpreted as false:\n<code>False</code>, <code>None</code>, numeric zero of all types, and empty strings and containers\n(including strings, tuples, lists, dictionaries, sets and frozensets).  All\nother values are interpreted as true.  User-defined objects can customize their\ntruth value by providing a <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__bool__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__bool__\"><code>__bool__()</code></a> method."
+          "html": "Dalam konteks operasi Boolean, serta ketika ekspresi digunakan oleh pernyataan alur kontrol, nilai-nilai berikut diinterpretasikan sebagai bernilai salah (false): <code>False</code>, <code>None</code>, nilai nol numerik dari semua tipe, serta string dan kontainer kosong (termasuk string, tuple, list, dictionary, set, dan frozenset). Semua nilai lainnya diinterpretasikan sebagai bernilai benar (true). Objek buatan pengguna dapat mengustomisasi nilai kebenarannya dengan menyediakan metode <a href=\"https://docs.python.org/3.13/reference/datamodel.html#object.__bool__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"object.__bool__\"><code>__bool__()</code></a>."
         },
         {
           "type": "paragraph",
@@ -528,6 +528,26 @@
       "url": "https://docs.python.org/3.13/library/functions/#print",
       "display": "print",
       "doc": "library/functions"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep-1-if-dasar",
+      "title": "Episode 1: Pernyataan If Dasar & Indentasi",
+      "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+      "targetSection": "if-statements"
+    },
+    {
+      "id": "ep-2-if-elif-else",
+      "title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+      "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+      "targetSection": "the-if-statement"
+    },
+    {
+      "id": "ep-3-kondisional",
+      "title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+      "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+      "targetSection": "pass-statements"
     }
   ]
 }

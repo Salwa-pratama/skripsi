@@ -7,7 +7,8 @@
 
 // Ganti "localhost" di bawah ini dengan alamat IP Laptop/Komputer Server Flask kamu
 // Contoh: "http://192.168.1.10:5000/api/esp/pomodoro"
-#define POMODORO_SERVER_URL    "http://192.168.1.3:5000/api/esp/pomodoro"
+// IP laptop di hotspot "ananda" saat ini: 10.19.170.155
+#define POMODORO_SERVER_URL    "http://10.19.170.155:5000/api/esp/pomodoro"
 
 // Interval polling data ke server Flask (dalam milidetik)
 #define POMODORO_POLL_INTERVAL_MS   1000

@@ -55,6 +55,13 @@ export type ApiHighlight = {
   doc: string;
 };
 
+export type EpisodeMeta = {
+  id: string;
+  title: string;
+  concept: string;
+  targetSection?: string;
+};
+
 export type ChapterMeta = {
   order: number;
   slug: string;
@@ -68,6 +75,7 @@ export type ChapterMeta = {
   keyPoints: string[];
   apiHighlights: string[];
   sources: SourceConfig[];
+  episodes?: EpisodeMeta[];
 };
 
 export type Curriculum = {

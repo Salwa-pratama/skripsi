@@ -141,7 +141,9 @@ void playTone(int freqHz, int durationMs) {
   int chunkSize = 128;
   float phase = 0.0f;
   float phaseIncrement = (2.0f * (float)M_PI * (float)freqHz) / 16000.0f;
-  int amplitude = (freqHz == 0) ? 0 : 20000; // Amplitudo kencang & jernih (~61% full-scale)
+  // Volume dikunci ke SPEAKER_MASTER_VOLUME_PERCENT (100% = amplitudo PCM penuh).
+  int amplitude = (freqHz == 0) ? 0
+                                : (int)((32767L * (long)SPEAKER_MASTER_VOLUME_PERCENT) / 100L);
 
   int remaining = totalSamples;
   while (remaining > 0) {

@@ -29,6 +29,17 @@
 #define I2S_MIC_SD_PIN      14   // Deret Kiri Pin 19 (SD INMP441)
 
 // =========================================================================
+// VOLUME SPEAKER (PERSEN) - DIKUNCI 100%
+// -------------------------------------------------------------------------
+// MAX98357A tidak punya register volume digital; kenyaringan diatur oleh
+// amplitudo sampel PCM yang kita kirim + gain hardware (resistor GAIN).
+// Nilai ini dipakai oleh playTone()/playDistractionAlertSound()/playSuccessChime()
+// sehingga SEMUA bunyi keluar pada amplitudo penuh (32767/32767 = 100%).
+// Ubah ke 100 bila ingin benar-benar maksimal (default).
+// =========================================================================
+#define SPEAKER_MASTER_VOLUME_PERCENT 100
+
+// =========================================================================
 // DEKLARASI DATA AUDIO RAW (510 - ALIVE) DARI CLIP.S
 // =========================================================================
 extern const uint8_t clip_start[] asm("clip_start");

@@ -4,7 +4,7 @@
   "docUrl": "https://docs.python.org/3.13/",
   "cpythonRepo": "https://github.com/python/cpython/tree/v3.13.7/Doc",
   "title": "PyJourney",
-  "description": "Jalur belajar Python 3 dari dokumentasi resmi CPython: variabel, percabangan, perulangan, fungsi, list & dictionary, sampai OOP.",
+  "description": "Jalur belajar pemrograman Python 3 dari dokumentasi resmi CPython: variabel dan tipe data, percabangan, perulangan, fungsi, hingga list dan dictionary.",
   "chapters": [
     {
       "order": 1,
@@ -64,6 +64,26 @@
             "hashing-of-numeric-types"
           ]
         }
+      ],
+      "episodes": [
+        {
+          "id": "ep-1-bilangan",
+          "title": "Episode 1: Bilangan & Operasi Aritmetika",
+          "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+          "targetSection": "numbers"
+        },
+        {
+          "id": "ep-2-string",
+          "title": "Episode 2: Teks & Manipulasi String",
+          "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+          "targetSection": "text"
+        },
+        {
+          "id": "ep-3-boolean",
+          "title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+          "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+          "targetSection": "truth-value-testing"
+        }
       ]
     },
     {
@@ -120,6 +140,26 @@
             "boolean-operations",
             "conditional-expressions"
           ]
+        }
+      ],
+      "episodes": [
+        {
+          "id": "ep-1-if-dasar",
+          "title": "Episode 1: Pernyataan If Dasar & Indentasi",
+          "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+          "targetSection": "if-statements"
+        },
+        {
+          "id": "ep-2-if-elif-else",
+          "title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+          "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+          "targetSection": "the-if-statement"
+        },
+        {
+          "id": "ep-3-kondisional",
+          "title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+          "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+          "targetSection": "pass-statements"
         }
       ]
     },
@@ -179,6 +219,26 @@
             "the-for-statement"
           ]
         }
+      ],
+      "episodes": [
+        {
+          "id": "ep-1-for-range",
+          "title": "Episode 1: Perulangan For & Fungsi Range()",
+          "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+          "targetSection": "for-statements"
+        },
+        {
+          "id": "ep-2-while",
+          "title": "Episode 2: Perulangan While",
+          "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+          "targetSection": "the-while-statement"
+        },
+        {
+          "id": "ep-3-break-continue",
+          "title": "Episode 3: Kontrol Alur Break, Continue & Else",
+          "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+          "targetSection": "break-and-continue"
+        }
       ]
     },
     {
@@ -225,6 +285,26 @@
           "sections": [
             "function-definitions"
           ]
+        }
+      ],
+      "episodes": [
+        {
+          "id": "ep-1-def-docstring",
+          "title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+          "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+          "targetSection": "defining-functions"
+        },
+        {
+          "id": "ep-2-argumen-default",
+          "title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+          "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+          "targetSection": "default-argument-values"
+        },
+        {
+          "id": "ep-3-parameter-return",
+          "title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+          "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+          "targetSection": "special-parameters"
         }
       ]
     },
@@ -283,119 +363,25 @@
             "mapping-types-dict"
           ]
         }
-      ]
-    },
-    {
-      "order": 6,
-      "slug": "oop-dasar",
-      "phase": "Data & OOP",
-      "title": "OOP Dasar: Class & Object",
-      "subtitle": "Modelkan data dan perilaku dalam satu struktur",
-      "level": "Menengah",
-      "minutes": 35,
-      "description": "Masuk ke pemrograman berorientasi objek: membuat class, menciptakan instance, mendefinisikan method, dan memahami namespace serta atribut class versus instance.",
-      "objectives": [
-        "Mendefinisikan class dan membuat object dari class tersebut.",
-        "Menulis method dengan parameter self dan konstruktor __init__.",
-        "Membedakan class variable dan instance variable.",
-        "Memahami namespace, scope, dan sintaks formal class definition."
       ],
-      "keyPoints": [
-        "Class adalah cetak biru; object adalah instance yang dibuat dari class.",
-        "self merujuk ke instance yang sedang memanggil method.",
-        "__init__ dijalankan saat object dibuat dan biasanya dipakai untuk mengisi atribut.",
-        "Atribut yang di-set lewat self adalah milik instance; atribut di body class adalah milik class."
-      ],
-      "apiHighlights": [
-        "object",
-        "type",
-        "isinstance",
-        "dir",
-        "vars",
-        "hasattr",
-        "getattr",
-        "setattr",
-        "property",
-        "classmethod",
-        "staticmethod",
-        "super"
-      ],
-      "sources": [
+      "episodes": [
         {
-          "doc": "tutorial/classes",
-          "label": "The Python Tutorial · Classes",
-          "sections": [
-            "a-word-about-names-and-objects",
-            "python-scopes-and-namespaces",
-            "a-first-look-at-classes",
-            "random-remarks"
-          ]
+          "id": "ep-1-list-dasar",
+          "title": "Episode 1: Struktur Data List & Pengindeksan",
+          "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+          "targetSection": "more-on-lists"
         },
         {
-          "doc": "reference/compound_stmts",
-          "label": "The Python Language Reference · Class definitions",
-          "sections": [
-            "class-definitions"
-          ]
-        }
-      ]
-    },
-    {
-      "order": 7,
-      "slug": "oop-lanjutan",
-      "phase": "Data & OOP",
-      "title": "OOP Lanjutan: Inheritance & Pythonic Objects",
-      "subtitle": "Mewarisi class, enkapsulasi, iterator, dan generator",
-      "level": "Lanjutan",
-      "minutes": 40,
-      "description": "Perluas desain OOP dengan inheritance, multiple inheritance, private attribute, lalu kenali protokol iterator dan generator yang membuat object Python terasa natural.",
-      "objectives": [
-        "Membuat subclass dan memanggil parent class dengan super().",
-        "Memahami multiple inheritance dan method resolution order secara praktis.",
-        "Menggunakan name mangling dan mengenali batas enkapsulasi di Python.",
-        "Membuat iterator dan generator untuk urutan data yang efisien."
-      ],
-      "keyPoints": [
-        "Inheritance memungkinkan subclass memakai ulang perilaku parent class.",
-        "super() memanggil implementasi berikutnya dalam method resolution order.",
-        "Awalan __ memicu name mangling; ini konvensi, bukan private yang absolut.",
-        "Generator memakai yield untuk menghasilkan nilai secara lazy, satu per satu."
-      ],
-      "apiHighlights": [
-        "super",
-        "property",
-        "classmethod",
-        "staticmethod",
-        "iter",
-        "next",
-        "StopIteration",
-        "object.__init__",
-        "object.__str__",
-        "object.__repr__",
-        "object.__eq__",
-        "object.__iter__",
-        "iterator.__next__",
-        "generator.__next__"
-      ],
-      "sources": [
-        {
-          "doc": "tutorial/classes",
-          "label": "The Python Tutorial · Classes",
-          "sections": [
-            "inheritance",
-            "private-variables",
-            "odds-and-ends",
-            "iterators",
-            "generators",
-            "generator-expressions"
-          ]
+          "id": "ep-2-list-methods",
+          "title": "Episode 2: Metode Manipulasi List & Comprehension",
+          "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+          "targetSection": "mutable-sequence-types"
         },
         {
-          "doc": "library/stdtypes",
-          "label": "The Python Standard Library · Iterator Types",
-          "sections": [
-            "iterator-types"
-          ]
+          "id": "ep-3-dictionary",
+          "title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+          "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+          "targetSection": "dictionaries"
         }
       ]
     }

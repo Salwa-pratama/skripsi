@@ -28,11 +28,11 @@ void setupTesKamera() {
   config.pin_pwdn = PWDN_GPIO_NUM;
   config.pin_reset = RESET_GPIO_NUM;
   config.xclk_freq_hz = 20000000;  // XCLK MHz
-  config.frame_size = FRAMESIZE_CIF;         // 400x296
+  config.frame_size = FRAMESIZE_HVGA;        // 480x320 -> ~5.1 KB/frame (mode tercepat OV5640, <= buffer TCP 5.7 KB)
   config.pixel_format = PIXFORMAT_JPEG;
-  config.grab_mode = CAMERA_GRAB_LATEST;
+  config.grab_mode = CAMERA_GRAB_LATEST;     // Continuous non-blocking capture (selalu ambil frame terbaru, anti-lag)
   config.fb_location = CAMERA_FB_IN_PSRAM;
-  config.jpeg_quality = 22;
+  config.jpeg_quality = 24;                  // Kompresi hemat bandwidth namun wajah tetap jelas
   config.fb_count = 2;                      // 2 buffer untuk streaming lancar
 
   // Memulai inisialisasi
@@ -44,26 +44,31 @@ void setupTesKamera() {
   Serial.println("KAMERA BERHASIL TERDETEKSI DAN SIAP DIGUNAKAN!");
 
   sensor_t *s = esp_camera_sensor_get();
-  // Untuk konfigurasi rotasi kamera
+  // Untuk konfigurasi rotasi kamera & penyesuaian kualitas gambar terang, tajam & wajah jelas
   if(s != NULL) {
-    s->set_vflip(s, 1); // 1 = putar balik, 0 = normal
-    s->set_hmirror(s, 1); // 1 = mirror, 0 = normal
+    s->set_framesize(s, FRAMESIZE_HVGA);  // 480x320: mode tercepat + frame ~5.1 KB (aman di bawah buffer TCP ESP32)
+    s->set_vflip(s, 1);                   // 1 = Balik vertikal
+    s->set_hmirror(s, 1);                 // 1 = Balik horizontal
 
-    // Optimasi FPS:
-    s->set_denoise(s, 0);
+    // Pengaturan Sensor untuk Gambar Terang, Jernih & Wajah Terlihat Jelas:
+    s->set_denoise(s, 0);                 // 0 = Matikan filter denoise internal
     s->set_special_effect(s, 0);
-    s->set_aec2(s, 0);
-    s->set_ae_level(s, 0);
+    s->set_lenc(s, 0);                    // 0 = Matikan Lens Correction (Hilangkan semburat ungu)
+    s->set_dcw(s, 0);                     // 0 = Matikan DCW (Warna natural, tidak over-processed)
+    s->set_brightness(s, 2);              // 2 = Boost kecerahan maksimal (+2) agar wajah tidak siluet
+    s->set_contrast(s, 0);                // 0 = Kontras natural
+    s->set_saturation(s, 0);              // 0 = Saturasi natural
 
-    s->set_framesize(s, FRAMESIZE_CIF);
-
-
-
-
-    // s->set_gainceiling(s, GAINCEILING_8X); // Perkuat penangkapan cahaya di area gelap
-    s->set_lenc(s, 0);             // 0 = Matikan Lens Correction (hilangkan semburat ungu)
-    s->set_dcw(s, 0);              // 0 = Matikan Advanced AWB (warna lebih stabil)
-
+    // Manual Exposure TERKALIBRASI: cukup terang di bawah lampu plafon, TAPI tetap di dalam
+    // periode frame sensor (<=400 baris) supaya OV5640 tetap berputar ~30 FPS.
+    s->set_exposure_ctrl(s, 0);           // 0 = Manual AEC (anti wajah gelap karena backlight)
+    s->set_aec_value(s, 400);             // 400 = Kecerahan wajah optimal tanpa mencekik VSYNC
+    s->set_gain_ctrl(s, 0);               // 0 = Manual AGC
+    s->set_agc_gain(s, 26);               // 26 = Penguatan analog tinggi: terang tanpa menambah exposure time
+    s->set_gainceiling(s, GAINCEILING_32X);
+    s->set_bpc(s, 1);                     // 1 = Koreksi piksel rusak (hot pixels)
+    s->set_wpc(s, 1);
+    s->set_raw_gma(s, 1);
   }
 }
 

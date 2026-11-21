@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <WiFi.h>
+#include <esp_wifi.h>
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include "camera_config.h"
@@ -75,12 +76,14 @@ static int readModeFromSerial() {
 }
 
 // Konfigurasi koneksi jaringan WiFi
-const char* ssid = "Sembarang 4G";
+const char* ssid = "ananda";
 const char* password = "oppo1915";
 
 // URL Endpoint Asisten Belajar AI Backend (FastAPI Computer Vision)
-const char* AI_ASK_URL = "http://192.168.1.3:5000/api/ai/ask";
-const char* SERVER_BASE_URL = "http://192.168.1.3:5000";
+// IP laptop di hotspot "ananda" saat ini: 10.19.170.155
+// Ubah di sini jika IP laptop berubah.
+const char* AI_ASK_URL = "http://10.19.170.155:5000/api/ai/ask";
+const char* SERVER_BASE_URL = "http://10.19.170.155:5000";
 
 // =========================================================================
 // DUAL-CORE FREERTOS ARCHITECTURE (SOLUSI 1)
@@ -181,40 +184,83 @@ void askAIService(const char* prompt) {
 }
 
 // =========================================================================
-// VOICE TRIGGER & MONITORING DISTRAKSI
+// VOICE TRIGGER & ALARM DISTRAKSI (BUNYI TERUS-MENERUS)
+// -------------------------------------------------------------------------
+// Volume speaker dikunci 100% lewat SPEAKER_MASTER_VOLUME_PERCENT (audio_test.h).
+// Saat alert "HP!" atau "ABSEN!" aktif, updateAlarmSound() memainkan nada sirene
+// pendek bergantian TANPA HENTI (non-blocking) sehingga OLED, WiFi, dan polling
+// status tetap berjalan normal.
 // =========================================================================
-static String lastAlertState = "";
+static bool alarmSoundActive = false;
+static String alarmReason = "";
+static int alarmToneStep = 0;
+static unsigned long alarmNextToneMs = 0;
 static unsigned long lastVoiceCheck = 0;
 static unsigned long lastAiTriggerTime = 0;
 
+// True jika server melaporkan HP terdeteksi atau pengguna absen.
+static bool isAlertActive(const PomodoroData &pData) {
+  const String &a = pData.alert;
+  return (a == "HP!" || a.indexOf("HP") >= 0 ||
+          a == "ABSEN!" || a.indexOf("ABSEN") >= 0);
+}
+
 void handleVoiceAndAlerts() {
   unsigned long now = millis();
+  const PomodoroData &pData = getPomodoroData();
 
-  // 1. Deteksi Voice Trigger dari Mikrofon INMP441 (Non-blocking setiap 200ms)
-  // Jeda cooldown 12 detik antar pertanyaan agar tidak memotong jawaban AI
-  if (now - lastVoiceCheck >= 200 && now - lastAiTriggerTime >= 12000) {
+  // 1. Tentukan apakah alarm harus berbunyi (HP terdeteksi ATAU pengguna absen).
+  //    Data dianggap basi bila > 8 detik tidak ada sinkron dari server (mis. WiFi
+  //    putus) -> alarm dimatikan agar tidak berbunyi selamanya.
+  bool stale = (pData.last_sync == 0) || (now - pData.last_sync > 8000);
+  bool wantAlarm = isAlertActive(pData) && !stale;
+
+  if (wantAlarm != alarmSoundActive) {
+    alarmSoundActive = wantAlarm;
+    if (alarmSoundActive) {
+      alarmReason = pData.alert;
+      alarmToneStep = 0;
+      alarmNextToneMs = now;
+      Serial.printf("\n[ALARM] AKTIF (%s): speaker berbunyi terus-menerus @ volume 100%%.\n",
+                    alarmReason.c_str());
+    } else {
+      Serial.println("\n[ALARM] NONAKTIF: speaker berhenti berbunyi.");
+    }
+  }
+
+  // 2. Voice Trigger hanya saat alarm TIDAK berbunyi. Bus I2S sedang dipakai
+  //    speaker; ini juga mencegah feedback suara speaker masuk ke mikrofon.
+  if (!alarmSoundActive && now - lastVoiceCheck >= 200 && now - lastAiTriggerTime >= 45000) {
     lastVoiceCheck = now;
     int peak = readMicPeak();
-    // Threshold suara di atas ambient noise (>2200)
-    if (peak > 2200) {
+    // Threshold suara bicara jelas (>18000) agar ketikan keyboard & suara ruangan tidak memicu AI palsu
+    if (peak > 18000) {
       lastAiTriggerTime = now;
       Serial.printf("\n[VOICE TRIGGER] Suara pengguna terdeteksi (Peak: %d)! Meminta saran belajar...\n", peak);
       askAIService("Berikan saya tips belajar fokus dan motivasi singkat 1 kalimat.");
     }
   }
+}
 
-  // 2. Cek Perubahan Status Alert Pomodoro / Distraksi HP dari Server
-  const PomodoroData &pData = getPomodoroData();
-  if (pData.alert != lastAlertState) {
-    lastAlertState = pData.alert;
+// Dipanggil setiap iterasi loop utama. Memainkan satu nada pendek lalu
+// menjadwalkan nada berikutnya, sehingga sirene terdengar hampir bersambung
+// tanpa memblokir sistem terlalu lama.
+void updateAlarmSound() {
+  if (!alarmSoundActive) return;
 
-    if (pData.alert == "HP!" || pData.alert.indexOf("HP") >= 0) {
-      Serial.println("\n[DISTRAKSI] HP Terdeteksi oleh Computer Vision! Membunyikan alarm peringatan...");
-      playDistractionAlertSound();
-    } else if (pData.alert == "ABSEN!" || pData.alert.indexOf("ABSEN") >= 0) {
-      Serial.println("\n[ABSEN] Pengguna terdeteksi meninggalkan meja belajar!");
-    }
-  }
+  unsigned long now = millis();
+  if (now < alarmNextToneMs) return;
+
+  // Nada berbeda: HP = tinggi & mendesak, ABSEN = rendah & memanggil.
+  bool absen = (alarmReason.indexOf("ABSEN") >= 0);
+  int freq = absen ? ((alarmToneStep % 2 == 0) ? 520 : 400)
+                   : ((alarmToneStep % 2 == 0) ? 880 : 640);
+
+  playTone(freq, 120);   // 120 ms per nada, volume 100% (lihat audio_test.h)
+  alarmToneStep++;
+
+  // Jeda sangat pendek -> bunyi nyaris terus-menerus.
+  alarmNextToneMs = millis() + 30;
 }
 
 // =========================================================================
@@ -223,7 +269,7 @@ void handleVoiceAndAlerts() {
 void setup() {
   Serial.begin(115200);
   delay(1500); // Jeda agar Serial Monitor siap
-  setCpuFrequencyMhz(240); // Performa optimal ESP32-S3 Dual-Core
+  setCpuFrequencyMhz(240); // 240 MHz Maksimal ESP32-S3 Dual-Core (Streaming kamera lancar & FPS tinggi)
 
 #if ENABLE_BOOT_MENU
   modeTes = readModeFromSerial();
@@ -305,9 +351,11 @@ void loop() {
 
     // 2. Render Animasi Layar OLED (Wajah Robot XiaoZhi Math & Status Pomodoro HUD) ~33 FPS
     updateOLED();
-
     // 3. Tangani Voice Trigger Mikrofon & Peringatan Distraksi HP
     handleVoiceAndAlerts();
+
+    // 3b. Sirene alarm terus-menerus saat HP terdeteksi / pengguna absen
+    updateAlarmSound();
 
     // 4. Diagnostik Kesehatan Sistem ESP32 (Suhu, RAM, PSRAM, RSSI)
     healtCheck();
@@ -321,6 +369,21 @@ void loop() {
         neopixelWrite(STATUS_LED_PIN, ledState ? 20 : 0, ledState ? 20 : 0, ledState ? 20 : 0);
       }
     }
+
+    // 6. PENJAGA WI-FI (setiap 5 detik): paksa modem sleep OFF.
+    // Setiap kali ESP32 reconnect ke hotspot, setting power-save bisa kembali aktif dan
+    // membuat RTT melonjak 500-3000ms (stream jadi lambat). Guard ini menormalkannya kembali.
+    static unsigned long lastWifiGuard = 0;
+    if (millis() - lastWifiGuard >= 5000) {
+      lastWifiGuard = millis();
+      if (WiFi.status() == WL_CONNECTED) {
+        WiFi.setSleep(false);
+        esp_wifi_set_ps(WIFI_PS_NONE);
+      }
+    }
+
+    // Jeda 5ms agar FreeRTOS IDLE task & network driver di Core 1 dapat bernapas
+    vTaskDelay(pdMS_TO_TICKS(5));
   } else if (modeTes == 5) {
     loopAudioTest();
   } else if (modeTes == 6) {

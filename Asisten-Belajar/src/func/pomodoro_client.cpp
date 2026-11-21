@@ -42,8 +42,15 @@ void updatePomodoroClient() {
   WiFiClient client;
   HTTPClient http;
 
+  // Sertakan IP ESP32 hasil DHCP pada setiap polling. Backend memakainya untuk
+  // memperbarui URL stream kamera secara otomatis tanpa edit .env manual.
+  String pollUrl = String(POMODORO_SERVER_URL);
+  pollUrl += (pollUrl.indexOf('?') >= 0) ? "&" : "?";
+  pollUrl += "ip=";
+  pollUrl += WiFi.localIP().toString();
+
   http.setTimeout(POMODORO_HTTP_TIMEOUT_MS);
-  if (!http.begin(client, POMODORO_SERVER_URL)) {
+  if (!http.begin(client, pollUrl)) {
     return;
   }
 

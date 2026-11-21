@@ -22,8 +22,9 @@ class ImageEnhancer:
         self.sharpen_enabled = sharpen_enabled
         self.thermal_correction_enabled = thermal_correction_enabled
 
-        # CLAHE optimizer pada kanal L (Luminance) - nilai lembut agar tidak noise di kondisi minim cahaya
-        self.clahe = cv2.createCLAHE(clipLimit=1.2, tileGridSize=(8, 8))
+        # CLAHE optimizer pada kanal L (Luminance) - nilai optimal untuk menerangkan wajah & tangan di kondisi redup
+        self.clahe = cv2.createCLAHE(clipLimit=2.2, tileGridSize=(8, 8))
+        self.gamma_lut = np.array([int(((i / 255.0) ** 0.8) * 255) for i in range(256)], dtype=np.uint8)
 
         # Sharpening kernel lembut untuk menjaga ketajaman tanpa membuat gambar pecah/bintik
         self.sharpen_kernel = np.array([
@@ -68,8 +69,9 @@ class ImageEnhancer:
         lab = cv2.cvtColor(frame, cv2.COLOR_BGR2LAB)
         l, a, b = cv2.split(lab)
 
-        # Terapkan CLAHE pada kanal L (Luminance)
-        l_enhanced = self.clahe.apply(l)
+        # Terapkan shadow lift LUT dan CLAHE pada kanal L (Luminance)
+        l_lifted = cv2.LUT(l, self.gamma_lut)
+        l_enhanced = self.clahe.apply(l_lifted)
 
         # Gabungkan kembali dan ubah ke BGR
         lab_enhanced = cv2.merge([l_enhanced, a, b])

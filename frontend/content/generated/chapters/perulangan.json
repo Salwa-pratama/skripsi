@@ -97,7 +97,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Since <code>**</code> has higher precedence than <code>-</code>, <code>-3**2</code> will be\ninterpreted as <code>-(3**2)</code> and thus result in <code>-9</code>.  To avoid this\nand get <code>9</code>, you can use <code>(-3)**2</code>."
+          "html": "Karena operator <code>**</code> memiliki prioritas presedensi lebih tinggi daripada minus <code>-</code>, <code>-3**2</code> akan diinterpretasikan sebagai <code>-(3**2)</code> sehingga menghasilkan <code>-9</code>. Untuk menghindari hal ini dan menghasilkan nilai <code>9</code>, Anda dapat menggunakan <code>(-3)**2</code>."
         },
         {
           "type": "paragraph",
@@ -113,7 +113,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Unlike other languages, special characters such as <code>\\n</code> have the\nsame meaning with both single (<code>'...'</code>) and double (<code>\"...\"</code>) quotes.\nThe only difference between the two is that within single quotes you don’t\nneed to escape <code>\"</code> (but you have to escape <code>\\'</code>) and vice versa."
+          "html": "Tidak seperti bahasa lain, karakter khusus seperti <code>\\n</code> memiliki arti yang sama persis baik di dalam tanda kutip tunggal (<code>'...'</code>) maupun ganda (<code>\"...\"</code>). Satu-satunya perbedaan adalah di dalam tanda kutip tunggal Anda tidak perlu melakukan escape pada <code>\"</code> (tetapi harus meng-escape <code>\\'</code>), dan sebaliknya."
         }
       ]
     },
@@ -240,7 +240,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The <code>continue</code> statement continues with the next\niteration of the loop:"
+          "html": "Pernyataan <code>continue</code> melanjutkan eksekusi ke iterasi berikutnya dari perulangan:"
         },
         {
           "type": "code",
@@ -283,7 +283,7 @@
         },
         {
           "type": "paragraph",
-          "html": "(Yes, this is the correct code.  Look closely: the <code>else</code> clause belongs to\nthe <code>for</code> loop, <strong>not</strong> the <code>if</code> statement.)"
+          "html": "(Ya, ini adalah kode yang benar. Perhatikan baik-baik: klausa <code>else</code> tersebut merupakan bagian dari perulangan <code>for</code>, <strong>bukan</strong> pernyataan <code>if</code>.)"
         },
         {
           "type": "paragraph",
@@ -291,7 +291,7 @@
         },
         {
           "type": "paragraph",
-          "html": "When used with a loop, the <code>else</code> clause has more in common with the <code>else</code>\nclause of a <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#try\" rel=\"noopener noreferrer\" target=\"_blank\"><code>try</code></a> statement than it does with that of <code>if</code>\nstatements: a <code>try</code> statement’s <code>else</code> clause runs when no exception\noccurs, and a loop’s <code>else</code> clause runs when no <code>break</code> occurs. For more on\nthe <code>try</code> statement and exceptions, see tut-handling."
+          "html": "Ketika digunakan pada perulangan, klausa <code>else</code> memiliki kemiripan dengan klausa <code>else</code> pada pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#try\" rel=\"noopener noreferrer\" target=\"_blank\"><code>try</code></a> dibandingkan pernyataan <code>if</code>: klausa <code>else</code> pada pernyataan <code>try</code> berjalan ketika tidak terjadi exception, sedangkan pada perulangan klausa <code>else</code> berjalan ketika perulangan selesai tanpa terinterupsi pernyataan <code>break</code>."
         }
       ]
     },
@@ -326,7 +326,7 @@
         },
         {
           "type": "paragraph",
-          "html": "A <code>break</code> statement executed in the first suite terminates the loop\nwithout executing the <code>else</code> clause’s suite.  A <code>continue</code>\nstatement executed in the first suite skips the rest of the suite and goes back\nto testing the expression."
+          "html": "Pernyataan <code>break</code> yang dieksekusi di blok utama menghentikan perulangan seketika tanpa mengeksekusi blok klausa <code>else</code>. Pernyataan <code>continue</code> yang dieksekusi di blok utama akan melompati sisa blok saat itu dan kembali memeriksa kondisi perulangan."
         },
         {
           "type": "heading",
@@ -347,11 +347,11 @@
         },
         {
           "type": "paragraph",
-          "html": "The <code>starred_list</code> expression is evaluated once; it should yield an\n<a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a> object.  An <a href=\"https://docs.python.org/3.13/glossary.html#term-iterator\" rel=\"noopener noreferrer\" target=\"_blank\">iterator</a> is created for that iterable.\nThe first item provided\nby the iterator is then assigned to the target list using the standard\nrules for assignments (see assignment), and the suite is executed.  This\nrepeats for each item provided by the iterator.  When the iterator is exhausted,\nthe suite in the <code>else</code> clause,\nif present, is executed, and the loop terminates."
+          "html": "Ekspresi deret dievaluasi satu kali; ekspresi ini harus menghasilkan objek yang dapat diulang (<a href=\"https://docs.python.org/3.13/glossary.html#term-iterable\" rel=\"noopener noreferrer\" target=\"_blank\">iterable</a>). Sebuah <a href=\"https://docs.python.org/3.13/glossary.html#term-iterator\" rel=\"noopener noreferrer\" target=\"_blank\">iterator</a> dibuat untuk iterable tersebut. Elemen pertama yang disediakan oleh iterator dimasukkan ke dalam daftar variabel target, dan blok kode dieksekusi. Langkah ini berulang untuk setiap elemen. Ketika seluruh elemen telah habis diiterasi, blok pada klausa <code>else</code> (jika ada) akan dieksekusi, lalu perulangan selesai."
         },
         {
           "type": "paragraph",
-          "html": "A <code>break</code> statement executed in the first suite terminates the loop\nwithout executing the <code>else</code> clause’s suite.  A <code>continue</code>\nstatement executed in the first suite skips the rest of the suite and continues\nwith the next item, or with the <code>else</code> clause if there is no next\nitem."
+          "html": "Pernyataan <code>break</code> yang dieksekusi di blok utama menghentikan perulangan seketika tanpa mengeksekusi blok klausa <code>else</code>. Pernyataan <code>continue</code> yang dieksekusi di blok utama akan melompati sisa blok saat itu dan kembali memeriksa kondisi perulangan."
         },
         {
           "type": "paragraph",
@@ -360,12 +360,12 @@
         {
           "type": "code",
           "language": "text",
-          "html": "<span></span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">)</span>\n    <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>             <span class=\"c1\"># this will not affect the for-loop</span>\n                      <span class=\"c1\"># because i will be overwritten with the next</span>\n                      <span class=\"c1\"># index in the range</span>",
+          "html": "<span></span><span class=\"k\">for</span> <span class=\"n\">i</span> <span class=\"ow\">in</span> <span class=\"nb\">range</span><span class=\"p\">(</span><span class=\"mi\">10</span><span class=\"p\">):</span>\n    <span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">i</span><span class=\"p\">)</span>\n    <span class=\"n\">i</span> <span class=\"o\">=</span> <span class=\"mi\">5</span>             <span class=\"c1\"># ini tidak memengaruhi perulangan for</span>\n                      <span class=\"c1\"># karena i akan ditimpa dengan indeks</span>\n                      <span class=\"c1\"># berikutnya di dalam range</span>",
           "text": "for i in range(10):\n    print(i)\n    i = 5             # this will not affect the for-loop\n                      # because i will be overwritten with the next\n                      # index in the range"
         },
         {
           "type": "paragraph",
-          "html": "Names in the target list are not deleted when the loop is finished, but if the\nsequence is empty, they will not have been assigned to at all by the loop.  Hint:\nthe built-in type <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> represents immutable arithmetic sequences of integers.\nFor instance, iterating <code>range(3)</code> successively yields 0, 1, and then 2."
+          "html": "Nama-nama variabel dalam daftar target tidak dihapus saat perulangan selesai, tetapi jika urutan data kosong, variabel tersebut tidak akan diisi nilai sama sekali oleh perulangan. Petunjuk: tipe bawaan <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> merepresentasikan urutan aritmetika bilangan bulat yang bersifat immutable. Sebagai contoh, melakukan iterasi pada <code>range(3)</code> berturut-turut menghasilkan angka 0, 1, dan 2."
         },
         {
           "type": "note",
@@ -428,6 +428,26 @@
       "url": "https://docs.python.org/3.13/library/functions/#next",
       "display": "next",
       "doc": "library/functions"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep-1-for-range",
+      "title": "Episode 1: Perulangan For & Fungsi Range()",
+      "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+      "targetSection": "for-statements"
+    },
+    {
+      "id": "ep-2-while",
+      "title": "Episode 2: Perulangan While",
+      "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+      "targetSection": "the-while-statement"
+    },
+    {
+      "id": "ep-3-break-continue",
+      "title": "Episode 3: Kontrol Alur Break, Continue & Else",
+      "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+      "targetSection": "break-and-continue"
     }
   ]
 }

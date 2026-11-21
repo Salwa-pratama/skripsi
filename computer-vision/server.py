@@ -11,6 +11,8 @@ Menyatukan:
 
 from __future__ import annotations
 
+import os
+import re
 import time
 import threading
 from contextlib import asynccontextmanager
@@ -43,15 +45,44 @@ camera_streamer = CameraStreamer(source=Config.DEFAULT_SOURCE)
 distraction_detector = StudyDistractionDetector()
 pomodoro_manager = PomodoroManager()
 
+# IP ESP32 terakhir yang dilaporkan lewat polling /api/esp/pomodoro?ip=...
+# Dipakai untuk auto-update sumber stream kamera ketika IP DHCP ESP32 berubah.
+_esp32_reported_ip: Optional[str] = None
+_IPV4_RE = re.compile(r"^\d{1,3}(?:\.\d{1,3}){3}$")
+
+
+def sync_esp32_camera_source(reported_ip: Optional[str]) -> None:
+    """Perbarui sumber kamera bila ESP32 melaporkan IP yang berbeda."""
+    global _esp32_reported_ip
+
+    if not reported_ip:
+        return
+    ip = reported_ip.strip()
+    if not _IPV4_RE.match(ip) or ip.startswith("127."):
+        return
+    if ip == _esp32_reported_ip:
+        return
+
+    _esp32_reported_ip = ip
+    new_source = f"http://{ip}:81/stream"
+    if str(camera_streamer.source) == new_source:
+        return
+
+    camera_streamer.set_source(new_source)
+    print(f"📷 [CameraStreamer] IP ESP32 dilaporkan: {ip} -> sumber stream diperbarui", flush=True)
+
 # Background Vision Thread Controller
 vision_running = True
 vision_thread: Optional[threading.Thread] = None
+current_pipeline_fps: float = 0.0
 
 
 def vision_pipeline_loop():
     """Loop background untuk inferensi Computer Vision (HP & Keberadaan Pengguna)."""
-    global vision_running
+    global vision_running, current_pipeline_fps
     last_loop_time = time.time()
+    fps_counter = 0
+    fps_timer = time.time()
 
     print("🚀 [Vision Pipeline] Worker aktif memantau tangkapan kamera...", flush=True)
     while vision_running:
@@ -65,9 +96,11 @@ def vision_pipeline_loop():
             continue
 
         if distraction_detector and distraction_detector.enabled:
-            # Jalankan deteksi objek HP & Kehadiran Pengguna
+            # Deteksi dijalankan pada frame MENTAH (raw): CLAHE/enhancement terbukti
+            # menurunkan skor deteksi HP. Overlay tetap digambar pada frame terang.
+            raw_frame = camera_streamer.get_raw_frame()
             processed_frame, distraction_telem = distraction_detector.process_frame(
-                frame, has_hands=False, draw=True
+                frame, has_hands=False, draw=True, detect_frame=raw_frame
             )
 
             # Update status Pomodoro Manager
@@ -82,6 +115,13 @@ def vision_pipeline_loop():
             camera_streamer.update_processed_frame(processed_frame)
         else:
             camera_streamer.update_processed_frame(frame)
+
+        fps_counter += 1
+        now = time.time()
+        if now - fps_timer >= 1.0:
+            current_pipeline_fps = round(fps_counter / (now - fps_timer), 1)
+            fps_counter = 0
+            fps_timer = now
 
         # Cap loop ~25-30 FPS
         elapsed = time.time() - start_time
@@ -159,12 +199,17 @@ def health_check():
 
 
 @app.get("/api/esp/pomodoro", tags=["ESP32 IoT"])
-def get_esp_pomodoro():
+def get_esp_pomodoro(ip: Optional[str] = None):
     """
     Endpoint Ultra-Ringkas Khusus Layar OLED ESP32-S3 (SSD1306).
     Payload < 150 bytes, dipanggil setiap 1 detik oleh ESP32 non-blocking.
     Menghasilkan nilai ekspresi robot (emotion) untuk pilar Aesthetics MDA.
+
+    Query opsional `ip`: IP ESP32 hasil DHCP (dilaporkan firmware). Backend
+    memakainya untuk memperbarui URL stream kamera secara otomatis, sehingga
+    tidak perlu mengubah .env setiap kali IP ESP32 berubah.
     """
+    sync_esp32_camera_source(ip)
     pomo = pomodoro_manager.get_state()
 
     raw_mode = pomo.get("mode", "work")
@@ -206,13 +251,22 @@ def get_esp_pomodoro():
 def get_system_status():
     """Status lengkap sistem untuk konsumsi Frontend Next.js."""
     cam_status = camera_streamer.get_status()
+    cam_status["pipeline_fps"] = current_pipeline_fps
+    cam_status["raw_fps"] = cam_status.get("fps", 0)
+    # Gunakan pipeline_fps sebagai acuan FPS utama jika terhubung, identik dengan frontend legacy
+    if cam_status.get("connected"):
+        cam_status["fps"] = current_pipeline_fps
     pomo_status = pomodoro_manager.get_state()
+    vision_telem = getattr(distraction_detector, "latest_telemetry", {}) or {}
     return {
         "camera": cam_status,
         "pomodoro": pomo_status,
         "ai": {
             "distraction_enabled": distraction_detector.enabled if distraction_detector else False,
             "detected_emotion": pomo_status.get("emotion", "NORMAL"),
+            "phone_confidence": vision_telem.get("phone_confidence", 0.0),
+            "phone_detected": vision_telem.get("is_phone", False),
+            "phone_source": vision_telem.get("phone_source"),
         },
     }
 
@@ -377,21 +431,34 @@ def video_feed():
     """
     High-Performance HTTP MJPEG Video Stream (Hardware-Accelerated di Browser).
     Dapat disematkan langsung di Frontend Next.js via tag <img src="http://localhost:5000/video_feed" />.
+    Menggunakan sinkronisasi frame-ID non-blocking (5ms check) untuk aliran mulus bebas stutter ~30 FPS.
     """
     def gen():
         last_id = -1
-        while True:
-            fid, jpeg = camera_streamer.get_latest_frame_with_id()
-            if fid != last_id and jpeg is not None:
-                last_id = fid
-                yield (
-                    b"--frame\r\n"
-                    b"Content-Type: image/jpeg\r\n\r\n" + jpeg + b"\r\n"
-                )
-            else:
-                time.sleep(0.01)
+        try:
+            while True:
+                fid, jpeg = camera_streamer.get_latest_frame_with_id()
+                if fid != last_id and jpeg is not None:
+                    last_id = fid
+                    yield (
+                        b"--frame\r\n"
+                        b"Content-Type: image/jpeg\r\n\r\n" + jpeg + b"\r\n"
+                    )
+                else:
+                    time.sleep(0.005)
+        except (GeneratorExit, BrokenPipeError, ConnectionResetError):
+            pass
 
-    return StreamingResponse(gen(), media_type="multipart/x-mixed-replace; boundary=frame")
+    return StreamingResponse(
+        gen(),
+        media_type="multipart/x-mixed-replace; boundary=frame",
+        headers={
+            "Cache-Control": "no-cache, no-store, must-revalidate",
+            "Pragma": "no-cache",
+            "Expires": "0",
+            "Connection": "close",
+        }
+    )
 
 
 @app.post("/api/camera/source", tags=["Camera Settings"])
@@ -438,9 +505,16 @@ def ask_ai_assistant(req: AIAskRequest):
 
     # Sintesis suara Bahasa Indonesia
     voice_pref = req.voice or ai_service.voice_gender
-    audio_path = ai_service.text_to_speech(text, voice_pref)
-    audio_filename = os.path.basename(audio_path)
-    wav_filename = audio_filename.replace(".mp3", ".wav")
+    audio_path = None
+    audio_filename = ""
+    wav_filename = ""
+    try:
+        audio_path = ai_service.text_to_speech(text, voice_pref)
+        if audio_path:
+            audio_filename = os.path.basename(audio_path)
+            wav_filename = audio_filename.replace(".mp3", ".wav")
+    except Exception as e:
+        print(f"⚠️ [TTS Warning] Gagal sintesis suara: {e}")
 
     return {
         "status": "success",
@@ -448,8 +522,8 @@ def ask_ai_assistant(req: AIAskRequest):
         "answer": text,
         "emotion": emotion,
         "voice": ai_service.get_current_voice(),
-        "audio_url": f"/api/ai/audio/{audio_filename}",
-        "audio_wav_url": f"/api/ai/audio/{wav_filename}",
+        "audio_url": f"/api/ai/audio/{audio_filename}" if audio_filename else "",
+        "audio_wav_url": f"/api/ai/audio/{wav_filename}" if wav_filename else "",
     }
 
 

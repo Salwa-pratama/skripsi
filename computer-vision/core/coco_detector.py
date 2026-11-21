@@ -8,8 +8,13 @@ class CocoDetector:
     Deteksi objek meja belajar (Orang, Laptop, Buku, HP) menggunakan
     SSD MobileNet V2 COCO melalui OpenCV DNN.
     """
-    def __init__(self, pb_path=Config.MODEL_PB, pbtxt_path=Config.MODEL_PBTXT, conf_thresh=Config.COCO_CONFIDENCE_THRESHOLD):
+    def __init__(self, pb_path=Config.MODEL_PB, pbtxt_path=Config.MODEL_PBTXT,
+                 conf_thresh=Config.COCO_CONFIDENCE_THRESHOLD,
+                 phone_thresh=Config.COCO_PHONE_THRESHOLD):
         self.conf_thresh = conf_thresh
+        # Ambang khusus kelas "cell phone" (77). Lebih rendah dari objek lain karena
+        # HP casing hitam / layar mati hanya menghasilkan skor rendah yang fluktuatif.
+        self.phone_thresh = phone_thresh
         self.net = None
         self.labels = Config.COCO_LABELS
         self.enabled = True
@@ -45,8 +50,11 @@ class CocoDetector:
 
         for i in range(detections.shape[2]):
             confidence = float(detections[0, 0, i, 2])
-            if confidence > self.conf_thresh:
-                class_id = int(detections[0, 0, i, 1])
+            class_id = int(detections[0, 0, i, 1])
+            # Ambang per-kelas: kelas HP (77) memakai ambang lebih rendah agar HP
+            # casing hitam / layar mati tetap tertangkap (difilter lagi oleh voting temporal).
+            threshold = self.phone_thresh if class_id == 77 else self.conf_thresh
+            if confidence > threshold:
                 if class_id in self.labels:
                     label_name = self.labels[class_id]
                     is_distraction = (class_id == 77) # Cell Phone
@@ -69,7 +77,7 @@ class CocoDetector:
                     detected_objects.append({
                         "label": label_name,
                         "class_id": class_id,
-                        "confidence": round(confidence, 2),
+                        "confidence": round(confidence, 3),
                         "box": [startX, startY, endX, endY],
                         "is_distraction": is_distraction,
                         "is_person": is_person

@@ -203,11 +203,11 @@
         },
         {
           "type": "paragraph",
-          "html": "You might have noticed that methods like <code>insert</code>, <code>remove</code> or <code>sort</code> that\nonly modify the list have no return value printed – they return the default\n<code>None</code>. <a href=\"https://docs.python.org/3.13/tutorial/datastructures.html#id2\" rel=\"noopener noreferrer\" target=\"_blank\">[1]</a>  This is a design principle for all mutable data structures in\nPython."
+          "html": "Anda mungkin memperhatikan bahwa metode seperti <code>insert</code>, <code>remove</code>, atau <code>sort</code> yang memodifikasi isi list tidak mencetak nilai kembalian; metode-metode tersebut mengembalikan nilai bawaan <code>None</code>. Ini adalah prinsip desain di Python: semua operasi yang memodifikasi koleksi data di tempat (in-place) mengembalikan <code>None</code>."
         },
         {
           "type": "paragraph",
-          "html": "Another thing you might notice is that not all data can be sorted or\ncompared.  For instance, <code>[None, 'hello', 10]</code> doesn’t sort because\nintegers can’t be compared to strings and <code>None</code> can’t be compared to\nother types.  Also, there are some types that don’t have a defined\nordering relation.  For example, <code>3+4j &lt; 5+7j</code> isn’t a valid\ncomparison."
+          "html": "Hal lain yang perlu diperhatikan adalah tidak semua jenis data dapat diurutkan atau dibandingkan satu sama lain (misalnya <code>[None, 'hello', 10]</code> tidak dapat diurutkan karena integer tidak dapat dibandingkan langsung dengan string)."
         },
         {
           "type": "heading",
@@ -239,7 +239,7 @@
         },
         {
           "type": "paragraph",
-          "html": "To implement a queue, use <code>collections.deque</code> which was designed to\nhave fast appends and pops from both ends.  For example:"
+          "html": "Untuk mengimplementasikan struktur antrean (queue), gunakan <code>collections.deque</code> yang dirancang khusus untuk operasi penambahan (append) dan pelepasan (pop) yang sangat cepat dari kedua ujungnya. Sebagai contoh:"
         },
         {
           "type": "code",
@@ -270,7 +270,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Note that this creates (or overwrites) a variable named <code>x</code> that still exists\nafter the loop completes.  We can calculate the list of squares without any\nside effects using:"
+          "html": "Perlu diingat bahwa perulangan biasa membuat atau menimpa variabel bernama <code>x</code> yang tetap bertahan setelah loop selesai. Sebaliknya, list comprehension menjaga variabel tetap lokal di dalam ekspresi."
         },
         {
           "type": "code",
@@ -294,7 +294,7 @@
         },
         {
           "type": "paragraph",
-          "html": "A list comprehension consists of brackets containing an expression followed\nby a <code>for</code> clause, then zero or more <code>for</code> or <code>if</code>\nclauses.  The result will be a new list resulting from evaluating the expression\nin the context of the <code>for</code> and <code>if</code> clauses which follow it.\nFor example, this listcomp combines the elements of two lists if they are not\nequal:"
+          "html": "Sebuah list comprehension terdiri dari tanda kurung siku yang berisi suatu ekspresi, diikuti oleh klausa <code>for</code>, kemudian nol atau lebih klausa <code>for</code> atau <code>if</code>."
         },
         {
           "type": "code",
@@ -314,11 +314,11 @@
         },
         {
           "type": "paragraph",
-          "html": "Note how the order of the <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> and <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a> statements is the\nsame in both these snippets."
+          "html": "Perhatikan bagaimana urutan pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> dan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#if\" rel=\"noopener noreferrer\" target=\"_blank\"><code>if</code></a> sama persis di kedua cuplikan kode ini."
         },
         {
           "type": "paragraph",
-          "html": "If the expression is a tuple (e.g. the <code>(x, y)</code> in the previous example),\nit must be parenthesized."
+          "html": "Jika ekspresi berupa tuple (misalnya <code>(x, y)</code> pada contoh sebelumnya), ekspresi tersebut wajib dibungkus tanda kurung."
         },
         {
           "type": "code",
@@ -345,11 +345,11 @@
         },
         {
           "type": "paragraph",
-          "html": "The initial expression in a list comprehension can be any arbitrary expression,\nincluding another list comprehension."
+          "html": "Ekspresi awal pada list comprehension dapat berupa ekspresi sembarang apa pun, termasuk ekspresi list comprehension lainnya."
         },
         {
           "type": "paragraph",
-          "html": "Consider the following example of a 3x4 matrix implemented as a list of\n3 lists of length 4:"
+          "html": "Perhatikan contoh matriks 3x4 berikut yang diimplementasikan sebagai list berisi 3 buah list yang masing-masing beranggotakan 4 elemen:"
         },
         {
           "type": "code",
@@ -369,7 +369,7 @@
         },
         {
           "type": "paragraph",
-          "html": "As we saw in the previous section, the inner list comprehension is evaluated in\nthe context of the <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> that follows it, so this example is\nequivalent to:"
+          "html": "Sebagaimana kita lihat pada bagian sebelumnya, list comprehension bagian dalam dievaluasi di dalam konteks klausa <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#for\" rel=\"noopener noreferrer\" target=\"_blank\"><code>for</code></a> yang mengikutinya."
         },
         {
           "type": "code",
@@ -389,7 +389,7 @@
         },
         {
           "type": "paragraph",
-          "html": "In the real world, you should prefer built-in functions to complex flow statements.\nThe <a href=\"https://docs.python.org/3.13/library/functions.html#zip\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"zip\"><code>zip()</code></a> function would do a great job for this use case:"
+          "html": "Dalam penerapan dunia nyata, Anda disarankan lebih mengutamakan fungsi bawaan Python (seperti <code>zip()</code>) dibandingkan pernyataan alur perulangan yang rumit."
         },
         {
           "type": "code",
@@ -399,7 +399,7 @@
         },
         {
           "type": "paragraph",
-          "html": "See <a href=\"https://docs.python.org/3.13/tutorial/controlflow.html#tut-unpacking-arguments\" rel=\"noopener noreferrer\" target=\"_blank\">Unpacking Argument Lists</a> for details on the asterisk in this line."
+          "html": "Lihat bagian <a href=\"https://docs.python.org/3.13/tutorial/controlflow.html#tut-unpacking-arguments\" rel=\"noopener noreferrer\" target=\"_blank\">Membongkar Daftar Argumen</a> untuk penjelasan detail mengenai penggunaan tanda bintang pada baris ini."
         },
         {
           "type": "heading",
@@ -430,7 +430,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Referencing the name <code>a</code> hereafter is an error (at least until another value\nis assigned to it).  We’ll find other uses for <code>del</code> later."
+          "html": "Merujuk nama variabel <code>a</code> setelah dihapus dengan <code>del</code> akan menghasilkan error (setidaknya sampai ada nilai baru yang ditetapkan ke variabel tersebut)."
         },
         {
           "type": "heading",
@@ -449,11 +449,11 @@
         },
         {
           "type": "paragraph",
-          "html": "The main operations on a dictionary are storing a value with some key and\nextracting the value given the key.  It is also possible to delete a key:value\npair with <code>del</code>. If you store using a key that is already in use, the old\nvalue associated with that key is forgotten.  It is an error to extract a value\nusing a non-existent key."
+          "html": "Operasi utama pada sebuah dictionary adalah menyimpan nilai dengan kunci tertentu dan mengambil nilai tersebut berdasarkan kuncinya."
         },
         {
           "type": "paragraph",
-          "html": "Performing <code>list(d)</code> on a dictionary returns a list of all the keys\nused in the dictionary, in insertion order (if you want it sorted, just use\n<code>sorted(d)</code> instead). To check whether a single key is in the\ndictionary, use the <a href=\"https://docs.python.org/3.13/reference/expressions.html#in\" rel=\"noopener noreferrer\" target=\"_blank\"><code>in</code></a> keyword."
+          "html": "Menjalankan <code>list(d)</code> pada sebuah dictionary mengembalikan list berisi semua kunci yang ada di dalam dictionary tersebut sesuai urutan penyisipannya."
         },
         {
           "type": "paragraph",
@@ -467,7 +467,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The <a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"dict\"><code>dict()</code></a> constructor builds dictionaries directly from sequences of\nkey-value pairs:"
+          "html": "Konstruktor <a href=\"https://docs.python.org/3.13/library/stdtypes.html#dict\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"dict\"><code>dict()</code></a> membangun dictionary secara langsung dari urutan pasangan kunci-nilai (key-value pairs):"
         },
         {
           "type": "code",
@@ -477,7 +477,7 @@
         },
         {
           "type": "paragraph",
-          "html": "In addition, dict comprehensions can be used to create dictionaries from\narbitrary key and value expressions:"
+          "html": "Selain itu, dict comprehension dapat digunakan untuk membuat dictionary secara dinamis dari ekspresi kunci dan nilai arbitrer:"
         },
         {
           "type": "code",
@@ -487,7 +487,7 @@
         },
         {
           "type": "paragraph",
-          "html": "When the keys are simple strings, it is sometimes easier to specify pairs using\nkeyword arguments:"
+          "html": "Ketika kunci berupa string sederhana, terkadang lebih mudah menentukan pasangan kunci-nilai menggunakan argumen kata kunci:"
         },
         {
           "type": "code",
@@ -554,7 +554,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Using <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set()</code></a> on a sequence eliminates duplicate elements. The use of\n<a href=\"https://docs.python.org/3.13/library/functions.html#sorted\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"sorted\"><code>sorted()</code></a> in combination with <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set()</code></a> over a sequence is an idiomatic\nway to loop over unique elements of the sequence in sorted order."
+          "html": "Menggunakan fungsi <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set()</code></a> pada sebuah urutan sekuensial akan mengeliminasi elemen duplikat secara otomatis."
         },
         {
           "type": "code",
@@ -564,7 +564,7 @@
         },
         {
           "type": "paragraph",
-          "html": "It is sometimes tempting to change a list while you are looping over it;\nhowever, it is often simpler and safer to create a new list instead."
+          "html": "Terkadang kita tergoda untuk memodifikasi list saat sedang melakukan perulangan di atasnya; namun, seringkali jauh lebih sederhana dan aman untuk membuat list baru sebagai gantinya."
         },
         {
           "type": "code",
@@ -586,32 +586,32 @@
           "type": "heading",
           "level": 2,
           "id": "common-sequence-operations",
-          "html": "Common Sequence Operations",
-          "text": "Common Sequence Operations"
+          "html": "Operasi Sekuensial Umum",
+          "text": "Operasi Sekuensial Umum"
         },
         {
           "type": "paragraph",
-          "html": "The operations in the following table are supported by most sequence types,\nboth mutable and immutable. The <code>collections.abc.Sequence</code> ABC is\nprovided to make it easier to correctly implement these operations on\ncustom sequence types."
+          "html": "Operasi pada tabel berikut ini didukung oleh sebagian besar tipe sekuensial, baik yang dapat diubah (mutable) maupun yang tidak dapat diubah (immutable):"
         },
         {
           "type": "paragraph",
-          "html": "This table lists the sequence operations sorted in ascending priority.  In the\ntable, <em>s</em> and <em>t</em> are sequences of the same type, <em>n</em>, <em>i</em>, <em>j</em> and <em>k</em> are\nintegers and <em>x</em> is an arbitrary object that meets any type and value\nrestrictions imposed by <em>s</em>."
+          "html": "Tabel ini mencantumkan operasi urutan sekuensial yang diurutkan berdasarkan prioritas dari yang terendah ke tertinggi."
         },
         {
           "type": "paragraph",
-          "html": "The <code>in</code> and <code>not in</code> operations have the same priorities as the\ncomparison operations. The <code>+</code> (concatenation) and <code>*</code> (repetition)\noperations have the same priority as the corresponding numeric operations. <a href=\"https://docs.python.org/3.13/library/stdtypes.html#id14\" rel=\"noopener noreferrer\" target=\"_blank\">[3]</a>"
+          "html": "Operasi <code>in</code> dan <code>not in</code> memiliki prioritas presedensi yang sama dengan operasi perbandingan."
         },
         {
           "type": "table",
-          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>x in s</code></td><td><code>True</code> if an item of <em>s</em> is\nequal to <em>x</em>, else <code>False</code></td><td>(1)</td></tr><tr><td><code>x not in s</code></td><td><code>False</code> if an item of <em>s</em> is\nequal to <em>x</em>, else <code>True</code></td><td>(1)</td></tr><tr><td><code>s + t</code></td><td>the concatenation of <em>s</em> and\n<em>t</em></td><td>(6)(7)</td></tr><tr><td><code>s * n</code> or\n<code>n * s</code></td><td>equivalent to adding <em>s</em> to\nitself <em>n</em> times</td><td>(2)(7)</td></tr><tr><td><code>s[i]</code></td><td><em>i</em>th item of <em>s</em>, origin 0</td><td>(3)(9)</td></tr><tr><td><code>s[i:j]</code></td><td>slice of <em>s</em> from <em>i</em> to <em>j</em></td><td>(3)(4)</td></tr><tr><td><code>s[i:j:k]</code></td><td>slice of <em>s</em> from <em>i</em> to <em>j</em>\nwith step <em>k</em></td><td>(3)(5)</td></tr><tr><td><code>len(s)</code></td><td>length of <em>s</em></td><td></td></tr><tr><td><code>min(s)</code></td><td>smallest item of <em>s</em></td><td></td></tr><tr><td><code>max(s)</code></td><td>largest item of <em>s</em></td><td></td></tr><tr><td><code>s.index(x[, i[, j]])</code></td><td>index of the first occurrence\nof <em>x</em> in <em>s</em> (at or after\nindex <em>i</em> and before index <em>j</em>)</td><td>(8)</td></tr><tr><td><code>s.count(x)</code></td><td>total number of occurrences of\n<em>x</em> in <em>s</em></td><td></td></tr></table>"
+          "html": "<table><tr><th>Operasi</th><th>Hasil</th><th>Catatan</th></tr><tr><td><code>x in s</code></td><td><code>True</code> jika suatu elemen pada <em>s</em> bernilai sama dengan <em>x</em>, selain itu <code>False</code></td><td>(1)</td></tr><tr><td><code>x not in s</code></td><td><code>False</code> jika suatu elemen pada <em>s</em> bernilai sama dengan <em>x</em>, selain itu <code>True</code></td><td>(1)</td></tr><tr><td><code>s + t</code></td><td>penggabungan (konkatenasi) dari <em>s</em> dan <em>t</em></td><td>(6)(7)</td></tr><tr><td><code>s * n</code> or\n<code>n * s</code></td><td>ekuivalen dengan menambahkan <em>s</em> ke dirinya sendiri sebanyak <em>n</em> kali</td><td>(2)(7)</td></tr><tr><td><code>s[i]</code></td><td>elemen ke-<em>i</em> dari <em>s</em>, berbasis indeks 0</td><td>(3)(9)</td></tr><tr><td><code>s[i:j]</code></td><td>potongan (slice) dari <em>s</em> dari indeks <em>i</em> sampai <em>j</em></td><td>(3)(4)</td></tr><tr><td><code>s[i:j:k]</code></td><td>potongan (slice) dari <em>s</em> dari indeks <em>i</em> sampai <em>j</em>\ndengan langkah (step) <em>k</em></td><td>(3)(5)</td></tr><tr><td><code>len(s)</code></td><td>panjang atau jumlah elemen dari <em>s</em></td><td></td></tr><tr><td><code>min(s)</code></td><td>elemen terkecil dari <em>s</em></td><td></td></tr><tr><td><code>max(s)</code></td><td>elemen terbesar dari <em>s</em></td><td></td></tr><tr><td><code>s.index(x[, i[, j]])</code></td><td>indeks kemunculan pertama <em>x</em> di dalam <em>s</em> (pada atau setelah indeks <em>i</em> dan sebelum indeks <em>j</em>)</td><td>(8)</td></tr><tr><td><code>s.count(x)</code></td><td>jumlah total kemunculan <em>x</em> di dalam <em>s</em></td><td></td></tr></table>"
         },
         {
           "type": "paragraph",
-          "html": "Sequences of the same type also support comparisons.  In particular, tuples\nand lists are compared lexicographically by comparing corresponding elements.\nThis means that to compare equal, every element must compare equal and the\ntwo sequences must be of the same type and have the same length.  (For full\ndetails see <a href=\"https://docs.python.org/3.13/reference/expressions.html#comparisons\" rel=\"noopener noreferrer\" target=\"_blank\">Comparisons</a> in the language reference.)"
+          "html": "Sekuensial dengan tipe yang sama juga mendukung perbandingan. Khususnya, tuple dan list dibandingkan secara leksikografis dengan membandingkan elemen-elemen yang bersesuaian."
         },
         {
           "type": "paragraph",
-          "html": "Forward and reversed iterators over mutable sequences access values using an\nindex.  That index will continue to march forward (or backward) even if the\nunderlying sequence is mutated.  The iterator terminates only when an\n<a href=\"https://docs.python.org/3.13/library/exceptions.html#IndexError\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"IndexError\"><code>IndexError</code></a> or a <a href=\"https://docs.python.org/3.13/library/exceptions.html#StopIteration\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"StopIteration\"><code>StopIteration</code></a> is encountered (or when the index\ndrops below zero)."
+          "html": "Iterator maju dan mundur pada sekuensial mutable mengakses nilai menggunakan indeks elemen."
         },
         {
           "type": "paragraph",
@@ -739,20 +739,20 @@
           "type": "heading",
           "level": 2,
           "id": "mutable-sequence-types",
-          "html": "Mutable Sequence Types",
-          "text": "Mutable Sequence Types"
+          "html": "Tipe Sekuensial yang Dapat Diubah (Mutable)",
+          "text": "Tipe Sekuensial yang Dapat Diubah (Mutable)"
         },
         {
           "type": "paragraph",
-          "html": "The operations in the following table are defined on mutable sequence types.\nThe <code>collections.abc.MutableSequence</code> ABC is provided to make it\neasier to correctly implement these operations on custom sequence types."
+          "html": "Operasi pada tabel berikut didefinisikan khusus untuk tipe data sekuensial yang dapat diubah (mutable sequence types seperti list):"
         },
         {
           "type": "paragraph",
-          "html": "In the table <em>s</em> is an instance of a mutable sequence type, <em>t</em> is any\niterable object and <em>x</em> is an arbitrary object that meets any type\nand value restrictions imposed by <em>s</em> (for example, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a> only\naccepts integers that meet the value restriction <code>0 &lt;= x &lt;= 255</code>)."
+          "html": "Pada tabel di bawah ini, <em>s</em> adalah instance dari tipe urutan yang dapat diubah (mutable sequence), <em>t</em> adalah objek iterabel apa pun, dan <em>x</em> adalah objek sembarang yang memenuhi batasan tipe dan nilai yang ditentukan oleh <em>s</em> (misalnya, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#bytearray\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bytearray\"><code>bytearray</code></a> hanya menerima bilangan bulat dengan batasan nilai <code>0 &lt;= x &lt;= 255</code>)."
         },
         {
           "type": "table",
-          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>s[i] = x</code></td><td>item <em>i</em> of <em>s</em> is replaced by\n<em>x</em></td><td></td></tr><tr><td><code>del s[i]</code></td><td>removes item <em>i</em> of <em>s</em></td><td></td></tr><tr><td><code>s[i:j] = t</code></td><td>slice of <em>s</em> from <em>i</em> to <em>j</em>\nis replaced by the contents of\nthe iterable <em>t</em></td><td></td></tr><tr><td><code>del s[i:j]</code></td><td>removes the elements of\n<code>s[i:j]</code> from the list\n(same as <code>s[i:j] = []</code>)</td><td></td></tr><tr><td><code>s[i:j:k] = t</code></td><td>the elements of <code>s[i:j:k]</code>\nare replaced by those of <em>t</em></td><td>(1)</td></tr><tr><td><code>del s[i:j:k]</code></td><td>removes the elements of\n<code>s[i:j:k]</code> from the list</td><td></td></tr><tr><td><code>s.append(x)</code></td><td>appends <em>x</em> to the end of the\nsequence (same as\n<code>s[len(s):len(s)] = [x]</code>)</td><td></td></tr><tr><td><code>s.clear()</code></td><td>removes all items from <em>s</em>\n(same as <code>del s[:]</code>)</td><td>(5)</td></tr><tr><td><code>s.copy()</code></td><td>creates a shallow copy of <em>s</em>\n(same as <code>s[:]</code>)</td><td>(5)</td></tr><tr><td><code>s.extend(t)</code> or\n<code>s += t</code></td><td>extends <em>s</em> with the\ncontents of <em>t</em> (for the\nmost part the same as\n<code>s[len(s):len(s)] = t</code>)</td><td></td></tr><tr><td><code>s *= n</code></td><td>updates <em>s</em> with its contents\nrepeated <em>n</em> times</td><td>(6)</td></tr><tr><td><code>s.insert(i, x)</code></td><td>inserts <em>x</em> into <em>s</em> at the\nindex given by <em>i</em>\n(same as <code>s[i:i] = [x]</code>)</td><td></td></tr><tr><td><code>s.pop()</code> or <code>s.pop(i)</code></td><td>retrieves the item at <em>i</em> and\nalso removes it from <em>s</em></td><td>(2)</td></tr><tr><td><code>s.remove(x)</code></td><td>removes the first item from\n<em>s</em> where <code>s[i]</code> is equal to\n<em>x</em></td><td>(3)</td></tr><tr><td><code>s.reverse()</code></td><td>reverses the items of <em>s</em> in\nplace</td><td>(4)</td></tr></table>"
+          "html": "<table><tr><th>Operasi</th><th>Hasil</th><th>Catatan</th></tr><tr><td><code>s[i] = x</code></td><td>elemen ke-<em>i</em> dari <em>s</em> digantikan oleh <em>x</em></td><td></td></tr><tr><td><code>del s[i]</code></td><td>menghapus elemen ke-<em>i</em> dari <em>s</em></td><td></td></tr><tr><td><code>s[i:j] = t</code></td><td>potongan (slice) dari <em>s</em> dari indeks <em>i</em> sampai <em>j</em>\ndigantikan oleh seluruh isi dari objek iterabel <em>t</em></td><td></td></tr><tr><td><code>del s[i:j]</code></td><td>menghapus seluruh elemen <code>s[i:j]</code> dari list (sama seperti <code>s[i:j] = []</code>)</td><td></td></tr><tr><td><code>s[i:j:k] = t</code></td><td>elemen-elemen <code>s[i:j:k]</code> digantikan oleh elemen-elemen dari <em>t</em></td><td>(1)</td></tr><tr><td><code>del s[i:j:k]</code></td><td>menghapus elemen-elemen <code>s[i:j:k]</code> dari list</td><td></td></tr><tr><td><code>s.append(x)</code></td><td>menambahkan elemen <em>x</em> ke ujung akhir urutan (sama seperti <code>s[len(s):len(s)] = [x]</code>)</td><td></td></tr><tr><td><code>s.clear()</code></td><td>menghapus seluruh elemen dari <em>s</em> (sama seperti <code>del s[:]</code>)</td><td>(5)</td></tr><tr><td><code>s.copy()</code></td><td>membuat salinan dangkal (shallow copy) dari <em>s</em> (sama seperti <code>s[:]</code>)</td><td>(5)</td></tr><tr><td><code>s.extend(t)</code> or\n<code>s += t</code></td><td>memperluas <em>s</em> dengan isi elemen dari <em>t</em> (sebagian besar sama seperti <code>s[len(s):len(s)] = t</code>)</td><td></td></tr><tr><td><code>s *= n</code></td><td>memperbarui <em>s</em> dengan isinya diulang sebanyak <em>n</em> kali</td><td>(6)</td></tr><tr><td><code>s.insert(i, x)</code></td><td>menyisipkan <em>x</em> ke dalam <em>s</em> pada posisi indeks <em>i</em> (sama seperti <code>s[i:i] = [x]</code>)</td><td></td></tr><tr><td><code>s.pop()</code> or <code>s.pop(i)</code></td><td>mengambil nilai elemen pada indeks <em>i</em> sekaligus menghapusnya dari <em>s</em></td><td>(2)</td></tr><tr><td><code>s.remove(x)</code></td><td>menghapus elemen pertama dari <em>s</em> di mana nilai <code>s[i]</code> sama dengan <em>x</em></td><td>(3)</td></tr><tr><td><code>s.reverse()</code></td><td>membalikkan urutan seluruh elemen <em>s</em> secara langsung di tempat (in-place)</td><td>(4)</td></tr></table>"
         },
         {
           "type": "paragraph",
@@ -810,12 +810,12 @@
           "type": "heading",
           "level": 2,
           "id": "lists",
-          "html": "Lists",
-          "text": "Lists"
+          "html": "Tipe Data List",
+          "text": "Tipe Data List"
         },
         {
           "type": "paragraph",
-          "html": "Lists are mutable sequences, typically used to store collections of\nhomogeneous items (where the precise degree of similarity will vary by\napplication)."
+          "html": "List adalah tipe data sekuensial mutable (dapat diubah), biasanya digunakan untuk menyimpan koleksi elemen data yang homogen atau heterogen."
         },
         {
           "type": "definition",
@@ -931,11 +931,11 @@
         },
         {
           "type": "paragraph",
-          "html": "A <a href=\"https://docs.python.org/3.13/glossary.html#term-mapping\" rel=\"noopener noreferrer\" target=\"_blank\">mapping</a> object maps <a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a> values to arbitrary objects.\nMappings are mutable objects.  There is currently only one standard mapping\ntype, the <em>dictionary</em>.  (For other containers see the built-in\n<a href=\"#list\" title=\"list\"><code>list</code></a>, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#set\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"set\"><code>set</code></a>, and <a href=\"https://docs.python.org/3.13/library/stdtypes.html#tuple\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"tuple\"><code>tuple</code></a> classes, and the\n<code>collections</code> module.)"
+          "html": "Sebuah objek <a href=\"https://docs.python.org/3.13/glossary.html#term-mapping\" rel=\"noopener noreferrer\" target=\"_blank\">pemetaan</a> (mapping) memetakan nilai-nilai yang dapat di-hash (<a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a>) ke objek arbitrer apa pun. Pemetaan adalah objek yang bersifat mutable."
         },
         {
           "type": "paragraph",
-          "html": "A dictionary’s keys are <em>almost</em> arbitrary values.  Values that are not\n<a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a>, that is, values containing lists, dictionaries or other\nmutable types (that are compared by value rather than by object identity) may\nnot be used as keys.\nValues that compare equal (such as <code>1</code>, <code>1.0</code>, and <code>True</code>)\ncan be used interchangeably to index the same dictionary entry."
+          "html": "Kunci dictionary dapat berupa hampir semua nilai yang bersifat hashable. Nilai-nilai yang memuat objek mutable tidak dapat dijadikan sebagai kunci dictionary."
         },
         {
           "type": "definition",
@@ -1452,12 +1452,12 @@
           "type": "heading",
           "level": 3,
           "id": "dictionary-view-objects",
-          "html": "Dictionary view objects",
-          "text": "Dictionary view objects"
+          "html": "Objek Tampilan Dictionary (View Objects)",
+          "text": "Objek Tampilan Dictionary (View Objects)"
         },
         {
           "type": "paragraph",
-          "html": "The objects returned by <a href=\"#dict.keys\" title=\"dict.keys\"><code>dict.keys()</code></a>, <a href=\"#dict.values\" title=\"dict.values\"><code>dict.values()</code></a> and\n<a href=\"#dict.items\" title=\"dict.items\"><code>dict.items()</code></a> are <em>view objects</em>.  They provide a dynamic view on the\ndictionary’s entries, which means that when the dictionary changes, the view\nreflects these changes."
+          "html": "Objek yang dikembalikan oleh <a href=\"#dict.keys\" title=\"dict.keys\"><code>dict.keys()</code></a>, <a href=\"#dict.values\" title=\"dict.values\"><code>dict.values()</code></a>, dan <a href=\"#dict.items\" title=\"dict.items\"><code>dict.items()</code></a> adalah objek tampilan (view objects) yang dinamis mengikuti perubahan dictionary aslinya."
         },
         {
           "type": "paragraph",
@@ -1563,7 +1563,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Keys views are set-like since their entries are unique and <a href=\"https://docs.python.org/3.13/glossary.html#term-hashable\" rel=\"noopener noreferrer\" target=\"_blank\">hashable</a>.\nItems views also have set-like operations since the (key, value) pairs\nare unique and the keys are hashable.\nIf all values in an items view are hashable as well,\nthen the items view can interoperate with other sets.\n(Values views are not treated as set-like\nsince the entries are generally not unique.)  For set-like views, all of the\noperations defined for the abstract base class <code>collections.abc.Set</code> are\navailable (for example, <code>==</code>, <code>&lt;</code>, or <code>^</code>).  While using set operators,\nset-like views accept any iterable as the other operand,\nunlike sets which only accept sets as the input."
+          "html": "Tampilan kunci (keys views) memiliki sifat seperti set karena entri-entrinya unik dan dapat di-hash. Tampilan item juga bersifat seperti set jika semua nilainya hashable."
         },
         {
           "type": "paragraph",
@@ -1659,6 +1659,26 @@
       "url": "https://docs.python.org/3.13/library/functions/#zip",
       "display": "zip",
       "doc": "library/functions"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep-1-list-dasar",
+      "title": "Episode 1: Struktur Data List & Pengindeksan",
+      "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+      "targetSection": "more-on-lists"
+    },
+    {
+      "id": "ep-2-list-methods",
+      "title": "Episode 2: Metode Manipulasi List & Comprehension",
+      "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+      "targetSection": "mutable-sequence-types"
+    },
+    {
+      "id": "ep-3-dictionary",
+      "title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+      "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+      "targetSection": "dictionaries"
     }
   ]
 }

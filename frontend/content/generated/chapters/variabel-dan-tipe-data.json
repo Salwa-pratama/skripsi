@@ -49,7 +49,7 @@
         {
           "type": "code",
           "language": "text",
-          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">5</span> <span class=\"o\">**</span> <span class=\"mi\">2</span>  <span class=\"c1\"># 5 squared</span>\n<span class=\"go\">25</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">2</span> <span class=\"o\">**</span> <span class=\"mi\">7</span>  <span class=\"c1\"># 2 to the power of 7</span>\n<span class=\"go\">128</span>",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">5</span> <span class=\"o\">**</span> <span class=\"mi\">2</span>  <span class=\"c1\"># 5 pangkat 2</span>\n<span class=\"go\">25</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"mi\">2</span> <span class=\"o\">**</span> <span class=\"mi\">7</span>  <span class=\"c1\"># 2 pangkat 7</span>\n<span class=\"go\">128</span>",
           "text": ">>> 5 ** 2  # 5 squared\n25\n>>> 2 ** 7  # 2 to the power of 7\n128"
         },
         {
@@ -134,7 +134,7 @@
         {
           "type": "code",
           "language": "text",
-          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s1\">'First line.</span><span class=\"se\">\\n</span><span class=\"s1\">Second line.'</span>  <span class=\"c1\"># \\n means newline</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span>  <span class=\"c1\"># without print(), special characters are included in the string</span>\n<span class=\"go\">'First line.\\nSecond line.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>  <span class=\"c1\"># with print(), special characters are interpreted, so \\n produces new line</span>\n<span class=\"go\">First line.</span>\n<span class=\"go\">Second line.</span>",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span> <span class=\"o\">=</span> <span class=\"s1\">'First line.</span><span class=\"se\">\\n</span><span class=\"s1\">Second line.'</span>  <span class=\"c1\"># \\n mewakili baris baru (newline)</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">s</span>  <span class=\"c1\"># tanpa print(), karakter khusus ditampilkan apa adanya</span>\n<span class=\"go\">'First line.\\nSecond line.'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"nb\">print</span><span class=\"p\">(</span><span class=\"n\">s</span><span class=\"p\">)</span>  <span class=\"c1\"># dengan print(), karakter khusus diartikan sehingga \\n menghasilkan baris baru</span>\n<span class=\"go\">First line.</span>\n<span class=\"go\">Second line.</span>",
           "text": ">>> s = 'First line.\\nSecond line.'  # \\n means newline\n>>> s  # without print(), special characters are included in the string\n'First line.\\nSecond line.'\n>>> print(s)  # with print(), special characters are interpreted, so \\n produces new line\nFirst line.\nSecond line."
         },
         {
@@ -252,7 +252,7 @@
         {
           "type": "code",
           "language": "text",
-          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span>   <span class=\"c1\"># character from the beginning to position 2 (excluded)</span>\n<span class=\"go\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:]</span>   <span class=\"c1\"># characters from position 4 (included) to the end</span>\n<span class=\"go\">'on'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">:]</span>  <span class=\"c1\"># characters from the second-last (included) to the end</span>\n<span class=\"go\">'on'</span>",
+          "html": "<span></span><span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[:</span><span class=\"mi\">2</span><span class=\"p\">]</span>   <span class=\"c1\"># karakter dari indeks awal hingga posisi 2 (tidak termasuk)</span>\n<span class=\"go\">'Py'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"mi\">4</span><span class=\"p\">:]</span>   <span class=\"c1\"># karakter dari indeks 4 (termasuk) hingga akhir</span>\n<span class=\"go\">'on'</span>\n<span class=\"gp\">&gt;&gt;&gt; </span><span class=\"n\">word</span><span class=\"p\">[</span><span class=\"o\">-</span><span class=\"mi\">2</span><span class=\"p\">:]</span>  <span class=\"c1\"># karakter dari dua posisi terakhir hingga akhir</span>\n<span class=\"go\">'on'</span>",
           "text": ">>> word[:2]   # character from the beginning to position 2 (excluded)\n'Py'\n>>> word[4:]   # characters from position 4 (included) to the end\n'on'\n>>> word[-2:]  # characters from the second-last (included) to the end\n'on'"
         },
         {
@@ -462,7 +462,7 @@
         },
         {
           "type": "table",
-          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th></tr><tr><td><code>x or y</code></td><td>if <em>x</em> is true, then <em>x</em>, else\n<em>y</em></td><td>(1)</td></tr><tr><td><code>x and y</code></td><td>if <em>x</em> is false, then <em>x</em>, else\n<em>y</em></td><td>(2)</td></tr><tr><td><code>not x</code></td><td>if <em>x</em> is false, then <code>True</code>,\nelse <code>False</code></td><td>(3)</td></tr></table>"
+          "html": "<table><tr><th>Operasi</th><th>Hasil</th><th>Catatan</th></tr><tr><td><code>x or y</code></td><td>if <em>x</em> is true, then <em>x</em>, else\n<em>y</em></td><td>(1)</td></tr><tr><td><code>x and y</code></td><td>if <em>x</em> is false, then <em>x</em>, else\n<em>y</em></td><td>(2)</td></tr><tr><td><code>not x</code></td><td>if <em>x</em> is false, then <code>True</code>,\nelse <code>False</code></td><td>(3)</td></tr></table>"
         },
         {
           "type": "paragraph",
@@ -526,7 +526,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The behavior of the <a href=\"https://docs.python.org/3.13/reference/expressions.html#is\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is</code></a> and <a href=\"https://docs.python.org/3.13/reference/expressions.html#is-not\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is not</code></a> operators cannot be\ncustomized; also they can be applied to any two objects and never raise an\nexception."
+          "html": "Perilaku operator <a href=\"https://docs.python.org/3.13/reference/expressions.html#is\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is</code></a> dan <a href=\"https://docs.python.org/3.13/reference/expressions.html#is-not\" rel=\"noopener noreferrer\" target=\"_blank\"><code>is not</code></a> tidak dapat dikustomisasi; keduanya dapat diterapkan pada dua objek apa pun dan tidak pernah menimbulkan pengecualian (exception)."
         },
         {
           "type": "paragraph",
@@ -561,7 +561,7 @@
         },
         {
           "type": "table",
-          "html": "<table><tr><th>Operation</th><th>Result</th><th>Notes</th><th>Full documentation</th></tr><tr><td><code>x + y</code></td><td>sum of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x - y</code></td><td>difference of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x * y</code></td><td>product of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x / y</code></td><td>quotient of <em>x</em> and <em>y</em></td><td></td><td></td></tr><tr><td><code>x // y</code></td><td>floored quotient of <em>x</em> and\n<em>y</em></td><td>(1)(2)</td><td></td></tr><tr><td><code>x % y</code></td><td>remainder of <code>x / y</code></td><td>(2)</td><td></td></tr><tr><td><code>-x</code></td><td><em>x</em> negated</td><td></td><td></td></tr><tr><td><code>+x</code></td><td><em>x</em> unchanged</td><td></td><td></td></tr><tr><td><code>abs(x)</code></td><td>absolute value or magnitude of\n<em>x</em></td><td></td><td><a href=\"https://docs.python.org/3.13/library/functions.html#abs\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"abs\"><code>abs()</code></a></td></tr><tr><td><code>int(x)</code></td><td><em>x</em> converted to integer</td><td>(3)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a></td></tr><tr><td><code>float(x)</code></td><td><em>x</em> converted to floating point</td><td>(4)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float()</code></a></td></tr><tr><td><code>complex(re, im)</code></td><td>a complex number with real part\n<em>re</em>, imaginary part <em>im</em>.\n<em>im</em> defaults to zero.</td><td>(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#complex\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"complex\"><code>complex()</code></a></td></tr><tr><td><code>c.conjugate()</code></td><td>conjugate of the complex number\n<em>c</em></td><td></td><td></td></tr><tr><td><code>divmod(x, y)</code></td><td>the pair <code>(x // y, x % y)</code></td><td>(2)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#divmod\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"divmod\"><code>divmod()</code></a></td></tr><tr><td><code>pow(x, y)</code></td><td><em>x</em> to the power <em>y</em></td><td>(5)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#pow\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"pow\"><code>pow()</code></a></td></tr><tr><td><code>x ** y</code></td><td><em>x</em> to the power <em>y</em></td><td>(5)</td><td></td></tr></table>"
+          "html": "<table><tr><th>Operasi</th><th>Hasil</th><th>Catatan</th><th>Full documentation</th></tr><tr><td><code>x + y</code></td><td>penjumlahan <em>x</em> dan <em>y</em></td><td></td><td></td></tr><tr><td><code>x - y</code></td><td>selisih pengurangan <em>x</em> dan <em>y</em></td><td></td><td></td></tr><tr><td><code>x * y</code></td><td>perkalian <em>x</em> dan <em>y</em></td><td></td><td></td></tr><tr><td><code>x / y</code></td><td>hasil pembagian desimal <em>x</em> dan <em>y</em></td><td></td><td></td></tr><tr><td><code>x // y</code></td><td>hasil pembagian bulat (floor division) <em>x</em> dan <em>y</em></td><td>(1)(2)</td><td></td></tr><tr><td><code>x % y</code></td><td>sisa pembagian (modulo) dari <code>x / y</code></td><td>(2)</td><td></td></tr><tr><td><code>-x</code></td><td>kebalikan tanda negatif dari <em>x</em></td><td></td><td></td></tr><tr><td><code>+x</code></td><td>nilai <em>x</em> tidak berubah</td><td></td><td></td></tr><tr><td><code>abs(x)</code></td><td>nilai mutlak (absolut) dari <em>x</em></td><td></td><td><a href=\"https://docs.python.org/3.13/library/functions.html#abs\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"abs\"><code>abs()</code></a></td></tr><tr><td><code>int(x)</code></td><td><em>x</em> dikonversi menjadi bilangan bulat (integer)</td><td>(3)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a></td></tr><tr><td><code>float(x)</code></td><td><em>x</em> dikonversi menjadi bilangan desimal (float)</td><td>(4)(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#float\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"float\"><code>float()</code></a></td></tr><tr><td><code>complex(re, im)</code></td><td>bilangan kompleks dengan bagian riil <em>re</em> dan imajiner <em>im</em> (default 0)</td><td>(6)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#complex\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"complex\"><code>complex()</code></a></td></tr><tr><td><code>c.conjugate()</code></td><td>konjugat dari bilangan kompleks <em>c</em></td><td></td><td></td></tr><tr><td><code>divmod(x, y)</code></td><td>pasangan tuple <code>(x // y, x % y)</code></td><td>(2)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#divmod\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"divmod\"><code>divmod()</code></a></td></tr><tr><td><code>pow(x, y)</code></td><td><em>x</em> dipangkatkan dengan <em>y</em></td><td>(5)</td><td><a href=\"https://docs.python.org/3.13/library/functions.html#pow\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"pow\"><code>pow()</code></a></td></tr><tr><td><code>x ** y</code></td><td><em>x</em> dipangkatkan dengan <em>y</em></td><td>(5)</td><td></td></tr></table>"
         },
         {
           "type": "paragraph",
@@ -643,16 +643,16 @@
         },
         {
           "type": "paragraph",
-          "html": "For logical operations, use the <a href=\"https://docs.python.org/3.13/library/stdtypes.html#boolean\" rel=\"noopener noreferrer\" target=\"_blank\">boolean operators</a> <code>and</code>,\n<code>or</code> and <code>not</code>.\nWhen applying the bitwise operators <code>&amp;</code>, <code>|</code>, <code>^</code> to two booleans, they\nreturn a bool equivalent to the logical operations “and”, “or”, “xor”. However,\nthe logical operators <code>and</code>, <code>or</code> and <code>!=</code> should be preferred\nover <code>&amp;</code>, <code>|</code> and <code>^</code>."
+          "html": "Untuk operasi logika, gunakan <a href=\"https://docs.python.org/3.13/library/stdtypes.html#boolean\" rel=\"noopener noreferrer\" target=\"_blank\">operator boolean</a> <code>and</code>, <code>or</code>, dan <code>not</code>. Ketika menerapkan operator bitwise <code>&amp;</code>, <code>|</code>, <code>^</code> pada dua nilai boolean, operasi tersebut mengembalikan bool yang setara dengan operasi logika 'and', 'or', 'xor'. Namun, operator logika <code>and</code>, <code>or</code>, dan <code>!=</code> lebih disarankan dibandingkan <code>&amp;</code>, <code>|</code>, dan <code>^</code>."
         },
         {
           "type": "note",
           "kind": "deprecated",
-          "html": "Deprecated since version 3.12: The use of the bitwise inversion operator <code>~</code> is deprecated and will\nraise an error in Python 3.16."
+          "html": "Usang sejak versi 3.12: Penggunaan operator inversi bitwise <code>~</code> telah didepresiasi dan akan menimbulkan kesalahan (error) pada Python 3.16."
         },
         {
           "type": "paragraph",
-          "html": "<a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a> is a subclass of <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> (see <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesnumeric\" rel=\"noopener noreferrer\" target=\"_blank\">Numeric Types — int, float, complex</a>). In\nmany numeric contexts, <code>False</code> and <code>True</code> behave like the integers 0 and 1, respectively.\nHowever, relying on this is discouraged; explicitly convert using <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a>\ninstead."
+          "html": "<a href=\"https://docs.python.org/3.13/library/functions.html#bool\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"bool\"><code>bool</code></a> merupakan subkelas dari <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int</code></a> (lihat <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesnumeric\" rel=\"noopener noreferrer\" target=\"_blank\">Tipe Numerik — int, float, complex</a>). Dalam banyak konteks numerik, <code>False</code> dan <code>True</code> masing-masing berperilaku seperti bilangan bulat 0 dan 1. Namun, mengandalkan perilaku ini tidak disarankan; lakukan konversi secara eksplisit menggunakan <a href=\"https://docs.python.org/3.13/library/functions.html#int\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"int\"><code>int()</code></a> sebagai gantinya."
         }
       ]
     }
@@ -724,6 +724,26 @@
       "url": "https://docs.python.org/3.13/library/functions/#round",
       "display": "round",
       "doc": "library/functions"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep-1-bilangan",
+      "title": "Episode 1: Bilangan & Operasi Aritmetika",
+      "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+      "targetSection": "numbers"
+    },
+    {
+      "id": "ep-2-string",
+      "title": "Episode 2: Teks & Manipulasi String",
+      "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+      "targetSection": "text"
+    },
+    {
+      "id": "ep-3-boolean",
+      "title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+      "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+      "targetSection": "truth-value-testing"
     }
   ]
 }

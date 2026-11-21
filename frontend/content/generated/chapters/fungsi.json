@@ -42,11 +42,11 @@
         },
         {
           "type": "paragraph",
-          "html": "The actual parameters (arguments) to a function call are introduced in the local\nsymbol table of the called function when it is called; thus, arguments are\npassed using <em>call by value</em> (where the <em>value</em> is always an object <em>reference</em>,\nnot the value of the object). <a href=\"https://docs.python.org/3.13/tutorial/controlflow.html#id2\" rel=\"noopener noreferrer\" target=\"_blank\">[1]</a> When a function calls another function,\nor calls itself recursively, a new\nlocal symbol table is created for that call."
+          "html": "Parameter aktual (argumen) pada pemanggilan fungsi diperkenalkan ke dalam tabel simbol lokal dari fungsi yang dipanggil saat fungsi tersebut dieksekusi; dengan demikian, argumen diteruskan menggunakan prinsip <em>call by value</em> (di mana <em>nilai</em> yang diteruskan selalu berupa <em>referensi objek</em>, bukan nilai objek itu sendiri)."
         },
         {
           "type": "paragraph",
-          "html": "A function definition associates the function name with the function object in\nthe current symbol table.  The interpreter recognizes the object pointed to by\nthat name as a user-defined function.  Other names can also point to that same\nfunction object and can also be used to access the function:"
+          "html": "Definisi fungsi mengaitkan nama fungsi dengan objek fungsi di dalam tabel simbol saat ini. Interpreter mengenali objek yang ditunjuk oleh nama tersebut sebagai fungsi yang ditentukan pengguna (user-defined function)."
         },
         {
           "type": "code",
@@ -56,7 +56,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Coming from other languages, you might object that <code>fib</code> is not a function but\na procedure since it doesn’t return a value.  In fact, even functions without a\n<code>return</code> statement do return a value, albeit a rather boring one.  This\nvalue is called <code>None</code> (it’s a built-in name).  Writing the value <code>None</code> is\nnormally suppressed by the interpreter if it would be the only value written.\nYou can see it if you really want to using <a href=\"https://docs.python.org/3.13/library/functions.html#print\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"print\"><code>print()</code></a>:"
+          "html": "Bagi pembelajar dari bahasa lain, Anda mungkin menganggap bahwa <code>fib</code> bukanlah fungsi melainkan sebuah prosedur karena tidak mengembalikan nilai secara eksplisit. Faktanya di Python, bahkan fungsi tanpa pernyataan <code>return</code> tetap mengembalikan nilai khusus bernama <code>None</code> (nama bawaan bawaan Python)."
         },
         {
           "type": "code",
@@ -127,7 +127,7 @@
         },
         {
           "type": "paragraph",
-          "html": "This function can be called in several ways:"
+          "html": "Fungsi ini dapat dipanggil dengan beberapa cara:"
         },
         {
           "type": "list",
@@ -160,7 +160,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The default values are evaluated at the point of function definition in the\n<em>defining</em> scope, so that"
+          "html": "Nilai-nilai argumen bawaan (default) dievaluasi pada saat pendefinisian fungsi di dalam lingkup (scope) pendefinisian asalnya, bukan saat fungsi tersebut dipanggil."
         },
         {
           "type": "code",
@@ -174,7 +174,7 @@
         },
         {
           "type": "paragraph",
-          "html": "<strong>Important warning:</strong>  The default value is evaluated only once. This makes a\ndifference when the default is a mutable object such as a list, dictionary, or\ninstances of most classes.  For example, the following function accumulates the\narguments passed to it on subsequent calls:"
+          "html": "<strong>Peringatan penting:</strong> Nilai default hanya dievaluasi satu kali saat pendefinisian fungsi. Ini memberikan perbedaan signifikan ketika nilai default berupa objek yang dapat diubah (mutable), seperti list, dictionary, atau instans kelas."
         },
         {
           "type": "code",
@@ -194,7 +194,7 @@
         },
         {
           "type": "paragraph",
-          "html": "If you don’t want the default to be shared between subsequent calls, you can\nwrite the function like this instead:"
+          "html": "Jika Anda tidak ingin nilai default digunakan bersama (shared) di antara pemanggilan fungsi berikutnya, Anda dapat menuliskan fungsi tersebut dengan nilai awal <code>None</code>:"
         },
         {
           "type": "code",
@@ -211,7 +211,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Functions can also be called using <a href=\"https://docs.python.org/3.13/glossary.html#term-keyword-argument\" rel=\"noopener noreferrer\" target=\"_blank\">keyword arguments</a>\nof the form <code>kwarg=value</code>.  For instance, the following function:"
+          "html": "Fungsi juga dapat dipanggil menggunakan <a href=\"https://docs.python.org/3.13/glossary.html#term-keyword-argument\" rel=\"noopener noreferrer\" target=\"_blank\">argumen kata kunci (keyword arguments)</a>\ndalam bentuk <code>kwarg=value</code>. Sebagai contoh, fungsi berikut:"
         },
         {
           "type": "code",
@@ -221,7 +221,7 @@
         },
         {
           "type": "paragraph",
-          "html": "accepts one required argument (<code>voltage</code>) and three optional arguments\n(<code>state</code>, <code>action</code>, and <code>type</code>).  This function can be called in any\nof the following ways:"
+          "html": "menerima satu argumen wajib (<code>voltage</code>) dan tiga argumen opsional (<code>state</code>, <code>action</code>, dan <code>type</code>)."
         },
         {
           "type": "code",
@@ -241,7 +241,7 @@
         },
         {
           "type": "paragraph",
-          "html": "In a function call, keyword arguments must follow positional arguments.\nAll the keyword arguments passed must match one of the arguments\naccepted by the function (e.g. <code>actor</code> is not a valid argument for the\n<code>parrot</code> function), and their order is not important.  This also includes\nnon-optional arguments (e.g. <code>parrot(voltage=1000)</code> is valid too).\nNo argument may receive a value more than once.\nHere’s an example that fails due to this restriction:"
+          "html": "Pada pemanggilan fungsi, argumen kata kunci (keyword arguments) harus selalu diletakkan setelah argumen posisi (positional arguments). Semua argumen kata kunci yang diberikan harus cocok dengan salah satu nama parameter yang diterima oleh fungsi."
         },
         {
           "type": "code",
@@ -251,7 +251,7 @@
         },
         {
           "type": "paragraph",
-          "html": "When a final formal parameter of the form <code>**name</code> is present, it receives a\ndictionary (see <a href=\"https://docs.python.org/3.13/library/stdtypes.html#typesmapping\" rel=\"noopener noreferrer\" target=\"_blank\">Mapping Types — dict</a>) containing all keyword arguments except for\nthose corresponding to a formal parameter.  This may be combined with a formal\nparameter of the form <code>*name</code> (described in the next subsection) which\nreceives a <a href=\"https://docs.python.org/3.13/tutorial/datastructures.html#tut-tuples\" rel=\"noopener noreferrer\" target=\"_blank\">tuple</a> containing the positional\narguments beyond the formal parameter list.  (<code>*name</code> must occur\nbefore <code>**name</code>.) For example, if we define a function like this:"
+          "html": "Ketika parameter formal terakhir memiliki format <code>**nama</code>, parameter tersebut menerima sebuah dictionary yang berisi semua argumen kata kunci yang tidak ada dalam daftar parameter formal lainnya. Hal ini dapat digabungkan dengan parameter formal <code>*nama</code> yang menerima tuple berisi argumen posisi di luar daftar parameter formal."
         },
         {
           "type": "code",
@@ -281,7 +281,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Note that the order in which the keyword arguments are printed is guaranteed\nto match the order in which they were provided in the function call."
+          "html": "Perlu diperhatikan bahwa urutan argumen kata kunci yang dicetak dijamin cocok dengan urutan argumen tersebut diberikan pada saat pemanggilan fungsi."
         },
         {
           "type": "heading",
@@ -292,7 +292,7 @@
         },
         {
           "type": "paragraph",
-          "html": "By default, arguments may be passed to a Python function either by position\nor explicitly by keyword. For readability and performance, it makes sense to\nrestrict the way arguments can be passed so that a developer need only look\nat the function definition to determine if items are passed by position, by\nposition or keyword, or by keyword."
+          "html": "Secara default, argumen dapat diteruskan ke fungsi Python baik berdasarkan posisi maupun secara eksplisit menggunakan kata kunci (keyword). Untuk keterbacaan dan performa, pengembang dapat membatasi bagaimana argumen boleh diteruskan."
         },
         {
           "type": "paragraph",
@@ -306,7 +306,7 @@
         },
         {
           "type": "paragraph",
-          "html": "where <code>/</code> and <code>*</code> are optional. If used, these symbols indicate the kind of\nparameter by how the arguments may be passed to the function:\npositional-only, positional-or-keyword, and keyword-only. Keyword parameters\nare also referred to as named parameters."
+          "html": "di mana tanda <code>/</code> dan <code>*</code> bersifat opsional. Jika digunakan, simbol-simbol ini menunjukkan jenis parameter berdasarkan cara argumen dapat diteruskan ke fungsi: hanya posisi, posisi atau kata kunci, dan hanya kata kunci."
         },
         {
           "type": "heading",
@@ -317,7 +317,7 @@
         },
         {
           "type": "paragraph",
-          "html": "If <code>/</code> and <code>*</code> are not present in the function definition, arguments may\nbe passed to a function by position or by keyword."
+          "html": "Jika tanda <code>/</code> dan <code>*</code> tidak ada dalam definisi fungsi, argumen dapat diteruskan ke fungsi baik berdasarkan posisi maupun berdasarkan kata kunci."
         },
         {
           "type": "heading",
@@ -328,7 +328,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Looking at this in a bit more detail, it is possible to mark certain parameters\nas <em>positional-only</em>. If <em>positional-only</em>, the parameters’ order matters, and\nthe parameters cannot be passed by keyword. Positional-only parameters are\nplaced before a <code>/</code> (forward-slash). The <code>/</code> is used to logically\nseparate the positional-only parameters from the rest of the parameters.\nIf there is no <code>/</code> in the function definition, there are no positional-only\nparameters."
+          "html": "Melihat lebih detail, kita dapat menandai parameter tertentu sebagai <em>positional-only</em> (hanya posisi). Jika ditandai sebagai hanya posisi, parameter tersebut tidak dapat diteruskan menggunakan sintaks argumen kata kunci."
         },
         {
           "type": "paragraph",
@@ -343,7 +343,7 @@
         },
         {
           "type": "paragraph",
-          "html": "To mark parameters as <em>keyword-only</em>, indicating the parameters must be passed\nby keyword argument, place an <code>*</code> in the arguments list just before the first\n<em>keyword-only</em> parameter."
+          "html": "Untuk menandai parameter sebagai <em>keyword-only</em> (hanya kata kunci), letakkan simbol <code>*</code> di dalam daftar parameter sebelum parameter kata kunci pertama."
         },
         {
           "type": "heading",
@@ -364,7 +364,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The first function definition, <code>standard_arg</code>, the most familiar form,\nplaces no restrictions on the calling convention and arguments may be\npassed by position or keyword:"
+          "html": "Definisi fungsi pertama, <code>standard_arg</code>, bentuk yang paling umum digunakan, tidak membatasi pemanggilan argumen—argumen dapat diteruskan berdasarkan posisi maupun kata kunci."
         },
         {
           "type": "code",
@@ -374,7 +374,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The second function <code>pos_only_arg</code> is restricted to only use positional\nparameters as there is a <code>/</code> in the function definition:"
+          "html": "Fungsi kedua <code>pos_only_arg</code> dibatasi hanya menggunakan parameter posisi karena terdapat tanda <code>/</code> dalam definisi fungsinya."
         },
         {
           "type": "code",
@@ -384,7 +384,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The third function <code>kwd_only_arg</code> only allows keyword arguments as indicated\nby a <code>*</code> in the function definition:"
+          "html": "Fungsi ketiga <code>kwd_only_arg</code> hanya mengizinkan argumen kata kunci sebagaimana ditunjukkan oleh tanda <code>*</code> dalam definisi fungsinya."
         },
         {
           "type": "code",
@@ -404,7 +404,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Finally, consider this function definition which has a potential collision between the positional argument <code>name</code>  and <code>**kwds</code> which has <code>name</code> as a key:"
+          "html": "Terakhir, pertimbangkan definisi fungsi berikut yang memiliki potensi tabrakan nama antara argumen posisi dan argumen kata kunci:"
         },
         {
           "type": "code",
@@ -414,7 +414,7 @@
         },
         {
           "type": "paragraph",
-          "html": "There is no possible call that will make it return <code>True</code> as the keyword <code>'name'</code>\nwill always bind to the first parameter. For example:"
+          "html": "Tidak ada pemanggilan yang mungkin mengembalikan nilai <code>True</code> karena kata kunci <code>'name'</code> akan selalu terikat ke parameter pertama."
         },
         {
           "type": "code",
@@ -424,7 +424,7 @@
         },
         {
           "type": "paragraph",
-          "html": "But using <code>/</code> (positional only arguments), it is possible since it allows <code>name</code> as a positional argument and <code>'name'</code> as a key in the keyword arguments:"
+          "html": "Namun dengan menggunakan <code>/</code> (hanya argumen posisi), hal ini menjadi mungkin karena memperbolehkan <code>name</code> sebagai argumen posisi dan <code>**kwds</code> menerima kunci 'name':"
         },
         {
           "type": "code",
@@ -434,7 +434,7 @@
         },
         {
           "type": "paragraph",
-          "html": "In other words, the names of positional-only parameters can be used in\n<code>**kwds</code> without ambiguity."
+          "html": "Dengan kata lain, nama-nama parameter posisi-saja dapat digunakan di dalam <code>**kwds</code> tanpa menimbulkan ambiguitas."
         },
         {
           "type": "heading",
@@ -445,7 +445,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The use case will determine which parameters to use in the function definition:"
+          "html": "Kebutuhan kasus penggunaan menentukan parameter mana yang harus digunakan dalam definisi fungsi:"
         },
         {
           "type": "code",
@@ -491,7 +491,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Finally, the least frequently used option is to specify that a function can be\ncalled with an arbitrary number of arguments.  These arguments will be wrapped\nup in a tuple (see <a href=\"https://docs.python.org/3.13/tutorial/datastructures.html#tut-tuples\" rel=\"noopener noreferrer\" target=\"_blank\">Tuples and Sequences</a>).  Before the variable number of arguments,\nzero or more normal arguments may occur."
+          "html": "Terakhir, opsi yang sangat fleksibel adalah menentukan bahwa suatu fungsi dapat dipanggil dengan jumlah argumen sembarang menggunakan parameter arbitrer <code>*args</code>."
         },
         {
           "type": "code",
@@ -501,7 +501,7 @@
         },
         {
           "type": "paragraph",
-          "html": "Normally, these <em>variadic</em> arguments will be last in the list of formal\nparameters, because they scoop up all remaining input arguments that are\npassed to the function. Any formal parameters which occur after the <code>*args</code>\nparameter are ‘keyword-only’ arguments, meaning that they can only be used as\nkeywords rather than positional arguments."
+          "html": "Biasanya, argumen <em>variadik</em> ini diletakkan paling akhir dalam daftar parameter formal, karena mereka mengumpulkan semua argumen posisi yang tersisa."
         },
         {
           "type": "code",
@@ -518,7 +518,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The reverse situation occurs when the arguments are already in a list or tuple\nbut need to be unpacked for a function call requiring separate positional\narguments.  For instance, the built-in <a href=\"https://docs.python.org/3.13/library/stdtypes.html#range\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"range\"><code>range()</code></a> function expects separate\n<em>start</em> and <em>stop</em> arguments.  If they are not available separately, write the\nfunction call with the  <code>*</code>-operator to unpack the arguments out of a list\nor tuple:"
+          "html": "Situasi sebaliknya terjadi ketika argumen sudah berada di dalam list atau tuple tetapi perlu dibongkar (unpacked) untuk pemanggilan fungsi yang membutuhkan argumen posisi terpisah. Gunakan operator <code>*</code> untuk membongkarnya:"
         },
         {
           "type": "code",
@@ -528,7 +528,7 @@
         },
         {
           "type": "paragraph",
-          "html": "In the same fashion, dictionaries can deliver keyword arguments with the\n<code>**</code>-operator:"
+          "html": "Dengan cara yang sama, dictionary dapat membongkar argumen kata kunci menggunakan operator <code>**</code>:"
         },
         {
           "type": "code",
@@ -555,7 +555,7 @@
         },
         {
           "type": "paragraph",
-          "html": "The above example uses a lambda expression to return a function.  Another use\nis to pass a small function as an argument.  For instance, <a href=\"https://docs.python.org/3.13/library/stdtypes.html#list.sort\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"list.sort\"><code>list.sort()</code></a>\ntakes a sorting key function <em>key</em> which can be a lambda function:"
+          "html": "Contoh di atas menggunakan ekspresi lambda untuk mengembalikan fungsi kecil anonim. Penggunaan lainnya adalah meneruskan fungsi kecil sebagai argumen ke fungsi lain (seperti pada <code>sort()</code>)."
         },
         {
           "type": "code",
@@ -572,23 +572,23 @@
         },
         {
           "type": "paragraph",
-          "html": "Here are some conventions about the content and formatting of documentation\nstrings."
+          "html": "Berikut adalah beberapa konvensi mengenai isi dan pemformatan string dokumentasi (docstring):"
         },
         {
           "type": "paragraph",
-          "html": "The first line should always be a short, concise summary of the object’s\npurpose.  For brevity, it should not explicitly state the object’s name or type,\nsince these are available by other means (except if the name happens to be a\nverb describing a function’s operation).  This line should begin with a capital\nletter and end with a period."
+          "html": "Baris pertama dari docstring harus selalu berupa ringkasan singkat dan padat mengenai tujuan fungsi. Jangan menyatakan ulang nama atau tipe objek secara berlebihan."
         },
         {
           "type": "paragraph",
-          "html": "If there are more lines in the documentation string, the second line should be\nblank, visually separating the summary from the rest of the description.  The\nfollowing lines should be one or more paragraphs describing the object’s calling\nconventions, its side effects, etc."
+          "html": "Jika ada baris lanjutan dalam string dokumentasi (docstring), baris kedua harus dikosongkan untuk memisahkan ringkasan visual dari penjelasan detail berikutnya."
         },
         {
           "type": "paragraph",
-          "html": "The Python parser does not strip indentation from multi-line string literals in\nPython, so tools that process documentation have to strip indentation if\ndesired.  This is done using the following convention. The first non-blank line\n<em>after</em> the first line of the string determines the amount of indentation for\nthe entire documentation string.  (We can’t use the first line since it is\ngenerally adjacent to the string’s opening quotes so its indentation is not\napparent in the string literal.)  Whitespace “equivalent” to this indentation is\nthen stripped from the start of all lines of the string.  Lines that are\nindented less should not occur, but if they occur all their leading whitespace\nshould be stripped.  Equivalence of whitespace should be tested after expansion\nof tabs (to 8 spaces, normally)."
+          "html": "Pengurai Python tidak memotong indentasi dari string literal multi-baris, sehingga alat pemroses dokumentasi dapat membersihkan indentasi sesuai kebutuhan."
         },
         {
           "type": "paragraph",
-          "html": "Here is an example of a multi-line docstring:"
+          "html": "Berikut adalah contoh dari docstring multibaris:"
         },
         {
           "type": "code",
@@ -605,11 +605,11 @@
         },
         {
           "type": "paragraph",
-          "html": "<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#function\" rel=\"noopener noreferrer\" target=\"_blank\">Function annotations</a> are completely optional metadata\ninformation about the types used by user-defined functions (see <a href=\"https://peps.python.org/pep-3107/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 3107</strong></a> and\n<a href=\"https://peps.python.org/pep-0484/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 484</strong></a> for more information)."
+          "html": "<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#function\" rel=\"noopener noreferrer\" target=\"_blank\">Anotasi fungsi (function annotations)</a> adalah informasi metadata yang sepenuhnya opsional mengenai tipe data yang digunakan oleh fungsi buatan pengguna (lihat <a href=\"https://peps.python.org/pep-3107/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 3107</strong></a> dan <a href=\"https://peps.python.org/pep-0484/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 484</strong></a> untuk rincian selengkapnya)."
         },
         {
           "type": "paragraph",
-          "html": "<a href=\"https://docs.python.org/3.13/glossary.html#term-function-annotation\" rel=\"noopener noreferrer\" target=\"_blank\">Annotations</a> are stored in the <code>__annotations__</code>\nattribute of the function as a dictionary and have no effect on any other part of the\nfunction.  Parameter annotations are defined by a colon after the parameter name, followed\nby an expression evaluating to the value of the annotation.  Return annotations are\ndefined by a literal <code>-&gt;</code>, followed by an expression, between the parameter\nlist and the colon denoting the end of the <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a> statement.  The\nfollowing example has a required argument, an optional argument, and the return\nvalue annotated:"
+          "html": "<a href=\"https://docs.python.org/3.13/glossary.html#term-function-annotation\" rel=\"noopener noreferrer\" target=\"_blank\">Anotasi fungsi (annotations)</a> disimpan di dalam atribut <code>__annotations__</code> dari fungsi sebagai dictionary dan tidak memiliki efek samping pada bagian fungsi lainnya. Anotasi parameter didefinisikan dengan tanda titik dua setelah nama parameter, diikuti oleh ekspresi nilai evaluasi anotasi. Anotasi nilai kembalian fungsi didefinisikan oleh tanda literal <code>-&gt;</code> yang diikuti oleh ekspresi tipe, di antara daftar parameter dan tanda titik dua akhir dari pernyataan <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a>. Contoh berikut memperlihatkan argumen posisi wajib, argumen opsional berparameter default, serta anotasi nilai kembalian:"
         },
         {
           "type": "code",
@@ -646,15 +646,15 @@
         },
         {
           "type": "paragraph",
-          "html": "A function definition is an executable statement.  Its execution binds the\nfunction name in the current local namespace to a function object (a wrapper\naround the executable code for the function).  This function object contains a\nreference to the current global namespace as the global namespace to be used\nwhen the function is called."
+          "html": "Definisi fungsi merupakan pernyataan yang dapat dieksekusi. Eksekusinya mengikat nama fungsi dalam tabel simbol lokal saat ini ke objek fungsi yang membungkus kode tersebut."
         },
         {
           "type": "paragraph",
-          "html": "The function definition does not execute the function body; this gets executed\nonly when the function is called. <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#id23\" rel=\"noopener noreferrer\" target=\"_blank\">[4]</a>"
+          "html": "Definisi fungsi tidak langsung mengeksekusi isi tubuh fungsi; badan fungsi hanya dieksekusi saat fungsi tersebut dipanggil."
         },
         {
           "type": "paragraph",
-          "html": "A function definition may be wrapped by one or more <a href=\"https://docs.python.org/3.13/glossary.html#term-decorator\" rel=\"noopener noreferrer\" target=\"_blank\">decorator</a> expressions.\nDecorator expressions are evaluated when the function is defined, in the scope\nthat contains the function definition.  The result must be a callable, which is\ninvoked with the function object as the only argument. The returned value is\nbound to the function name instead of the function object.  Multiple decorators\nare applied in nested fashion. For example, the following code"
+          "html": "Definisi fungsi dapat dibungkus oleh satu atau lebih ekspresi <a href=\"https://docs.python.org/3.13/glossary.html#term-decorator\" rel=\"noopener noreferrer\" target=\"_blank\">dekorator</a>. Ekspresi dekorator dievaluasi saat fungsi didefinisikan di dalam lingkup yang bersangkutan."
         },
         {
           "type": "code",
@@ -674,16 +674,16 @@
         },
         {
           "type": "paragraph",
-          "html": "except that the original function is not temporarily bound to the name <code>func</code>."
+          "html": "kecuali bahwa fungsi aslinya tidak terikat secara sementara ke nama <code>func</code>."
         },
         {
           "type": "note",
           "kind": "versionchanged",
-          "html": "Changed in version 3.9: Functions may be decorated with any valid\n<a href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-assignment_expression\" rel=\"noopener noreferrer\" target=\"_blank\"><code>assignment_expression</code></a>. Previously, the grammar was\nmuch more restrictive; see <a href=\"https://peps.python.org/pep-0614/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 614</strong></a> for details."
+          "html": "Perubahan pada versi 3.9: Fungsi dapat didekorasi dengan <a href=\"https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-assignment_expression\" rel=\"noopener noreferrer\" target=\"_blank\"><code>assignment_expression</code></a> yang valid. Sebelumnya, tata bahasa jauh lebih ketat; lihat <a href=\"https://peps.python.org/pep-0614/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 614</strong></a> untuk rincian lebih lanjut."
         },
         {
           "type": "paragraph",
-          "html": "A list of <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#type-params\" rel=\"noopener noreferrer\" target=\"_blank\">type parameters</a> may be given in square brackets\nbetween the function’s name and the opening parenthesis for its parameter list.\nThis indicates to static type checkers that the function is generic. At runtime,\nthe type parameters can be retrieved from the function’s\n<a href=\"https://docs.python.org/3.13/reference/datamodel.html#function.__type_params__\" rel=\"noopener noreferrer\" target=\"_blank\" title=\"function.__type_params__\"><code>__type_params__</code></a>\nattribute. See <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#generic-functions\" rel=\"noopener noreferrer\" target=\"_blank\">Generic functions</a> for more."
+          "html": "Daftar <a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#type-params\" rel=\"noopener noreferrer\" target=\"_blank\">parameter tipe</a> dapat diberikan di dalam tanda kurung siku di antara nama fungsi dan tanda kurung parameter."
         },
         {
           "type": "note",
@@ -692,11 +692,11 @@
         },
         {
           "type": "paragraph",
-          "html": "When one or more <a href=\"https://docs.python.org/3.13/glossary.html#term-parameter\" rel=\"noopener noreferrer\" target=\"_blank\">parameters</a> have the form <em>parameter</em> <code>=</code>\n<em>expression</em>, the function is said to have “default parameter values.”  For a\nparameter with a default value, the corresponding <a href=\"https://docs.python.org/3.13/glossary.html#term-argument\" rel=\"noopener noreferrer\" target=\"_blank\">argument</a> may be\nomitted from a call, in which\ncase the parameter’s default value is substituted.  If a parameter has a default\nvalue, all following parameters up until the “<code>*</code>” must also have a default\nvalue — this is a syntactic restriction that is not expressed by the grammar."
+          "html": "Ketika satu atau lebih <a href=\"https://docs.python.org/3.13/glossary.html#term-parameter\" rel=\"noopener noreferrer\" target=\"_blank\">parameter</a> memiliki format <em>parameter</em> <code>=</code> <em>ekspresi</em>, fungsi tersebut dikatakan memiliki nilai parameter bawaan (default parameter values)."
         },
         {
           "type": "paragraph",
-          "html": "<strong>Default parameter values are evaluated from left to right when the function\ndefinition is executed.</strong> This means that the expression is evaluated once, when\nthe function is defined, and that the same “pre-computed” value is used for each\ncall.  This is especially important to understand when a default parameter value is a\nmutable object, such as a list or a dictionary: if the function modifies the\nobject (e.g. by appending an item to a list), the default parameter value is in effect\nmodified.  This is generally not what was intended.  A way around this is to use\n<code>None</code> as the default, and explicitly test for it in the body of the function,\ne.g.:"
+          "html": "Nilai parameter default dievaluasi dari kiri ke kanan saat definisi fungsi dieksekusi. Ini berarti ekspresi default dievaluasi satu kali saja saat fungsi dibuat."
         },
         {
           "type": "code",
@@ -706,29 +706,29 @@
         },
         {
           "type": "paragraph",
-          "html": "Function call semantics are described in more detail in section <a href=\"https://docs.python.org/3.13/reference/expressions.html#calls\" rel=\"noopener noreferrer\" target=\"_blank\">Calls</a>. A\nfunction call always assigns values to all parameters mentioned in the parameter\nlist, either from positional arguments, from keyword arguments, or from default\nvalues.  If the form “<code>*identifier</code>” is present, it is initialized to a tuple\nreceiving any excess positional parameters, defaulting to the empty tuple.\nIf the form “<code>**identifier</code>” is present, it is initialized to a new\nordered mapping receiving any excess keyword arguments, defaulting to a\nnew empty mapping of the same type.  Parameters after “<code>*</code>” or\n“<code>*identifier</code>” are keyword-only parameters and may only be passed\nby keyword arguments.  Parameters before “<code>/</code>” are positional-only parameters\nand may only be passed by positional arguments."
+          "html": "Semantik pemanggilan fungsi dijelaskan secara lebih detail pada bagian <a href=\"https://docs.python.org/3.13/reference/expressions.html#calls\" rel=\"noopener noreferrer\" target=\"_blank\">Pemanggilan</a>. Pemanggilan fungsi selalu menetapkan nilai ke semua parameter yang ditentukan."
         },
         {
           "type": "note",
           "kind": "versionchanged",
-          "html": "Changed in version 3.8: The <code>/</code> function parameter syntax may be used to indicate positional-only\nparameters. See <a href=\"https://peps.python.org/pep-0570/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 570</strong></a> for details."
+          "html": "Perubahan pada versi 3.8: Sintaks parameter fungsi <code>/</code> dapat digunakan untuk menandai parameter posisi-saja (positional-only). Lihat <a href=\"https://peps.python.org/pep-0570/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 570</strong></a> untuk rincian."
         },
         {
           "type": "paragraph",
-          "html": "Parameters may have an <a href=\"https://docs.python.org/3.13/glossary.html#term-function-annotation\" rel=\"noopener noreferrer\" target=\"_blank\">annotation</a> of the form “<code>: expression</code>”\nfollowing the parameter name.  Any parameter may have an annotation, even those of the form\n<code>*identifier</code> or <code>**identifier</code>. (As a special case, parameters of the form\n<code>*identifier</code> may have an annotation “<code>: *expression</code>”.) Functions may have “return” annotation of\nthe form “<code>-&gt; expression</code>” after the parameter list.  These annotations can be\nany valid Python expression.  The presence of annotations does not change the\nsemantics of a function.  The annotation values are available as values of\na dictionary keyed by the parameters’ names in the <code>__annotations__</code>\nattribute of the function object.  If the <code>annotations</code> import from\n<code>__future__</code> is used, annotations are preserved as strings at runtime which\nenables postponed evaluation.  Otherwise, they are evaluated when the function\ndefinition is executed.  In this case annotations may be evaluated in\na different order than they appear in the source code."
+          "html": "Parameter dapat memiliki <a href=\"https://docs.python.org/3.13/glossary.html#term-function-annotation\" rel=\"noopener noreferrer\" target=\"_blank\">anotasi</a> dalam format “<code>: ekspresi</code>” mengikuti nama parameter sebagai petunjuk tipe data."
         },
         {
           "type": "note",
           "kind": "versionchanged",
-          "html": "Changed in version 3.11: Parameters of the form “<code>*identifier</code>” may have an annotation\n“<code>: *expression</code>”. See <a href=\"https://peps.python.org/pep-0646/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 646</strong></a>."
+          "html": "Perubahan pada versi 3.11: Parameter berbentuk “<code>*identifier</code>” dapat memiliki anotasi “<code>: *expression</code>”. Lihat <a href=\"https://peps.python.org/pep-0646/\" rel=\"noopener noreferrer\" target=\"_blank\"><strong>PEP 646</strong></a>."
         },
         {
           "type": "paragraph",
-          "html": "It is also possible to create anonymous functions (functions not bound to a\nname), for immediate use in expressions.  This uses lambda expressions, described in\nsection <a href=\"https://docs.python.org/3.13/reference/expressions.html#lambda\" rel=\"noopener noreferrer\" target=\"_blank\">Lambdas</a>.  Note that the lambda expression is merely a shorthand for a\nsimplified function definition; a function defined in a “<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a>”\nstatement can be passed around or assigned to another name just like a function\ndefined by a lambda expression.  The “<code>def</code>” form is actually more powerful\nsince it allows the execution of multiple statements and annotations."
+          "html": "Dimungkinkan juga untuk membuat fungsi anonim (fungsi yang tidak terikat pada nama tertentu) untuk langsung digunakan dalam ekspresi. Pendekatan ini memanfaatkan ekspresi lambda sebagaimana diuraikan pada bagian <a href=\"https://docs.python.org/3.13/reference/expressions.html#lambda\" rel=\"noopener noreferrer\" target=\"_blank\">Lambda</a>. Perlu dicatat bahwa ekspresi lambda hanyalah singkatan untuk definisi fungsi sederhana; fungsi yang didefinisikan dengan pernyataan “<a href=\"https://docs.python.org/3.13/reference/compound_stmts.html#def\" rel=\"noopener noreferrer\" target=\"_blank\"><code>def</code></a>” tetap dapat dioperasikan atau ditugaskan ke nama lain persis seperti fungsi yang didefinisikan oleh ekspresi lambda. Bentuk “<code>def</code>” sesungguhnya jauh lebih kaya karena mendukung eksekusi multi-pernyataan serta anotasi."
         },
         {
           "type": "paragraph",
-          "html": "<strong>Programmer’s note:</strong> Functions are first-class objects.  A “<code>def</code>” statement\nexecuted inside a function definition defines a local function that can be\nreturned or passed around.  Free variables used in the nested function can\naccess the local variables of the function containing the def.  See section\nnaming for details."
+          "html": "<strong>Catatan pemrogram:</strong> Fungsi di Python adalah objek kelas utama (first-class objects). Pernyataan “<code>def</code>” yang dieksekusi di dalam definisi fungsi menghasilkan fungsi lokal yang dapat dikembalikan atau diteruskan ke fungsi lain."
         },
         {
           "type": "admonition",
@@ -841,6 +841,26 @@
       "url": "https://docs.python.org/3.13/library/functions/#sorted",
       "display": "sorted",
       "doc": "library/functions"
+    }
+  ],
+  "episodes": [
+    {
+      "id": "ep-1-def-docstring",
+      "title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+      "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+      "targetSection": "defining-functions"
+    },
+    {
+      "id": "ep-2-argumen-default",
+      "title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+      "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+      "targetSection": "default-argument-values"
+    },
+    {
+      "id": "ep-3-parameter-return",
+      "title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+      "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+      "targetSection": "special-parameters"
     }
   ]
 }

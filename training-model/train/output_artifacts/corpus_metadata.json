@@ -1,0 +1,3235 @@
+[
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Kita dapat membuat sebuah fungsi yang mencetak deret Fibonacci hingga batas tertentu:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Kata kunci def memperkenalkan sebuah pendefinisian fungsi baru. Kata kunci ini harus diikuti oleh nama fungsi dan daftar parameter formal di dalam tanda kurung. Baris pernyataan yang membentuk badan fungsi dimulai pada baris berikutnya, dan harus berindentasi.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#def"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Pernyataan pertama dari badan fungsi dapat berupa literal string opsional; string ini merupakan string dokumentasi fungsi, atau docstring . Docstring digunakan oleh berbagai perkakas otomatis untuk menghasilkan dokumentasi daring interaktif.",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-docstring"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Eksekusi suatu fungsi memperkenalkan tabel simbol baru yang digunakan untuk variabel-variabel lokal fungsi tersebut. Lebih tepatnya, semua penugasan variabel di dalam fungsi disimpan dalam tabel simbol lokal; sedangkan referensi variabel pertama-tama dicari di tabel simbol lokal, lalu di tabel simbol lokal fungsi penutup, kemudian di tabel simbol global, dan terakhir di tabel nama-nama bawaan (built-in).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Parameter aktual (argumen) pada pemanggilan fungsi diperkenalkan ke dalam tabel simbol lokal dari fungsi yang dipanggil saat fungsi tersebut dieksekusi; dengan demikian, argumen diteruskan menggunakan prinsip call by value (di mana nilai yang diteruskan selalu berupa referensi objek , bukan nilai objek itu sendiri).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Definisi fungsi mengaitkan nama fungsi dengan objek fungsi di dalam tabel simbol saat ini. Interpreter mengenali objek yang ditunjuk oleh nama tersebut sebagai fungsi yang ditentukan pengguna (user-defined function).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Bagi pembelajar dari bahasa lain, Anda mungkin menganggap bahwa fib bukanlah fungsi melainkan sebuah prosedur karena tidak mengembalikan nilai secara eksplisit. Faktanya di Python, bahkan fungsi tanpa pernyataan return tetap mengembalikan nilai khusus bernama None (nama bawaan bawaan Python).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Sangat mudah menulis fungsi yang mengembalikan list angka deret Fibonacci, alih-alih langsung mencetaknya:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "This example, as usual, demonstrates some new Python features:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Lebih Lanjut tentang Mendefinisikan Fungsi",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Dimungkinkan pula untuk mendefinisikan fungsi yang menerima sejumlah argumen yang fleksibel. Terdapat tiga bentuk umum yang dapat digabungkan: nilai argumen default, argumen kata kunci (keyword arguments), dan daftar argumen arbitrer.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Bentuk yang paling bermanfaat adalah menentukan nilai default untuk satu atau beberapa parameter. Ini menciptakan fungsi yang dapat dipanggil dengan argumen yang lebih sedikit daripada yang didefinisikan:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "def ask_ok ( prompt , retries = 4 , reminder = 'Please try again!' ): while True : reply = input ( prompt ) if reply in { 'y' , 'ye' , 'yes' }: return True if reply in { 'n' , 'no' , 'nop' , 'nope' }: return False retries = retries - 1 if retries < 0 : raise ValueError ( 'invalid user response' ) print ( reminder )",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Fungsi ini dapat dipanggil dengan beberapa cara:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "This example also introduces the in keyword. This tests whether or not a sequence contains a certain value.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#in"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Nilai-nilai argumen bawaan (default) dievaluasi pada saat pendefinisian fungsi di dalam lingkup (scope) pendefinisian asalnya, bukan saat fungsi tersebut dipanggil.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "i = 5 def f ( arg = i ): print ( arg ) i = 6 f ()",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Peringatan penting: Nilai default hanya dievaluasi satu kali saat pendefinisian fungsi. Ini memberikan perbedaan signifikan ketika nilai default berupa objek yang dapat diubah (mutable), seperti list, dictionary, atau instans kelas.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "def f ( a , L = []): L . append ( a ) return L print ( f ( 1 )) print ( f ( 2 )) print ( f ( 3 ))",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Jika Anda tidak ingin nilai default digunakan bersama (shared) di antara pemanggilan fungsi berikutnya, Anda dapat menuliskan fungsi tersebut dengan nilai awal None :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "def f ( a , L = None ): if L is None : L = [] L . append ( a ) return L",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Argumen Kata Kunci (Keyword Arguments)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Fungsi juga dapat dipanggil menggunakan argumen kata kunci (keyword arguments) dalam bentuk kwarg=value . Sebagai contoh, fungsi berikut:",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-keyword-argument"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "def parrot ( voltage , state = 'a stiff' , action = 'voom' , type = 'Norwegian Blue' ): print ( \"-- This parrot wouldn't\" , action , end = ' ' ) print ( \"if you put\" , voltage , \"volts through it.\" ) print ( \"-- Lovely plumage, the\" , type ) print ( \"-- It's\" , state , \"!\" )",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "menerima satu argumen wajib ( voltage ) dan tiga argumen opsional ( state , action , dan type ).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "parrot ( 1000 ) # 1 positional argument parrot ( voltage = 1000 ) # 1 keyword argument parrot ( voltage = 1000000 , action = 'VOOOOOM' ) # 2 keyword arguments parrot ( action = 'VOOOOOM' , voltage = 1000000 ) # 2 keyword arguments parrot ( 'a million' , 'bereft of life' , 'jump' ) # 3 positional arguments parrot ( 'a thousand' , state = 'pushing up the daisies' ) # 1 positional, 1 keyword",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "but all the following calls would be invalid:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "parrot () # required argument missing parrot ( voltage = 5.0 , 'dead' ) # non-keyword argument after a keyword argument parrot ( 110 , voltage = 220 ) # duplicate value for the same argument parrot ( actor = 'John Cleese' ) # unknown keyword argument",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Pada pemanggilan fungsi, argumen kata kunci (keyword arguments) harus selalu diletakkan setelah argumen posisi (positional arguments). Semua argumen kata kunci yang diberikan harus cocok dengan salah satu nama parameter yang diterima oleh fungsi.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-1-def-docstring",
+    "episode_title": "Episode 1: Mendefinisikan Fungsi (def) & Docstring",
+    "concept": "Mendeklarasikan fungsi baru dengan def, parameter formal, dan dokumentasi docstring",
+    "passage_text": "Ketika parameter formal terakhir memiliki format **nama , parameter tersebut menerima sebuah dictionary yang berisi semua argumen kata kunci yang tidak ada dalam daftar parameter formal lainnya. Hal ini dapat digabungkan dengan parameter formal *nama yang menerima tuple berisi argumen posisi di luar daftar parameter formal.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "def cheeseshop ( kind , * arguments , ** keywords ): print ( \"-- Do you have any\" , kind , \"?\" ) print ( \"-- I'm sorry, we're all out of\" , kind ) for arg in arguments : print ( arg ) print ( \"-\" * 40 ) for kw in keywords : print ( kw , \":\" , keywords [ kw ])",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "cheeseshop ( \"Limburger\" , \"It's very runny, sir.\" , \"It's really very, VERY runny, sir.\" , shopkeeper = \"Michael Palin\" , client = \"John Cleese\" , sketch = \"Cheese Shop Sketch\" )",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "-- Do you have any Limburger ? -- I'm sorry, we're all out of Limburger It's very runny, sir. It's really very, VERY runny, sir. ---------------------------------------- shopkeeper : Michael Palin client : John Cleese sketch : Cheese Shop Sketch",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Perlu diperhatikan bahwa urutan argumen kata kunci yang dicetak dijamin cocok dengan urutan argumen tersebut diberikan pada saat pemanggilan fungsi.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Secara default, argumen dapat diteruskan ke fungsi Python baik berdasarkan posisi maupun secara eksplisit menggunakan kata kunci (keyword). Untuk keterbacaan dan performa, pengembang dapat membatasi bagaimana argumen boleh diteruskan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "A function definition may look like:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "def f(pos1, pos2, /, pos_or_kwd, *, kwd1, kwd2): ----------- ---------- ---------- | | | | Positional or keyword | | - Keyword only -- Positional only",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "di mana tanda / dan * bersifat opsional. Jika digunakan, simbol-simbol ini menunjukkan jenis parameter berdasarkan cara argumen dapat diteruskan ke fungsi: hanya posisi, posisi atau kata kunci, dan hanya kata kunci.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Argumen Posisi atau Kata Kunci",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Jika tanda / dan * tidak ada dalam definisi fungsi, argumen dapat diteruskan ke fungsi baik berdasarkan posisi maupun berdasarkan kata kunci.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Melihat lebih detail, kita dapat menandai parameter tertentu sebagai positional-only (hanya posisi). Jika ditandai sebagai hanya posisi, parameter tersebut tidak dapat diteruskan menggunakan sintaks argumen kata kunci.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Parameters following the / may be positional-or-keyword or keyword-only .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Untuk menandai parameter sebagai keyword-only (hanya kata kunci), letakkan simbol * di dalam daftar parameter sebelum parameter kata kunci pertama.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Consider the following example function definitions paying close attention to the markers / and * :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Definisi fungsi pertama, standard_arg , bentuk yang paling umum digunakan, tidak membatasi pemanggilan argumen—argumen dapat diteruskan berdasarkan posisi maupun kata kunci.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Fungsi kedua pos_only_arg dibatasi hanya menggunakan parameter posisi karena terdapat tanda / dalam definisi fungsinya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Fungsi ketiga kwd_only_arg hanya mengizinkan argumen kata kunci sebagaimana ditunjukkan oleh tanda * dalam definisi fungsinya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "And the last uses all three calling conventions in the same function definition:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Terakhir, pertimbangkan definisi fungsi berikut yang memiliki potensi tabrakan nama antara argumen posisi dan argumen kata kunci:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "def foo ( name , ** kwds ): return 'name' in kwds",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Tidak ada pemanggilan yang mungkin mengembalikan nilai True karena kata kunci 'name' akan selalu terikat ke parameter pertama.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Namun dengan menggunakan / (hanya argumen posisi), hal ini menjadi mungkin karena memperbolehkan name sebagai argumen posisi dan **kwds menerima kunci 'name':",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Dengan kata lain, nama-nama parameter posisi-saja dapat digunakan di dalam **kwds tanpa menimbulkan ambiguitas.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Kebutuhan kasus penggunaan menentukan parameter mana yang harus digunakan dalam definisi fungsi:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "def f ( pos1 , pos2 , / , pos_or_kwd , * , kwd1 , kwd2 ):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Daftar Argumen Arbitrer (*args, **kwargs)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Terakhir, opsi yang sangat fleksibel adalah menentukan bahwa suatu fungsi dapat dipanggil dengan jumlah argumen sembarang menggunakan parameter arbitrer *args .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "def write_multiple_items ( file , separator , * args ): file . write ( separator . join ( args ))",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Biasanya, argumen variadik ini diletakkan paling akhir dalam daftar parameter formal, karena mereka mengumpulkan semua argumen posisi yang tersisa.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-2-argumen-default",
+    "episode_title": "Episode 2: Nilai Argumen Default & Keyword Arguments",
+    "concept": "Argumen opsional bernilai bawaan dan pemanggilan berdasarkan nama parameter",
+    "passage_text": "Membongkar Daftar Argumen (Unpacking)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Situasi sebaliknya terjadi ketika argumen sudah berada di dalam list atau tuple tetapi perlu dibongkar (unpacked) untuk pemanggilan fungsi yang membutuhkan argumen posisi terpisah. Gunakan operator * untuk membongkarnya:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Dengan cara yang sama, dictionary dapat membongkar argumen kata kunci menggunakan operator ** :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Fungsi anonim berukuran ringkas dapat dibuat dengan kata kunci lambda . Fungsi lambda secara sintaksis dibatasi pada satu ekspresi tunggal saja:",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#lambda"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Contoh di atas menggunakan ekspresi lambda untuk mengembalikan fungsi kecil anonim. Penggunaan lainnya adalah meneruskan fungsi kecil sebagai argumen ke fungsi lain (seperti pada sort() ).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "String Dokumentasi (Docstrings)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Berikut adalah beberapa konvensi mengenai isi dan pemformatan string dokumentasi (docstring):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Baris pertama dari docstring harus selalu berupa ringkasan singkat dan padat mengenai tujuan fungsi. Jangan menyatakan ulang nama atau tipe objek secara berlebihan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Jika ada baris lanjutan dalam string dokumentasi (docstring), baris kedua harus dikosongkan untuk memisahkan ringkasan visual dari penjelasan detail berikutnya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Pengurai Python tidak memotong indentasi dari string literal multi-baris, sehingga alat pemroses dokumentasi dapat membersihkan indentasi sesuai kebutuhan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Berikut adalah contoh dari docstring multibaris:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Anotasi fungsi (function annotations) adalah informasi metadata yang sepenuhnya opsional mengenai tipe data yang digunakan oleh fungsi buatan pengguna (lihat PEP 3107 dan PEP 484 untuk rincian selengkapnya).",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#function",
+      "https://peps.python.org/pep-3107/",
+      "https://peps.python.org/pep-0484/"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Anotasi fungsi (annotations) disimpan di dalam atribut __annotations__ dari fungsi sebagai dictionary dan tidak memiliki efek samping pada bagian fungsi lainnya. Anotasi parameter didefinisikan dengan tanda titik dua setelah nama parameter, diikuti oleh ekspresi nilai evaluasi anotasi. Anotasi nilai kembalian fungsi didefinisikan oleh tanda literal -> yang diikuti oleh ekspresi tipe, di antara daftar parameter dan tanda titik dua akhir dari pernyataan def . Contoh berikut memperlihatkan argumen posisi wajib, argumen opsional berparameter default, serta anotasi nilai kembalian:",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-function-annotation",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#def"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "A function definition defines a user-defined function object (see section The standard type hierarchy ):",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/datamodel.html#types"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "funcdef ::= [ decorators ] \"def\" funcname [ type_params ] \"(\" [ parameter_list ] \")\" [\"->\" expression ] \":\" suite decorators ::= decorator + decorator ::= \"@\" assignment_expression NEWLINE parameter_list ::= defparameter (\",\" defparameter )* \",\" \"/\" [\",\" [ parameter_list_no_posonly ]] | parameter_list_no_posonly parameter_list_no_posonly ::= defparameter (\",\" defparameter )* [\",\" [ parameter_list_starargs ]] | parameter_list_starargs parameter_list_starargs ::= \"*\" [ star_parameter ] (\",\" defparameter )* [\",\" [ parameter_star_kwargs ]] | \"*\" (\",\" defparameter )+ [\",\" [ parameter_star_kwargs ]] | parameter_star_kwargs parameter_star_kwargs ::= \"**\" parameter [\",\"] parameter ::= identifier [\":\" expression ] star_parameter ::= identifier [\":\" [\"*\"] expression ] defparameter ::= parameter [\"=\" expression ] funcname ::= identifier",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-decorators",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-funcname",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-type_params",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-decorator",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-defparameter",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list_no_posonly",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_list_starargs",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-star_parameter",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter_star_kwargs",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-parameter"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Definisi fungsi merupakan pernyataan yang dapat dieksekusi. Eksekusinya mengikat nama fungsi dalam tabel simbol lokal saat ini ke objek fungsi yang membungkus kode tersebut.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Definisi fungsi tidak langsung mengeksekusi isi tubuh fungsi; badan fungsi hanya dieksekusi saat fungsi tersebut dipanggil.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Definisi fungsi dapat dibungkus oleh satu atau lebih ekspresi dekorator . Ekspresi dekorator dievaluasi saat fungsi didefinisikan di dalam lingkup yang bersangkutan.",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-decorator"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "@f1 ( arg ) @f2 def func (): pass",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "def func (): pass func = f1 ( arg )( f2 ( func ))",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "kecuali bahwa fungsi aslinya tidak terikat secara sementara ke nama func .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Perubahan pada versi 3.9: Fungsi dapat didekorasi dengan assignment_expression yang valid. Sebelumnya, tata bahasa jauh lebih ketat; lihat PEP 614 untuk rincian lebih lanjut.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-assignment_expression",
+      "https://peps.python.org/pep-0614/"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Daftar parameter tipe dapat diberikan di dalam tanda kurung siku di antara nama fungsi dan tanda kurung parameter.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#type-params"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Changed in version 3.12: Type parameter lists are new in Python 3.12.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Ketika satu atau lebih parameter memiliki format parameter = ekspresi , fungsi tersebut dikatakan memiliki nilai parameter bawaan (default parameter values).",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-parameter"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Nilai parameter default dievaluasi dari kiri ke kanan saat definisi fungsi dieksekusi. Ini berarti ekspresi default dievaluasi satu kali saja saat fungsi dibuat.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "def whats_on_the_telly ( penguin = None ): if penguin is None : penguin = [] penguin . append ( \"property of the zoo\" ) return penguin",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Semantik pemanggilan fungsi dijelaskan secara lebih detail pada bagian Pemanggilan . Pemanggilan fungsi selalu menetapkan nilai ke semua parameter yang ditentukan.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#calls"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Perubahan pada versi 3.8: Sintaks parameter fungsi / dapat digunakan untuk menandai parameter posisi-saja (positional-only). Lihat PEP 570 untuk rincian.",
+    "source_urls": [
+      "https://peps.python.org/pep-0570/"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Parameter dapat memiliki anotasi dalam format “ : ekspresi ” mengikuti nama parameter sebagai petunjuk tipe data.",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-function-annotation"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Perubahan pada versi 3.11: Parameter berbentuk “ *identifier ” dapat memiliki anotasi “ : *expression ”. Lihat PEP 646 .",
+    "source_urls": [
+      "https://peps.python.org/pep-0646/"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Dimungkinkan juga untuk membuat fungsi anonim (fungsi yang tidak terikat pada nama tertentu) untuk langsung digunakan dalam ekspresi. Pendekatan ini memanfaatkan ekspresi lambda sebagaimana diuraikan pada bagian Lambda . Perlu dicatat bahwa ekspresi lambda hanyalah singkatan untuk definisi fungsi sederhana; fungsi yang didefinisikan dengan pernyataan “ def ” tetap dapat dioperasikan atau ditugaskan ke nama lain persis seperti fungsi yang didefinisikan oleh ekspresi lambda. Bentuk “ def ” sesungguhnya jauh lebih kaya karena mendukung eksekusi multi-pernyataan serta anotasi.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#lambda",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#def"
+    ]
+  },
+  {
+    "chapter_order": 4,
+    "chapter_slug": "fungsi",
+    "chapter_title": "Fungsi dengan def",
+    "episode_id": "ep-3-parameter-return",
+    "episode_title": "Episode 3: Parameter Khusus (*args, **kwargs) & Return",
+    "concept": "Menerima argumen arbitrer dan mengembalikan nilai komputasi dengan return",
+    "passage_text": "Catatan pemrogram: Fungsi di Python adalah objek kelas utama (first-class objects). Pernyataan “ def ” yang dieksekusi di dalam definisi fungsi menghasilkan fungsi lokal yang dapat dikembalikan atau diteruskan ke fungsi lain.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Tipe data list memiliki banyak metode bawaan yang sangat kaya. Berikut adalah metode-metode utama pada objek list:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Berikut adalah contoh komprehensif yang mendemonstrasikan sebagian besar metode manipulasi list:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Anda mungkin memperhatikan bahwa metode seperti insert , remove , atau sort yang memodifikasi isi list tidak mencetak nilai kembalian; metode-metode tersebut mengembalikan nilai bawaan None . Ini adalah prinsip desain di Python: semua operasi yang memodifikasi koleksi data di tempat (in-place) mengembalikan None .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Hal lain yang perlu diperhatikan adalah tidak semua jenis data dapat diurutkan atau dibandingkan satu sama lain (misalnya [None, 'hello', 10] tidak dapat diurutkan karena integer tidak dapat dibandingkan langsung dengan string).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Menggunakan List sebagai Stack (Tumpukan)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Metode pada list membuatnya sangat mudah digunakan sebagai struktur data tumpukan (stack), di mana elemen terakhir yang ditambahkan adalah elemen pertama yang diambil (LIFO - \"last-in, first-out\"). Gunakan append() untuk menambah elemen ke puncak tumpukan, dan pop() tanpa argumen untuk mengambil elemen teratas:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Menggunakan List sebagai Queue (Antrean)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "List juga dapat digunakan sebagai antrean (queue), di mana elemen pertama yang masuk adalah yang pertama keluar (FIFO). Namun, penyisipan atau penghapusan dari awal list berjalan lambat karena semua elemen harus digeser. Untuk antrean cepat, gunakan collections.deque .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Untuk mengimplementasikan struktur antrean (queue), gunakan collections.deque yang dirancang khusus untuk operasi penambahan (append) dan pelepasan (pop) yang sangat cepat dari kedua ujungnya. Sebagai contoh:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "List comprehension menyediakan cara ringkas dan elegan untuk membuat list baru berdasarkan operasi dari list atau urutan yang sudah ada. Penggunaan umumnya adalah membuat list baru di mana setiap elemen merupakan hasil penerapan operasi tertentu pada setiap anggota sequence lain:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "For example, assume we want to create a list of squares, like:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Perlu diingat bahwa perulangan biasa membuat atau menimpa variabel bernama x yang tetap bertahan setelah loop selesai. Sebaliknya, list comprehension menjaga variabel tetap lokal di dalam ekspresi.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "squares = list ( map ( lambda x : x ** 2 , range ( 10 )))",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "squares = [ x ** 2 for x in range ( 10 )]",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "which is more concise and readable.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Sebuah list comprehension terdiri dari tanda kurung siku yang berisi suatu ekspresi, diikuti oleh klausa for , kemudian nol atau lebih klausa for atau if .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Perhatikan bagaimana urutan pernyataan for dan if sama persis di kedua cuplikan kode ini.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#for",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#if"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Jika ekspresi berupa tuple (misalnya (x, y) pada contoh sebelumnya), ekspresi tersebut wajib dibungkus tanda kurung.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "List comprehensions can contain complex expressions and nested functions:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Ekspresi awal pada list comprehension dapat berupa ekspresi sembarang apa pun, termasuk ekspresi list comprehension lainnya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-1-list-dasar",
+    "episode_title": "Episode 1: Struktur Data List & Pengindeksan",
+    "concept": "Membuat list sekuensial, indeks positif/negatif, serta slicing",
+    "passage_text": "Perhatikan contoh matriks 3x4 berikut yang diimplementasikan sebagai list berisi 3 buah list yang masing-masing beranggotakan 4 elemen:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "The following list comprehension will transpose rows and columns:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Sebagaimana kita lihat pada bagian sebelumnya, list comprehension bagian dalam dievaluasi di dalam konteks klausa for yang mengikutinya.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#for"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "which, in turn, is the same as:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Dalam penerapan dunia nyata, Anda disarankan lebih mengutamakan fungsi bawaan Python (seperti zip() ) dibandingkan pernyataan alur perulangan yang rumit.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Lihat bagian Membongkar Daftar Argumen untuk penjelasan detail mengenai penggunaan tanda bintang pada baris ini.",
+    "source_urls": [
+      "https://docs.python.org/3.13/tutorial/controlflow.html#tut-unpacking-arguments"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Terdapat cara untuk menghapus elemen dari list berdasarkan indeksnya, bukan berdasarkan nilainya: yaitu menggunakan pernyataan del . Pernyataan ini berbeda dari metode pop() karena tidak mengembalikan nilai:",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/simple_stmts.html#del"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "del can also be used to delete entire variables:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Merujuk nama variabel a setelah dihapus dengan del akan menghasilkan error (setidaknya sampai ada nilai baru yang ditetapkan ke variabel tersebut).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Tipe data bawaan Python lainnya yang sangat berguna adalah dictionary (kamus) . Tidak seperti urutan yang diindeks oleh rentang angka, dictionary diindeks menggunakan kunci (keys) , yang dapat berupa tipe data apa pun yang tidak dapat diubah (immutable), seperti string atau angka.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#typesmapping"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Cara terbaik memahami dictionary adalah sebagai kumpulan pasangan kunci: nilai (key: value) , dengan syarat bahwa kunci harus bersifat unik dalam satu dictionary. Sepasang kurung kurawal kosong {} membuat dictionary kosong:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Operasi utama pada sebuah dictionary adalah menyimpan nilai dengan kunci tertentu dan mengambil nilai tersebut berdasarkan kuncinya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Menjalankan list(d) pada sebuah dictionary mengembalikan list berisi semua kunci yang ada di dalam dictionary tersebut sesuai urutan penyisipannya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Here is a small example using a dictionary:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Konstruktor dict() membangun dictionary secara langsung dari urutan pasangan kunci-nilai (key-value pairs):",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#dict"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Selain itu, dict comprehension dapat digunakan untuk membuat dictionary secara dinamis dari ekspresi kunci dan nilai arbitrer:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Ketika kunci berupa string sederhana, terkadang lebih mudah menentukan pasangan kunci-nilai menggunakan argumen kata kunci:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Teknik Perulangan Koleksi Data",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Saat melakukan perulangan pada dictionary, kunci dan nilai pasangannya dapat diambil secara bersamaan menggunakan metode items() :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Saat melakukan perulangan pada suatu urutan, indeks posisi dan nilainya dapat diambil secara bersamaan menggunakan fungsi enumerate() :",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#enumerate"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "Untuk mengiterasi dua atau lebih urutan secara bersamaan dalam satu loop, pasangan elemennya dapat disatukan menggunakan fungsi zip() :",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#zip"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-2-list-methods",
+    "episode_title": "Episode 2: Metode Manipulasi List & Comprehension",
+    "concept": "Operasi append, pop, sort, del, serta pembuatan list deklaratif (list comprehension)",
+    "passage_text": "To loop over a sequence in reverse, first specify the sequence in a forward direction and then call the reversed() function.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#reversed"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "To loop over a sequence in sorted order, use the sorted() function which returns a new sorted list while leaving the source unaltered.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#sorted"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Menggunakan fungsi set() pada sebuah urutan sekuensial akan mengeliminasi elemen duplikat secara otomatis.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#set"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Terkadang kita tergoda untuk memodifikasi list saat sedang melakukan perulangan di atasnya; namun, seringkali jauh lebih sederhana dan aman untuk membuat list baru sebagai gantinya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Operasi pada tabel berikut ini didukung oleh sebagian besar tipe sekuensial, baik yang dapat diubah (mutable) maupun yang tidak dapat diubah (immutable):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Tabel ini mencantumkan operasi urutan sekuensial yang diurutkan berdasarkan prioritas dari yang terendah ke tertinggi.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Operasi in dan not in memiliki prioritas presedensi yang sama dengan operasi perbandingan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Operasi Hasil Catatan x in s True jika suatu elemen pada s bernilai sama dengan x , selain itu False (1) x not in s False jika suatu elemen pada s bernilai sama dengan x , selain itu True (1) s + t penggabungan (konkatenasi) dari s dan t (6)(7) s * n or n * s ekuivalen dengan menambahkan s ke dirinya sendiri sebanyak n kali (2)(7) s[i] elemen ke- i dari s , berbasis indeks 0 (3)(9) s[i:j] potongan (slice) dari s dari indeks i sampai j (3)(4) s[i:j:k] potongan (slice) dari s dari indeks i sampai j dengan langkah (step) k (3)(5) len(s) panjang atau jumlah elemen dari s min(s) elemen terkecil dari s max(s) elemen terbesar dari s s.index(x[, i[, j]]) indeks kemunculan pertama x di dalam s (pada atau setelah indeks i dan sebelum indeks j ) (8) s.count(x) jumlah total kemunculan x di dalam s",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Sekuensial dengan tipe yang sama juga mendukung perbandingan. Khususnya, tuple dan list dibandingkan secara leksikografis dengan membandingkan elemen-elemen yang bersesuaian.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Iterator maju dan mundur pada sekuensial mutable mengakses nilai menggunakan indeks elemen.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Tipe Sekuensial yang Dapat Diubah (Mutable)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Operasi pada tabel berikut didefinisikan khusus untuk tipe data sekuensial yang dapat diubah (mutable sequence types seperti list):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Pada tabel di bawah ini, s adalah instance dari tipe urutan yang dapat diubah (mutable sequence), t adalah objek iterabel apa pun, dan x adalah objek sembarang yang memenuhi batasan tipe dan nilai yang ditentukan oleh s (misalnya, bytearray hanya menerima bilangan bulat dengan batasan nilai 0 <= x <= 255 ).",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#bytearray"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Operasi Hasil Catatan s[i] = x elemen ke- i dari s digantikan oleh x del s[i] menghapus elemen ke- i dari s s[i:j] = t potongan (slice) dari s dari indeks i sampai j digantikan oleh seluruh isi dari objek iterabel t del s[i:j] menghapus seluruh elemen s[i:j] dari list (sama seperti s[i:j] = [] ) s[i:j:k] = t elemen-elemen s[i:j:k] digantikan oleh elemen-elemen dari t (1) del s[i:j:k] menghapus elemen-elemen s[i:j:k] dari list s.append(x) menambahkan elemen x ke ujung akhir urutan (sama seperti s[len(s):len(s)] = [x] ) s.clear() menghapus seluruh elemen dari s (sama seperti del s[:] ) (5) s.copy() membuat salinan dangkal (shallow copy) dari s (sama seperti s[:] ) (5) s.extend(t) or s += t memperluas s dengan isi elemen dari t (sebagian besar sama seperti s[len(s):len(s)] = t ) s *= n memperbarui s dengan isinya diulang sebanyak n kali (6) s.insert(i, x) menyisipkan x ke dalam s pada posisi indeks i (sama seperti s[i:i] = [x] ) s.pop() or s.pop(i) mengambil nilai elemen pada indeks i sekaligus menghapusnya dari s (2) s.remove(x) menghapus elemen pertama dari s di mana nilai s[i] sama dengan x (3) s.reverse() membalikkan urutan seluruh elemen s secara langsung di tempat (in-place) (4)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "List adalah tipe data sekuensial mutable (dapat diubah), biasanya digunakan untuk menyimpan koleksi elemen data yang homogen atau heterogen.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Sebuah objek pemetaan (mapping) memetakan nilai-nilai yang dapat di-hash ( hashable ) ke objek arbitrer apa pun. Pemetaan adalah objek yang bersifat mutable.",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-mapping",
+      "https://docs.python.org/3.13/glossary.html#term-hashable"
+    ]
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Kunci dictionary dapat berupa hampir semua nilai yang bersifat hashable. Nilai-nilai yang memuat objek mutable tidak dapat dijadikan sebagai kunci dictionary.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Objek Tampilan Dictionary (View Objects)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Objek yang dikembalikan oleh dict.keys() , dict.values() , dan dict.items() adalah objek tampilan (view objects) yang dinamis mengikuti perubahan dictionary aslinya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Dictionary views can be iterated over to yield their respective data, and support membership tests:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "Tampilan kunci (keys views) memiliki sifat seperti set karena entri-entrinya unik dan dapat di-hash. Tampilan item juga bersifat seperti set jika semua nilainya hashable.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 5,
+    "chapter_slug": "list-dan-dictionary",
+    "chapter_title": "List & Dictionary",
+    "episode_id": "ep-3-dictionary",
+    "episode_title": "Episode 3: Struktur Data Dictionary (Key-Value)",
+    "concept": "Penyimpanan data berbasis pasangan kunci-nilai unik, akses get(), keys(), dan values()",
+    "passage_text": "An example of dictionary view usage:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Mungkin jenis pernyataan yang paling dikenal luas adalah pernyataan if . Sebagai contoh:",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#if"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Dapat terdapat nol atau lebih bagian elif , dan bagian else bersifat opsional. Kata kunci ' elif ' merupakan singkatan dari 'else if', dan berguna untuk menghindari indentasi berlebih. Rangkaian if … elif … elif … bertindak sebagai pengganti pernyataan switch atau case yang ada di bahasa lain.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#elif",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#else"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Jika Anda membandingkan nilai yang sama dengan beberapa konstanta atau memeriksa tipe data tertentu, pernyataan match juga dapat digunakan. Rincian selengkapnya dapat dilihat pada dokumentasi match statements.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Pernyataan pass tidak melakukan tindakan apa pun. Pernyataan ini digunakan saat suatu pernyataan dibutuhkan secara sintaksis tetapi program tidak memerlukan aksi apa pun. Sebagai contoh:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Pernyataan ini umumnya digunakan untuk membuat kerangka kelas minimal:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Tempat lain penggunaan pass adalah sebagai penampung sementara (place-holder) untuk badan fungsi atau blok percabangan saat Anda merancang kode baru, memungkinkan Anda berpikir pada level abstraksi yang lebih tinggi tanpa memicu SyntaxError:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Pernyataan if digunakan untuk eksekusi kode kondisional berdasarkan pemenuhan syarat tertentu:",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#if"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "if_stmt ::= \"if\" assignment_expression \":\" suite (\"elif\" assignment_expression \":\" suite )* [\"else\" \":\" suite ]",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Pernyataan ini memilih tepat satu blok kode (suite) dengan mengevaluasi ekspresi kondisi satu per satu hingga ditemukan kondisi yang bernilai benar (True). Blok kode tersebut kemudian dieksekusi. Jika seluruh ekspresi bernilai salah (False), blok klausa else (jika ada) yang akan dijalankan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Berbeda dengan bahasa C, semua operasi perbandingan di Python memiliki prioritas yang sama, yaitu lebih rendah daripada operasi aritmetika dan pergeseran bit. Selain itu, ekspresi seperti a < b < c memiliki interpretasi berantai seperti dalam matematika formal:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "comparison ::= or_expr ( comp_operator or_expr )* comp_operator ::= \"<\" | \">\" | \"==\" | \">=\" | \"<=\" | \"!=\" | \"is\" [\"not\"] | [\"not\"] \"in\"",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_expr",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-comp_operator"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Operasi perbandingan menghasilkan nilai boolean: True atau False . Ekspresi dapat dirangkai secara berantai: contohnya x < y <= z ekuivalen dengan x < y and y <= z , di mana y hanya dievaluasi satu kali.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Perbandingan dapat dirangkai secara berantai: contohnya x < y <= z ekuivalen dengan x < y and y <= z , di mana y hanya dievaluasi satu kali saja.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-1-if-dasar",
+    "episode_title": "Episode 1: Pernyataan If Dasar & Indentasi",
+    "concept": "Pengambilan keputusan dasar menggunakan if dan aturan indentasi blok kode",
+    "passage_text": "Secara formal, jika a , b , c adalah ekspresi dan op1 , op2 adalah operator perbandingan, maka a op1 b op2 c ekuivalen dengan a op1 b and b op2 c .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Perhatikan bahwa a op1 b op2 c tidak menyiratkan perbandingan langsung antara a dan c ; sehingga ekspresi seperti x < y > z secara sintaksis valid di Python.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Operator < , > , == , >= , <= , dan != membandingkan nilai dari dua buah objek. Objek-objek tersebut tidak harus memiliki tipe data yang sama.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Bab Objek, nilai, dan tipe menyatakan bahwa setiap objek di Python memiliki nilai, tipe, dan identitas unik di memori.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Karena semua tipe adalah subtipe dari object , mereka mewarisi perilaku perbandingan default dari object .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Perilaku default perbandingan kesetaraan ( == dan != ) didasarkan pada identitas objek di memori.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Perbandingan urutan default ( < , > , <= , >= ) tidak disediakan secara bawaan; mencobanya pada objek acak akan memicu TypeError .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Perilaku perbandingan kesetaraan bawaan, di mana instans dengan identitas berbeda selalu dianggap tidak sama, mungkin berbeda dengan kebutuhan tipe data yang memerlukan definisi nilai objek dan kesetaraan berbasis nilai yang wajar. Tipe data tersebut perlu menyesuaikan perilaku perbandingannya, dan sejumlah tipe bawaan Python telah melakukan hal tersebut.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "The following list describes the comparison behavior of the most important built-in types.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "User-defined classes that customize their comparison behavior should follow some consistency rules, if possible:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Python tidak memaksakan aturan konsistensi ini secara kaku. Faktanya, nilai bukan-angka (not-a-number / NaN) merupakan contoh nilai yang tidak mengikuti aturan perbandingan tersebut.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Operasi Uji Keanggotaan (in, not in)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Operator in dan not in menguji keanggotaan suatu elemen di dalam sebuah koleksi (koleksi urutan seperti string, list, tuple, atau dictionary).",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#in",
+      "https://docs.python.org/3.13/reference/expressions.html#not-in"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Untuk tipe string dan bytes, x in y bernilai True jika dan hanya jika x merupakan substring dari y . String kosong \"\" selalu dianggap sebagai substring dari string apa pun.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-2-if-elif-else",
+    "episode_title": "Episode 2: Percabangan Majemuk If-Elif-Else",
+    "concept": "Rantai percabangan banyak kondisi secara berurutan dari atas ke bawah",
+    "passage_text": "Untuk kelas kustom yang mendefinisikan metode __contains__() , ekspresi x in y bernilai True jika y.__contains__(x) mengembalikan nilai benar.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Untuk kelas buatan pengguna yang tidak mendefinisikan __contains__() tetapi mendefinisikan __iter__() , x in y bernilai True jika suatu nilai z yang memenuhi ekspresi x is z or x == z dihasilkan saat melakukan iterasi pada y . Jika sebuah exception muncul selama iterasi, hal itu diperlakukan seolah-olah operator in yang memunculkan exception tersebut.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/datamodel.html#object.__contains__",
+      "https://docs.python.org/3.13/reference/datamodel.html#object.__iter__",
+      "https://docs.python.org/3.13/reference/expressions.html#in"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Terakhir, protokol iterasi gaya lama dicoba: jika sebuah kelas mendefinisikan __getitem__() , x in y bernilai True jika dan hanya jika terdapat indeks bilangan bulat non-negatif i sedemikian rupa sehingga x is y[i] or x == y[i] , dan tidak ada indeks bilangan bulat yang lebih rendah yang memicu exception IndexError .",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/datamodel.html#object.__getitem__",
+      "https://docs.python.org/3.13/library/exceptions.html#IndexError"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Operator not in didefinisikan memiliki nilai kebenaran terbalik dari operator in .",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#not-in"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Perbandingan Identitas (is, is not)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Operator is dan is not menguji identitas objek: x is y bernilai benar jika dan hanya jika x dan y merupakan objek fisik yang sama persis di memori (memiliki nilai id() identik).",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#is",
+      "https://docs.python.org/3.13/library/functions.html#id"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "or_test ::= and_test | or_test \"or\" and_test and_test ::= not_test | and_test \"and\" not_test not_test ::= comparison | \"not\" not_test",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-and_test",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_test",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-not_test",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-comparison"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Dalam konteks operasi Boolean, serta ketika ekspresi digunakan oleh pernyataan alur kontrol, nilai-nilai berikut diinterpretasikan sebagai bernilai salah (false): False , None , nilai nol numerik dari semua tipe, serta string dan kontainer kosong (termasuk string, tuple, list, dictionary, set, dan frozenset). Semua nilai lainnya diinterpretasikan sebagai bernilai benar (true). Objek buatan pengguna dapat mengustomisasi nilai kebenarannya dengan menyediakan metode __bool__() .",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/datamodel.html#object.__bool__"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Operator not menghasilkan True jika argumennya bernilai salah, dan sebaliknya menghasilkan False .",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#not"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Ekspresi x and y pertama-tama mengevaluasi x ; jika x bernilai salah, maka nilainya langsung dikembalikan; jika tidak, y dievaluasi dan hasilnya dikembalikan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Ekspresi x or y pertama-tama mengevaluasi x ; jika x bernilai benar, nilainya langsung dikembalikan; jika salah, maka y dievaluasi dan hasilnya dikembalikan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Perhatikan bahwa baik and maupun or tidak membatasi nilai kembali pada True dan False literal, melainkan mengembalikan argumen terakhir yang dievaluasi.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Ekspresi Kondisional (Ternary)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "conditional_expression ::= or_test [\"if\" or_test \"else\" expression ] expression ::= conditional_expression | lambda_expr",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-or_test",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-expression",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-conditional_expression",
+      "https://docs.python.org/3.13/reference/expressions.html#grammar-token-python-grammar-lambda_expr"
+    ]
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Ekspresi kondisional (sering disebut sebagai \"operator ternary\") memiliki bentuk x if C else y . Pertama-tama kondisi C dievaluasi; jika benar, nilai x dikembalikan; jika salah, nilai y yang dikembalikan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "Ekspresi x if C else y pertama-tama mengevaluasi kondisi C . Jika C bernilai benar, x dievaluasi dan nilainya dikembalikan; jika tidak, y dievaluasi dan nilainya dikembalikan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 2,
+    "chapter_slug": "percabangan",
+    "chapter_title": "Percabangan if / elif / else",
+    "episode_id": "ep-3-kondisional",
+    "episode_title": "Episode 3: Pernyataan Pass & Ekspresi Kondisional",
+    "concept": "Keyword pass sebagai penampung sementara dan ternary operator (x if kondisi else y)",
+    "passage_text": "See PEP 308 for more details about conditional expressions.",
+    "source_urls": [
+      "https://peps.python.org/pep-0308/"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Langkah Awal Menuju Pemrograman",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Tentu saja, kita dapat menggunakan Python untuk tugas yang lebih kompleks daripada sekadar penjumlahan aritmetika. Sebagai contoh, kita dapat menulis deret awal dari deret Fibonacci menggunakan perulangan while :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Contoh ini memperkenalkan beberapa fitur penting: penugasan ganda pada satu baris ( a, b = 0, 1 ), perulangan while yang terus berjalan selama kondisi bernilai benar, serta indentasi sebagai penentu blok instruksi program.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#while"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Karena operator ** memiliki prioritas presedensi lebih tinggi daripada minus - , -3**2 akan diinterpretasikan sebagai -(3**2) sehingga menghasilkan -9 . Untuk menghindari hal ini dan menghasilkan nilai 9 , Anda dapat menggunakan (-3)**2 .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Tidak seperti bahasa lain, karakter khusus seperti \\n memiliki arti yang sama persis baik di dalam tanda kutip tunggal ( '...' ) maupun ganda ( \"...\" ). Satu-satunya perbedaan adalah di dalam tanda kutip tunggal Anda tidak perlu melakukan escape pada \" (tetapi harus meng-escape \\' ), dan sebaliknya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Pernyataan for pada Python sedikit berbeda dari apa yang biasa Anda gunakan di C atau Pascal. Alih-alih mengulang deret angka secara kaku, pernyataan for di Python mengiterasi setiap elemen dari urutan apa pun (seperti list atau string), sesuai urutan kemunculannya dalam urutan tersebut:",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#for"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Kode yang memodifikasi koleksi saat sedang diiterasi dapat menimbulkan perilaku yang sulit diprediksi. Sebaiknya, lakukan iterasi pada salinan koleksi tersebut atau buatlah koleksi baru:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "# Create a sample collection users = { 'Hans' : 'active' , 'Éléonore' : 'inactive' , '景太郎' : 'active' } # Strategy: Iterate over a copy for user , status in users . copy () . items (): if status == 'inactive' : del users [ user ] # Strategy: Create a new collection active_users = {} for user , status in users . items (): if status == 'active' : active_users [ user ] = status",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Jika Anda memang perlu mengiterasi serangkaian angka terurut, fungsi bawaan range() sangat praktis digunakan. Fungsi ini menghasilkan deret aritmetika:",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#range"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Titik akhir yang diberikan tidak pernah menjadi bagian dari urutan yang dihasilkan; range(10) menghasilkan 10 nilai, yaitu indeks 0 sampai 9. Anda juga dapat menentukan nilai awal dan interval langkahnya (step):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Untuk mengiterasi indeks dari suatu urutan, Anda dapat memadukan range() dan len() :",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#range",
+      "https://docs.python.org/3.13/library/functions.html#len"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-1-for-range",
+    "episode_title": "Episode 1: Perulangan For & Fungsi Range()",
+    "concept": "Iterasi terurut melalui koleksi data dan deret angka otomatis dengan range()",
+    "passage_text": "Dalam banyak kasus serupa, sangat praktis menggunakan fungsi enumerate() untuk mendapatkan indeks dan elemennya sekaligus.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#enumerate"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Hal menarik terjadi jika Anda mencetak objek range secara langsung: objek tersebut mencetak dirinya sendiri, bukan list isinya.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Dalam banyak hal, objek yang dikembalikan oleh range() bertindak seolah-olah seperti list, tetapi sebenarnya bukan. Objek ini mengembalikan elemen berurutan saat diiterasi tanpa membuat seluruh list di memori, sehingga sangat hemat memori.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Kita menyebut objek tersebut sebagai iterable , yaitu objek yang dapat dijadikan sumber pengambilan elemen secara bertahap hingga elemennya habis.",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-iterable"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Nantinya kita akan melihat lebih banyak fungsi yang mengembalikan objek iterable maupun menerima iterable sebagai argumen.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Pernyataan break langsung menghentikan dan keluar dari perulangan terdalam (baik loop for maupun while ):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Pernyataan continue melanjutkan eksekusi ke iterasi berikutnya dari perulangan:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Pada loop for atau while , klausa else dapat ditambahkan setelah blok loop. Klausa else ini akan dieksekusi jika perulangan selesai secara alami tanpa diinterupsi oleh pernyataan break :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Pada loop for , klausa else dieksekusi setelah loop menyelesaikan iterasi terakhirnya, yaitu jika tidak ada break yang terjadi.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Pada loop while , klausa else dieksekusi setelah kondisi perulangan berubah menjadi salah (False).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Pada kedua jenis loop tersebut, klausa else tidak akan dieksekusi jika perulangan dihentikan oleh pernyataan break .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "Hal ini dicontohkan pada perulangan for berikut yang mencari bilangan prima:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-2-while",
+    "episode_title": "Episode 2: Perulangan While",
+    "concept": "Eksekusi blok berulang selama kondisi logika bernilai True",
+    "passage_text": "(Ya, ini adalah kode yang benar. Perhatikan baik-baik: klausa else tersebut merupakan bagian dari perulangan for , bukan pernyataan if .)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Cara mudah memahami klausa else pada loop adalah dengan membayangkannya berpasangan dengan pernyataan if di dalam loop. Jika kondisi pencarian tidak pernah terpenuhi dan loop tuntas tanpa break, klausa else di luar loop akan dijalankan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Ketika digunakan pada perulangan, klausa else memiliki kemiripan dengan klausa else pada pernyataan try dibandingkan pernyataan if : klausa else pada pernyataan try berjalan ketika tidak terjadi exception, sedangkan pada perulangan klausa else berjalan ketika perulangan selesai tanpa terinterupsi pernyataan break .",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#try"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Pernyataan while digunakan untuk mengeksekusi blok kode berulang kali selama ekspresi kondisi bernilai benar (True):",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#while"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "while_stmt ::= \"while\" assignment_expression \":\" suite [\"else\" \":\" suite ]",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Pernyataan ini berulang kali menguji ekspresi kondisi, dan jika benar, menjalankan blok instruksinya; jika ekspresi bernilai salah, blok klausa else (jika ada) dijalankan dan perulangan berakhir.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Pernyataan break yang dieksekusi di blok utama menghentikan perulangan seketika tanpa mengeksekusi blok klausa else . Pernyataan continue yang dieksekusi di blok utama akan melompati sisa blok saat itu dan kembali memeriksa kondisi perulangan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Pernyataan for digunakan untuk mengiterasi elemen-elemen dari suatu urutan (seperti string, tuple, atau list) atau objek iterable lainnya:",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#for"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "for_stmt ::= \"for\" target_list \"in\" starred_list \":\" suite [\"else\" \":\" suite ]",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#grammar-token-python-grammar-suite"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Ekspresi deret dievaluasi satu kali; ekspresi ini harus menghasilkan objek yang dapat diulang ( iterable ). Sebuah iterator dibuat untuk iterable tersebut. Elemen pertama yang disediakan oleh iterator dimasukkan ke dalam daftar variabel target, dan blok kode dieksekusi. Langkah ini berulang untuk setiap elemen. Ketika seluruh elemen telah habis diiterasi, blok pada klausa else (jika ada) akan dieksekusi, lalu perulangan selesai.",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-iterable",
+      "https://docs.python.org/3.13/glossary.html#term-iterator"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Pernyataan break yang dieksekusi di blok utama menghentikan perulangan seketika tanpa mengeksekusi blok klausa else . Pernyataan continue yang dieksekusi di blok utama akan melompati sisa blok saat itu dan kembali memeriksa kondisi perulangan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Loop for melakukan penugasan nilai ke variabel penampung iterasi pada setiap langkah putaran loop:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "for i in range ( 10 ): print ( i ) i = 5 # ini tidak memengaruhi perulangan for # karena i akan ditimpa dengan indeks # berikutnya di dalam range",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Nama-nama variabel dalam daftar target tidak dihapus saat perulangan selesai, tetapi jika urutan data kosong, variabel tersebut tidak akan diisi nilai sama sekali oleh perulangan. Petunjuk: tipe bawaan range() merepresentasikan urutan aritmetika bilangan bulat yang bersifat immutable. Sebagai contoh, melakukan iterasi pada range(3) berturut-turut menghasilkan angka 0, 1, dan 2.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#range"
+    ]
+  },
+  {
+    "chapter_order": 3,
+    "chapter_slug": "perulangan",
+    "chapter_title": "Perulangan for & while",
+    "episode_id": "ep-3-break-continue",
+    "episode_title": "Episode 3: Kontrol Alur Break, Continue & Else",
+    "concept": "Menghentikan perulangan (break), melompati iterasi (continue), dan klausa else perulangan",
+    "passage_text": "Changed in version 3.11: Starred elements are now allowed in the expression list.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Interpreter bertindak sebagai kalkulator sederhana: Anda dapat mengetikkan ekspresi kepadanya dan interpreter akan menampilkan nilainya. Sintaksis ekspresi sangat lugas: operator + , - , * , dan / dapat digunakan untuk melakukan aritmetika; tanda kurung ( () ) dapat digunakan untuk pengelompokan operasi. Sebagai contoh:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Bilangan bulat (contohnya 2 , 4 , 20 ) memiliki tipe int , sedangkan bilangan dengan bagian pecahan (contohnya 5.0 , 1.6 ) memiliki tipe float . Kita akan mempelajari lebih lanjut mengenai tipe numerik di bagian berikutnya.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#int",
+      "https://docs.python.org/3.13/library/functions.html#float"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Operasi pembagian ( / ) selalu mengembalikan bilangan float. Untuk melakukan floor division dan mendapatkan hasil bilangan bulat (dibulatkan ke bawah), Anda dapat menggunakan operator // ; sedangkan untuk menghitung sisa bagi (modulus), gunakan operator % :",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-floor-division"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Dengan Python, Anda dapat menggunakan operator ** untuk menghitung perpangkatan:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Tanda sama dengan ( = ) digunakan untuk menetapkan nilai ke suatu variabel. Setelah penetapan nilai, tidak ada hasil yang ditampilkan sebelum prompt interaktif berikutnya:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Jika sebuah variabel belum didefinisikan (belum diberi nilai awal), mencoba menggunakannya akan memunculkan pesan kesalahan (error):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Terdapat dukungan penuh untuk bilangan pecahan (floating point); operator dengan operan campuran akan mengonversi operan integer ke floating point secara otomatis:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Dalam mode interaktif, ekspresi terakhir yang dicetak secara otomatis dimasukkan ke dalam variabel _ . Ini memudahkan saat Anda menggunakan Python sebagai kalkulator meja:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Variabel ini harus diperlakukan sebagai hanya-baca (read-only) oleh pengguna. Jangan secara eksplisit menetapkan nilai padanya — Anda akan membuat variabel lokal independen dengan nama sama yang menutupi perilaku bawaan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Selain tipe int dan float , Python juga mendukung tipe angka lain seperti Decimal dan Fraction , serta bilangan kompleks.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#int",
+      "https://docs.python.org/3.13/library/functions.html#float",
+      "https://docs.python.org/3.13/library/decimal.html#decimal.Decimal",
+      "https://docs.python.org/3.13/library/fractions.html#fractions.Fraction"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Python dapat memanipulasi teks (diwakili oleh tipe str , yang disebut sebagai \"string\"). Ini mencakup karakter, simbol, dan kata yang diapit oleh tanda petik tunggal ( '...' ) atau tanda petik ganda ( \"...\" ) dengan hasil yang ekuivalen:",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#str"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Untuk memasukkan tanda petik di dalam string yang berpetik sama, kita perlu melakukan \"escape\" dengan menambahkan garis miring terbalik ( \\ ) sebelumnya. Atau alternatifnya, gunakan tanda petik jenis lainnya:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Pada terminal interaktif Python, tampilan definisi string dan luaran string dapat berbeda. Fungsi print() menghasilkan tampilan luaran yang lebih rapi dan mudah dibaca, dengan menghilangkan tanda petik pembungkus dan mencetak karakter escape seperti baris baru:",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#print"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Jika Anda tidak ingin karakter berawalan \\ diinterpretasikan sebagai karakter khusus (seperti \\n ), Anda dapat menggunakan raw strings dengan menambahkan huruf r sebelum tanda petik pembuka:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Ada satu aspek halus pada raw strings: raw string tidak boleh berakhiran dengan jumlah karakter ganjil dari garis miring terbalik \\ .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Literal string dapat membentang di beberapa baris. Salah satu caranya adalah menggunakan tanda petik tiga ( \"\"\"...\"\"\" atau '''...''' ). Akhir baris otomatis disertakan kecuali jika diakhiri dengan \\ :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "String dapat digabungkan (dilekatkan bersama) dengan operator + , dan diulang dengan operator * :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Dua atau lebih literal string (yang diapit tanda petik) yang diletakkan berdampingan akan digabungkan secara otomatis oleh interpreter:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Fitur penggabungan otomatis ini sangat berguna saat Anda ingin memecah baris teks string yang panjang ke beberapa baris kode agar rapi:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Namun perlu diingat, cara ini hanya berlaku pada dua literal string langsung, bukan pada variabel atau ekspresi:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Jika Anda ingin menggabungkan variabel dengan variabel lain atau variabel dengan literal, gunakan operator + :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-1-bilangan",
+    "episode_title": "Episode 1: Bilangan & Operasi Aritmetika",
+    "concept": "Tipe data int dan float serta operator matematika dasar (+, -, *, /, //, %, **)",
+    "passage_text": "Karakter dalam string dapat diakses menggunakan indeks (subscript), dengan karakter pertama memiliki indeks 0 . Tidak ada tipe data karakter terpisah di Python; sebuah karakter hanyalah string berpanjang satu:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Indeks juga dapat berupa bilangan negatif, untuk memulai perhitungan dari sisi kanan string:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Perhatikan bahwa karena -0 bernilai sama dengan 0, indeks negatif dimulai dari -1 (karakter terakhir).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Selain pengindeksan tunggal, pemotongan ( slicing ) juga didukung. Jika pengindeksan digunakan untuk mengambil karakter tunggal, pemotongan memungkinkan Anda memperoleh substring (bagian string):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Indeks pemotongan memiliki nilai default yang praktis; jika indeks pertama diabaikan maka otomatis dianggap 0, dan jika indeks kedua diabaikan maka otomatis dianggap sepanjang string:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Perhatikan bagaimana batas awal selalu disertakan, sedangkan batas akhir selalu dikecualikan. Hal ini memastikan bahwa s[:i] + s[i:] selalu bernilai sama dengan s :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Cara mudah mengingat cara kerja pemotongan adalah dengan membayangkan indeks menunjuk ke batas *di antara* karakter, dengan batas kiri karakter pertama bernilai 0 dan batas kanan karakter terakhir bernilai n:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "+---+---+---+---+---+---+ | P | y | t | h | o | n | +---+---+---+---+---+---+ 0 1 2 3 4 5 6 - 6 - 5 - 4 - 3 - 2 - 1",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Baris angka pertama menunjukkan posisi indeks 0…6 pada string; baris kedua menunjukkan indeks negatif yang bersesuaian.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Untuk indeks non-negatif, panjang dari potongan string adalah selisih antara kedua indeks tersebut. Sebagai contoh, panjang dari word[1:3] adalah 2.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Mencoba mengakses indeks yang berada di luar rentang string (terlalu besar) akan menghasilkan pesan kesalahan IndexError :",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Namun, indeks pemotongan (slice) yang berada di luar jangkauan ditangani dengan toleran dan anggun saat digunakan untuk slicing:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "String pada Python tidak dapat diubah nilainya setelah dibuat — mereka bersifat immutable (tidak dapat diubah) . Menetapkan nilai baru ke suatu posisi indeks string akan menghasilkan TypeError :",
+    "source_urls": [
+      "https://docs.python.org/3.13/glossary.html#term-immutable"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Jika Anda membutuhkan string dengan konten berbeda, Anda harus membuat objek string baru:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Fungsi bawaan len() mengembalikan panjang (jumlah karakter) dari sebuah string:",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#len"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Pengujian Nilai Kebenaran (Truth Value Testing)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Objek apa pun di Python dapat diuji nilai kebenarannya (truth value testing), untuk digunakan dalam kondisi pernyataan if atau while , atau sebagai operan dari operasi Boolean.",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/compound_stmts.html#if",
+      "https://docs.python.org/3.13/reference/compound_stmts.html#while"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Secara default, suatu objek dianggap bernilai benar (True) kecuali jika kelasnya mengembalikan False saat diuji. Berikut adalah nilai-nilai bawaan yang dianggap salah (Falsy) oleh Python: konstanta None dan False , angka nol dalam berbagai tipe numerik ( 0 , 0.0 ), serta urutan dan koleksi kosong ( '' , () , [] , {} ).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Operasi dan fungsi bawaan yang menghasilkan nilai Boolean selalu mengembalikan 0 atau False untuk kondisi salah, serta 1 atau True untuk kondisi benar, kecuali dinyatakan lain.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Operasi Boolean — and, or, not",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Berikut adalah operasi logika Boolean di Python, diurutkan berdasarkan prioritas pengerjaan terendah ke tertinggi:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Operasi Hasil Catatan x or y if x is true, then x , else y (1) x and y if x is false, then x , else y (2) not x if x is false, then True , else False (3)",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-2-string",
+    "episode_title": "Episode 2: Teks & Manipulasi String",
+    "concept": "Tipe data str, tanda kutip, escaping backslash, pemotongan (slicing), dan fungsi len()",
+    "passage_text": "Terdapat delapan operasi perbandingan di Python. Semuanya memiliki prioritas yang sama (lebih tinggi dari operasi Boolean dan lebih rendah dari aritmetika):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Tabel berikut merangkum operator perbandingan yang tersedia di Python:",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Operation Meaning < strictly less than <= less than or equal > strictly greater than >= greater than or equal == equal != not equal is object identity is not negated object identity",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Objek dari tipe yang berbeda (kecuali tipe numerik berbeda seperti integer dan float yang setara) tidak pernah bernilai sama saat dibandingkan.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Instans yang berbeda dari suatu kelas biasanya dibandingkan sebagai tidak sama kecuali jika kelas tersebut mengimplementasikan metode perbandingan khusus.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Instans dari suatu kelas tidak dapat diurutkan terhadap instans lain dari kelas yang sama kecuali kelas tersebut mendefinisikan metode perbandingan terurut (seperti __lt__ ).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Perilaku operator is dan is not tidak dapat dikustomisasi; keduanya dapat diterapkan pada dua objek apa pun dan tidak pernah menimbulkan pengecualian (exception).",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#is",
+      "https://docs.python.org/3.13/reference/expressions.html#is-not"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Dua operasi lainnya dengan prioritas sintaksis yang sama adalah in dan not in , yang didukung oleh tipe-tipe urutan (sequence) dan pemetaan (mapping).",
+    "source_urls": [
+      "https://docs.python.org/3.13/reference/expressions.html#in",
+      "https://docs.python.org/3.13/reference/expressions.html#not-in"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Tipe Numerik — int, float, complex",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Terdapat tiga tipe numerik yang berbeda di Python: integers (bilangan bulat) , floating point numbers (bilangan pecahan) , dan complex numbers (bilangan kompleks) .",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Bilangan dibuat melalui penulisan literal angka secara langsung atau sebagai hasil dari pemanggilan fungsi bawaan dan operator aritmetika.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Python sepenuhnya mendukung aritmetika campuran: saat operator biner melibatkan operan dengan tipe numerik berbeda, operan dengan tipe lebih sempit otomatis diperluas ke tipe yang lebih luas (misal int otomatis dikonversi ke float).",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Konstruktor int() dan float() dapat digunakan untuk membuat angka dari tipe data lain, seperti mengonversi teks string angka menjadi nilai numerik murni.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#int",
+      "https://docs.python.org/3.13/library/functions.html#float"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Semua tipe numerik (kecuali kompleks) mendukung operasi standar berikut (diurutkan berdasarkan prioritas pengerjaan menaik):",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Operasi Hasil Catatan Full documentation x + y penjumlahan x dan y x - y selisih pengurangan x dan y x * y perkalian x dan y x / y hasil pembagian desimal x dan y x // y hasil pembagian bulat (floor division) x dan y (1)(2) x % y sisa pembagian (modulo) dari x / y (2) -x kebalikan tanda negatif dari x +x nilai x tidak berubah abs(x) nilai mutlak (absolut) dari x abs() int(x) x dikonversi menjadi bilangan bulat (integer) (3)(6) int() float(x) x dikonversi menjadi bilangan desimal (float) (4)(6) float() complex(re, im) bilangan kompleks dengan bagian riil re dan imajiner im (default 0) (6) complex() c.conjugate() konjugat dari bilangan kompleks c divmod(x, y) pasangan tuple (x // y, x % y) (2) divmod() pow(x, y) x dipangkatkan dengan y (5) pow() x ** y x dipangkatkan dengan y (5)",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#abs",
+      "https://docs.python.org/3.13/library/functions.html#int",
+      "https://docs.python.org/3.13/library/functions.html#float",
+      "https://docs.python.org/3.13/library/functions.html#complex",
+      "https://docs.python.org/3.13/library/functions.html#divmod",
+      "https://docs.python.org/3.13/library/functions.html#pow"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "All numbers.Real types ( int and float ) also include the following operations:",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#int",
+      "https://docs.python.org/3.13/library/functions.html#float"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Operation Result math.trunc(x) x truncated to Integral round(x[, n]) x rounded to n digits, rounding half to even. If n is omitted, it defaults to 0. math.floor(x) the greatest Integral <= x math.ceil(x) the least Integral >= x",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#round"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "For additional numeric operations see the math and cmath modules.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Tipe Boolean merepresentasikan nilai kebenaran. Tipe bool adalah subkelas dari integer, dengan dua nilai instans konstan: True dan False .",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#bool"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Fungsi bawaan bool() mengonversi nilai apa pun menjadi nilai kebenaran Boolean menggunakan prosedur standar pengujian nilai kebenaran.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#bool"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Untuk operasi logika, gunakan operator boolean and , or , dan not . Ketika menerapkan operator bitwise & , | , ^ pada dua nilai boolean, operasi tersebut mengembalikan bool yang setara dengan operasi logika 'and', 'or', 'xor'. Namun, operator logika and , or , dan != lebih disarankan dibandingkan & , | , dan ^ .",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/stdtypes.html#boolean"
+    ]
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "Usang sejak versi 3.12: Penggunaan operator inversi bitwise ~ telah didepresiasi dan akan menimbulkan kesalahan (error) pada Python 3.16.",
+    "source_urls": []
+  },
+  {
+    "chapter_order": 1,
+    "chapter_slug": "variabel-dan-tipe-data",
+    "chapter_title": "Variabel & Tipe Data",
+    "episode_id": "ep-3-boolean",
+    "episode_title": "Episode 3: Nilai Kebenaran & Tipe Boolean",
+    "concept": "Tipe data bool (True/False), truth-value testing, dan operator perbandingan",
+    "passage_text": "bool merupakan subkelas dari int (lihat Tipe Numerik — int, float, complex ). Dalam banyak konteks numerik, False dan True masing-masing berperilaku seperti bilangan bulat 0 dan 1. Namun, mengandalkan perilaku ini tidak disarankan; lakukan konversi secara eksplisit menggunakan int() sebagai gantinya.",
+    "source_urls": [
+      "https://docs.python.org/3.13/library/functions.html#bool",
+      "https://docs.python.org/3.13/library/functions.html#int",
+      "https://docs.python.org/3.13/library/stdtypes.html#typesnumeric"
+    ]
+  }
+]
