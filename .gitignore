@@ -48,6 +48,10 @@ datasets/
 # GitHub menolak file > 100MB & membatasi file binary besar
 # ------------------------------------------------------------------------------
 # Model binary formats
+*.safetensors
+*.bin
+*.npy
+*.npz
 *.caffemodel
 *.pkl
 *.pickle
@@ -64,9 +68,11 @@ datasets/
 *.ckpt*
 checkpoint
 
-# Folder model besar TensorFlow / MediaPipe
+# Folder model besar TensorFlow / MediaPipe / HuggingFace
 computer-vision/model/ssd_mobilenet_v2_coco_2018_03_29/
 **/saved_model/
+**/output_artifacts/finetuned_sbert/
+**/output_artifacts/*.npy
 
 # Pengecualian: File konfigurasi & label teks ringan tetap di-track
 !computer-vision/model/sibi_labels.json
@@ -176,3 +182,9 @@ $RECYCLE.BIN/
 *.swp
 *.swo
 *~
+
+# Dokumen Proposal Skripsi
+proposal/
+**/proposal/
+*.docx
+
