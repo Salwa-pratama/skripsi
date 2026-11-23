@@ -69,15 +69,10 @@ datasets/
 checkpoint
 
 # Folder model besar TensorFlow / MediaPipe / HuggingFace
-computer-vision/model/ssd_mobilenet_v2_coco_2018_03_29/
 **/saved_model/
+computer-vision/model/output_artifacts/
 **/output_artifacts/finetuned_sbert/
 **/output_artifacts/*.npy
-
-# Pengecualian: File konfigurasi & label teks ringan tetap di-track
-!computer-vision/model/sibi_labels.json
-!computer-vision/model/MobileNetSSD_deploy.prototxt
-!computer-vision/model/ssd_mobilenet_v2_coco_2018_03_29.pbtxt
 
 # ------------------------------------------------------------------------------
 # 4. Python & Virtual Environments

@@ -1,12 +1,15 @@
 """FastAPI Core Server - Asisten Belajar AI & Physical Companion.
 
 Menyatukan:
-1. Endpoint Ultra-Ringkas untuk Layar OLED ESP32-S3 (/api/esp/pomodoro).
-2. Live Streaming MJPEG dengan Vision Overlays (/video_feed).
-3. Evaluasi Pohon Sintaksis Abstrak AST (/api/code/validate).
-4. Pomodoro State Machine & Kontrol Gamifikasi MDA (/api/pomodoro/{action}).
-5. Database MySQL & ORM SQLAlchemy 2.0 (Leaderboard, User Profile, Focus XP, Streak).
-6. Dokumentasi Interaktif Otomatis via Swagger UI (/docs).
+1. Retrieval materi Python dengan model Sentence-Transformer fine-tuned.
+2. Speech-to-Text pertanyaan suara ESP32-S3 (faster-whisper, Bahasa Indonesia).
+3. Text-to-Speech Bahasa Indonesia (Edge-TTS, default suara cowok/Ardi).
+4. Endpoint Ultra-Ringkas untuk Layar OLED ESP32-S3 (/api/esp/pomodoro).
+5. Pomodoro State Machine & Kontrol Gamifikasi MDA.
+6. Database MySQL & ORM SQLAlchemy 2.0.
+7. Dokumentasi Interaktif Otomatis via Swagger UI (/docs).
+
+Catatan: seluruh fitur kamera / computer-vision sudah dihapus.
 """
 
 from __future__ import annotations
@@ -14,22 +17,20 @@ from __future__ import annotations
 import os
 import re
 import time
-import threading
 from contextlib import asynccontextmanager
-from typing import List, Optional, Dict, Any
+from typing import List, Optional
 
-import cv2
-from fastapi import FastAPI, HTTPException, Response, Depends
+from fastapi import Depends, FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import RedirectResponse, StreamingResponse, FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 
 from config import Config
-from core.camera_streamer import CameraStreamer
-from core.distraction_detector import StudyDistractionDetector
-from core.ast_validator import validate_and_run
 from core.ai_service import ai_service
+from core.ast_validator import validate_and_run
+from core.retrieval_service import retrieval_service
+from core.stt_service import stt_service
 from pomodoro.pomodoro_manager import PomodoroManager
 
 # Database Modules
@@ -41,116 +42,48 @@ from crud.crud_pomodoro import record_pomodoro_session, record_chapter_progress
 # =========================================================================
 # INISIALISASI KOMPONEN UTAMA
 # =========================================================================
-camera_streamer = CameraStreamer(source=Config.DEFAULT_SOURCE)
-distraction_detector = StudyDistractionDetector()
 pomodoro_manager = PomodoroManager()
-
-# IP ESP32 terakhir yang dilaporkan lewat polling /api/esp/pomodoro?ip=...
-# Dipakai untuk auto-update sumber stream kamera ketika IP DHCP ESP32 berubah.
-_esp32_reported_ip: Optional[str] = None
-_IPV4_RE = re.compile(r"^\d{1,3}(?:\.\d{1,3}){3}$")
-
-
-def sync_esp32_camera_source(reported_ip: Optional[str]) -> None:
-    """Perbarui sumber kamera bila ESP32 melaporkan IP yang berbeda."""
-    global _esp32_reported_ip
-
-    if not reported_ip:
-        return
-    ip = reported_ip.strip()
-    if not _IPV4_RE.match(ip) or ip.startswith("127."):
-        return
-    if ip == _esp32_reported_ip:
-        return
-
-    _esp32_reported_ip = ip
-    new_source = f"http://{ip}:81/stream"
-    if str(camera_streamer.source) == new_source:
-        return
-
-    camera_streamer.set_source(new_source)
-    print(f"📷 [CameraStreamer] IP ESP32 dilaporkan: {ip} -> sumber stream diperbarui", flush=True)
-
-# Background Vision Thread Controller
-vision_running = True
-vision_thread: Optional[threading.Thread] = None
-current_pipeline_fps: float = 0.0
-
-
-def vision_pipeline_loop():
-    """Loop background untuk inferensi Computer Vision (HP & Keberadaan Pengguna)."""
-    global vision_running, current_pipeline_fps
-    last_loop_time = time.time()
-    fps_counter = 0
-    fps_timer = time.time()
-
-    print("🚀 [Vision Pipeline] Worker aktif memantau tangkapan kamera...", flush=True)
-    while vision_running:
-        start_time = time.time()
-        dt = max(0.01, min(0.2, start_time - last_loop_time))
-        last_loop_time = start_time
-
-        frame = camera_streamer.get_enhanced_frame()
-        if frame is None:
-            time.sleep(0.01)
-            continue
-
-        if distraction_detector and distraction_detector.enabled:
-            # Deteksi dijalankan pada frame MENTAH (raw): CLAHE/enhancement terbukti
-            # menurunkan skor deteksi HP. Overlay tetap digambar pada frame terang.
-            raw_frame = camera_streamer.get_raw_frame()
-            processed_frame, distraction_telem = distraction_detector.process_frame(
-                frame, has_hands=False, draw=True, detect_frame=raw_frame
-            )
-
-            # Update status Pomodoro Manager
-            pomodoro_manager.update_distraction_states(
-                is_absent=distraction_telem.get("is_absent", False),
-                is_phone=distraction_telem.get("is_phone", False),
-                is_head_down=False,  # Head-down dinonaktifkan sesuai catatan engineering
-                dt=dt,
-            )
-
-            # Simpan processed frame untuk video_feed
-            camera_streamer.update_processed_frame(processed_frame)
-        else:
-            camera_streamer.update_processed_frame(frame)
-
-        fps_counter += 1
-        now = time.time()
-        if now - fps_timer >= 1.0:
-            current_pipeline_fps = round(fps_counter / (now - fps_timer), 1)
-            fps_counter = 0
-            fps_timer = now
-
-        # Cap loop ~25-30 FPS
-        elapsed = time.time() - start_time
-        sleep_time = max(0.005, 0.033 - elapsed)
-        time.sleep(sleep_time)
 
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    """Lifecycle manager FastAPI: menjalankan worker saat startup dan mematikan saat shutdown."""
-    global vision_running, vision_thread
-    vision_running = True
-    vision_thread = threading.Thread(target=vision_pipeline_loop, daemon=True)
-    vision_thread.start()
+    """Muat model fine-tuned sekali saat startup (STT dimuat lazy)."""
+    try:
+        retrieval_service.load()
+    except Exception as exc:  # noqa: BLE001
+        print(
+            f"⚠️ [STARTUP] Model fine-tuned belum siap: {exc}\n"
+            "   Endpoint AI akan mengembalikan 503 sampai artefak & dependency benar.",
+            flush=True,
+        )
+
+    print(
+        f"[STT] faster-whisper '{Config.WHISPER_MODEL_SIZE}' dimuat di background "
+        "agar request suara pertama langsung siap.",
+        flush=True,
+    )
+
+    # Warmup STT di background: unduhan model pertama (±500 MB untuk 'small')
+    # tidak memblokir startup FastAPI.
+    import threading
+
+    threading.Thread(target=stt_service.warmup, daemon=True).start()
     yield
-    vision_running = False
-    if vision_thread and vision_thread.is_alive():
-        vision_thread.join(timeout=1.0)
 
 
 # Inisialisasi App FastAPI
 app = FastAPI(
     title="Asisten Belajar AI & IoT Backend",
-    version="1.0.0",
-    description="Backend API Engine untuk Platform Pembelajaran Python & Robot Pendamping ESP32-S3",
+    version="2.0.0",
+    description=(
+        "Backend API Engine untuk Platform Pembelajaran Python & Robot Pendamping "
+        "ESP32-S3. Menjawab pertanyaan suara dengan model Sentence-Transformer "
+        "fine-tuned, lalu mengubah jawaban menjadi suara Bahasa Indonesia."
+    ),
     lifespan=lifespan,
 )
 
-# CORS Middleware agar Frontend Next.js (port 3000) bisa mengakses API tanpa hambatan
+# CORS Middleware agar Frontend Next.js (port 3000) bisa mengakses API.
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -179,8 +112,94 @@ class PomodoroConfigureRequest(BaseModel):
     target_cycles: Optional[int] = Field(default=4, description="Target jumlah siklus")
 
 
-class CameraSourceRequest(BaseModel):
-    source: str = Field(..., description="URL atau index stream kamera (misal http://192.168.1.12:81/stream)")
+class AIAskRequest(BaseModel):
+    prompt: str = Field(..., description="Pertanyaan teks untuk asisten belajar")
+    voice: Optional[str] = Field(None, description="Pilihan suara: 'cowok' (Ardi) atau 'cewek' (Gadis)")
+
+
+class VoiceConfigRequest(BaseModel):
+    voice: str = Field("cowok", description="Pilihan suara: 'cowok' atau 'cewek'")
+
+
+# =========================================================================
+# HELPER ASISTEN BELAJAR
+# =========================================================================
+def _build_ai_payload(question: str, answer_data: dict, voice: Optional[str]) -> dict:
+    """Sintesis TTS + bentuk payload respons standar untuk ESP32/Frontend."""
+    answer = answer_data.get("answer", "")
+    voice_pref = voice or ai_service.voice_gender
+
+    audio_filename = ""
+    wav_filename = ""
+    try:
+        audio_path = ai_service.text_to_speech(answer, voice_pref)
+        if audio_path:
+            audio_filename = os.path.basename(audio_path)
+            wav_filename = audio_filename.replace(".mp3", ".wav")
+    except Exception as exc:  # noqa: BLE001
+        print(f"⚠️ [TTS Warning] Gagal sintesis suara: {exc}", flush=True)
+
+    return {
+        "status": "success",
+        "question": question,
+        "answer": answer,
+        "display_text": answer_data.get("display_text", answer),
+        "matched": answer_data.get("matched", False),
+        "confidence": answer_data.get("confidence", 0.0),
+        "chapter": answer_data.get("chapter"),
+        "chapter_slug": answer_data.get("chapter_slug"),
+        "episode": answer_data.get("episode"),
+        "episode_id": answer_data.get("episode_id"),
+        "concept": answer_data.get("concept"),
+        "passage": answer_data.get("passage"),
+        "alternatives": answer_data.get("alternatives", []),
+        "emotion": answer_data.get("emotion", "speaking"),
+        "voice": ai_service.get_current_voice(),
+        "audio_url": f"/api/ai/audio/{audio_filename}" if audio_filename else "",
+        "audio_wav_url": f"/api/ai/audio/{wav_filename}" if wav_filename else "",
+    }
+
+
+def _answer_text(question: str, voice: Optional[str]) -> dict:
+    """Retrieval + TTS untuk pertanyaan berbentuk teks."""
+    try:
+        answer_data = retrieval_service.answer(question)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=503, detail=str(exc)) from exc
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=503,
+            detail=f"Model retrieval belum siap: {exc}",
+        ) from exc
+    return _build_ai_payload(question, answer_data, voice)
+
+
+# Pola regex pengenalan wake word "Hi ESP" dan variasi fonetik Indonesianya:
+# Cocok dengan: "hi esp", "hai esp", "halo esp", "hei esp", "hey esp", "he esp", "esp"
+# Termasuk variasi fonetik STT Whisper: "hai sp", "hi sp", "hai sb", "hai usb"
+_WAKE_WORD_RE = re.compile(
+    r"^\s*(?:h[ai]i?|halo|hei|hey|he)?\s*(?:esp|sp|usb|sb)\b[\s,!?:.-]*",
+    re.IGNORECASE
+)
+
+
+def _process_voice_wake_word(transcript: str) -> tuple[bool, str]:
+    """
+    Mengecek apakah transkrip diawali dengan wake word "Hi ESP" (atau variasinya).
+    Mengembalikan (is_wake_word, query_setelah_wake_word).
+    """
+    clean_t = (transcript or "").strip()
+    match = _WAKE_WORD_RE.match(clean_t)
+    if not match:
+        # Cek jika kata "esp" muncul di bagian awal kalimat (<12 karakter pertama)
+        esp_match = re.search(r"\b(esp|sp)\b", clean_t, re.IGNORECASE)
+        if esp_match and esp_match.start() < 12:
+            remainder = clean_t[esp_match.end():].strip(" ,;:-?!")
+            return True, remainder
+        return False, clean_t
+
+    remainder = clean_t[match.end():].strip(" ,;:-?!")
+    return True, remainder
 
 
 # =========================================================================
@@ -194,22 +213,28 @@ def root():
 
 @app.get("/api/health", tags=["Health"])
 def health_check():
-    """Pemeriksaan status server."""
-    return {"status": "ok", "timestamp": time.time()}
+    """Pemeriksaan status server + kesiapan model."""
+    return {
+        "status": "ok",
+        "timestamp": time.time(),
+        "retrieval_ready": retrieval_service.is_loaded,
+        "retrieval_error": retrieval_service.load_error,
+        "stt_ready": stt_service.is_loaded,
+        "stt_error": stt_service.load_error,
+        "tts_voice": ai_service.get_current_voice(),
+    }
 
 
 @app.get("/api/esp/pomodoro", tags=["ESP32 IoT"])
 def get_esp_pomodoro(ip: Optional[str] = None):
     """
     Endpoint Ultra-Ringkas Khusus Layar OLED ESP32-S3 (SSD1306).
-    Payload < 150 bytes, dipanggil setiap 1 detik oleh ESP32 non-blocking.
-    Menghasilkan nilai ekspresi robot (emotion) untuk pilar Aesthetics MDA.
+    Payload kecil, dipanggil setiap 1 detik oleh ESP32 secara non-blocking.
 
-    Query opsional `ip`: IP ESP32 hasil DHCP (dilaporkan firmware). Backend
-    memakainya untuk memperbarui URL stream kamera secara otomatis, sehingga
-    tidak perlu mengubah .env setiap kali IP ESP32 berubah.
+    Parameter `ip` masih diterima untuk kompatibilitas firmware lama, tetapi
+    tidak lagi dipakai karena fitur kamera/streaming sudah dihapus.
     """
-    sync_esp32_camera_source(ip)
+    del ip  # tidak dipakai lagi
     pomo = pomodoro_manager.get_state()
 
     raw_mode = pomo.get("mode", "work")
@@ -219,15 +244,8 @@ def get_esp_pomodoro(ip: Optional[str] = None):
     elif raw_mode == "long_break":
         mode_str = "REST"
 
-    # Evaluasi teks alert singkat untuk OLED
+    # Deteksi distraksi berbasis kamera sudah dihapus -> alert selalu kosong.
     alert_str = ""
-    live_flags = pomo.get("live_flags", {})
-    abs_track = pomo.get("absence_tracking", {})
-
-    if live_flags.get("is_phone"):
-        alert_str = "HP!"
-    elif not abs_track.get("is_user_present", True) or abs_track.get("tolerance_exceeded"):
-        alert_str = "ABSEN!"
 
     # Truncate judul task agar pas 14 char
     task_title = pomo.get("task_name", "Belajar Fokus")
@@ -250,23 +268,17 @@ def get_esp_pomodoro(ip: Optional[str] = None):
 @app.get("/api/status", tags=["Status & Monitoring"])
 def get_system_status():
     """Status lengkap sistem untuk konsumsi Frontend Next.js."""
-    cam_status = camera_streamer.get_status()
-    cam_status["pipeline_fps"] = current_pipeline_fps
-    cam_status["raw_fps"] = cam_status.get("fps", 0)
-    # Gunakan pipeline_fps sebagai acuan FPS utama jika terhubung, identik dengan frontend legacy
-    if cam_status.get("connected"):
-        cam_status["fps"] = current_pipeline_fps
     pomo_status = pomodoro_manager.get_state()
-    vision_telem = getattr(distraction_detector, "latest_telemetry", {}) or {}
     return {
-        "camera": cam_status,
         "pomodoro": pomo_status,
         "ai": {
-            "distraction_enabled": distraction_detector.enabled if distraction_detector else False,
             "detected_emotion": pomo_status.get("emotion", "NORMAL"),
-            "phone_confidence": vision_telem.get("phone_confidence", 0.0),
-            "phone_detected": vision_telem.get("is_phone", False),
-            "phone_source": vision_telem.get("phone_source"),
+            "retrieval_ready": retrieval_service.is_loaded,
+            "retrieval_error": retrieval_service.load_error,
+            "stt_ready": stt_service.is_loaded,
+            "voice_gender": ai_service.voice_gender,
+            "voice_model": ai_service.get_current_voice(),
+            "min_confidence": Config.RETRIEVAL_MIN_SCORE,
         },
     }
 
@@ -276,7 +288,7 @@ def get_system_status():
 # =========================================================================
 @app.get("/api/user/profile", tags=["Gamifikasi MDA"])
 def get_user_profile(db: Session = Depends(get_db)):
-    """Mengambil profil mahasiswa dan status gamifikasi MDA (Focus XP, Koin, Level, Streak, Badges)."""
+    """Mengambil profil mahasiswa dan status gamifikasi MDA."""
     user = get_or_create_default_user(db)
     profile = get_or_create_profile(db, user.id)
     return {
@@ -291,7 +303,7 @@ def get_user_profile(db: Session = Depends(get_db)):
             "level_title": profile.level_title,
             "daily_streak": profile.daily_streak,
             "badges_unlocked": profile.badges_unlocked,
-        }
+        },
     }
 
 
@@ -300,7 +312,7 @@ def get_leaderboard_endpoint(db: Session = Depends(get_db)):
     """Mengambil daftar papan peringkat kompetitif mahasiswa TI UNP Kediri."""
     return {
         "leaderboard": get_leaderboard(db, limit=10),
-        "total_players": 5
+        "total_players": 5,
     }
 
 
@@ -308,15 +320,15 @@ def get_leaderboard_endpoint(db: Session = Depends(get_db)):
 def pomodoro_action(
     action: str,
     config: Optional[PomodoroConfigureRequest] = None,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
 ):
     """
     Mengontrol state machine Pomodoro dan menyimpan ke Database saat sesi selesai:
     - start: Memulai sesi belajar fokus (25m)
     - pause: Menjeda sesi
     - reset: Mengulang timer ke awal
-    - finish: Menyimpan sesi ke tabel pomodoro_sessions di MySQL dan memberi reward XP & Koin
-    - quest_passed: Memvalidasi keberhasilan quest koding & memicu ekspresi HAPPY di robot OLED
+    - finish: Menyimpan sesi ke tabel pomodoro_sessions dan memberi reward XP & Koin
+    - quest_passed: Memvalidasi keberhasilan quest koding & memicu ekspresi HAPPY
     - configure: Mengatur durasi & target sesi
     """
     action_clean = action.lower().strip()
@@ -332,7 +344,6 @@ def pomodoro_action(
     elif action_clean == "quest_passed":
         pomodoro_manager.trigger_quest_passed(duration_sec=7.0)
     elif action_clean == "finish":
-        # Simpan sesi Pomodoro ke Database MySQL
         user = get_or_create_default_user(db)
         state = pomodoro_manager.get_state()
         saved_session = record_pomodoro_session(db, user.id, {
@@ -341,8 +352,8 @@ def pomodoro_action(
             "target_duration_sec": state.get("total_duration", 1500),
             "actual_focus_sec": state.get("total_duration", 1500) - state.get("time_left", 0),
             "cycles_completed": state.get("cycles_completed", 1),
-            "phone_distractions": state.get("distractions", {}).get("counts", {}).get("phone", 0),
-            "absence_distractions": state.get("distractions", {}).get("counts", {}).get("absent", 0),
+            "phone_distractions": 0,
+            "absence_distractions": 0,
             "focus_score": state.get("focus_score", 100),
             "status": "completed",
         })
@@ -360,7 +371,7 @@ def pomodoro_action(
                 "current_level": profile.current_level,
                 "level_title": profile.level_title,
                 "daily_streak": profile.daily_streak,
-            }
+            },
         }
     elif action_clean == "configure":
         if config:
@@ -382,12 +393,9 @@ def validate_code(req: CodeValidationRequest, db: Session = Depends(get_db)):
     """
     Memvalidasi kode Python mahasiswa:
     1. Memeriksa sintaks dengan AST.
-    2. Menghitung pemenuhan required nodes (misal If, For, FunctionDef).
+    2. Menghitung pemenuhan required nodes.
     3. Mengeksekusi kode secara aman dengan batas timeout.
-    4. Jika lolos:
-       - Menyimpan riwayat ke tabel chapter_progress di MySQL.
-       - Memberikan reward Focus XP & Python Coins di database.
-       - Otomatis memicu emosi bahagia (HAPPY) pada robot pendamping ESP32.
+    4. Jika lolos: simpan progres, beri reward, dan picu emosi HAPPY.
     """
     result = validate_and_run(
         code=req.code,
@@ -397,7 +405,6 @@ def validate_code(req: CodeValidationRequest, db: Session = Depends(get_db)):
 
     passed = result.get("passed", False)
 
-    # Catat submission ke database MySQL
     user = get_or_create_default_user(db)
     chapter_slug = req.chapter_slug or "percabangan"
     record_chapter_progress(
@@ -406,13 +413,12 @@ def validate_code(req: CodeValidationRequest, db: Session = Depends(get_db)):
         chapter_slug=chapter_slug,
         submitted_code=req.code,
         ast_valid=result.get("ast", {}).get("syntaxValid", False),
-        is_completed=passed
+        is_completed=passed,
     )
 
     if passed and req.trigger_emotion_on_pass:
         pomodoro_manager.trigger_quest_passed(duration_sec=7.0)
 
-    # Muat profil terbaru setelah reward diberikan
     profile = get_or_create_profile(db, user.id)
     result["gamification"] = {
         "focus_xp": profile.focus_xp,
@@ -426,126 +432,114 @@ def validate_code(req: CodeValidationRequest, db: Session = Depends(get_db)):
     return result
 
 
-@app.get("/video_feed", tags=["Camera Stream"])
-def video_feed():
-    """
-    High-Performance HTTP MJPEG Video Stream (Hardware-Accelerated di Browser).
-    Dapat disematkan langsung di Frontend Next.js via tag <img src="http://localhost:5000/video_feed" />.
-    Menggunakan sinkronisasi frame-ID non-blocking (5ms check) untuk aliran mulus bebas stutter ~30 FPS.
-    """
-    def gen():
-        last_id = -1
-        try:
-            while True:
-                fid, jpeg = camera_streamer.get_latest_frame_with_id()
-                if fid != last_id and jpeg is not None:
-                    last_id = fid
-                    yield (
-                        b"--frame\r\n"
-                        b"Content-Type: image/jpeg\r\n\r\n" + jpeg + b"\r\n"
-                    )
-                else:
-                    time.sleep(0.005)
-        except (GeneratorExit, BrokenPipeError, ConnectionResetError):
-            pass
-
-    return StreamingResponse(
-        gen(),
-        media_type="multipart/x-mixed-replace; boundary=frame",
-        headers={
-            "Cache-Control": "no-cache, no-store, must-revalidate",
-            "Pragma": "no-cache",
-            "Expires": "0",
-            "Connection": "close",
-        }
-    )
-
-
-@app.post("/api/camera/source", tags=["Camera Settings"])
-def change_camera_source(req: CameraSourceRequest):
-    """Mengalihkan sumber kamera (misal RTSP, URL ESP32, atau indeks webcam 0)."""
-    camera_streamer.set_source(req.source)
-    return {
-        "status": "success",
-        "current_source": str(camera_streamer.source),
-    }
-
-
 # =========================================================================
-# ENDPOINTS ASISTEN BELAJAR AI (GEMINI & EDGE-TTS INDONESIA)
+# ENDPOINTS ASISTEN BELAJAR (FINE-TUNED SBERT + STT + EDGE-TTS)
 # =========================================================================
-class AIAskRequest(BaseModel):
-    prompt: str = Field(..., description="Pertanyaan untuk asisten belajar")
-    voice: Optional[str] = Field(None, description="Pilihan suara: 'cowok' (Ardi) atau 'cewek' (Gadis)")
-    use_camera: Optional[bool] = Field(False, description="Apakah menyertakan tangkapan kamera OV5640 untuk dianalisa Gemini")
-
-
-class VoiceConfigRequest(BaseModel):
-    voice: str = Field("cewek", description="Pilihan suara: 'cowok' atau 'cewek'")
-
-
 @app.post("/api/ai/ask", tags=["Asisten Belajar AI"])
 def ask_ai_assistant(req: AIAskRequest):
     """
-    Bertanya ke Gemini AI dalam Bahasa Indonesia + Sintesis Suara (TTS Cowok/Cewek).
-    Mendukung Multimodal Vision (analisa frame kamera OV5640).
+    Pertanyaan teks -> retrieval fine-tuned SBERT -> jawaban + TTS cowok Indonesia.
     """
-    image_bytes = None
-    if req.use_camera:
-        frame = camera_streamer.get_enhanced_frame()
-        if frame is not None:
-            success, encoded_image = cv2.imencode(".jpg", frame)
-            if success:
-                image_bytes = encoded_image.tobytes()
+    return _answer_text(req.prompt, req.voice)
 
-    # Tanya ke Gemini
-    ai_resp = ai_service.ask_gemini(prompt=req.prompt, image_bytes=image_bytes)
-    text = ai_resp.get("text", "")
-    emotion = ai_resp.get("emotion", "speaking")
 
-    # Sintesis suara Bahasa Indonesia
-    voice_pref = req.voice or ai_service.voice_gender
-    audio_path = None
-    audio_filename = ""
-    wav_filename = ""
+@app.post("/api/ai/voice", tags=["Asisten Belajar AI"])
+def ask_ai_voice(
+    audio: UploadFile = File(..., description="Rekaman WAV pertanyaan user dari ESP32-S3"),
+    voice: Optional[str] = Form(None, description="Pilihan suara: 'cowok' atau 'cewek'"),
+):
+    """
+    Pertanyaan suara -> faster-whisper (STT) -> retrieval fine-tuned SBERT ->
+    jawaban teks + file WAV 16 kHz untuk speaker ESP32-S3.
+
+    Endpoint dibuat sinkron agar Edge-TTS dapat memakai event loop sendiri
+    (dijalankan FastAPI di threadpool, bukan di event loop utama).
+    """
+    raw_audio = audio.file.read()
+    if not raw_audio:
+        raise HTTPException(status_code=400, detail="File audio kosong.")
+
+    # Batas aman: 8 detik WAV 16 kHz mono 16-bit ~= 256 KB.
+    if len(raw_audio) > 5 * 1024 * 1024:
+        raise HTTPException(status_code=413, detail="Ukuran audio terlalu besar (maks 5 MB).")
+
     try:
-        audio_path = ai_service.text_to_speech(text, voice_pref)
-        if audio_path:
-            audio_filename = os.path.basename(audio_path)
-            wav_filename = audio_filename.replace(".mp3", ".wav")
-    except Exception as e:
-        print(f"⚠️ [TTS Warning] Gagal sintesis suara: {e}")
+        transcript = stt_service.transcribe_bytes(raw_audio)
+    except Exception as exc:  # noqa: BLE001
+        raise HTTPException(
+            status_code=503,
+            detail=f"Speech-to-Text belum siap: {exc}",
+        ) from exc
 
-    return {
-        "status": "success",
-        "question": req.prompt,
-        "answer": text,
-        "emotion": emotion,
-        "voice": ai_service.get_current_voice(),
-        "audio_url": f"/api/ai/audio/{audio_filename}" if audio_filename else "",
-        "audio_wav_url": f"/api/ai/audio/{wav_filename}" if wav_filename else "",
-    }
+    transcript = (transcript or "").strip()
+    if not transcript:
+        question = "(suara tidak terdeteksi)"
+        answer_data = {
+            "answer": "Maaf, aku belum mendengar pertanyaanmu dengan jelas. "
+                      "Coba ulangi lebih dekat ke mikrofon ya.",
+            "display_text": "Suara belum jelas. Coba ulangi lebih dekat ke mic.",
+            "matched": False,
+            "confidence": 0.0,
+            "emotion": "confused",
+        }
+        return _build_ai_payload(question, answer_data, voice)
+
+    # Deteksi Voice Trigger / Wake Word "Hi ESP"
+    wake_detected, question_after_wake = _process_voice_wake_word(transcript)
+
+    if wake_detected:
+        if not question_after_wake:
+            # Pengguna hanya memicu wake word "Hi ESP"
+            wake_answer = {
+                "answer": "Halo! Aku ESP, asisten belajarmu. Aku siap mendengarkan, ada yang ingin kamu tanyakan?",
+                "display_text": "Halo! Aku ESP, siap membantu. Silakan bertanya.",
+                "matched": True,
+                "confidence": 1.0,
+                "emotion": "happy",
+            }
+            payload = _build_ai_payload(transcript, wake_answer, voice)
+            payload["transcript"] = transcript
+            payload["wake_word_detected"] = True
+            payload["is_wake_word_only"] = True
+            return payload
+
+        # Pengguna mengucapkan "Hi ESP [pertanyaan]" dalam satu tarikan nafas
+        payload = _answer_text(question_after_wake, voice)
+        payload["transcript"] = transcript
+        payload["wake_word_detected"] = True
+        payload["is_wake_word_only"] = False
+        return payload
+
+    # Fallback jika pertanyaan diajukan langsung tanpa wake word
+    payload = _answer_text(transcript, voice)
+    payload["transcript"] = transcript
+    payload["wake_word_detected"] = False
+    payload["is_wake_word_only"] = False
+    return payload
 
 
 @app.get("/api/ai/audio/{filename}", tags=["Asisten Belajar AI"])
 def get_ai_audio(filename: str):
-    """Streaming file audio (MP3 atau 16kHz WAV untuk ESP32 I2S) hasil sintesis suara Bahasa Indonesia."""
-    file_path = os.path.join(ai_service.cache_dir, filename)
-    
-    # Jika ESP32 meminta format WAV (16kHz, 16-bit PCM)
-    if filename.endswith(".wav"):
+    """Streaming file audio (MP3 atau 16 kHz WAV untuk ESP32 I2S)."""
+    safe_name = os.path.basename(filename)
+    file_path = os.path.join(ai_service.cache_dir, safe_name)
+
+    if safe_name.endswith(".wav"):
         if not os.path.exists(file_path):
             mp3_path = file_path.replace(".wav", ".mp3")
             if os.path.exists(mp3_path):
                 try:
                     from pydub import AudioSegment
+
                     sound = AudioSegment.from_mp3(mp3_path)
-                    # Standarkan ke 16000Hz, 16-bit, 2 channel (Stereo L+R untuk I2S MAX98357A)
+                    # 16 kHz, 16-bit, 2 channel (stereo untuk I2S MAX98357A)
                     sound = sound.set_frame_rate(16000).set_channels(2).set_sample_width(2)
                     sound.export(file_path, format="wav")
-                except Exception as e:
-                    print(f"Error converting MP3 to WAV: {e}")
-                    raise HTTPException(status_code=500, detail="Gagal konversi audio ke WAV")
+                except Exception as exc:  # noqa: BLE001
+                    print(f"Error converting MP3 to WAV: {exc}", flush=True)
+                    raise HTTPException(
+                        status_code=500, detail="Gagal konversi audio ke WAV"
+                    ) from exc
             else:
                 raise HTTPException(status_code=404, detail="File audio MP3 sumber tidak ditemukan")
         return FileResponse(file_path, media_type="audio/wav")
@@ -555,23 +549,23 @@ def get_ai_audio(filename: str):
     return FileResponse(file_path, media_type="audio/mpeg")
 
 
-@app.post("/api/ai/voice", tags=["Asisten Belajar AI"])
+@app.post("/api/ai/voice/config", tags=["Asisten Belajar AI"])
 def configure_voice(req: VoiceConfigRequest):
     """Mengatur jenis suara default: 'cowok' (Ardi) atau 'cewek' (Gadis)."""
     if ai_service.set_voice(req.voice):
         return {
             "status": "success",
-            "message": f"Suara berhasil diatur ke '{req.voice}' ({ai_service.get_current_voice()})"
+            "message": f"Suara berhasil diatur ke '{req.voice}' ({ai_service.get_current_voice()})",
         }
     raise HTTPException(status_code=400, detail="Pilihan suara hanya 'cowok' atau 'cewek'")
 
 
-@app.get("/api/ai/voice", tags=["Asisten Belajar AI"])
+@app.get("/api/ai/voice/config", tags=["Asisten Belajar AI"])
 def get_voice_setting():
     """Mendapatkan pengaturan suara aktif saat ini."""
     return {
         "voice_gender": ai_service.voice_gender,
-        "voice_model": ai_service.get_current_voice()
+        "voice_model": ai_service.get_current_voice(),
     }
 
 
@@ -579,13 +573,12 @@ def get_voice_setting():
 def get_esp_companion_state():
     """
     Endpoint terpadu untuk ESP32-S3 Physical Robot Companion:
-    Mengembalikan emosi OLED (happy, neutral, thinking, speaking, angry),
-    status timer pomodoro, dan pesan peringatan jika terdeteksi distraksi.
+    Mengembalikan emosi OLED (happy, neutral, thinking, speaking), status timer
+    Pomodoro, dan pengaturan suara aktif. Deteksi distraksi kamera dihapus.
     """
     pomo = pomodoro_manager.get_state()
     emotion = pomo.get("emotion", "NORMAL").lower()
 
-    # Petakan emosi ke format mata robot XiaoZhi
     mapped_emotion = "neutral"
     if emotion in ["happy", "celebrating"]:
         mapped_emotion = "happy"
@@ -596,22 +589,14 @@ def get_esp_companion_state():
     elif emotion in ["speaking", "talking"]:
         mapped_emotion = "speaking"
 
-    distractions = pomo.get("distractions", {}).get("active", {})
-    alert_msg = ""
-    if distractions.get("phone", False):
-        alert_msg = "Distraksi: Simpan HP-mu!"
-        mapped_emotion = "angry"
-    elif distractions.get("absent", False):
-        alert_msg = "Pengguna tidak di tempat"
-        mapped_emotion = "sad"
-
     return {
         "emotion": mapped_emotion,
         "mode": pomo.get("mode", "WORK"),
         "time_left": pomo.get("time_left", 0),
         "focus_score": pomo.get("focus_score", 100),
-        "alert": alert_msg,
-        "voice_gender": ai_service.voice_gender
+        "alert": "",
+        "voice_gender": ai_service.voice_gender,
+        "retrieval_ready": retrieval_service.is_loaded,
     }
 
 
@@ -620,11 +605,11 @@ if __name__ == "__main__":
 
     port = Config.PORT if hasattr(Config, "PORT") else 5000
     host = Config.HOST if hasattr(Config, "HOST") else "0.0.0.0"
-    print(f"\n=======================================================", flush=True)
-    print(f"🌟 ASISTEN BELAJAR AI - FASTAPI & MYSQL CORE BACKEND", flush=True)
+    print("\n=======================================================", flush=True)
+    print("🌟 ASISTEN BELAJAR AI - FASTAPI & FINE-TUNED SBERT", flush=True)
     print(f"📡 Swagger API Documentation : http://localhost:{port}/docs", flush=True)
-    print(f"🐬 phpMyAdmin Web Interface  : http://localhost:8080", flush=True)
-    print(f"📷 Video Stream MJPEG Feed    : http://localhost:{port}/video_feed", flush=True)
-    print(f"🤖 ESP32-S3 OLED Endpoint    : http://localhost:{port}/api/esp/pomodoro", flush=True)
-    print(f"=======================================================\n", flush=True)
+    print(f"🧠 Retrieval Model            : {Config.FINETUNED_MODEL_DIR}", flush=True)
+    print(f"🎙️  Voice Endpoint            : POST http://localhost:{port}/api/ai/voice", flush=True)
+    print(f"🤖 ESP32-S3 OLED Endpoint     : http://localhost:{port}/api/esp/pomodoro", flush=True)
+    print("=======================================================\n", flush=True)
     uvicorn.run("server:app", host=host, port=port, reload=False)

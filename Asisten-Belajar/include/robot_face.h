@@ -15,4 +15,9 @@ void setFaceEmotionOverride(const String &emotion, unsigned long durationMs = 0)
 void clearFaceEmotionOverride();
 String getActiveFaceEmotion();
 
+// Tampilkan teks dialog / ucapan user & jawaban AI di bawah mata robot (marquee kanan -> kiri).
+// durationMs = 0 berarti tampil terus sampai clearAnswerText() dipanggil.
+void showAnswerText(const String &text, unsigned long durationMs = 0, const String &label = "VOICE AI:");
+void clearAnswerText();
+
 #endif // ROBOT_FACE_H

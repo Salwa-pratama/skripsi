@@ -11,26 +11,15 @@ type PomodoroStatus = {
   target_cycles: number;
   focus_score: number;
   emotion?: string;
-  live_flags?: {
-    is_phone: boolean;
-    is_head_down: boolean;
-  };
-  absence_tracking?: {
-    is_user_present: boolean;
-    tolerance_exceeded: boolean;
-  };
 };
 
 type SystemStatus = {
-  camera: {
-    connected: boolean;
-    fps: number;
-    source: string;
-  };
   pomodoro: PomodoroStatus;
   ai: {
-    distraction_enabled: boolean;
     detected_emotion: string;
+    retrieval_ready?: boolean;
+    voice_gender?: string;
+    voice_model?: string;
   };
 };
 
@@ -39,14 +28,7 @@ const FASTAPI_URL = "http://localhost:5000";
 export function AsistenCompanionWidget() {
   const [status, setStatus] = useState<SystemStatus | null>(null);
   const [isConnected, setIsConnected] = useState<boolean>(false);
-  const [showCameraModal, setShowCameraModal] = useState<boolean>(false);
-  const [streamKey, setStreamKey] = useState<number>(Date.now());
   const [isActionLoading, setIsActionLoading] = useState<boolean>(false);
-
-  const openCameraModal = () => {
-    setStreamKey(Date.now());
-    setShowCameraModal(true);
-  };
 
   useEffect(() => {
     let isMounted = true;
@@ -99,17 +81,15 @@ export function AsistenCompanionWidget() {
   // Tentukan badge emosi robot
   const emotion = status?.pomodoro?.emotion || status?.ai?.detected_emotion || "NORMAL";
   const isRunning = status?.pomodoro?.status === "running";
-  const isPhone = status?.pomodoro?.live_flags?.is_phone;
-  const isAbsent = status?.pomodoro?.absence_tracking?.is_user_present === false;
 
   return (
     <div className="asisten-companion-container">
       {/* Tombol Utama Companion di Topbar */}
       <div className="asisten-topbar-pill">
         <div className="asisten-robot-avatar" title={`Status Emosi Robot: ${emotion}`}>
-          {emotion === "ANGRY" || isPhone ? (
+          {emotion === "ANGRY" ? (
             <span className="emotion-icon angry">😾</span>
-          ) : emotion === "SURPRISED" || isAbsent ? (
+          ) : emotion === "SURPRISED" ? (
             <span className="emotion-icon surprised">🙀</span>
           ) : emotion === "HAPPY" ? (
             <span className="emotion-icon happy">😸</span>
@@ -127,15 +107,11 @@ export function AsistenCompanionWidget() {
             <span className={`status-dot ${isConnected ? "online" : "offline"}`} />
             <span className="asisten-label">
               {isConnected
-                ? isPhone
-                  ? "HP TERDETEKSI!"
-                  : isAbsent
-                  ? "PENGGUNA ABSEN!"
-                  : emotion === "HAPPY"
+                ? emotion === "HAPPY"
                   ? "SELEBRASI QUEST!"
                   : isRunning
                   ? "SESI FOKUS 25M"
-                  : "ROBOT MOCHI SIAP"
+                  : "ASISTEN BELAJAR SIAP"
                 : "ROBOT OFFLINE"}
             </span>
           </div>
@@ -184,80 +160,9 @@ export function AsistenCompanionWidget() {
             >
               🔄
             </button>
-
-            <button
-              type="button"
-              className="btn-pomo-icon camera-btn"
-              onClick={openCameraModal}
-              title="Pratinjau Sudut Pandang Kamera Robot ESP32-S3"
-            >
-              📷
-            </button>
           </div>
         )}
       </div>
-
-      {/* Alert Banner Peringatan Distraksi Visual di Atas IDE jika Terdeteksi HP / Absen */}
-      {isConnected && isRunning && (isPhone || isAbsent) && (
-        <div className={`asisten-live-alert ${isPhone ? "alert-phone" : "alert-absent"}`}>
-          <div className="alert-content">
-            <span className="alert-emoji">{isPhone ? "⚠️📱" : "⚠️👤"}</span>
-            <span className="alert-text">
-              {isPhone
-                ? "Robot mendeteksi keberadaan Handphone di meja belajar! Singkirkan ponsel untuk menjaga Focus XP dan ekspresi Mochi."
-                : "Robot mendeteksi meja kosong! Kembali ke tempat belajar agar Daily Streak tidak terpotong."}
-            </span>
-          </div>
-        </div>
-      )}
-
-      {/* Modal Pratinjau Kamera OV5640 */}
-      {showCameraModal && (
-        <div className="asisten-modal-backdrop" onClick={() => setShowCameraModal(false)}>
-          <div className="asisten-modal-box" onClick={(e) => e.stopPropagation()}>
-            <div className="modal-header">
-              <h3>📷 Sudut Pandang Asisten Belajar (OV5640)</h3>
-              <button
-                type="button"
-                className="modal-close-btn"
-                onClick={() => setShowCameraModal(false)}
-              >
-                ✕
-              </button>
-            </div>
-            <div className="modal-body">
-              <p className="modal-desc">
-                Stream real-time dari kamera ESP32-S3 dengan deteksi objek (HP &amp; Keberadaan
-                Pengguna). • <strong>Status:</strong>{" "}
-                <span style={{ color: status?.camera?.connected ? "#10b981" : "#ef4444" }}>
-                  {status?.camera?.connected
-                    ? `Terhubung (${status.camera.fps ?? 0} FPS)`
-                    : "Menghubungkan..."}
-                </span>
-              </p>
-              <div className="camera-stream-wrapper">
-                {/* Direct High-Performance MJPEG Feed dari FastAPI */}
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  key={streamKey}
-                  src={`${FASTAPI_URL}/video_feed?t=${streamKey}`}
-                  alt="Live Camera Feed dari ESP32"
-                  className="camera-stream-img"
-                  onError={(e) => {
-                    const target = e.currentTarget;
-                    target.style.display = "none";
-                    const errEl = document.getElementById("camera-stream-error");
-                    if (errEl) errEl.style.display = "block";
-                  }}
-                />
-                <div id="camera-stream-error" style={{ display: "none" }} className="stream-error-box">
-                  <p>Stream kamera ESP32 belum terhubung atau port 5000 offline.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

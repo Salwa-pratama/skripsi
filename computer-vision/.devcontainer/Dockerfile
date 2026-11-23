@@ -1,16 +1,12 @@
 FROM python:3.11-bookworm
 
-# Install required system dependencies for OpenCV, MediaPipe, networking & dev tools
+# System dependencies:
+# - ffmpeg  : konversi MP3 (Edge-TTS) -> WAV 16 kHz untuk ESP32
+# - curl/git: tooling dasar
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
     curl \
     git \
-    libgl1 \
-    libgles2 \
-    libegl1 \
-    libglib2.0-0 \
-    libsm6 \
-    libxext6 \
-    libxrender-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app

@@ -53,6 +53,35 @@ static unsigned long nextBlinkTime = 0;
 static String manualEmotion = "";
 static unsigned long manualEmotionEndTime = 0;
 
+// Teks ucapan user & jawaban AI (mode marquee berjalan di bawah mata)
+static String answerText = "";
+static String answerLabel = "VOICE AI:";
+static bool answerActive = false;
+static unsigned long answerStartMs = 0;
+static unsigned long answerEndMs = 0;
+
+void showAnswerText(const String &text, unsigned long durationMs, const String &label) {
+  answerText = text;
+  answerLabel = label;
+  answerText.replace("\r", " ");
+  answerText.replace("\n", " ");
+  answerText.trim();
+  if (answerText.length() == 0) {
+    clearAnswerText();
+    return;
+  }
+  answerActive = true;
+  answerStartMs = millis();
+  answerEndMs = (durationMs > 0) ? (millis() + durationMs) : 0;
+}
+
+void clearAnswerText() {
+  answerActive = false;
+  answerText = "";
+  answerStartMs = 0;
+  answerEndMs = 0;
+}
+
 void setFaceEmotionOverride(const String &emotion, unsigned long durationMs) {
   manualEmotion = emotion;
   manualEmotion.toUpperCase();
@@ -94,6 +123,12 @@ void initRobotFace() {
 void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
   unsigned long now = millis();
 
+  // Mode teks jawaban AI: cek masa tampil.
+  if (answerActive && answerEndMs > 0 && now >= answerEndMs) {
+    clearAnswerText();
+  }
+  const bool answering = answerActive;
+
   // 1. Tentukan Emosi Aktif
   String emotion = getActiveFaceEmotion();
   if (emotion == "NORMAL") {
@@ -120,8 +155,8 @@ void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
   }
 
   // 3. Evaluasi Lirikan Alami (Glance Cycle)
-  if (emotion == "FOCUS") {
-    currentGlance = GLANCE_CENTER; // Tatapan fokus ke pengguna saat sesi belajar aktif
+  if (emotion == "FOCUS" || emotion == "LISTENING") {
+    currentGlance = GLANCE_CENTER; // Tatapan fokus ke pengguna saat sesi belajar aktif atau mendengarkan
   } else if (emotion == "THINKING") {
     currentGlance = GLANCE_UP;     // Menatap ke atas kanan saat berpikir
   } else if (!isBlinking && now >= nextGlanceTime) {
@@ -165,6 +200,14 @@ void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
   } else if (emotion == "SURPRISED") {
     targetH = 38.0f; // Membelalak kaget
     targetW = 32.0f;
+  } else if (emotion == "LISTENING") {
+    // Mata terbuka lebar antusias menyimak ucapan pengguna (Voice Trigger Aktif)
+    targetH = 36.0f;
+    targetW = 32.0f;
+    targetRadius = 9.0f;
+    currentGlance = GLANCE_CENTER;
+    float attentPulse = sinf((float)now * 0.014f) * 1.8f;
+    targetH += attentPulse;
   } else if (emotion == "THINKING") {
     // Menatap ke atas kanan dengan getaran halus mikir
     targetOffsetX = 5.0f;
@@ -213,6 +256,17 @@ void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
   int iR = (int)(curRadius + 0.5f);
   if (iR < 1) iR = 1;
   if (iH < 2) iH = 2;
+
+  // Saat menampilkan teks jawaban, kompres mata ke area atas (0..27)
+  // supaya teks marquee punya ruang di bawahnya.
+  if (answering) {
+    iH = (iH * 45) / 100;
+    if (iH < 3) iH = 3;
+    int eyeTop = 1;
+    int eyeAreaH = 26;
+    iY = eyeTop + (eyeAreaH - iH) / 2;
+    if (iY < 0) iY = 0;
+  }
 
   // =========================================================================
   // 6. RENDER AREA MATA OLED (Y: 0 .. 47)
@@ -277,6 +331,34 @@ void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
   }
 
   // =========================================================================
+  // 6b. TEKS UCAPAN USER & JAWABAN AI (MARQUEE KANAN -> KIRI DI BAWAH MATA)
+  // =========================================================================
+  if (answering) {
+    display.drawFastHLine(0, 28, 128, SSD1306_WHITE);
+
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    display.setCursor(0, 31);
+    display.print(answerLabel.c_str());
+
+    // Lebar teks kasar: font default 6 px per karakter.
+    int textWidth = (int)answerText.length() * 6;
+    int gap = 24; // jarak sebelum teks muncul lagi
+    int travel = textWidth + 128 + gap;
+    if (travel < 1) travel = 1;
+
+    // 11 ms per piksel: kecepatan baca nyaman, loop otomatis geser kanan -> kiri.
+    int offset = (int)(((now - answerStartMs) / 11) % (unsigned long)travel);
+    int x = 128 - offset;
+
+    display.setCursor(x, 44);
+    display.print(answerText);
+
+    renderOLED();
+    return;
+  }
+
+  // =========================================================================
   // 7. MINI HUD CYBER POMODORO (Y: 48 .. 63)
   // =========================================================================
   display.drawFastHLine(0, 48, 128, SSD1306_WHITE);
@@ -293,6 +375,23 @@ void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
     display.setTextSize(1);
     display.setCursor(4, 53);
     display.printf("! ALERT: %s !", data.alert.substring(0, 13).c_str());
+
+  } else if (emotion == "LISTENING") {
+    // Status Saat Voice Trigger "Hi ESP" Aktif / Mendengarkan Ucapan Pengguna
+    display.setTextSize(1);
+    display.setTextColor(SSD1306_WHITE);
+    int dotCount = ((now / 250) % 4); // Animasi titik dinamis (0..3)
+    display.setCursor(14, 53);
+    display.print("Mendengarkan");
+    for (int d = 0; d < dotCount; d++) {
+      display.print(".");
+    }
+    // Indikator gelombang audio aktif di pojok kanan mini HUD
+    int waveAnim = ((now / 150) % 3);
+    display.setCursor(102, 53);
+    if (waveAnim == 0) display.print("))");
+    else if (waveAnim == 1) display.print(")))");
+    else display.print(" )");
 
   } else if (emotion == "SPEAKING") {
     // Status Saat AI Berbicara
@@ -319,11 +418,11 @@ void drawRobotFace(Adafruit_SSD1306 &display, const PomodoroData &data) {
       data.focus);
 
   } else {
-    // Mode Siap / Standby
+    // Mode Siap / Standby Default (Sesuai format: teks ASISTEN BELAJAR di bawah mata)
     display.setTextSize(1);
     display.setTextColor(SSD1306_WHITE);
-    display.setCursor(8, 53);
-    display.print("ASISTEN BELAJAR :: SIAP");
+    display.setCursor(19, 53);
+    display.print("ASISTEN BELAJAR");
   }
 
   renderOLED();

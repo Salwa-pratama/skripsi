@@ -1,1 +1,1 @@
-# Core modules for Computer Vision & Camera streaming
+# Core modules: retrieval fine-tuned SBERT, STT, TTS, dan validasi AST.

@@ -41,21 +41,21 @@ static const PinInfo pinTable[] = {
   { 1, "I2S Speaker DIN MAX98357A (PIN BARU)",   true,  true,  true,  false },
   { 2, "LED onboard IO2 (JANGAN utk audio!)",    true,  true,  false, true  },
   { 3, "Strapping JTAG",                         true,  true,  true,  false },
-  { 4, "Kamera OV5640 SIOD (SCCB Data)",         true,  true,  true,  false },
-  { 5, "Kamera OV5640 SIOC (SCCB Clock)",        true,  true,  true,  false },
-  { 6, "Kamera OV5640 VSYNC",                    true,  true,  true,  false },
-  { 7, "Kamera OV5640 HREF",                     true,  true,  true,  false },
-  { 8, "Kamera OV5640 D2",                       true,  true,  true,  false },
-  { 9, "Kamera OV5640 D1",                       true,  true,  true,  false },
-  {10, "Kamera OV5640 D3",                       true,  true,  true,  false },
-  {11, "Kamera OV5640 D0",                       true,  true,  true,  false },
-  {12, "Kamera OV5640 D4",                       true,  true,  true,  false },
-  {13, "Kamera OV5640 PCLK",                     true,  true,  true,  false },
+  { 4, "Eks-kameraSIOD (SCCB Data)",         true,  true,  true,  false },
+  { 5, "Eks-kameraSIOC (SCCB Clock)",        true,  true,  true,  false },
+  { 6, "Eks-kameraVSYNC",                    true,  true,  true,  false },
+  { 7, "Eks-kameraHREF",                     true,  true,  true,  false },
+  { 8, "Eks-kameraD2",                       true,  true,  true,  false },
+  { 9, "Eks-kameraD1",                       true,  true,  true,  false },
+  {10, "Eks-kameraD3",                       true,  true,  true,  false },
+  {11, "Eks-kameraD0",                       true,  true,  true,  false },
+  {12, "Eks-kameraD4",                       true,  true,  true,  false },
+  {13, "Eks-kameraPCLK",                     true,  true,  true,  false },
   {14, "Mic INMP441 SD (OUTPUT dari mic)",       false, false, false, false },
-  {15, "Kamera OV5640 XCLK",                     true,  true,  true,  false },
-  {16, "Kamera OV5640 D7",                       true,  true,  true,  false },
-  {17, "Kamera OV5640 D6",                       true,  true,  true,  false },
-  {18, "Kamera OV5640 D5",                       true,  true,  true,  false },
+  {15, "Eks-kameraXCLK",                     true,  true,  true,  false },
+  {16, "Eks-kameraD7",                       true,  true,  true,  false },
+  {17, "Eks-kameraD6",                       true,  true,  true,  false },
+  {18, "Eks-kameraD5",                       true,  true,  true,  false },
   {21, "OLED SCL (I2C)",                         true,  true,  true,  false },
   {38, "microSD CLK",                            false, false, false, false },
   {39, "microSD CMD",                            false, false, false, false },
@@ -83,8 +83,8 @@ static const char* yesNo(int v) {
 }
 
 static bool isExternalPullupPin(int pin) {
-  // OLED I2C + SCCB kamera punya resistor pull-up di modulnya.
-  return (pin == 21 || pin == 47 || pin == 4 || pin == 5);
+  // OLED I2C punya resistor pull-up di modulnya.
+  return (pin == 21 || pin == 47);
 }
 
 static void printWiringMap() {

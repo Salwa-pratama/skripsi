@@ -5671,51 +5671,7 @@ pre {
   background: var(--surface-hover, #2a2b3d);
 }
 
-/* Alert Peringatan Distraksi Visual */
-.asisten-live-alert {
-  position: fixed;
-  top: 60px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 9999;
-  padding: 10px 20px;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  animation: slideDown 0.3s ease;
-}
-
-.asisten-live-alert.alert-phone {
-  background: #dc2626;
-  border: 1px solid #f87171;
-  color: #ffffff;
-}
-
-.asisten-live-alert.alert-absent {
-  background: #d97706;
-  border: 1px solid #fbbf24;
-  color: #ffffff;
-}
-
-.alert-content {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.88rem;
-  font-weight: 600;
-}
-
-@keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-}
-
-/* Modal Camera Stream */
+/* Shared Modal (Leaderboard / Badges) */
 .asisten-modal-backdrop {
   position: fixed;
   inset: 0;
@@ -5758,32 +5714,6 @@ pre {
   color: #94a3b8;
   margin-bottom: 15px;
 }
-
-.camera-stream-wrapper {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  background: #11111b;
-  border-radius: 8px;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid #45475a;
-}
-
-.camera-stream-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.stream-error-box {
-  padding: 30px;
-  text-align: center;
-  color: #f87171;
-  font-size: 0.9rem;
-}
-
 
 /* =========================================================================
    GAMIFIKASI MDA BAR & LEADERBOARD / BADGES MODAL

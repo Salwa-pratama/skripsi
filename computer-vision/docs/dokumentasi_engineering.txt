@@ -1,17 +1,53 @@
-Jadi disini adalah server sebagai pemroses algoritmanya , karena jika ditelaah dan dipikir lagi esp 32 tidak cukup kuat
-untuk menjalankan model yang berat , maka dari itu saya memutuskan untuk memroses algoritma tersebut ke dalam web server
-menggunakan library flask python, untuk membagi tugas antara esp_32 dan server dibawah merupakan gambaran alur kerja
-sistemnya
+# Dokumentasi Engineering — Asisten Belajar (Edisi Fine-Tuned SBERT)
 
+## Keputusan Arsitektur Final
 
-ESP-32 --> kirim data stream kamera ov5640 ke web server
+ESP32-S3 tidak lagi menjalankan/mengirim stream kamera. Seluruh fitur
+computer-vision berbasis kamera (COCO-SSD, YOLO, MediaPipe, face/hand
+landmarker, gesture recognizer, SIBI) sudah dihapus dari server dan firmware.
+Pembagian tugas sekarang:
 
-Web server --> memproses data citra berupa stream video dari ESP
+```
+ESP32-S3
+  - OLED SSD1306 128x64 (wajah robot + HUD Pomodoro + marquee jawaban)
+  - Mic INMP441 (rekam pertanyaan WAV 16 kHz mono, maks 8 detik)
+  - Speaker MAX98357A (putar WAV jawaban dari server)
+  - WiFi (upload audio + polling status Pomodoro)
 
-Web server --> mendeteksi gesture gerakan tangan menggunakan media-pipe
+Server FastAPI (computer-vision/)
+  - faster-whisper  : Speech-to-Text Bahasa Indonesia (lokal, CPU)
+  - fine-tuned SBERT: retrieval 303 passage materi Python
+  - Edge-TTS        : suara cowok Indonesia (id-ID-ArdiNeural)
+  - Pomodoro + gamifikasi MDA + MySQL
+```
 
-Tapi sebelumnya ada beberapa masalah yaitu pemrosesan video yang kurang bagus, maka dari itu saya mengakalinya
-untuk memaksimalkan fps pada ESP dan menurunkan kualitas fitur lainnya seperti efek dll, dengan tujuan agar
-mediapipe dapat mendeteksi gesture tangan dengan baik, dan saya menambahkan enchancer agar kualitas stream yang ditangkap
-dari esp jadi lebih mulus dan bagus .
+## Alur Pertanyaan Suara
 
+1. Mic mendeteksi ucapan (peak > 18000), rekaman berhenti setelah hening 1,2 dtk
+   atau maksimal 8 dtk.
+2. ESP mengirim `POST /api/ai/voice` (multipart WAV).
+3. Server mentranskripsi audio dengan faster-whisper.
+4. Teks pertanyaan di-encode model `finetuned_sbert`, lalu dicocokkan dengan
+   `corpus_embeddings_finetuned.npy` (cosine similarity).
+5. Jika skor >= 0.35, jawaban disusun dari chapter/episode/concept/passage
+   teratas. Jika di bawah threshold, robot menolak dengan sopan.
+6. Jawaban disintesis menjadi WAV 16 kHz stereo 16-bit (Edge-TTS + pydub).
+7. ESP memutar WAV ke speaker dan menampilkan `display_text` di OLED dengan
+   marquee kanan -> kiri.
+
+## Artefak Model
+
+```
+computer-vision/model/output_artifacts/
+  finetuned_sbert/                    # model Sentence-Transformer
+  corpus_metadata.json                # 303 passage materi
+  corpus_embeddings_finetuned.npy     # 303 x 384
+```
+
+## Catatan Historis
+
+Eksperimen awal memakai kamera OV5640 + MediaPipe/COCO-SSD untuk mendeteksi
+distraksi (HP, absen, menunduk). Pendekatan itu dihentikan karena kualitas
+citra ESP32-S3 terbatas, deteksi menunduk tidak relevan untuk belajar dengan
+buku, dan fokus penelitian berpindah ke asisten tanya-jawab berbasis
+Sentence-Transformer fine-tuned.

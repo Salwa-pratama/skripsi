@@ -60,7 +60,11 @@ bool playWavFromUrl(const char* url); // Streaming suara AI (Bahasa Indonesia 16
 
 // Input Suara & Voice Trigger (Mikrofon INMP441)
 int readMicPeak();
-bool detectVoiceTrigger(int threshold = 1800);
+bool detectVoiceTrigger(int threshold = 1200);
+
+// Baca sample mikrofon INMP441 yang sudah dikonversi ke PCM 16-bit mono.
+// Dipakai oleh voice_client.cpp untuk merekam pertanyaan user menjadi WAV.
+size_t readMicSamples(int16_t* out, size_t maxSamples, uint32_t timeoutMs = 60);
 
 // Mode Diagnostik & Pengujian Audio Lengkap (Mode 5)
 void setupAudioTest();

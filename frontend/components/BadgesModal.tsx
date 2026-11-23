@@ -42,7 +42,7 @@ const ALL_BADGES: BadgeItem[] = [
     name: "Mochi Synchronizer",
     icon: "🤖",
     description: "Menghubungkan asisten fisik IoT ESP32-S3 dengan web pembelajaran.",
-    criteria: "Terhubung ke stream kamera & endpoint OLED",
+    criteria: "Terhubung ke endpoint OLED & asisten suara ESP32-S3",
   },
 ];
 

@@ -91,6 +91,11 @@ void initI2SMicrophone(int sampleRate, bool rightChannel) {
     return; // Sudah siap dalam mode mikrofon dengan sample rate & channel sama
   }
 
+  // Nonaktifkan amplifier MAX98357A (SD = LOW) saat merekam dari mic
+  // agar tidak ada arus switching / kebocoran suara ke mikrofon
+  pinMode(I2S_SPK_SD_PIN, OUTPUT);
+  digitalWrite(I2S_SPK_SD_PIN, LOW);
+
   if (i2sInitialized) {
     i2s_driver_uninstall(I2S_PORT);
     i2sInitialized = false;
@@ -268,7 +273,7 @@ int readMicPeak() {
 
   int32_t rawSamples[128];
   size_t bytesRead = 0;
-  esp_err_t err = i2s_read(I2S_PORT, rawSamples, sizeof(rawSamples), &bytesRead, 15 / portTICK_PERIOD_MS);
+  esp_err_t err = i2s_read(I2S_PORT, rawSamples, sizeof(rawSamples), &bytesRead, pdMS_TO_TICKS(40));
 
   int32_t peak = 0;
   if (err == ESP_OK && bytesRead > 0) {
@@ -286,6 +291,40 @@ int readMicPeak() {
 bool detectVoiceTrigger(int threshold) {
   int peak = readMicPeak();
   return (peak >= threshold);
+}
+
+// =========================================================================
+// BACA SAMPLE MIKROFON UNTUK PEREKAMAN WAV (PCM 16-bit MONO)
+// -------------------------------------------------------------------------
+// INMP441 mengirim 24-bit di dalam slot 32-bit. Nilai >> 14 dipakai agar
+// skalanya konsisten dengan readMicPeak() (threshold VAD 18000), lalu
+// di-clamp ke int16 supaya aman ditulis sebagai PCM WAV.
+// =========================================================================
+size_t readMicSamples(int16_t* out, size_t maxSamples, uint32_t timeoutMs) {
+  if (!out || maxSamples == 0) return 0;
+
+  initI2SMicrophone(16000);
+
+  static int32_t rawSamples[512];
+  size_t toRead = (maxSamples > 512) ? 512 : maxSamples;
+  size_t bytesRead = 0;
+
+  esp_err_t err = i2s_read(
+    I2S_PORT,
+    rawSamples,
+    toRead * sizeof(int32_t),
+    &bytesRead,
+    (timeoutMs == 0 ? 1 : timeoutMs) / portTICK_PERIOD_MS
+  );
+
+  if (err != ESP_OK || bytesRead == 0) return 0;
+
+  size_t count = bytesRead / sizeof(int32_t);
+  for (size_t i = 0; i < count; i++) {
+    int32_t val = rawSamples[i] >> 14;
+    out[i] = (int16_t)constrain(val, -32768, 32767);
+  }
+  return count;
 }
 
 // =========================================================================

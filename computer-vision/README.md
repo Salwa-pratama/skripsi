@@ -1,54 +1,94 @@
-Hallo hari ini saya akan belajar mengenai computer vision menggunakan mobilenet-SSD, dan media pipe
+# Asisten Belajar AI — FastAPI Server
 
+Server ini menjalankan **model Sentence-Transformer hasil fine-tuning** untuk
+menjawab pertanyaan belajar Python dari robot ESP32-S3. Seluruh fitur kamera /
+computer-vision (COCO-SSD, YOLO, MediaPipe, SIBI) sudah **dihapus**.
 
-
-Dibawah ini merupakan model MobileNetSSD yang saya pakai
-``` bash
-# MobileNetSSD_deploy.prototxt
-wget https://raw.githubusercontent.com/chuanqi305/MobileNet-SSD/master/voc/MobileNetSSD_deploy.prototxt
-
-# MobileNetSSD_deploy.caffemodel
-wget -O MobileNetSSD_deploy.caffemodel https://raw.githubusercontent.com/djmv/MobilNet_SSD_opencv/master/MobileNetSSD_deploy.caffemodel
+## Alur Sistem
 
 ```
-
-Dan dibawah ini merupakan model COCO-SSD yang saya pakai
-``` bash
-wget http://download.tensorflow.org/models/object_detection/ssd_mobilenet_v2_coco_2018_03_29.tar.gz
-tar -xvf ssd_mobilenet_v2_coco_2018_03_29.tar.gz
-# extraksi jika menggunakan containerisasi
-tar --no-same-owner -xvf ssd_mobilenet_v2_coco_2018_03_29.tar.gz
-wget https://raw.githubusercontent.com/opencv/opencv_extra/master/testdata/dnn/ssd_mobilenet_v2_coco_2018_03_29.pbtxt
-
+Mic INMP441 (ESP32) -> rekam WAV 16 kHz
+        -> POST /api/ai/voice
+        -> faster-whisper (STT Bahasa Indonesia)
+        -> fine-tuned SBERT retrieval (303 passage materi)
+        -> jawaban teks
+        -> Edge-TTS id-ID-ArdiNeural (suara cowok)
+        -> WAV 16 kHz stereo -> speaker MAX98357A
+        -> teks jawaban tampil di OLED (marquee kanan -> kiri)
 ```
 
+## Artefak Model
 
-1. Download kategori tertentu 
+Semua artefak berada di `model/output_artifacts/`:
 
-- Untuk hanya abjad saja 
+- `finetuned_sbert/` — model fine-tuned (`paraphrase-multilingual-MiniLM-L12-v2`)
+- `corpus_metadata.json` — 303 passage materi (bab, episode, konsep, teks)
+- `corpus_embeddings_finetuned.npy` — matriks embedding 303 × 384
 
-python3 scrape_sibi.py --category abjad
+## Endpoint Utama
 
+| Method | Endpoint | Fungsi |
+|--------|----------|--------|
+| POST | `/api/ai/voice` | Upload WAV pertanyaan → STT → retrieval → TTS |
+| POST | `/api/ai/ask` | Pertanyaan teks → retrieval → TTS |
+| GET | `/api/ai/audio/{file}` | Streaming MP3 / WAV 16 kHz untuk ESP32 |
+| POST/GET | `/api/ai/voice/config` | Atur / lihat suara (`cowok` / `cewek`) |
+| GET | `/api/esp/pomodoro` | Status ringkas Pomodoro untuk OLED |
+| GET | `/api/health` | Status server + kesiapan model |
 
-- Hanya angka 
+Contoh uji teks:
 
-python3 scrape_sibi.py --category angka
+```bash
+curl -X POST http://localhost:5000/api/ai/ask \
+  -H "Content-Type: application/json" \
+  -d '{"prompt":"Gimana cara membuat fungsi dengan parameter default?"}'
+```
 
+Contoh uji suara:
 
-- Hanya Kata Dasar Tertentu (Misal awalan huruf A dan B)
+```bash
+curl -X POST http://localhost:5000/api/ai/voice \
+  -F "audio=@pertanyaan.wav" \
+  -F "voice=cowok"
+```
 
-python3 scrape_sibi.py --category kata_dasar --letters ab
+## Instalasi
 
+```bash
+cd computer-vision
+python3 -m venv .venv
+source .venv/bin/activate
 
-2. Mengumpulkan Metadata Dulu
+# Opsional: torch CPU-only agar tidak mengunduh build CUDA
+pip install torch --index-url https://download.pytorch.org/whl/cpu
 
-python3 scrape_sibi.py --metadata-only
+pip install -r requirements.txt
+```
 
-3. Download Semua Data (Abjad, Angka, Imbuhan, & Kata Dasar A-Z)
+Prasyarat sistem:
 
-python3 scrape_sibi.py --category all
+- `ffmpeg` terpasang (untuk konversi MP3 → WAV via `pydub`).
+- Request suara pertama akan mengunduh model faster-whisper (`small`, ±500 MB).
+  Jika ingin offline penuh, unduh model sekali lalu set `WHISPER_MODEL_SIZE`
+  ke path lokal.
 
-4. Ekstrasi Otomatis Frame Citra 
+Konfigurasi ada di `.env` (lihat `.env.example`).
 
-python3 scrape_sibi.py --category kata_dasar --extract-frames --fps 5
+## Menjalankan
 
+```bash
+python app.py
+# atau
+uvicorn server:app --host 0.0.0.0 --port 5000
+```
+
+Buka dokumentasi interaktif: <http://localhost:5000/docs>
+
+## Catatan
+
+- Model fine-tuned bersifat **retrieval**, bukan generator. Jawaban disusun dari
+  `chapter_title`, `episode_title`, `concept`, dan `passage_text` teratas.
+- Jika cosine similarity < `RETRIEVAL_MIN_SCORE` (default `0.35`), robot menolak
+  dengan sopan karena pertanyaan dianggap di luar kurikulum.
+- Database MySQL bersifat opsional untuk endpoint gamifikasi/Pomodoro. Endpoint
+  AI tetap berjalan tanpa database.
