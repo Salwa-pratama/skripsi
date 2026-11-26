@@ -12,6 +12,7 @@ Cara Penggunaan:
    python uji_chatbot.py
 """
 
+import os
 import sys
 import json
 import torch
@@ -19,6 +20,8 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 from sentence_transformers import SentenceTransformer, util
+
+from pemandu_ucapan import PemanduUcapan
 
 # Direktori Artefak
 CURRENT_DIR = Path(__file__).resolve().parent
@@ -52,18 +55,21 @@ corpus_embeddings = torch.tensor(np.load(EMBEDDINGS_FILE))
 print(f"[BERHASIL] Model tersimpan ({corpus_embeddings.shape[0]} passages) siap digunakan!")
 print("=" * 70)
 
+# 4. Generator ucapan Sokratik (template instan; bisa di-upgrade ke Qwen via env PEMANDU_BACKEND=qwen)
+pemandu = PemanduUcapan(backend=os.environ.get("PEMANDU_BACKEND", "template"))
+
 def tanya_chatbot(query: str, top_k: int = 3):
     if not query.strip():
         return
-        
+
     q_emb = model.encode(query, convert_to_tensor=True)
     cos_scores = util.cos_sim(q_emb, corpus_embeddings)[0]
     top_results = torch.topk(cos_scores, k=min(top_k, len(df_corpus)))
-    
+
     print("\n" + "=" * 70)
     print(f"🔍 PERTANYAAN: \"{query}\"")
     print("=" * 70)
-    
+
     top_doc = None
     for idx, (score, doc_idx) in enumerate(zip(top_results.values, top_results.indices)):
         doc = df_corpus.iloc[int(doc_idx)]
@@ -75,15 +81,11 @@ def tanya_chatbot(query: str, top_k: int = 3):
         print(f"  • Konsep  : {doc['concept']}")
         print(f"  • Cuplikan: \"{doc['passage_text'][:120]}...\"")
         print("-" * 70)
-        
+
     # Format narasi Sokratik untuk ESP32 Audio TTS
-    speech = (
-        f"Halo pembelajar! Pertanyaanmu berkaitan dengan {top_doc['chapter_title']}, "
-        f"khususnya pada {top_doc['episode_title']}. "
-        f"Ingat kembali konsep: {top_doc['concept']}. "
-        f"Cobalah bereksperimen di editor kode tanpa melihat contekan!"
-    )
-    print("🔊 RESPONS SUARA SOKRATIK (UNTUK ESP32 TTS):")
+    hasil = pemandu.buat_ucapan(query, top_doc, skor=float(top_results.values[0]))
+    speech = hasil["speech"]
+    print(f"🔊 RESPONS SUARA SOKRATIK (UNTUK ESP32 TTS) — ~{hasil['estimasi_detik']} detik:")
     print(f"\"{speech}\"")
     print("=" * 70 + "\n")
 

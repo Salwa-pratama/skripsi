@@ -1,0 +1,32 @@
+# =========================================================================
+# Asisten Belajar AI - Server dependencies
+# =========================================================================
+# Catatan: untuk instalasi CPU-only yang lebih ringan, pasang torch lebih
+# dulu dari index CPU resmi:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# =========================================================================
+fastapi
+uvicorn[standard]
+python-multipart
+python-dotenv
+
+# Retrieval model (hasil fine-tuning)
+sentence-transformers
+torch
+numpy
+pandas
+
+# Speech-to-Text lokal
+faster-whisper
+
+# Text-to-Speech Bahasa Indonesia
+edge-tts>=7.0.0
+pydub
+
+# Database & API
+sqlalchemy
+pymysql
+cryptography
+
+# System dependency (wajib terpasang di OS):
+#   ffmpeg  -> dibutuhkan pydub untuk konversi MP3 ke WAV 16 kHz

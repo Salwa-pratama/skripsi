@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Rekap Engineering & Master Guide - Asisten Belajar ESP32-S3</title>
+<style>
+  @page {
+    size: A4;
+    margin: 12mm 12mm 12mm 12mm;
+  }
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+    color: #1e293b;
+    line-height: 1.45;
+    font-size: 9pt;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .title-area h1 {
+    font-size: 16pt;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0 0 4px 0;
+  }
+  .title-area p {
+    font-size: 9.5pt;
+    color: #64748b;
+    margin: 0;
+  }
+  .meta-tag {
+    text-align: right;
+    font-size: 8pt;
+    color: #475569;
+    font-weight: 600;
+  }
+  h2 {
+    font-size: 11.5pt;
+    color: #1e3a8a;
+    border-left: 4px solid #2563eb;
+    padding-left: 8px;
+    margin-top: 14px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  h3 {
+    font-size: 9.5pt;
+    color: #0f172a;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+  p {
+    margin: 0 0 6px 0;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 8pt;
+  }
+  th, td {
+    border: 1px solid #cbd5e1;
+    padding: 4px 6px;
+    text-align: left;
+    vertical-align: middle;
+  }
+  th {
+    background-color: #f1f5f9;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  tr:nth-child(even) td {
+    background-color: #f8fafc;
+  }
+  .badge {
+    display: inline-block;
+    padding: 1px 5px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    border-radius: 3px;
+  }
+  .badge-danger { background-color: #fee2e2; color: #991b1b; }
+  .badge-success { background-color: #dcfce7; color: #166534; }
+  .badge-info { background-color: #e0f2fe; color: #0369a1; }
+  .badge-warn { background-color: #fef3c7; color: #92400e; }
+  
+  .box-callout {
+    background-color: #eff6ff;
+    border-left: 4px solid #3b82f6;
+    padding: 8px 10px;
+    border-radius: 0 5px 5px 0;
+    margin: 8px 0;
+    font-size: 8.5pt;
+  }
+  .box-danger {
+    background-color: #fef2f2;
+    border-left: 4px solid #ef4444;
+    padding: 8px 10px;
+    border-radius: 0 5px 5px 0;
+    margin: 8px 0;
+    font-size: 8.5pt;
+  }
+  .diagram-box {
+    font-family: 'Consolas', 'Courier New', monospace;
+    background-color: #0f172a;
+    color: #38bdf8;
+    padding: 8px;
+    border-radius: 5px;
+    font-size: 7.5pt;
+    line-height: 1.3;
+    margin: 6px 0;
+    overflow-x: auto;
+  }
+  .page-break {
+    page-break-before: always;
+  }
+  .footer {
+    margin-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 4px;
+    font-size: 7.5pt;
+    color: #94a3b8;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<div style="border:2px solid #dc2626;background:#fef2f2;color:#991b1b;padding:10px 14px;border-radius:8px;font-family:'Segoe UI',Arial,sans-serif;font-size:10pt;margin-bottom:14px;">
+<b>CATATAN ARSIP:</b> Dokumen ini ditulis saat sistem masih memakai kamera OV5640 dan computer-vision.
+Pada implementasi final, kamera dinonaktifkan total dan sistem memakai mic INMP441 + fine-tuned SBERT + Edge-TTS.
+Lihat <code>README.md</code> untuk arsitektur terbaru.
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="title-area">
+    <h1>REKAPITULASI ENGINEERING & MASTER WIRING</h1>
+    <p>Projek Skripsi: Asisten Belajar Interaktif Pomodoro Berbasis AI & ESP32-S3</p>
+  </div>
+  <div class="meta-tag">
+    Tanggal: 11 November 2026<br>
+    Hardware: Freenove ESP32-S3 WROOM (N8R8)
+  </div>
+</div>
+
+<!-- SECTION 1 -->
+<h2>1. Arsitektur Sistem Asisten Belajar: End-to-End Conversational AI</h2>
+<p>
+  Sistem dirancang menggunakan pendekatan <b>Edge-to-Cloud Offloading</b>. ESP32-S3 bertindak sebagai perangkat antarmuka fisik cerdas (<i>Voice & Visual Interface</i>), sedangkan Server Flask di laptop (<code>10.38.39.155:5000</code>) bertindak sebagai pusat komputasi berat AI.
+</p>
+
+<div class="diagram-box">
+[PENGGUNA BERBICARA] 
+         │
+         ▼ (Gelombang Suara Akustik)
+[MIC INMP441] ────(I2S Digital 16kHz)────▶ [ESP32-S3 WROOM]
+                                                   │
+                                                   ▼ (Streaming Paket Audio via Wi-Fi)
+                                          [SERVER FLASK (Laptop 10.38.39.155)]
+                                                   │
+     ┌─────────────────────────────────────────────┴─────────────────────────────────────────────┐
+     ▼                                             ▼                                             ▼
+[1. SPEECH-TO-TEXT / STT]                 [2. DASHBOARD WEB]                           [3. GEMINI AI ENGINE]
+Mengubah audio PCM jadi teks:             Teks pertanyaan langsung muncul di           Memproses konteks percakapan:
+"Mochi, tips fokus belajar?"              layar web Pomodoro secara otomatis           "Gunakan teknik 25 menit fokus..."
+     │                                                                                           │
+     └─────────────────────────────────────────────┬─────────────────────────────────────────────┘
+                                                   ▼
+                                          [4. TEXT-TO-SPEECH / TTS]
+                                          Mengubah teks jawaban Gemini menjadi audio MP3 suara manusia alami
+                                                   │
+                                                   ▼ (HTTP Chunk Audio Streaming via Wi-Fi)
+[SPEAKER 8Ω 1W] ◀──(Analog Audio)── [MAX98357A AMP] ◀──(I2S TX)── [ESP32-S3] ◀──┘
+</div>
+
+<div class="box-callout">
+  <b>Mengapa Tidak Memerlukan Modul MicroSD Tambahan?</b><br>
+  Semua file musik pengantar belajar (lo-fi), suara alarm Pomodoro, dan audio balasan Gemini disimpan langsung di harddisk laptop pada folder server Flask. ESP32 memanfaatkan teknik <b>HTTP Audio Streaming</b> melalui Wi-Fi dan langsung mengalirkan data audio ke buffer I2S amplifier MAX98357A. Hal ini memangkas biaya komponen, menghemat GPIO, dan membuat sistem jauh lebih andal.
+</div>
+
+<!-- SECTION 2 -->
+<h2>2. Peta Alokasi Lengkap Pin ESP32-S3 (20 Pin Kiri & Kanan)</h2>
+<p>Orientasi Fisik: <b>Antena & Kamera di ATAS</b>, <b>Dua Port USB-C di BAWAH</b>.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th style="width: 5%;">No</th>
+      <th style="width: 14%;">Deret KIRI (J1)</th>
+      <th style="width: 31%;">Alokasi & Fungsi Modul</th>
+      <th style="width: 5%;">No</th>
+      <th style="width: 14%;">Deret KANAN (J2)</th>
+      <th style="width: 31%;">Alokasi & Fungsi Modul</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr style="background-color: #dbeafe; font-weight: bold;">
+      <td>1</td><td>3V3</td><td>POWER VCC (OLED, INMP441)</td>
+      <td>1</td><td>TX (GPIO 43)</td><td>Serial Monitor Console (CH343 USB)</td>
+    </tr>
+    <tr><td>2</td><td>RST</td><td>Reset Board ESP32</td><td>2</td><td>RX (GPIO 44)</td><td>Serial Monitor Console (CH343 USB)</td></tr>
+    <tr><td>3</td><td>GPIO 4</td><td>Kamera OV5640: SIOD (SCCB SDA)</td><td style="background-color: #dcfce7; font-weight: bold;">3</td><td style="background-color: #dcfce7; font-weight: bold;">GPIO 1</td><td style="background-color: #dcfce7; font-weight: bold;">SPEAKER MAX98357A: Pin DIN (I2S TX)</td></tr>
+    <tr><td>4</td><td>GPIO 5</td><td>Kamera OV5640: SIOC (SCCB SCL)</td><td style="background-color: #fee2e2; font-weight: bold;">4</td><td style="background-color: #fee2e2; font-weight: bold;">GPIO 2</td><td style="background-color: #fee2e2; font-weight: bold;">LED ONBOARD (JANGAN untuk audio)</td></tr>
+    <tr><td>5</td><td>GPIO 6</td><td>Kamera OV5640: CSI VSYNC</td><td style="background-color: #fef08a; font-weight: bold;">5</td><td style="background-color: #fef08a; font-weight: bold;">GPIO 42</td><td style="background-color: #fef08a; font-weight: bold;">I2S BCLK: Shared (Amp BCLK & Mic SCK)</td></tr>
+    <tr><td>6</td><td>GPIO 7</td><td>Kamera OV5640: CSI HREF</td><td style="background-color: #fef08a; font-weight: bold;">6</td><td style="background-color: #fef08a; font-weight: bold;">GPIO 41</td><td style="background-color: #fef08a; font-weight: bold;">I2S WS: Shared (Amp LRC & Mic WS)</td></tr>
+    <tr><td>7</td><td>GPIO 15</td><td>Kamera OV5640: XCLK (Clock 20MHz)</td><td>7</td><td>GPIO 40</td><td>MicroSD Onboard: Pin D0</td></tr>
+    <tr><td>8</td><td>GPIO 16</td><td>Kamera OV5640: Pixel Data Y9 (MSB)</td><td>8</td><td>GPIO 39</td><td>MicroSD Onboard: Pin CLK</td></tr>
+    <tr><td>9</td><td>GPIO 17</td><td>Kamera OV5640: Pixel Data Y8</td><td>9</td><td>GPIO 38</td><td>MicroSD Onboard: Pin CMD</td></tr>
+    <tr><td>10</td><td>GPIO 18</td><td>Kamera OV5640: Pixel Data Y7</td><td style="background-color: #fee2e2;">10</td><td style="background-color: #fee2e2;">GPIO 37</td><td style="background-color: #fee2e2;"><span class="badge badge-danger">TERKUNCI</span> Octal PSRAM (SPIDQS)</td></tr>
+    <tr><td>11</td><td>GPIO 8</td><td>Kamera OV5640: Pixel Data Y4</td><td style="background-color: #fee2e2;">11</td><td style="background-color: #fee2e2;">GPIO 36</td><td style="background-color: #fee2e2;"><span class="badge badge-danger">TERKUNCI</span> Octal PSRAM (SPIIO7)</td></tr>
+    <tr><td>12</td><td>GPIO 3</td><td>Strapping Pin (JTAG Selector)</td><td style="background-color: #fee2e2;">12</td><td style="background-color: #fee2e2;">GPIO 35</td><td style="background-color: #fee2e2;"><span class="badge badge-danger">TERKUNCI</span> Octal PSRAM (SPIIO6)</td></tr>
+    <tr><td>13</td><td>GPIO 46</td><td>Strapping Pin (Boot ROM Log)</td><td>13</td><td>GPIO 0</td><td>BOOT Button (Strapping Low saat flash)</td></tr>
+    <tr><td>14</td><td>GPIO 9</td><td>Kamera OV5640: Pixel Data Y3</td><td>14</td><td>GPIO 45</td><td>Strapping Pin (VDD_SPI Power)</td></tr>
+    <tr><td>15</td><td>GPIO 10</td><td>Kamera OV5640: Pixel Data Y5</td><td>15</td><td>GPIO 48</td><td>Onboard RGB WS2812 Smart LED</td></tr>
+    <tr><td>16</td><td>GPIO 11</td><td>Kamera OV5640: Pixel Data Y2</td><td style="background-color: #dbeafe; font-weight: bold;">16</td><td style="background-color: #dbeafe; font-weight: bold;">GPIO 47</td><td style="background-color: #dbeafe; font-weight: bold;">OLED DISPLAY: SDA (I2C Hardware)</td></tr>
+    <tr><td>17</td><td>GPIO 12</td><td>Kamera OV5640: Pixel Data Y6</td><td style="background-color: #dbeafe; font-weight: bold;">17</td><td style="background-color: #dbeafe; font-weight: bold;">GPIO 21</td><td style="background-color: #dbeafe; font-weight: bold;">OLED DISPLAY: SCL (I2C Hardware)</td></tr>
+    <tr><td>18</td><td>GPIO 13</td><td>Kamera OV5640: PCLK (Pixel Clock)</td><td>18</td><td>GPIO 20</td><td>USB-OTG Native D+</td></tr>
+    <tr style="background-color: #fef08a; font-weight: bold;">
+      <td>19</td><td>GPIO 14</td><td>MIC INMP441: Pin SD (I2S RX Data)</td>
+      <td>19</td><td>GPIO 19</td><td>USB-OTG Native D-</td>
+    </tr>
+    <tr style="background-color: #dbeafe; font-weight: bold;">
+      <td>20</td><td>5V</td><td>POWER 5V (MAX98357A VIN)</td>
+      <td>20</td><td>GND</td><td>COMMON GROUND (Semua Modul)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="page-break"></div>
+
+<!-- SECTION 3 -->
+<h2>3. Panduan Pengkabelan (Wiring) Antarmuka Perangkat Keras</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nama Modul</th>
+      <th>Pin Modul</th>
+      <th>Tujuan Pin ESP32 / Breadboard</th>
+      <th>Keterangan Teknis & Aturan Keamanan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td rowspan="4"><b>OLED 0.96"<br>(SSD1306/SH1106)</b></td>
+      <td><b>VCC</b></td><td>Rel <b>3.3V</b> (Kiri Pin 1)</td><td>Gunakan 3.3V agar suhu display tetap dingin dan awet.</td>
+    </tr>
+    <tr><td><b>GND</b></td><td>Rel <b>GND</b> (Kanan Pin 20)</td><td>Ground bersama sistem.</td>
+    </tr>
+    <tr><td><b>SDA</b></td><td><b>GPIO 47</b> (Kanan Pin 16)</td><td>Jalur Serial Data I2C Hardware (Wire).</td>
+    </tr>
+    <tr><td><b>SCL</b></td><td><b>GPIO 21</b> (Kanan Pin 17)</td><td>Jalur Serial Clock I2C Hardware (Wire).</td>
+    </tr>
+
+    <tr style="background-color: #f8fafc;">
+      <td rowspan="6"><b>Mikrofon Digital<br>(INMP441 MEMS)</b></td>
+      <td><b>VDD</b></td><td>Rel <b>3.3V</b></td><td><span class="badge badge-danger">FATAL</span> JANGAN sambungkan ke 5V! Sensor langsung rusak permanen.</td>
+    </tr>
+    <tr><td><b>GND</b></td><td>Rel <b>GND</b></td><td>Ground bersama.</td>
+    </tr>
+    <tr><td><b>L/R</b></td><td>Rel <b>GND</b></td><td>L/R disambung ke GND = Mode Mono Left-Channel.</td>
+    </tr>
+    <tr><td><b>SCK</b></td><td><b>GPIO 42</b> (Kanan Pin 5)</td><td>Serial Clock I2S (Paralel bersama pin BCLK Amplifier).</td>
+    </tr>
+    <tr><td><b>WS</b></td><td><b>GPIO 41</b> (Kanan Pin 6)</td><td>Word Select / Left-Right Clock (Paralel bersama pin LRC Amplifier).</td>
+    </tr>
+    <tr><td><b>SD</b></td><td><b>GPIO 14</b> (Kiri Pin 19)</td><td>Serial Data Audio RX dari mikrofon ke ESP32.</td>
+    </tr>
+
+    <tr style="background-color: #f8fafc;">
+      <td rowspan="7"><b>Amplifier Board<br>(MAX98357A)</b></td>
+      <td><b>VIN</b></td><td>Rel <b>5V</b> (Kiri Pin 20)</td><td>Wajib suplai 5V dari USB agar tenaga audio 3.2W keluar maksimal & ESP tidak brownout.</td>
+    </tr>
+    <tr style="background-color: #f8fafc;"><td><b>GND</b></td><td>Rel <b>GND</b></td><td>Ground bersama.</td>
+    </tr>
+    <tr style="background-color: #f8fafc;"><td><b>BCLK</b></td><td><b>GPIO 42</b> (Kanan Pin 5)</td><td>Bit Clock I2S (Paralel bersama pin SCK Mikrofon).</td>
+    </tr>
+    <tr style="background-color: #f8fafc;"><td><b>LRC</b></td><td><b>GPIO 41</b> (Kanan Pin 6)</td><td>Left/Right Clock I2S (Paralel bersama pin WS Mikrofon).</td>
+    </tr>
+    <tr style="background-color: #f8fafc;"><td><b>DIN</b></td><td><b>GPIO 1</b> (Kanan Pin 3)</td><td>Digital Data Audio TX dari ESP32 ke Amplifier. <b>JANGAN GPIO 2</b> (pin LED onboard).</td>
+    </tr>
+    <tr style="background-color: #f8fafc;"><td><b>GAIN</b></td><td><i>Dibiarkan Terbuka (NC)</i></td><td>Gain default 9 dB (sangat aman dan jernih untuk speaker 1 Watt).</td>
+    </tr>
+    <tr style="background-color: #f8fafc;"><td><b>SD</b></td><td><i>Dibiarkan Terbuka (NC)</i></td><td>Shutdown Pin: dibiarkan open berarti amplifier selalu aktif.</td>
+    </tr>
+
+    <tr>
+      <td rowspan="2"><b>Speaker Universal<br>(8 Ohm 1 Watt)</b></td>
+      <td><b>Kabel Merah</b></td><td>Terminal <b>(+)</b> MAX98357A</td><td rowspan="2">Kabel serabut wajib dikencangkan rapat menggunakan sekrup terminal baut.<br>Pastikan serabut kabel (+) dan (-) tidak saling bersentuhan (anti-korslet).</td>
+    </tr>
+    <tr><td><b>Kabel Hitam</b></td><td>Terminal <b>(-)</b> MAX98357A</td></tr>
+  </tbody>
+</table>
+
+<!-- SECTION 4 -->
+<h2>4. Rekapitulasi Masalah Hardware & Analisa Akar Penyebab</h2>
+
+<h3>A. Masalah Kabel Sambungan Potong-Solasi vs Bus Sinyal I2C / I2S</h3>
+<p>
+  <b>Pertanyaan Mahasiswa:</b> <i>"Apakah potong isolasi kabel jumper bisa menyebabkan aliran data ke OLED tidak maksimal? Padahal dulu pernah nyala di varian putih sebelum ganti ke biru-kuning?"</i>
+</p>
+<div class="box-danger">
+  <b>JAWABAN ILMIAH TEKNIK ELEKTRO: YA, SANGAT BERPENGARUH FATAL!</b>
+  <ol style="margin: 4px 0 0 15px; padding: 0;">
+    <li><b>Resistansi Kontak & Lapisan Oksidasi:</b> Kabel jumper yang dipotong dan dililit manual tanpa solder hanya mengandalkan tekanan mekanis solasi. Tembaga terpapar udara membentuk lapisan tembaga oksida ($CuO$) yang bersifat resistif. Hambatan kontak melonjak dari &lt;0.1 Ω menjadi puluhan Ohm.</li>
+    <li><b>Degradasi Integritas Sinyal I2C (100 kHz):</b> Sinyal I2C adalah tipe <i>Open-Drain</i> yang bergantung pada resistor pull-up untuk menarik tegangan ke HIGH. Kapasitansi parasitik dan hambatan dari lilitan solasi membuat kurva gelombang kotak berubah menjadi landai (cacat bentuk gelombang). Tegangan sinyal ACK (Acknowledge) gagal turun di bawah batas aman $V_{IL}$ (0.99V), sehingga ESP32 membaca <b>NACK (Error code 2)</b>.</li>
+    <li><b>Mengapa Dulu Bisa Menyala di OLED Putih?</b>
+      Saat menggunakan OLED putih, posisi fisik kabel lilitan solasi saat itu masih memiliki titik kontak tembaga yang kebetulan rapat. Begitu OLED dicabut dan diganti ke modul biru-kuning, <b>kabel jumper tertekuk dan tertarik secara mekanis</b>. Tekukan tersebut menggeser mikrokontak tembaga di dalam solasi dan membuatnya renggang (*intermittent open-circuit*).</li>
+    <li><b>Faktor IC Driver OLED Pasaran:</b> Sebagian modul biru-kuning di toko online menggunakan IC <b>SH1106</b> atau <b>SSD1315</b>, bukan SSD1306 asli, sehingga membutuhkan instruksi inisialisasi register yang berbeda.</li>
+  </ol>
+</div>
+
+<h3>B. Masalah Mikrofon INMP441 Selalu Menghasilkan Nilai 0 / Peak 1</h3>
+<p>
+  <b>Akar Masalah:</b> Protokol I2S bekerja pada frekuensi clock sangat tinggi (~1 MHz). Sinyal frekuensi tinggi memiliki efek kulit (<i>skin effect</i>) dan rentan terhadap celah udara mikroskopis. Pin header yang tidak disolder menyebabkan pulsa clock SCK/WS hilang di tengah jalan, sehingga ESP32 hanya membaca noise lantai dasar (0/1 bit).
+</p>
+
+<h3>C. Masalah Speaker MAX98357A & Lampu Merah ESP32 Berkedip</h3>
+<p>
+  <b>Gejala:</b> Speaker tidak berbunyi, dan lampu indikator ESP32 berkedip merah saat mode pemutaran musik diaktifkan.<br>
+  <b>Akar Masalah:</b> Kabel serabut speaker universal hanya diselipkan ke terminal tanpa dikencangkan obeng. Jarak antara terminal (+) dan (-) pada board MAX98357A sangat sempit (~2.5 mm). Serabut tembaga halus saling bersentuhan sehingga terjadi <b>Korsleting Output Class-D</b>. Hal ini memicu sirkuit proteksi arus lebih (<i>Over-Current Protection / OCP</i>) dan lonjakan arus balik yang membuat regulator ESP32 drop seketika.
+</p>
+
+<h3>D. Suara Kemresek &amp; LED Onboard Menyala Mengikuti Irama</h3>
+<p>
+  <b>Gejala:</b> Lagu 510-ALIVE pecah/kemresek, dan LED kecil di board menyala atau berkedip mengikuti data audio.<br>
+  <b>Akar Masalah:</b> GPIO 2 pada board Freenove ESP32-S3 WROOM terhubung ke <b>LED onboard</b> melalui resistor.
+  Saat GPIO 2 dipakai sebagai <b>I2S DIN</b> MAX98357A, level HIGH sinyal audio dijepit oleh tegangan maju LED
+  (sekitar 2V). MAX98357A yang diberi VIN 5V membutuhkan level logika HIGH yang lebih tinggi, sehingga sebagian bit
+  terbaca salah &rarr; suara kemresek. Arus data audio juga membuat LED berkedip.<br>
+  <b>Solusi:</b> Pindahkan jumper <b>DIN MAX98357A dari GPIO 2 ke GPIO 1</b> (Deret Kanan Pin 3), lalu flash ulang firmware.
+</p>
+
+<!-- SECTION 5 -->
+<h2>5. Status Rekapitulasi Penggunaan GPIO Board ESP32-S3</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Kategori</th>
+      <th>Daftar Pin GPIO</th>
+      <th>Status Pemanfaatan dalam Skripsi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><b>Modul Kamera OV5640</b></td>
+      <td>GPIO 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18</td>
+      <td><span class="badge badge-info">14 PIN TERPAKAI</span> Berjalan sempurna pada streaming web server.</td>
+    </tr>
+    <tr>
+      <td><b>Modul OLED Display</b></td>
+      <td>GPIO 47 (SDA), GPIO 21 (SCL)</td>
+      <td><span class="badge badge-info">2 PIN TERPAKAI</span> Jalur I2C Hardware Wire.</td>
+    </tr>
+    <tr>
+      <td><b>Modul Audio (I2S Shared)</b></td>
+      <td>GPIO 42 (BCLK/SCK), GPIO 41 (LRC/WS), GPIO 1 (DIN Amp), GPIO 14 (SD Mic)</td>
+      <td><span class="badge badge-info">4 PIN TERPAKAI</span> Bus I2S Full-Duplex hemat pin.</td>
+    </tr>
+    <tr>
+      <td><b>Internal Board Hardware</b></td>
+      <td>GPIO 35, 36, 37 (Octal PSRAM 8MB) &bull; GPIO 48 (WS2812 RGB LED) &bull; GPIO 43, 44 (CH343 UART) &bull; GPIO 19, 20 (USB Native)</td>
+      <td><span class="badge badge-danger">TERKUNCI</span> Dilarang digunakan untuk sensor luar.</td>
+    </tr>
+    <tr>
+      <td><b>Slot MicroSD Onboard</b></td>
+      <td>GPIO 38, 39, 40</td>
+      <td><span class="badge badge-warn">BEBAS / CADANGAN</span> Tidak digunakan karena audio memanfaatkan Wi-Fi Streaming.</td>
+    </tr>
+    <tr>
+      <td><b>Strapping Pins</b></td>
+      <td>GPIO 0, GPIO 3, GPIO 45, GPIO 46</td>
+      <td><span class="badge badge-warn">SENSITIF BOOT</span> Digunakan untuk konfigurasi booting chip ESP32-S3.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="footer">
+  Dokumen Rekapitulasi Resmi Laboratorium IoT &bull; Projek Skripsi "Asisten-Belajar Interaktif Pomodoro" &bull; Universitas / Teknik Informatika
+</div>
+
+</body>
+</html>

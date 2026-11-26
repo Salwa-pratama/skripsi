@@ -1,0 +1,21 @@
+services:
+  computer_vision_app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    image: computer-vision
+    container_name: computer-vision
+    command: sleep infinity
+    working_dir: /app
+    volumes:
+      # Mount folder computer-vision ke /app
+      - ../:/app:Z
+    ports:
+      # Port untuk Flask backend & WebSocket dashboard
+      - "5000:5000"
+      - "8080:8080"
+    env_file:
+      - ../.env
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1

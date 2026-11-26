@@ -1,0 +1,30 @@
+# Catatan Engineering — Status Terkini
+
+## Keputusan
+
+Fitur kamera/computer-vision dihentikan. Penyebab utama (catatan eksperimen
+sebelumnya):
+
+1. Kualitas citra OV5640 di ESP32-S3 terbatas; face mesh sering gagal, dan
+   wajah bisa salah terdeteksi sebagai titik tangan.
+2. Deteksi "menunduk" tidak valid sebagai distraksi karena user bisa belajar
+   dari buku atau menulis sambil menunduk.
+3. Beban komputasi vision di server tidak sebanding dengan manfaatnya untuk
+   fokus penelitian.
+
+## Arsitektur Pengganti
+
+- Pertanyaan user direkam dari mic INMP441 -> dikirim ke server.
+- Server: faster-whisper (STT) -> fine-tuned SBERT retrieval -> Edge-TTS
+  (suara cowok Indonesia).
+- Jawaban diputar di speaker MAX98357A dan ditampilkan di OLED.
+- Pomodoro, gamifikasi MDA, dan database tetap dipertahankan.
+- Kamera OV5640 beserta seluruh pin dan web server-nya dinonaktifkan total.
+
+## Threshold & Perilaku
+
+- `RETRIEVAL_MIN_SCORE=0.35`: di bawah nilai ini pertanyaan dianggap di luar
+  kurikulum dan robot menolak dengan sopan.
+- Rekaman mic: berhenti setelah hening 1,2 detik, maksimal 8 detik.
+- Teks OLED: marquee kanan -> kiri di bawah mata robot, lalu kembali ke wajah
+  6 detik setelah audio selesai.
